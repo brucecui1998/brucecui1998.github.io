@@ -117,10 +117,10 @@
 <p><strong>踩的坑：</strong></p>
 <p>1、当debian问要不要安装grub时，不要什么都不填直接点contiune，它允许你这么做，但你这么做之后你重启后找不到引导，这可太自由了…</p>
 <p><strong>配置grub Install the GRUB boot loader</strong></p>
-<p><img src="/....%5Cimages%5CLinuxC++%5Cdebian.jpg" alt="debian"></p>
+<p><img src="/../../images/LinuxC++/debian.jpg" alt="debian"></p>
 <p>在配置grub时，根据之前划分出来的100GB位于哪个硬盘，sda还是nvme（在分区那一步可以看到），就选哪一个。例如，我的100GB空闲是位于sda，我就应该选第三个&#x2F;dev&#x2F;sda&#x2F;。到底位于哪里，在手动分区那里可以看到</p>
 <p>2、如上操作后，由于我的sda磁盘没有EFI分区，安装完重启后还是没有办法引导。大佬说我的盘是MBR分区表，MBR分区表对应的是只能走grub的legacy模式引导（GPT分区表对应EFI引导），刚才找不到引导项是因为，legacy安装下它根本不走efi，而是通过直接选设备引导的，但是不知道我是否开启了lagacy引导支持。</p>
-<p><img src="/....%5Cimages%5CLinuxC++%5Cdisk.jpg" alt="debian"></p>
+<p><img src="/../../images/LinuxC++/disk.jpg" alt="debian"></p>
 <p>在大佬指导下，我选择了倒数第二个，从设备引导，引导成功，比较幸运，看来我开启了lagacy支持。</p>
 <p>tips大佬的话： 这里面机制有点复杂,EFI的引导检测机制是使用特殊的EFI分区中的efi程序,efi固件在进入时会扫描每个磁盘上的efi分区,把nvram里面保存的efi引导程序放在这里,你选一个就会根据记录找到对应的文件引导,但是老旧的legacy引导不是这样,让我们回到二十年前,那时候还没有efi固件,也不存在efi分区,引导方式就是简单的扫描零号扇区,因此只能通过选择设备区分不同的引导项,我说的很简单，其实细节远不止这样,你感兴趣可以看看GRUB的两阶段引导的具体实现,那个000H1就是保存在NVRAM里面的Windows引导项,它对应的efi程序是&#x2F;EFI&#x2F;Windows&#x2F;bootmgr.efi.顺带再一提,虽然我们经验上说MBR对应Legacy引导，GPT对应UEFI引导,但是实际上它们直接不是绝对的对应关系,而是一个两两组合的二维矩阵,换句话说，MBR+EFI，GPT+Legacy也是可以的,虽然不被推荐,是Windows强行绑定起来,把人都惯成了思维定式</p>
 <p>安装基本的东西</p>
@@ -157,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/25/LinuxC++/AiHpc%E7%A7%91%E7%A0%94%E7%8E%AF%E5%A2%83%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" data-id="clkiboqzf0000s4v2av1odr5e" data-title="AI+HPC科研环境远程服务器配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/07/25/LinuxC++/AiHpc%E7%A7%91%E7%A0%94%E7%8E%AF%E5%A2%83%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" data-id="clkiderz70000iwv235ite5dc" data-title="AI+HPC科研环境远程服务器配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -238,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE/" data-id="clkgbgu9400056sv28rzx70ta" data-title="第二课" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE/" data-id="clkiderzb0008iwv261kddk4v" data-title="第二课" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -327,7 +327,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/" data-id="clkgbgu8z00006sv24bgc8swu" data-title="第一课" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/" data-id="clkiderz90001iwv2b7et1l4b" data-title="第一课" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
