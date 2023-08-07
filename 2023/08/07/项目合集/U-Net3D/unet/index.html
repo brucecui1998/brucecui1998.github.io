@@ -14,11 +14,11 @@
 <meta property="og:description" content="[toc] U-Net学习赛题是U-Net3D，为了更好的理解赛题，从U-Net学起，打好基础。 参考资料： U-Net论文 U-Net官方网站 从零开始的U-net入门 （个人感觉是目前最全面、理解最深透的教程） U-Net论文代码逐行实现解读 我们最终要学习并实践的代码 u-net代码环境配置本机cuda配置 检查cuda环境  u-net代码中主要用到了torch，如何安装gpu版torch">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/CUDA%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">
-<meta property="og:image" content="http://example.com/images%5C%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86%5CU-Net3D%5Cnvidia-smi">
-<meta property="og:image" content="d:\cuirongpei\workspace\blog\blog\source\images\%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86\U-Net3D\cuda%E9%A9%B1%E5%8A%A8%E4%B8%8B%E8%BD%BD">
-<meta property="og:image" content="http://example.com/images%5C%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86%5CU-Net3D%5Cunet%E8%BF%90%E8%A1%8C%E5%9B%BE">
+<meta property="og:image" content="http://example.com/images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/nvidia-smi">
+<meta property="og:image" content="http://example.com/images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/cuda%E9%A9%B1%E5%8A%A8%E4%B8%8B%E8%BD%BD">
+<meta property="og:image" content="http://example.com/images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/unet%E8%BF%90%E8%A1%8C%E5%9B%BE">
 <meta property="article:published_time" content="2023-08-07T05:43:06.764Z">
-<meta property="article:modified_time" content="2023-08-07T07:36:17.678Z">
+<meta property="article:modified_time" content="2023-08-07T07:40:59.132Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/CUDA%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">
@@ -133,13 +133,13 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../../../images%5C%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86%5CU-Net3D%5Cnvidia-smi" alt="image-20230807141126542"></p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/nvidia-smi" alt="image-20230807141126542"></p>
 <ul>
 <li>安装cuda驱动</li>
 </ul>
 <p>好啦，现在我们知道我的cuda驱动版本是528.24，最高支持的cuda版本是12.0，在这里由于每个人电脑配置不一样，下载的cuda驱动版本不一样，有的人可能驱动比较老，但是一般来说能支持到cuda 11.x的版本都够用，实在是驱动版本太低的话，可以重新安装cuda驱动，方法也非常简单</p>
 <p>进入<a target="_blank" rel="noopener" href="https://www.nvidia.cn/Download/index.aspx?lang=cn">NVIDIA官方网站</a>，根据自己显卡配置选择相应的驱动版本，然后正常一路安装即可</p>
-<p><img src="D:\cuirongpei\workspace\blog\blog\source\images\项目合集\U-Net3D\cuda驱动下载" alt="image-20230807142533314"></p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/cuda%E9%A9%B1%E5%8A%A8%E4%B8%8B%E8%BD%BD" alt="image-20230807142533314"></p>
 <ul>
 <li>安装cudatoolkit</li>
 </ul>
@@ -174,7 +174,7 @@
 <p>然后运行，程序就可以运行起来了！</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python experiment.py</span><br></pre></td></tr></table></figure>
 
-<p><img src="/../../../images%5C%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86%5CU-Net3D%5Cunet%E8%BF%90%E8%A1%8C%E5%9B%BE" alt="image-20230807153537190"></p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/unet%E8%BF%90%E8%A1%8C%E5%9B%BE" alt="image-20230807153537190"></p>
 
       
     </div>
