@@ -223,9 +223,9 @@
 
 
   
-    <article id="post-项目合集/U-Net3D/第三课" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-项目合集/U-Net3D/unet" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E7%AC%AC%E4%B8%89%E8%AF%BE/" class="article-date">
+    <a href="/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/unet/" class="article-date">
   <time class="dt-published" datetime="2023-08-07T05:43:06.764Z" itemprop="datePublished">2023-08-07</time>
 </a>
     
@@ -241,7 +241,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E7%AC%AC%E4%B8%89%E8%AF%BE/">U-Net学习</a>
+      <a class="p-name article-title" href="/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/unet/">U-Net学习</a>
     </h1>
   
 
@@ -292,14 +292,37 @@
 <h3 id="anaconda中python环境配置"><a href="#anaconda中python环境配置" class="headerlink" title="anaconda中python环境配置"></a>anaconda中python环境配置</h3><p>我们采用anaconda管理python环境，每次遇到一个新的python项目，就新建一个python环境，这种方式管理的python环境清晰，不引起冲突</p>
 <p>没有anaconda的话，百度anaconda下载一路安装即可。</p>
 <p>打开anaconda power prompt命令行窗口，首先新建名为unet的python环境</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n unet python=3.7</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n unet python=3.10</span><br></pre></td></tr></table></figure>
 
-<p>接下来是关键，我们可以通过简单浏览代码，发现代码中使用的是pytorch，那么最重要的三个包就是torch、torchaudio和torchvision，当然安装gpu版本的方法很简单也很多，感兴趣可以之前我总结的方法</p>
+<p>接下来是关键，我们可以通过简单浏览代码，发现代码中使用的是pytorch，那么最重要的三个包就是torch、torchaudio和torchvision，当然安装gpu版本的方法很简单也很多，感兴趣可以<a target="_blank" rel="noopener" href="https://brucecui1998.github.io/2023/08/07/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">之前我总结的方法</a>,但是对于小白来说，使用pytorch官网推荐的安装方法固然简单，但是需要解决网速慢的问题。在这里我推荐手动下载.whl文件，然后pip install的方法。</p>
+<ul>
+<li>安装u-net项目依赖</li>
+</ul>
+<p>在项目没有明确依赖包的版本要求说明的情况下（比如没有requirements.txt），我们需要自己去尝试依赖包的版本问题，最简单的办法就是直接运行主程序，缺少哪个包就装哪个包,unet项目的主程序是experiment.py</p>
+<p>激活刚刚新建的python环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate unet</span><br></pre></td></tr></table></figure>
+
+<p>运行主程序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python experiment.py</span><br></pre></td></tr></table></figure>
+
+<p>很明显会报错</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;.\experiment.py&quot;, line 23, in &lt;module&gt;</span><br><span class="line">    import numpy as np</span><br><span class="line">ModuleNotFoundError: No module named &#x27;numpy&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>我们就pip install就行,-i 参数意思是使用清华的国内镜像源，网速快！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install numpy -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<p>以上就是基本思想，那么最重要也是最容易出错的三个模块torch、torchaudio和torchvision这里我推荐直接从<a target="_blank" rel="noopener" href="https://download.pytorch.org/whl/torch_stable.html">官方whl文件下载地址</a> 下载，根据个人踩坑经验，这里版本我推荐torch-1.13.1+cu116-cp310-cp310-win_amd64.whl、torchaudio-0.13.1+cu116-cp310-cp310-win_amd64.whl和torchvision-0.14.1+cu116-cp310-cp310-win_amd64.whl，将他们手动下载下来，然后再进入他们路径下面分别pip install即可，将以上三个文件下载好之后，执行下面我这个命令即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install torch-1.13.1+cu116-cp310-cp310-win_amd64.whl torchaudio-0.13.1+cu116-cp310-cp310-win_amd64.whl  torchvision-0.14.1+cu116-cp310-cp310-win_amd64.whl labml labml_helpers matplotlib</span><br></pre></td></tr></table></figure>
+
+<p>然后运行，程序就可以运行起来了！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python experiment.py</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../../images%5C%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86%5CU-Net3D%5Cunet%E8%BF%90%E8%A1%8C%E5%9B%BE" alt="image-20230807153537190"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E7%AC%AC%E4%B8%89%E8%AF%BE/" data-id="cll0i63sm0001ukv21f2qbx2n" data-title="U-Net学习" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/unet/" data-id="cll0k7r5f0000eov28wzk36oh" data-title="U-Net学习" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -685,7 +708,7 @@
           </li>
         
           <li>
-            <a href="/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E7%AC%AC%E4%B8%89%E8%AF%BE/">U-Net学习</a>
+            <a href="/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/unet/">U-Net学习</a>
           </li>
         
           <li>
