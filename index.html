@@ -73,6 +73,325 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-杂项汇总/人工智能相关环境搭建" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/07/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time class="dt-published" datetime="2023-08-07T05:53:35.190Z" itemprop="datePublished">2023-08-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/07/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">人工智能相关环境搭建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="Win-Linux双系统安装"><a href="#Win-Linux双系统安装" class="headerlink" title="Win + Linux双系统安装"></a>Win + Linux双系统安装</h1><p>淘宝花30块踩坑..</p>
+<p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/jammy/ubuntu-22.04.2-desktop-amd64.iso">https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/jammy/ubuntu-22.04.2-desktop-amd64.iso</a></p>
+<h2 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>在windows上压缩100gb空间，Refus制作启动盘<br>引导黑屏后注意用hdmi线(不要用dp线，hdmi是两个缺口，dp线是一个)，主机箱上下两个接口都试试。一个是主板的，一个是显卡的<br>进入ubuntu后创建分区时，先删除那100GB的分区(点那个-号)，然后继续，选第一个选项与windows共存<br>如果重新回到windows分辨率改不了的话，下载一个驱动大师更新下驱动即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/modprobe.d/blacklist.conf</span><br><span class="line">加参数到最底下回车另起一行内容为</span><br><span class="line">blacklist nouveau</span><br><span class="line">options nouveau modeset=0</span><br><span class="line">保存再终端更新内核命令 终端输入</span><br><span class="line">sudo update-initramfs -u</span><br><span class="line">sudo apt update </span><br><span class="line">sudo apt install gcc g++ make</span><br><span class="line"></span><br><span class="line">然后好了以后重启电脑</span><br><span class="line">百度nvidia 官网去下对应显卡版本的驱动https://www.nvidia.cn/drivers/results/200481/举例（下面XXX是版本的意思） NVIDIA-Linux-x86_64-440.run （384或者440都可以版本里面的）下好的文件放在 主文件夹 或者说叫home 目录下</span><br><span class="line">先按Ctrl + Alt + F3到控制台，关闭当前图形环境 输入</span><br><span class="line">sudo telinit 3 </span><br><span class="line">再安装驱动程序输入</span><br><span class="line">cd /home/用户名 </span><br><span class="line">进入到驱动所在文件夹 （下好的驱动文件放在home 或者叫主文件夹下）输入</span><br><span class="line">sudo chmod a+x NVIDIA-Linux-x86_64-xxx.run</span><br><span class="line">sudo sh NVIDIA-Linux-x86_64-xxx.run -no-opengl-files</span><br><span class="line"></span><br><span class="line">最后重新启动 reboot</span><br></pre></td></tr></table></figure>
+
+<h1 id="PYTORCH-GPU版"><a href="#PYTORCH-GPU版" class="headerlink" title="PYTORCH GPU版"></a>PYTORCH GPU版</h1><h2 id="更新驱动程序"><a href="#更新驱动程序" class="headerlink" title="更新驱动程序"></a>更新驱动程序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-J69ZVhZA-1590658049693)(G:\githubblog\source\_posts\深度学习\环境搭建\人工智能相关环境搭建.assets\cuda与驱动对应关系-1665491036353.png)]</span><br></pre></td></tr></table></figure>
+
+<p><strong>windows:</strong></p>
+<p>“我的电脑”右键-“管理”“-显示适配器”-“驱动信息”-“更新驱动程序”</p>
+<p>更新后我的驱动版本为472.19，最高可支持到CUDA11.4</p>
+<p><strong>linux:</strong></p>
+<p>如上，更新驱动。</p>
+<h2 id="安装CUDA11-3"><a href="#安装CUDA11-3" class="headerlink" title="安装CUDA11.3"></a>安装CUDA11.3</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">https://developer.nvidia.com/cuda-toolkit-archive</a></p>
+<p><a target="_blank" rel="noopener" href="https://pytorch.org/">https://pytorch.org/</a></p>
+<p>注意pytorch官网上说pytorch win版已不支持cuda10.2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">创建环境conda create -n torch_gpu python=3.7</span><br><span class="line">激活环境 conda activate torch_gpu</span><br><span class="line">安装torch</span><br><span class="line">pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113</span><br><span class="line"></span><br><span class="line">检查环境装好没</span><br><span class="line">conda activate torch</span><br><span class="line">python</span><br><span class="line">import torch</span><br><span class="line">torch.cuda.is_available()</span><br><span class="line">TRUE</span><br><span class="line"></span><br><span class="line">conda常用命令</span><br><span class="line">退出当前环境 conda deactivate</span><br><span class="line">看包conda list</span><br><span class="line">#删除环境，慎用！</span><br><span class="line">conda remove -n torch --all 把刚才建立的torch环境统统删掉（慎用！）</span><br></pre></td></tr></table></figure>
+
+<p><strong>踩的一个坑就是不要用清华源的conda install，这样安装的torch是cpu版的，直接区torch官网用它的pip install</strong>，亲测有效，十几分钟就Ok了！</p>
+<h3 id="Linux服务器"><a href="#Linux服务器" class="headerlink" title="Linux服务器"></a>Linux服务器</h3><p><strong>法一：官网推荐pip直接安装。<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/previous-versions/">Pytorch官方网站</a></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install torch==1.12.0+cu113 torchvision==0.13.0+cu113 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu113</span><br></pre></td></tr></table></figure>
+
+<p>这种方法最简单，适用于网络好、可访问国外官网的服务器。</p>
+<p>学校的g101n01节点的网络不稳定，只下载了这几个Collecting torch&#x3D;&#x3D;1.12.0+cu113、Collecting torchvision&#x3D;&#x3D;0.13.0+cu113、Collecting torchaudio&#x3D;&#x3D;0.12.0，其余库只能在国内源下载，特再次总结</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install pillow -i https://pypi.douban.com/simple</span><br><span class="line">pip install typing-extensions -i https://pypi.douban.com/simple</span><br><span class="line">pip install numpy -i https://pypi.douban.com/simple</span><br><span class="line">pip install requests -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
+
+<p>学校g01n01等大部分节点显卡驱动版本较老375.26，没有root权限升级驱动的情况下只能需要使用低版本cuda</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n mario_cu8.0 python=3.7 nomkl</span><br><span class="line">conda install pytorch==1.0.0 torchvision==0.2.1 cuda80 -c pytorch</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line">&gt;&gt;&gt;import torch</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/gpfs1/home/nc/hpc1/miniconda3/envs/mario_cu9.0/lib/python3.7/site-packages/torch/__init__.py&quot;, line 84, in &lt;module&gt;</span><br><span class="line">    from torch._C import *</span><br><span class="line">ImportError: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8&#x27; not found (required by /gpfs1/home/nc/hpc1/miniconda3/envs/mario_cu9.0/lib/python3.7/site-packages/torch/lib/libtorch_python.so)</span><br></pre></td></tr></table></figure>
+
+<p>在学校服务器总是会遇到基础库的问题，<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012322399/article/details/120065301">看这篇文章</a>！</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/siamzj/article/details/120995732">Anaconda中mkl的坑</a></p>
+<p><strong>法二：下载wheel文件安装。<a target="_blank" rel="noopener" href="https://download.pytorch.org/whl/torch_stable.html">Pytorch的wheel文件下载地址</a></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://download.pytorch.org/whl/cu113/torch-1.10.2%2Bcu113-cp37-cp37m-linux_x86_64.whl</span><br></pre></td></tr></table></figure>
+
+<p><strong>法三：下载现成的包安装。<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/linux-64/">Pytorch包下载地址</a>（踩坑中）</strong></p>
+<p>考虑到某些linux服务器上可能不能访问不了Pytorch的官网，可以自己下载下来然后上传</p>
+<p>或者可以直接在国内镜像源下载编译好的pytorch包 进行离线安装（注意显卡驱动版本和CUDA版本对应关系）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/linux-64/pytorch-1.10.0-py3.6_cuda11.3_cudnn8.2.0_0.tar.bz2 --no-check-certificate</span><br><span class="line"></span><br><span class="line">cd $anaconda3/envs/yourself-env-name/</span><br><span class="line">tar -xvf pytorch-1.10.0-py3.6_cuda11.3_cudnn8.2.0_0.tar.bz2</span><br></pre></td></tr></table></figure>
+
+<p>我在学校平台上需要先加载cuda环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module load cuda/11.5</span><br></pre></td></tr></table></figure>
+
+<p>然而以这种离线方式安装，会报没有Mkl动态库的错误</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$python</span><br><span class="line">&gt;&gt;&gt; import torch</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/gpfs1/home/nc/hpc1/miniconda3/envs/mario/lib/python3.7/site-packages/torch/__init__.py&quot;, line 201, in &lt;module&gt;</span><br><span class="line">    _load_global_deps()</span><br><span class="line">  File &quot;/gpfs1/home/nc/hpc1/miniconda3/envs/mario/lib/python3.7/site-packages/torch/__init__.py&quot;, line 154, in _load_global_deps</span><br><span class="line">    ctypes.CDLL(lib_path, mode=ctypes.RTLD_GLOBAL)</span><br><span class="line">  File &quot;/gpfs1/home/nc/hpc1/miniconda3/envs/mario/lib/python3.7/ctypes/__init__.py&quot;, line 364, in __init__</span><br><span class="line">    self._handle = _dlopen(self._name, mode)</span><br><span class="line">OSError: libmkl_intel_lp64.so: cannot open shared object file: No such file or directory</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[5]+  Stopped                 python</span><br></pre></td></tr></table></figure>
+
+<p>安装一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install mkl -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
+
+<p>貌似还是缺少那个动态库…</p>
+<h1 id="TENSORFLOW-GPU版"><a href="#TENSORFLOW-GPU版" class="headerlink" title="TENSORFLOW GPU版"></a>TENSORFLOW GPU版</h1><h2 id="Win10-1050Ti搭建tensorflow-gpu环境"><a href="#Win10-1050Ti搭建tensorflow-gpu环境" class="headerlink" title="Win10 1050Ti搭建tensorflow-gpu环境"></a>Win10 1050Ti搭建tensorflow-gpu环境</h2><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38899860/article/details/106067102">https://blog.csdn.net/weixin_38899860/article/details/106067102</a></p>
+<p>**CUDA9.0.176_win10:**<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-90-download-archive">https://developer.nvidia.com/cuda-90-download-archive</a></p>
+<p>**Cudnn7.3.1:**<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-archive">https://developer.nvidia.com/rdp/cudnn-archive</a></p>
+<p>cuda与tensorflow对应关系</p>
+<p><img src="/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/cuda%E4%B8%8Etensorflow%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB-1663572940070.png" alt="cuda与tensorflow对应关系-1663572940070"></p>
+<h3 id="解压Cudnn"><a href="#解压Cudnn" class="headerlink" title="解压Cudnn"></a>解压Cudnn</h3><p>可以看到bin、include、lib目录<br>打开 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA<br>找到你安装的版本目录，打开，找到bin、include、lib目录，将cuDNN压缩包内对应的文件复制到bin、include、lib目录。<br>注意：是复制文件到bin、include、lib目录，不是复制目录。</p>
+<h3 id="添加PATH环境变量（根据自己路径设置）"><a href="#添加PATH环境变量（根据自己路径设置）" class="headerlink" title="添加PATH环境变量（根据自己路径设置）"></a>添加PATH环境变量（根据自己路径设置）</h3><p>记得添加环境变量到path</p>
+<p>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\lib\x64</p>
+<h3 id="检查安装结果"><a href="#检查安装结果" class="headerlink" title="检查安装结果"></a>检查安装结果</h3><p>在cmd窗口输入nvcc -V</p>
+<h3 id="安装tensorflow-gpu"><a href="#安装tensorflow-gpu" class="headerlink" title="安装tensorflow-gpu"></a>安装tensorflow-gpu</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda create -n tf_1.10 python=3.6</span><br><span class="line">python -m pip install --upgrade pip</span><br><span class="line">pip install --ignore-installed --upgrade tensorflow-gpu==1.10.0 -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
+
+<h3 id="验证tensorflow是否连上gpu"><a href="#验证tensorflow是否连上gpu" class="headerlink" title="验证tensorflow是否连上gpu"></a>验证tensorflow是否连上gpu</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line">from tensorflow.python.client import device_lib</span><br><span class="line">print(device_lib.list_local_devices())</span><br></pre></td></tr></table></figure>
+
+<p>删除环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove -n your_env_name(虚拟环境名称) --all</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda install cudatoolkit=9.0 -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/linux-64/</span><br><span class="line"></span><br><span class="line">conda install cudnn=7.6.4 -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/linux-64/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-i <span class="symbol">https:</span>/<span class="regexp">/pypi.tuna.tsinghua.edu.cn/simple</span></span><br><span class="line">-i <span class="symbol">https:</span>/<span class="regexp">/mirrors.aliyun.com/pypi</span><span class="regexp">/simple</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/64662085/fix-not-load-dynamic-library-for-tensorflow-gpu">https://stackoverflow.com/questions/64662085/fix-not-load-dynamic-library-for-tensorflow-gpu</a></p>
+<h2 id="Ubuntu-20-04-3090-搭建tensorflow-gpu环境"><a href="#Ubuntu-20-04-3090-搭建tensorflow-gpu环境" class="headerlink" title="Ubuntu 20.04 + 3090 搭建tensorflow-gpu环境"></a>Ubuntu 20.04 + 3090 搭建tensorflow-gpu环境</h2><p>tensorflow cuda cudnn对应关系</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44560088/article/details/117457619">https://blog.csdn.net/weixin_44560088/article/details/117457619</a> </p>
+<h3 id="CUDA安装"><a href="#CUDA安装" class="headerlink" title="CUDA安装"></a>CUDA安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://developer.download.nvidia.com/compute/cuda/11.3.0/local_installers/cuda_11.3.0_465.19.01_linux.runsudo sh cuda_11.3.0_465.19.01_linux.run</span><br><span class="line">sudo sh cuda_11.3.0_465.19.01_linux.run</span><br></pre></td></tr></table></figure>
+
+<p>vi ~&#x2F;.bashrc加入环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export LD_LIBRARY_PATH=:$LD_LIBRARY_PATH</span><br><span class="line">export PATH=:$PATH</span><br><span class="line">export CUDA_HOME=:CUDA_HOME</span><br></pre></td></tr></table></figure>
+
+<p>source ~&#x2F;.bashrc使其生效</p>
+<h3 id="CUDNN安装"><a href="#CUDNN安装" class="headerlink" title="CUDNN安装"></a>CUDNN安装</h3><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">https://developer.nvidia.com/rdp/cudnn-download</a></p>
+<p>官方教程：<a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html">https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html</a></p>
+<p>安装与tensorflow cuda 对应版本的cudnn</p>
+<p>1、Enable the local repository.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zlib1g</span><br><span class="line">wget https://developer.nvidia.com/compute/cudnn/secure/8.6.0/local_installers/11.8/cudnn-local-repo-ubuntu2004-8.6.0.163_1.0-1_amd64.deb</span><br><span class="line">sudo dpkg -i cudnn-local-repo-ubuntu2004-8.6.0.163_1.0-1_amd64.deb</span><br></pre></td></tr></table></figure>
+
+<p>2、Import the CUDA GPG key.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /var/cudnn-local-repo-*/cudnn-local-*-keyring.gpg /usr/share/keyrings/</span><br></pre></td></tr></table></figure>
+
+<p>3、Refresh the repository metadata.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<p>4、 Install the runtime library.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libcudnn8=8.x.x.x-1+cudaX.Y</span><br></pre></td></tr></table></figure>
+
+<p>5、Install the developer library.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libcudnn8-dev=8.x.x.x-1+cudaX.Y</span><br></pre></td></tr></table></figure>
+
+<p>6、Install the code samples and the cuDNN library documentation.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libcudnn8-samples=8.x.x.x-1+cudaX.Y</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装tensorflow-gpu-2-5-0"><a href="#安装tensorflow-gpu-2-5-0" class="headerlink" title="安装tensorflow_gpu-2.5.0"></a>安装tensorflow_gpu-2.5.0</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda create -n tf_2.5.0 python=3.7</span><br><span class="line">python -m pip install --upgrade pip</span><br><span class="line">pip3 install tensorflow-gpu==2.5.0 -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
+
+<p>测试是否能用TensorFlow-GPU版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line">from tensorflow.python.client import device_lib</span><br><span class="line">print(device_lib.list_local_devices())</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/07/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="cll0i63sl0000ukv2bcszhny3" data-title="人工智能相关环境搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-项目合集/U-Net3D/第三课" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E7%AC%AC%E4%B8%89%E8%AF%BE/" class="article-date">
+  <time class="dt-published" datetime="2023-08-07T05:43:06.764Z" itemprop="datePublished">2023-08-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/">U-Net3D</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E7%AC%AC%E4%B8%89%E8%AF%BE/">U-Net学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="U-Net学习"><a href="#U-Net学习" class="headerlink" title="U-Net学习"></a>U-Net学习</h1><p>赛题是U-Net3D，为了更好的理解赛题，从U-Net学起，打好基础。</p>
+<p>参考资料：</p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1505.04597.pdf">U-Net论文</a></p>
+<p><a target="_blank" rel="noopener" href="https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/">U-Net官方网站</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33924470/article/details/106891015">从零开始的U-net入门</a> （个人感觉是目前最全面、理解最深透的教程）</p>
+<p><a target="_blank" rel="noopener" href="https://nn.labml.ai/unet/index.html">U-Net论文代码逐行实现解读</a> 我们最终要学习并实践的代码</p>
+<h2 id="u-net代码环境配置"><a href="#u-net代码环境配置" class="headerlink" title="u-net代码环境配置"></a>u-net代码环境配置</h2><h3 id="本机cuda配置"><a href="#本机cuda配置" class="headerlink" title="本机cuda配置"></a>本机cuda配置</h3><ul>
+<li>检查cuda环境</li>
+</ul>
+<p>u-net代码中主要用到了torch，如何安装gpu版torch是重点，以windows操作系统为例，首先我们电脑需要安装有cuda，如何检验电脑是否安装好了cuda呢？win+r输入cmd回车，后在命令行中输入nvcc -V，如果正常输出信息即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvcc -V</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置cuda环境变量</li>
+</ul>
+<p>如果没有正常输出呢？我们需要检查电脑中是否已经安装有cudatoolkit，可能是没有设置好环境变量，我们打开C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA这个路径下查看有无cuda（也可能是在C:\Program Files (x86)\NVIDIA GPU Computing Toolkit\CUDA）。如果有的话，设置CUDA的环境变量即可，编辑windows系统环境变量，编辑Path变量如图将其修改为自己的对应路径，我这里将cuda v12.0放在上面，因为我电脑装了两个cuda版本，但是我自己设置的12.0的优先级比11.3高（可以通过上移或下移来设置），系统会默认我使用12.0的版本</p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/CUDA%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F" alt="image-20230807140609242"></p>
+<ul>
+<li>如果本机没有安装cudatoolkit，安装cudatoolkit！</li>
+</ul>
+<p>以上情况是电脑里已经安装了cudatoolkit，那么如果没有安装cudatoolkit呢？当然是先安装cudatoolkit啦！但是别着急，在安装cudatoolkit之前，我们需要win+r输入cmd，在命令行中输入nvidia-smi(如果没有正常输出的话，在windows搜索功能栏中输入nvidia-smi，找到nvidia-smi.exe的位置，后把其加入windows的Path环境变量中即可，例如我的位置是在”C:\Windows\System32\nvidia-smi.exe”)</p>
+<ul>
+<li>检查cuda驱动版本所能支持的cuda最高版本</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../../images%5C%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86%5CU-Net3D%5Cnvidia-smi" alt="image-20230807141126542"></p>
+<ul>
+<li>安装cuda驱动</li>
+</ul>
+<p>好啦，现在我们知道我的cuda驱动版本是528.24，最高支持的cuda版本是12.0，在这里由于每个人电脑配置不一样，下载的cuda驱动版本不一样，有的人可能驱动比较老，但是一般来说能支持到cuda 11.x的版本都够用，实在是驱动版本太低的话，可以重新安装cuda驱动，方法也非常简单</p>
+<p>进入<a target="_blank" rel="noopener" href="https://www.nvidia.cn/Download/index.aspx?lang=cn">NVIDIA官方网站</a>，根据自己显卡配置选择相应的驱动版本，然后正常一路安装即可</p>
+<p><img src="D:\cuirongpei\workspace\blog\blog\source\images\项目合集\U-Net3D\cuda驱动下载" alt="image-20230807142533314"></p>
+<ul>
+<li>安装cudatoolkit</li>
+</ul>
+<p>这里我们尽量不去安装cuda10.2的版本，因为注意pytorch官网上说pytorch win版已不支持cuda10.2，所以我们可以安装cuda11.6或者cuda12.0都可以，安装12.0最好，因为12.0可以用所有的低版本。当然，最高能安装哪个版本的cudatoolkit，还要看nvidia-smi所支持的最高版本，总之安装最高版本肯定没有问题！</p>
+<p>这里我们进入<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">NVIDIA官方网站下载</a> 对应的cudatoolkit，注意安装的时候选择自定义安装，会提醒你安装哪些东西，我们只需要选择cudatoolkit足矣，不需要再重新安装cuda driver驱动了，可以直接安装在C盘默认位置。</p>
+<p>这时候我们的windows的cuda环境就配置好了，接下来配置我们的anaconda的python环境</p>
+<h3 id="anaconda中python环境配置"><a href="#anaconda中python环境配置" class="headerlink" title="anaconda中python环境配置"></a>anaconda中python环境配置</h3><p>我们采用anaconda管理python环境，每次遇到一个新的python项目，就新建一个python环境，这种方式管理的python环境清晰，不引起冲突</p>
+<p>没有anaconda的话，百度anaconda下载一路安装即可。</p>
+<p>打开anaconda power prompt命令行窗口，首先新建名为unet的python环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n unet python=3.7</span><br></pre></td></tr></table></figure>
+
+<p>接下来是关键，我们可以通过简单浏览代码，发现代码中使用的是pytorch，那么最重要的三个包就是torch、torchaudio和torchvision，当然安装gpu版本的方法很简单也很多，感兴趣可以之前我总结的方法</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E7%AC%AC%E4%B8%89%E8%AF%BE/" data-id="cll0i63sm0001ukv21f2qbx2n" data-title="U-Net学习" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-项目合集/KuiperInfer/手把手从零带学KuiperInfer自制深度学习推理框架第二课 - 副本" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/26/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE%20-%20%E5%89%AF%E6%9C%AC/" class="article-date">
+  <time class="dt-published" datetime="2023-07-26T08:39:16.478Z" itemprop="datePublished">2023-07-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/26/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE%20-%20%E5%89%AF%E6%9C%AC/">第二课</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="vector与cube多维数组内存连续问题详解"><a href="#vector与cube多维数组内存连续问题详解" class="headerlink" title="vector与cube多维数组内存连续问题详解"></a>vector与cube多维数组内存连续问题详解</h1><p>知识产权所有：</p>
+<ul>
+<li>B站up主：<a target="_blank" rel="noopener" href="https://space.bilibili.com/1822828582">我是傅傅猪</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zjhellofss/KuiperInfer">github链接</a> </li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1HV4y1A7H8/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=fe6c1940458efae8fa34a9a71403d0b4">视频链接</a></li>
+<li><a target="_blank" rel="noopener" href="https://cowtransfer.com/s/92602ff08d544b">第二节课课件</a></li>
+</ul>
+<p>手把手带学：B站up主：<a target="_blank" rel="noopener" href="https://space.bilibili.com/678390438?spm_id_from=333.788.0.0">啊培在努力</a></p>
+<p>视频初衷：帮助小白上手，手把手实操课程，对小白级同学比较友好，同时也是希望倒逼自己学习。</p>
+<h2 id="对比std-vector三维矩阵与arma-cube的效率"><a href="#对比std-vector三维矩阵与arma-cube的效率" class="headerlink" title="对比std::vector三维矩阵与arma::cube的效率"></a>对比std::vector三维矩阵与arma::cube的效率</h2><p>int m&#x3D;10000,n&#x3D;10000,channel&#x3D;2;&#x2F;&#x2F;channel<em>m</em>n的三维数组，初始值为1</p>
+<p>测试代码在test&#x2F;test_compare_vector_cube.cpp中</p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/image-20230720085219816.png" alt="image-20230720085219816"></p>
+<h2 id="打印内存地址"><a href="#打印内存地址" class="headerlink" title="打印内存地址"></a>打印内存地址</h2><p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/4dda78a3eb6a2fde0c335c864ab746a.png" alt="4dda78a3eb6a2fde0c335c864ab746a"></p>
+<p>下载编译测试代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/brucecui1998/KuiperInferLearn.git</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">../bin/test_kuiper_course</span><br></pre></td></tr></table></figure>
+
+<p>用std::vector构建二维数组在内存访问上性能不如arma::cube的原因有两个：</p>
+<p>1、虽然一个vector向量内的地址连续，但是向量间内存地址不联系</p>
+<p>2、在对vector扩容后，被扩容的那个向量的内存地址也整体被修改了，相当于向量间不是整体连续。</p>
+<p>我们创建一个4*4的vector组成的二维数组，对第1行vector扩容：插入两个元素，最后打印出他们的地址</p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/image-20230719220715697.png" alt="image-20230719220715697"></p>
+<p>​                                                             4*4的 vector二维数组扩容前后内存地址</p>
+<p>通过上图我们可以看到，四行向量虽然内部连续，但是向量与向量间地址不连续。而且扩容后的第一行的内存地址，与整体内存地址不是整体连续的关系。</p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/image-20230719220946774.png" alt="image-20230719220946774"></p>
+<p>​                                                                        4*4的 cube二维数组扩容前后内存地址图</p>
+<p>我们创建一个4*4的fcube二维矩阵，在最后一行后面<strong>插入两行元素</strong>进行扩容，最后打印出他们的地址</p>
+<p>通过上图我们可以发现arma::cube创建的多维数组（列主序），不管是扩容前与扩容后，都拥有完整一块的内存地址，所以内存访问速度快</p>
+<h2 id="github代码仓库"><a href="#github代码仓库" class="headerlink" title="github代码仓库"></a>github代码仓库</h2><p>将代码上传至远程仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/brucecui1998/KuiperInferLearn.git</span><br><span class="line">git branch -M main</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+
+<p><strong>常见问题：Failed to connect to github.com port 443</strong></p>
+<p>在网站<a target="_blank" rel="noopener" href="https://www.ipaddress.com/">https://www.ipaddress.com/</a> 分别搜索</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">github.global.ssl.fastly.net</span><br><span class="line">github.com</span><br></pre></td></tr></table></figure>
+
+<p>得到ip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.69.194</span><br><span class="line">140.82.112.4</span><br></pre></td></tr></table></figure>
+
+<p>修改hosts文件：vim &#x2F;etc&#x2F;hosts<br>在hosts文件末尾添加两行(对应上面查到的ip)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.69.194  github.global.ssl.fastly.net</span><br><span class="line">140.82.112.4  github.com</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/07/26/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE%20-%20%E5%89%AF%E6%9C%AC/" data-id="cll0i63sn0003ukv2feuv0l0o" data-title="第二课" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-LinuxC++/AiHpc科研环境远程服务器配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/07/25/LinuxC++/AiHpc%E7%A7%91%E7%A0%94%E7%8E%AF%E5%A2%83%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" class="article-date">
@@ -126,7 +445,7 @@
 <p>安装基本的东西</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install vim g++ openssh-server git net-tools</span><br></pre></td></tr></table></figure>
 
-<p><code>su root</code> 的话只是将当前身份转为 root，用户 shell 并没有改变，所以有些系统命令不能使用，所以使用su - root</p>
+<h3 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h3><p><code>su root</code> 的话只是将当前身份转为 root，用户 shell 并没有改变，所以有些系统命令不能使用，所以使用su - root</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - root</span><br></pre></td></tr></table></figure>
 
 <p>配置ssh，利用vscode连接</p>
@@ -149,10 +468,21 @@
 <p>在vscode中安装ssh插件，然后即可实现局域网内ssh hunter@ip</p>
 <h3 id="利用cpolar实现公网访问远程服务器"><a href="#利用cpolar实现公网访问远程服务器" class="headerlink" title="利用cpolar实现公网访问远程服务器"></a>利用cpolar实现公网访问远程服务器</h3><p>很简单，等到学校装的时候再补充</p>
 <h2 id="配置CUDA"><a href="#配置CUDA" class="headerlink" title="配置CUDA"></a>配置CUDA</h2><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">CUDA各种版本</a></p>
-<p>runfile安装</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://developer.download.nvidia.com/compute/cuda/11.3.0/local_installers/cuda_11.3.0_465.19.01_linux.run</span><br><span class="line">sudo sh cuda_11.3.0_465.19.01_linux.run</span><br></pre></td></tr></table></figure>
+<p>安装驱动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.nvidia.cn/content/DriverDownloads/confirmation.php?url=/XFree86/Linux-x86_64/535.86.05/NVIDIA-Linux-x86_64-535.86.05.run</span><br><span class="line">sudo sh NVIDIA-Linux-x86_64-535.86.05.run</span><br></pre></td></tr></table></figure>
 
-<p>输入accept后只选择cudatoolkit和driver就可以</p>
+<p>安装cudatoolkit</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://developer.download.nvidia.com/compute/cuda/12.1.0/local_installers/cuda_12.1.0_530.30.02_linux.run</span><br><span class="line">sudo sh cuda_12.1.0_530.30.02_linux.run</span><br></pre></td></tr></table></figure>
+
+<p>输入accept后只选择cudatoolkit就可以</p>
+<p>添加环境变量，vim &#x2F;etc&#x2F;profile，为所有用户添加CUDA环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/usr/local/cuda-12.1/bin:$PATH</span><br><span class="line"></span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda-12.1/lib64:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>source &#x2F;etc&#x2F;profile</p>
+<h2 id="添加多用户便于实验室组内共用"><a href="#添加多用户便于实验室组内共用" class="headerlink" title="添加多用户便于实验室组内共用"></a>添加多用户便于实验室组内共用</h2><p>注意服务器的root权限最好只有一个人掌握，其他人直接分配用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser cuirongpei</span><br></pre></td></tr></table></figure>
+
+<p>会提示输入密码什么的</p>
 
       
     </div>
@@ -169,9 +499,9 @@
 
 
   
-    <article id="post-项目合集/KuiperInfer/手把手从零带学KuiperInfer自制深度学习推理框架第二课" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-项目合集/KuiperInfer/第三课" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE/" class="article-date">
+    <a href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%B8%89%E8%AF%BE/" class="article-date">
   <time class="dt-published" datetime="2023-07-24T03:33:13.514Z" itemprop="datePublished">2023-07-24</time>
 </a>
     
@@ -187,7 +517,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE/">第二课</a>
+      <a class="p-name article-title" href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%B8%89%E8%AF%BE/">第二课</a>
     </h1>
   
 
@@ -196,7 +526,7 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>[toc]</p>
-<h1 id="vector与cube多维数组内存连续问题详解"><a href="#vector与cube多维数组内存连续问题详解" class="headerlink" title="vector与cube多维数组内存连续问题详解"></a>vector与cube多维数组内存连续问题详解</h1><p>知识产权所有：</p>
+<h1 id="第二课"><a href="#第二课" class="headerlink" title="第二课"></a>第二课</h1><p>知识产权所有：</p>
 <ul>
 <li>B站up主：<a target="_blank" rel="noopener" href="https://space.bilibili.com/1822828582">我是傅傅猪</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/zjhellofss/KuiperInfer">github链接</a> </li>
@@ -205,40 +535,14 @@
 </ul>
 <p>手把手带学：B站up主：<a target="_blank" rel="noopener" href="https://space.bilibili.com/678390438?spm_id_from=333.788.0.0">啊培在努力</a></p>
 <p>视频初衷：帮助小白上手，手把手实操课程，对小白级同学比较友好，同时也是希望倒逼自己学习。</p>
-<h2 id="对比std-vector三维矩阵与arma-cube的效率"><a href="#对比std-vector三维矩阵与arma-cube的效率" class="headerlink" title="对比std::vector三维矩阵与arma::cube的效率"></a>对比std::vector三维矩阵与arma::cube的效率</h2><p>int m&#x3D;10000,n&#x3D;10000,channel&#x3D;2;&#x2F;&#x2F;channel<em>m</em>n的三维数组，初始值为1</p>
-<p>测试代码在test&#x2F;test_compare_vector_cube.cpp中</p>
-<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/image-20230720085219816.png" alt="image-20230720085219816"></p>
-<h2 id="打印内存地址"><a href="#打印内存地址" class="headerlink" title="打印内存地址"></a>打印内存地址</h2><p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/4dda78a3eb6a2fde0c335c864ab746a.png" alt="4dda78a3eb6a2fde0c335c864ab746a"></p>
-<p>下载编译测试代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/brucecui1998/KuiperInferLearn.git</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">../bin/test_kuiper_course</span><br></pre></td></tr></table></figure>
+<h2 id="Tensor类对外的接口"><a href="#Tensor类对外的接口" class="headerlink" title="Tensor类对外的接口"></a>Tensor类对外的接口</h2><p>综合考虑灵活性和开发的难易度，我们会以Armadillo类中的arma::mat(矩阵 matrix)类和arma::cube 作为数据管理(三维矩阵)类来实现Tensor 我们库中类的主体，一个cube由多个matrix组成，cube又是Tensor类中的数据实际管理者。一块连续的大内存分配开始写一个tensor，工作量会特别大，折中！</p>
+<p>我们设计的类是以arma::cube为基础实现了Tensor类，我们主要是提供了更方便的访问方式和对外接口。</p>
+<p>Tensor和arma::cube的关系</p>
 
-<p>用std::vector构建二维数组在内存访问上性能不如arma::cube的原因有两个：</p>
-<p>1、虽然一个vector向量内的地址连续，但是向量间内存地址不联系</p>
-<p>2、在对vector扩容后，被扩容的那个向量的内存地址也整体被修改了，相当于向量间不是整体连续。</p>
-<p>我们创建一个4*4的vector组成的二维数组，对第1行vector扩容：插入两个元素，最后打印出他们的地址</p>
-<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/image-20230719220715697.png" alt="image-20230719220715697"></p>
-<p>​                                                             4*4的 vector二维数组扩容前后内存地址</p>
-<p>通过上图我们可以看到，四行向量虽然内部连续，但是向量与向量间地址不连续。而且扩容后的第一行的内存地址，与整体内存地址不是整体连续的关系。</p>
-<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/image-20230719220946774.png" alt="image-20230719220946774"></p>
-<p>​                                                                        4*4的 cube二维数组扩容前后内存地址图</p>
-<p>我们创建一个4*4的fcube二维矩阵，在最后一行后面<strong>插入两行元素</strong>进行扩容，最后打印出他们的地址</p>
-<p>通过上图我们可以发现arma::cube创建的多维数组（列主序），不管是扩容前与扩容后，都拥有完整一块的内存地址，所以内存访问速度快</p>
-<h2 id="github代码仓库"><a href="#github代码仓库" class="headerlink" title="github代码仓库"></a>github代码仓库</h2><p>将代码上传至远程仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/brucecui1998/KuiperInferLearn.git</span><br><span class="line">git branch -M main</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
-
-<p><strong>常见问题：Failed to connect to github.com port 443</strong></p>
-<p>在网站<a target="_blank" rel="noopener" href="https://www.ipaddress.com/">https://www.ipaddress.com/</a> 分别搜索</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">github.global.ssl.fastly.net</span><br><span class="line">github.com</span><br></pre></td></tr></table></figure>
-
-<p>得到ip</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.69.194</span><br><span class="line">140.82.112.4</span><br></pre></td></tr></table></figure>
-
-<p>修改hosts文件：vim &#x2F;etc&#x2F;hosts<br>在hosts文件末尾添加两行(对应上面查到的ip)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.69.194  github.global.ssl.fastly.net</span><br><span class="line">140.82.112.4  github.com</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE/" data-id="clkiderzb0008iwv261kddk4v" data-title="第二课" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%B8%89%E8%AF%BE/" data-id="cll0i63so0004ukv2168r7pfv" data-title="第二课" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -312,7 +616,7 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tar xf armadillo-11.4.2.tar.xz</span><br><span class="line">cd armadillo-11.4.2</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j8</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 
-<h2 id="glog安装"><a href="#glog安装" class="headerlink" title="glog安装"></a>glog安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j8</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h2 id="glog安装"><a href="#glog安装" class="headerlink" title="glog安装"></a>glog安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j8</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 
 <h2 id="gtest安装"><a href="#gtest安装" class="headerlink" title="gtest安装"></a>gtest安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/google/googletest</span><br><span class="line">cd googletest/</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j8</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 
@@ -349,7 +653,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux-C/">Linux/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux-C/">Linux/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/">U-Net3D</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -364,7 +668,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
     </div>
   </div>
 
@@ -377,15 +681,23 @@
       <ul>
         
           <li>
+            <a href="/2023/08/07/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">人工智能相关环境搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E7%AC%AC%E4%B8%89%E8%AF%BE/">U-Net学习</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/26/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE%20-%20%E5%89%AF%E6%9C%AC/">第二课</a>
+          </li>
+        
+          <li>
             <a href="/2023/07/25/LinuxC++/AiHpc%E7%A7%91%E7%A0%94%E7%8E%AF%E5%A2%83%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/">AI+HPC科研环境远程服务器配置</a>
           </li>
         
           <li>
-            <a href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE/">第二课</a>
-          </li>
-        
-          <li>
-            <a href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/">第一课</a>
+            <a href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%B8%89%E8%AF%BE/">第二课</a>
           </li>
         
       </ul>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>人工智能相关环境搭建 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="[toc] Win + Linux双系统安装淘宝花30块踩坑.. https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu-releases&#x2F;jammy&#x2F;ubuntu-22.04.2-desktop-amd64.iso 制作启动盘在windows上压缩100gb空间，Refus制作启动盘引导黑屏后注意用hdmi线(不要用dp线，hdmi是两个缺口，dp线是一个)，主机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能相关环境搭建">
+<meta property="og:url" content="http://example.com/2023/08/07/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[toc] Win + Linux双系统安装淘宝花30块踩坑.. https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;ubuntu-releases&#x2F;jammy&#x2F;ubuntu-22.04.2-desktop-amd64.iso 制作启动盘在windows上压缩100gb空间，Refus制作启动盘引导黑屏后注意用hdmi线(不要用dp线，hdmi是两个缺口，dp线是一个)，主机">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/cuda%E4%B8%8Etensorflow%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB-1663572940070.png">
+<meta property="article:published_time" content="2023-08-07T05:53:35.190Z">
+<meta property="article:modified_time" content="2023-08-07T06:37:47.799Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/cuda%E4%B8%8Etensorflow%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB-1663572940070.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-杂项汇总/人工智能相关环境搭建" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/07/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-date">
+  <time class="dt-published" datetime="2023-08-07T05:53:35.190Z" itemprop="datePublished">2023-08-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      人工智能相关环境搭建
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="Win-Linux双系统安装"><a href="#Win-Linux双系统安装" class="headerlink" title="Win + Linux双系统安装"></a>Win + Linux双系统安装</h1><p>淘宝花30块踩坑..</p>
+<p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/jammy/ubuntu-22.04.2-desktop-amd64.iso">https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/jammy/ubuntu-22.04.2-desktop-amd64.iso</a></p>
+<h2 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>在windows上压缩100gb空间，Refus制作启动盘<br>引导黑屏后注意用hdmi线(不要用dp线，hdmi是两个缺口，dp线是一个)，主机箱上下两个接口都试试。一个是主板的，一个是显卡的<br>进入ubuntu后创建分区时，先删除那100GB的分区(点那个-号)，然后继续，选第一个选项与windows共存<br>如果重新回到windows分辨率改不了的话，下载一个驱动大师更新下驱动即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/modprobe.d/blacklist.conf</span><br><span class="line">加参数到最底下回车另起一行内容为</span><br><span class="line">blacklist nouveau</span><br><span class="line">options nouveau modeset=0</span><br><span class="line">保存再终端更新内核命令 终端输入</span><br><span class="line">sudo update-initramfs -u</span><br><span class="line">sudo apt update </span><br><span class="line">sudo apt install gcc g++ make</span><br><span class="line"></span><br><span class="line">然后好了以后重启电脑</span><br><span class="line">百度nvidia 官网去下对应显卡版本的驱动https://www.nvidia.cn/drivers/results/200481/举例（下面XXX是版本的意思） NVIDIA-Linux-x86_64-440.run （384或者440都可以版本里面的）下好的文件放在 主文件夹 或者说叫home 目录下</span><br><span class="line">先按Ctrl + Alt + F3到控制台，关闭当前图形环境 输入</span><br><span class="line">sudo telinit 3 </span><br><span class="line">再安装驱动程序输入</span><br><span class="line">cd /home/用户名 </span><br><span class="line">进入到驱动所在文件夹 （下好的驱动文件放在home 或者叫主文件夹下）输入</span><br><span class="line">sudo chmod a+x NVIDIA-Linux-x86_64-xxx.run</span><br><span class="line">sudo sh NVIDIA-Linux-x86_64-xxx.run -no-opengl-files</span><br><span class="line"></span><br><span class="line">最后重新启动 reboot</span><br></pre></td></tr></table></figure>
+
+<h1 id="PYTORCH-GPU版"><a href="#PYTORCH-GPU版" class="headerlink" title="PYTORCH GPU版"></a>PYTORCH GPU版</h1><h2 id="更新驱动程序"><a href="#更新驱动程序" class="headerlink" title="更新驱动程序"></a>更新驱动程序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-J69ZVhZA-1590658049693)(G:\githubblog\source\_posts\深度学习\环境搭建\人工智能相关环境搭建.assets\cuda与驱动对应关系-1665491036353.png)]</span><br></pre></td></tr></table></figure>
+
+<p><strong>windows:</strong></p>
+<p>“我的电脑”右键-“管理”“-显示适配器”-“驱动信息”-“更新驱动程序”</p>
+<p>更新后我的驱动版本为472.19，最高可支持到CUDA11.4</p>
+<p><strong>linux:</strong></p>
+<p>如上，更新驱动。</p>
+<h2 id="安装CUDA11-3"><a href="#安装CUDA11-3" class="headerlink" title="安装CUDA11.3"></a>安装CUDA11.3</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">https://developer.nvidia.com/cuda-toolkit-archive</a></p>
+<p><a target="_blank" rel="noopener" href="https://pytorch.org/">https://pytorch.org/</a></p>
+<p>注意pytorch官网上说pytorch win版已不支持cuda10.2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">创建环境conda create -n torch_gpu python=3.7</span><br><span class="line">激活环境 conda activate torch_gpu</span><br><span class="line">安装torch</span><br><span class="line">pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113</span><br><span class="line"></span><br><span class="line">检查环境装好没</span><br><span class="line">conda activate torch</span><br><span class="line">python</span><br><span class="line">import torch</span><br><span class="line">torch.cuda.is_available()</span><br><span class="line">TRUE</span><br><span class="line"></span><br><span class="line">conda常用命令</span><br><span class="line">退出当前环境 conda deactivate</span><br><span class="line">看包conda list</span><br><span class="line">#删除环境，慎用！</span><br><span class="line">conda remove -n torch --all 把刚才建立的torch环境统统删掉（慎用！）</span><br></pre></td></tr></table></figure>
+
+<p><strong>踩的一个坑就是不要用清华源的conda install，这样安装的torch是cpu版的，直接区torch官网用它的pip install</strong>，亲测有效，十几分钟就Ok了！</p>
+<h3 id="Linux服务器"><a href="#Linux服务器" class="headerlink" title="Linux服务器"></a>Linux服务器</h3><p><strong>法一：官网推荐pip直接安装。<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/previous-versions/">Pytorch官方网站</a></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install torch==1.12.0+cu113 torchvision==0.13.0+cu113 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu113</span><br></pre></td></tr></table></figure>
+
+<p>这种方法最简单，适用于网络好、可访问国外官网的服务器。</p>
+<p>学校的g101n01节点的网络不稳定，只下载了这几个Collecting torch&#x3D;&#x3D;1.12.0+cu113、Collecting torchvision&#x3D;&#x3D;0.13.0+cu113、Collecting torchaudio&#x3D;&#x3D;0.12.0，其余库只能在国内源下载，特再次总结</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install pillow -i https://pypi.douban.com/simple</span><br><span class="line">pip install typing-extensions -i https://pypi.douban.com/simple</span><br><span class="line">pip install numpy -i https://pypi.douban.com/simple</span><br><span class="line">pip install requests -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
+
+<p>学校g01n01等大部分节点显卡驱动版本较老375.26，没有root权限升级驱动的情况下只能需要使用低版本cuda</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n mario_cu8.0 python=3.7 nomkl</span><br><span class="line">conda install pytorch==1.0.0 torchvision==0.2.1 cuda80 -c pytorch</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line">&gt;&gt;&gt;import torch</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/gpfs1/home/nc/hpc1/miniconda3/envs/mario_cu9.0/lib/python3.7/site-packages/torch/__init__.py&quot;, line 84, in &lt;module&gt;</span><br><span class="line">    from torch._C import *</span><br><span class="line">ImportError: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8&#x27; not found (required by /gpfs1/home/nc/hpc1/miniconda3/envs/mario_cu9.0/lib/python3.7/site-packages/torch/lib/libtorch_python.so)</span><br></pre></td></tr></table></figure>
+
+<p>在学校服务器总是会遇到基础库的问题，<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012322399/article/details/120065301">看这篇文章</a>！</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/siamzj/article/details/120995732">Anaconda中mkl的坑</a></p>
+<p><strong>法二：下载wheel文件安装。<a target="_blank" rel="noopener" href="https://download.pytorch.org/whl/torch_stable.html">Pytorch的wheel文件下载地址</a></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://download.pytorch.org/whl/cu113/torch-1.10.2%2Bcu113-cp37-cp37m-linux_x86_64.whl</span><br></pre></td></tr></table></figure>
+
+<p><strong>法三：下载现成的包安装。<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/linux-64/">Pytorch包下载地址</a>（踩坑中）</strong></p>
+<p>考虑到某些linux服务器上可能不能访问不了Pytorch的官网，可以自己下载下来然后上传</p>
+<p>或者可以直接在国内镜像源下载编译好的pytorch包 进行离线安装（注意显卡驱动版本和CUDA版本对应关系）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/linux-64/pytorch-1.10.0-py3.6_cuda11.3_cudnn8.2.0_0.tar.bz2 --no-check-certificate</span><br><span class="line"></span><br><span class="line">cd $anaconda3/envs/yourself-env-name/</span><br><span class="line">tar -xvf pytorch-1.10.0-py3.6_cuda11.3_cudnn8.2.0_0.tar.bz2</span><br></pre></td></tr></table></figure>
+
+<p>我在学校平台上需要先加载cuda环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module load cuda/11.5</span><br></pre></td></tr></table></figure>
+
+<p>然而以这种离线方式安装，会报没有Mkl动态库的错误</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$python</span><br><span class="line">&gt;&gt;&gt; import torch</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/gpfs1/home/nc/hpc1/miniconda3/envs/mario/lib/python3.7/site-packages/torch/__init__.py&quot;, line 201, in &lt;module&gt;</span><br><span class="line">    _load_global_deps()</span><br><span class="line">  File &quot;/gpfs1/home/nc/hpc1/miniconda3/envs/mario/lib/python3.7/site-packages/torch/__init__.py&quot;, line 154, in _load_global_deps</span><br><span class="line">    ctypes.CDLL(lib_path, mode=ctypes.RTLD_GLOBAL)</span><br><span class="line">  File &quot;/gpfs1/home/nc/hpc1/miniconda3/envs/mario/lib/python3.7/ctypes/__init__.py&quot;, line 364, in __init__</span><br><span class="line">    self._handle = _dlopen(self._name, mode)</span><br><span class="line">OSError: libmkl_intel_lp64.so: cannot open shared object file: No such file or directory</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[5]+  Stopped                 python</span><br></pre></td></tr></table></figure>
+
+<p>安装一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install mkl -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
+
+<p>貌似还是缺少那个动态库…</p>
+<h1 id="TENSORFLOW-GPU版"><a href="#TENSORFLOW-GPU版" class="headerlink" title="TENSORFLOW GPU版"></a>TENSORFLOW GPU版</h1><h2 id="Win10-1050Ti搭建tensorflow-gpu环境"><a href="#Win10-1050Ti搭建tensorflow-gpu环境" class="headerlink" title="Win10 1050Ti搭建tensorflow-gpu环境"></a>Win10 1050Ti搭建tensorflow-gpu环境</h2><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38899860/article/details/106067102">https://blog.csdn.net/weixin_38899860/article/details/106067102</a></p>
+<p>**CUDA9.0.176_win10:**<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-90-download-archive">https://developer.nvidia.com/cuda-90-download-archive</a></p>
+<p>**Cudnn7.3.1:**<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-archive">https://developer.nvidia.com/rdp/cudnn-archive</a></p>
+<p>cuda与tensorflow对应关系</p>
+<p><img src="/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/cuda%E4%B8%8Etensorflow%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB-1663572940070.png" alt="cuda与tensorflow对应关系-1663572940070"></p>
+<h3 id="解压Cudnn"><a href="#解压Cudnn" class="headerlink" title="解压Cudnn"></a>解压Cudnn</h3><p>可以看到bin、include、lib目录<br>打开 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA<br>找到你安装的版本目录，打开，找到bin、include、lib目录，将cuDNN压缩包内对应的文件复制到bin、include、lib目录。<br>注意：是复制文件到bin、include、lib目录，不是复制目录。</p>
+<h3 id="添加PATH环境变量（根据自己路径设置）"><a href="#添加PATH环境变量（根据自己路径设置）" class="headerlink" title="添加PATH环境变量（根据自己路径设置）"></a>添加PATH环境变量（根据自己路径设置）</h3><p>记得添加环境变量到path</p>
+<p>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\lib\x64</p>
+<h3 id="检查安装结果"><a href="#检查安装结果" class="headerlink" title="检查安装结果"></a>检查安装结果</h3><p>在cmd窗口输入nvcc -V</p>
+<h3 id="安装tensorflow-gpu"><a href="#安装tensorflow-gpu" class="headerlink" title="安装tensorflow-gpu"></a>安装tensorflow-gpu</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda create -n tf_1.10 python=3.6</span><br><span class="line">python -m pip install --upgrade pip</span><br><span class="line">pip install --ignore-installed --upgrade tensorflow-gpu==1.10.0 -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
+
+<h3 id="验证tensorflow是否连上gpu"><a href="#验证tensorflow是否连上gpu" class="headerlink" title="验证tensorflow是否连上gpu"></a>验证tensorflow是否连上gpu</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line">from tensorflow.python.client import device_lib</span><br><span class="line">print(device_lib.list_local_devices())</span><br></pre></td></tr></table></figure>
+
+<p>删除环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove -n your_env_name(虚拟环境名称) --all</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda install cudatoolkit=9.0 -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/linux-64/</span><br><span class="line"></span><br><span class="line">conda install cudnn=7.6.4 -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/linux-64/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-i <span class="symbol">https:</span>/<span class="regexp">/pypi.tuna.tsinghua.edu.cn/simple</span></span><br><span class="line">-i <span class="symbol">https:</span>/<span class="regexp">/mirrors.aliyun.com/pypi</span><span class="regexp">/simple</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/64662085/fix-not-load-dynamic-library-for-tensorflow-gpu">https://stackoverflow.com/questions/64662085/fix-not-load-dynamic-library-for-tensorflow-gpu</a></p>
+<h2 id="Ubuntu-20-04-3090-搭建tensorflow-gpu环境"><a href="#Ubuntu-20-04-3090-搭建tensorflow-gpu环境" class="headerlink" title="Ubuntu 20.04 + 3090 搭建tensorflow-gpu环境"></a>Ubuntu 20.04 + 3090 搭建tensorflow-gpu环境</h2><p>tensorflow cuda cudnn对应关系</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44560088/article/details/117457619">https://blog.csdn.net/weixin_44560088/article/details/117457619</a> </p>
+<h3 id="CUDA安装"><a href="#CUDA安装" class="headerlink" title="CUDA安装"></a>CUDA安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://developer.download.nvidia.com/compute/cuda/11.3.0/local_installers/cuda_11.3.0_465.19.01_linux.runsudo sh cuda_11.3.0_465.19.01_linux.run</span><br><span class="line">sudo sh cuda_11.3.0_465.19.01_linux.run</span><br></pre></td></tr></table></figure>
+
+<p>vi ~&#x2F;.bashrc加入环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export LD_LIBRARY_PATH=:$LD_LIBRARY_PATH</span><br><span class="line">export PATH=:$PATH</span><br><span class="line">export CUDA_HOME=:CUDA_HOME</span><br></pre></td></tr></table></figure>
+
+<p>source ~&#x2F;.bashrc使其生效</p>
+<h3 id="CUDNN安装"><a href="#CUDNN安装" class="headerlink" title="CUDNN安装"></a>CUDNN安装</h3><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">https://developer.nvidia.com/rdp/cudnn-download</a></p>
+<p>官方教程：<a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html">https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html</a></p>
+<p>安装与tensorflow cuda 对应版本的cudnn</p>
+<p>1、Enable the local repository.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zlib1g</span><br><span class="line">wget https://developer.nvidia.com/compute/cudnn/secure/8.6.0/local_installers/11.8/cudnn-local-repo-ubuntu2004-8.6.0.163_1.0-1_amd64.deb</span><br><span class="line">sudo dpkg -i cudnn-local-repo-ubuntu2004-8.6.0.163_1.0-1_amd64.deb</span><br></pre></td></tr></table></figure>
+
+<p>2、Import the CUDA GPG key.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /var/cudnn-local-repo-*/cudnn-local-*-keyring.gpg /usr/share/keyrings/</span><br></pre></td></tr></table></figure>
+
+<p>3、Refresh the repository metadata.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<p>4、 Install the runtime library.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libcudnn8=8.x.x.x-1+cudaX.Y</span><br></pre></td></tr></table></figure>
+
+<p>5、Install the developer library.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libcudnn8-dev=8.x.x.x-1+cudaX.Y</span><br></pre></td></tr></table></figure>
+
+<p>6、Install the code samples and the cuDNN library documentation.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libcudnn8-samples=8.x.x.x-1+cudaX.Y</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装tensorflow-gpu-2-5-0"><a href="#安装tensorflow-gpu-2-5-0" class="headerlink" title="安装tensorflow_gpu-2.5.0"></a>安装tensorflow_gpu-2.5.0</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda create -n tf_2.5.0 python=3.7</span><br><span class="line">python -m pip install --upgrade pip</span><br><span class="line">pip3 install tensorflow-gpu==2.5.0 -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
+
+<p>测试是否能用TensorFlow-GPU版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line">from tensorflow.python.client import device_lib</span><br><span class="line">print(device_lib.list_local_devices())</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/07/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="cll0i63sl0000ukv2bcszhny3" data-title="人工智能相关环境搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E7%AC%AC%E4%B8%89%E8%AF%BE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">U-Net学习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux-C/">Linux/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/">U-Net3D</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/08/07/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">人工智能相关环境搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E7%AC%AC%E4%B8%89%E8%AF%BE/">U-Net学习</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/26/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE%20-%20%E5%89%AF%E6%9C%AC/">第二课</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/25/LinuxC++/AiHpc%E7%A7%91%E7%A0%94%E7%8E%AF%E5%A2%83%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/">AI+HPC科研环境远程服务器配置</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%B8%89%E8%AF%BE/">第二课</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

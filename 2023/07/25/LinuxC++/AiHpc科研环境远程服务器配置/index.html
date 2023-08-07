@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://example.com/images/LinuxC++/debian.jpg">
 <meta property="og:image" content="http://example.com/images/LinuxC++/disk.jpg">
 <meta property="article:published_time" content="2023-07-25T03:36:13.580Z">
-<meta property="article:modified_time" content="2023-07-25T14:06:29.568Z">
+<meta property="article:modified_time" content="2023-07-26T07:37:08.073Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/LinuxC++/debian.jpg">
@@ -131,7 +131,7 @@
 <p>安装基本的东西</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install vim g++ openssh-server git net-tools</span><br></pre></td></tr></table></figure>
 
-<p><code>su root</code> 的话只是将当前身份转为 root，用户 shell 并没有改变，所以有些系统命令不能使用，所以使用su - root</p>
+<h3 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h3><p><code>su root</code> 的话只是将当前身份转为 root，用户 shell 并没有改变，所以有些系统命令不能使用，所以使用su - root</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - root</span><br></pre></td></tr></table></figure>
 
 <p>配置ssh，利用vscode连接</p>
@@ -154,10 +154,21 @@
 <p>在vscode中安装ssh插件，然后即可实现局域网内ssh hunter@ip</p>
 <h3 id="利用cpolar实现公网访问远程服务器"><a href="#利用cpolar实现公网访问远程服务器" class="headerlink" title="利用cpolar实现公网访问远程服务器"></a>利用cpolar实现公网访问远程服务器</h3><p>很简单，等到学校装的时候再补充</p>
 <h2 id="配置CUDA"><a href="#配置CUDA" class="headerlink" title="配置CUDA"></a>配置CUDA</h2><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">CUDA各种版本</a></p>
-<p>runfile安装</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://developer.download.nvidia.com/compute/cuda/11.3.0/local_installers/cuda_11.3.0_465.19.01_linux.run</span><br><span class="line">sudo sh cuda_11.3.0_465.19.01_linux.run</span><br></pre></td></tr></table></figure>
+<p>安装驱动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.nvidia.cn/content/DriverDownloads/confirmation.php?url=/XFree86/Linux-x86_64/535.86.05/NVIDIA-Linux-x86_64-535.86.05.run</span><br><span class="line">sudo sh NVIDIA-Linux-x86_64-535.86.05.run</span><br></pre></td></tr></table></figure>
 
-<p>输入accept后只选择cudatoolkit和driver就可以</p>
+<p>安装cudatoolkit</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://developer.download.nvidia.com/compute/cuda/12.1.0/local_installers/cuda_12.1.0_530.30.02_linux.run</span><br><span class="line">sudo sh cuda_12.1.0_530.30.02_linux.run</span><br></pre></td></tr></table></figure>
+
+<p>输入accept后只选择cudatoolkit就可以</p>
+<p>添加环境变量，vim &#x2F;etc&#x2F;profile，为所有用户添加CUDA环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/usr/local/cuda-12.1/bin:$PATH</span><br><span class="line"></span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda-12.1/lib64:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>source &#x2F;etc&#x2F;profile</p>
+<h2 id="添加多用户便于实验室组内共用"><a href="#添加多用户便于实验室组内共用" class="headerlink" title="添加多用户便于实验室组内共用"></a>添加多用户便于实验室组内共用</h2><p>注意服务器的root权限最好只有一个人掌握，其他人直接分配用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser cuirongpei</span><br></pre></td></tr></table></figure>
+
+<p>会提示输入密码什么的</p>
 
       
     </div>
@@ -172,8 +183,17 @@
     
 <nav id="article-nav">
   
+    <a href="/2023/07/26/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE%20-%20%E5%89%AF%E6%9C%AC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          第二课
+        
+      </div>
+    </a>
   
-    <a href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%B8%89%E8%AF%BE/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">第二课</div>
     </a>
@@ -192,7 +212,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux-C/">Linux/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux-C/">Linux/C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/">U-Net3D</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -207,7 +227,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
     </div>
   </div>
 
@@ -220,15 +240,23 @@
       <ul>
         
           <li>
+            <a href="/2023/08/07/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">人工智能相关环境搭建</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E7%AC%AC%E4%B8%89%E8%AF%BE/">U-Net学习</a>
+          </li>
+        
+          <li>
+            <a href="/2023/07/26/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE%20-%20%E5%89%AF%E6%9C%AC/">第二课</a>
+          </li>
+        
+          <li>
             <a href="/2023/07/25/LinuxC++/AiHpc%E7%A7%91%E7%A0%94%E7%8E%AF%E5%A2%83%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/">AI+HPC科研环境远程服务器配置</a>
           </li>
         
           <li>
-            <a href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6%E7%AC%AC%E4%BA%8C%E8%AF%BE/">第二课</a>
-          </li>
-        
-          <li>
-            <a href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/">第一课</a>
+            <a href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%B8%89%E8%AF%BE/">第二课</a>
           </li>
         
       </ul>
