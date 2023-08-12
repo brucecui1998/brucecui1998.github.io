@@ -2,6 +2,8 @@
 
 AI + HPC方向的项目、代码以及个人博客。如果这份清单对你的研究有帮助，很高兴能得到一颗star！
 
+我的个人博客是：https://brucecui1998.github.io
+
 [toc]
 
 ## 正在学习的项目
@@ -59,3 +61,5 @@ AI + HPC方向的项目、代码以及个人博客。如果这份清单对你的
 【百度2024校园招聘】飞桨团队大量岗位（研发、算法、产品、运营等）火热招聘中，诚邀优秀的同学，快来加入我们吧~
 全部JD详见：https://github.com/PaddlePaddle/community/issues/574
 划到最下面有加群二维码，也可以发邮件投递简历：limengliu@baidu.com
+
+【西安三星电子研究所2024】高性能计算开发https://www.zhipin.com/gongsi/job/b753ebcb2ee5abd00XZz09i0Fg~~.html
