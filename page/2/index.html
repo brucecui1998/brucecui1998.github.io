@@ -73,6 +73,194 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-项目合集/KuiperInfer/第二课 vector与cube多维数组内存连续问题详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/26/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%BA%8C%E8%AF%BE%20vector%E4%B8%8Ecube%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E8%BF%9E%E7%BB%AD%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2023-07-26T08:39:16.478Z" itemprop="datePublished">2023-07-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/26/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%BA%8C%E8%AF%BE%20vector%E4%B8%8Ecube%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E8%BF%9E%E7%BB%AD%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/">第二课 vector与cube多维数组内存连续问题详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="vector与cube多维数组内存连续问题详解"><a href="#vector与cube多维数组内存连续问题详解" class="headerlink" title="vector与cube多维数组内存连续问题详解"></a>vector与cube多维数组内存连续问题详解</h1><p>知识产权所有：</p>
+<ul>
+<li>B站up主：<a target="_blank" rel="noopener" href="https://space.bilibili.com/1822828582">我是傅傅猪</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zjhellofss/KuiperInfer">github链接</a> </li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1HV4y1A7H8/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=fe6c1940458efae8fa34a9a71403d0b4">视频链接</a></li>
+<li><a target="_blank" rel="noopener" href="https://cowtransfer.com/s/92602ff08d544b">第二节课课件</a></li>
+</ul>
+<p>手把手带学：B站up主：<a target="_blank" rel="noopener" href="https://space.bilibili.com/678390438?spm_id_from=333.788.0.0">啊培在努力</a></p>
+<p>视频初衷：帮助小白上手，手把手实操课程，对小白级同学比较友好，同时也是希望倒逼自己学习。</p>
+<h2 id="对比std-vector三维矩阵与arma-cube的效率"><a href="#对比std-vector三维矩阵与arma-cube的效率" class="headerlink" title="对比std::vector三维矩阵与arma::cube的效率"></a>对比std::vector三维矩阵与arma::cube的效率</h2><p>int m&#x3D;10000,n&#x3D;10000,channel&#x3D;2;&#x2F;&#x2F;channel<em>m</em>n的三维数组，初始值为1</p>
+<p>测试代码在test&#x2F;test_compare_vector_cube.cpp中</p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/image-20230720085219816.png" alt="image-20230720085219816"></p>
+<h2 id="打印内存地址"><a href="#打印内存地址" class="headerlink" title="打印内存地址"></a>打印内存地址</h2><p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/4dda78a3eb6a2fde0c335c864ab746a.png" alt="4dda78a3eb6a2fde0c335c864ab746a"></p>
+<p>下载编译测试代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/brucecui1998/KuiperInferLearn.git</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">../bin/test_kuiper_course</span><br></pre></td></tr></table></figure>
+
+<p>用std::vector构建二维数组在内存访问上性能不如arma::cube的原因有两个：</p>
+<p>1、虽然一个vector向量内的地址连续，但是向量间内存地址不联系</p>
+<p>2、在对vector扩容后，被扩容的那个向量的内存地址也整体被修改了，相当于向量间不是整体连续。</p>
+<p>我们创建一个4*4的vector组成的二维数组，对第1行vector扩容：插入两个元素，最后打印出他们的地址</p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/image-20230719220715697.png" alt="image-20230719220715697"></p>
+<p>​                                                             4*4的 vector二维数组扩容前后内存地址</p>
+<p>通过上图我们可以看到，四行向量虽然内部连续，但是向量与向量间地址不连续。而且扩容后的第一行的内存地址，与整体内存地址不是整体连续的关系。</p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/image-20230719220946774.png" alt="image-20230719220946774"></p>
+<p>​                                                                        4*4的 cube二维数组扩容前后内存地址图</p>
+<p>我们创建一个4*4的fcube二维矩阵，在最后一行后面<strong>插入两行元素</strong>进行扩容，最后打印出他们的地址</p>
+<p>通过上图我们可以发现arma::cube创建的多维数组（列主序），不管是扩容前与扩容后，都拥有完整一块的内存地址，所以内存访问速度快</p>
+<h2 id="github代码仓库"><a href="#github代码仓库" class="headerlink" title="github代码仓库"></a>github代码仓库</h2><p>将代码上传至远程仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/brucecui1998/KuiperInferLearn.git</span><br><span class="line">git branch -M main</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+
+<p><strong>常见问题：Failed to connect to github.com port 443</strong></p>
+<p>在网站<a target="_blank" rel="noopener" href="https://www.ipaddress.com/">https://www.ipaddress.com/</a> 分别搜索</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">github.global.ssl.fastly.net</span><br><span class="line">github.com</span><br></pre></td></tr></table></figure>
+
+<p>得到ip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.69.194</span><br><span class="line">140.82.112.4</span><br></pre></td></tr></table></figure>
+
+<p>修改hosts文件：vim &#x2F;etc&#x2F;hosts<br>在hosts文件末尾添加两行(对应上面查到的ip)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.69.194  github.global.ssl.fastly.net</span><br><span class="line">140.82.112.4  github.com</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/07/26/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%BA%8C%E8%AF%BE%20vector%E4%B8%8Ecube%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E8%BF%9E%E7%BB%AD%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/" data-id="cll374tax00003gv28t5q15r3" data-title="第二课 vector与cube多维数组内存连续问题详解" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-杂项汇总/AiHpc科研环境远程服务器配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/25/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/AiHpc%E7%A7%91%E7%A0%94%E7%8E%AF%E5%A2%83%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time class="dt-published" datetime="2023-07-25T03:36:13.580Z" itemprop="datePublished">2023-07-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/25/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/AiHpc%E7%A7%91%E7%A0%94%E7%8E%AF%E5%A2%83%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/">搭建科研环境远程服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="AI-hpc科研环境远程服务器配置"><a href="#AI-hpc科研环境远程服务器配置" class="headerlink" title="AI hpc科研环境远程服务器配置"></a>AI hpc科研环境远程服务器配置</h1><p>今天准备现在笔记本折腾一下debian，之前一直用ubuntu觉得不稳定，特此记录一下坑，开学再给实验室装服务器</p>
+<h2 id="安装debian"><a href="#安装debian" class="headerlink" title="安装debian"></a>安装debian</h2><p>服务器镜像：<a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/debian-cd/current-live/amd64/iso-hybrid/debian-live-12.1.0-amd64-standard.iso">debian-12.1-standard</a></p>
+<p>烧录软件：refus-3.1.3</p>
+<p>官方安装文档：<a target="_blank" rel="noopener" href="https://www.debian.org/releases/bookworm/amd64/index.zh-cn.html">https://www.debian.org/releases/bookworm/amd64/index.zh-cn.html</a></p>
+<p>准备工作：</p>
+<ul>
+<li>1、在win上压缩出100GB的空间，右键此电脑-磁盘管理-压缩卷</li>
+<li>2、使用refus制作启动盘</li>
+</ul>
+<p>重启选择UEFI启动项进入debian安装界面，照着文档做很简单</p>
+<p><strong>firmware</strong></p>
+<p>其中再detect firmware的时候，官方的 CD 映像不含商用的固件，缺少一些firmware，参考<a target="_blank" rel="noopener" href="https://www.debian.org/releases/jessie/amd64/ch06s04.html.zh-cn%EF%BC%8C%E5%8E%BB%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%AC%E7%9A%84%E7%84%B6%E5%90%8E%E8%A7%A3%E5%8E%8B%E5%88%B0u%E7%9B%98%E7%9A%84/firmware%E4%B8%8B">https://www.debian.org/releases/jessie/amd64/ch06s04.html.zh-cn，去下载对应版本的然后解压到u盘的/firmware下</a></p>
+<p><strong>手动分区</strong></p>
+<p>参考<a target="_blank" rel="noopener" href="https://www.debian.org/releases/bookworm/amd64/ch06s03.zh-cn.html#di-user-setup%EF%BC%8C%E9%80%89%E6%8B%A9Manual%E5%90%8E%EF%BC%8C%E9%80%89%E4%B8%AD%E8%87%AA%E5%B7%B1%E6%8F%90%E5%89%8D%E5%88%86%E5%87%BA%E6%9D%A5%E7%9A%84%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%EF%BC%8C%E4%B8%8A%E9%9D%A2%E5%86%99%E7%9D%80FREE">https://www.debian.org/releases/bookworm/amd64/ch06s03.zh-cn.html#di-user-setup，选择Manual后，选中自己提前分出来的磁盘空间，上面写着FREE</a> SPACE</p>
+<p><strong>踩的坑：</strong></p>
+<p>1、当debian问要不要安装grub时，不要什么都不填直接点contiune，它允许你这么做，但你这么做之后你重启后找不到引导，这可太自由了…</p>
+<p><strong>配置grub Install the GRUB boot loader</strong></p>
+<p><img src="/../../images/LinuxC++/debian.jpg" alt="debian"></p>
+<p>在配置grub时，根据之前划分出来的100GB位于哪个硬盘，sda还是nvme（在分区那一步可以看到），就选哪一个。例如，我的100GB空闲是位于sda，我就应该选第三个&#x2F;dev&#x2F;sda&#x2F;。到底位于哪里，在手动分区那里可以看到</p>
+<p>2、如上操作后，由于我的sda磁盘没有EFI分区，安装完重启后还是没有办法引导。大佬说我的盘是MBR分区表，MBR分区表对应的是只能走grub的legacy模式引导（GPT分区表对应EFI引导），刚才找不到引导项是因为，legacy安装下它根本不走efi，而是通过直接选设备引导的，但是不知道我是否开启了lagacy引导支持。</p>
+<p><img src="/../../images/LinuxC++/disk.jpg" alt="debian"></p>
+<p>在大佬指导下，我选择了倒数第二个，从设备引导，引导成功，比较幸运，看来我开启了lagacy支持。</p>
+<p>tips大佬的话： 这里面机制有点复杂,EFI的引导检测机制是使用特殊的EFI分区中的efi程序,efi固件在进入时会扫描每个磁盘上的efi分区,把nvram里面保存的efi引导程序放在这里,你选一个就会根据记录找到对应的文件引导,但是老旧的legacy引导不是这样,让我们回到二十年前,那时候还没有efi固件,也不存在efi分区,引导方式就是简单的扫描零号扇区,因此只能通过选择设备区分不同的引导项,我说的很简单，其实细节远不止这样,你感兴趣可以看看GRUB的两阶段引导的具体实现,那个000H1就是保存在NVRAM里面的Windows引导项,它对应的efi程序是&#x2F;EFI&#x2F;Windows&#x2F;bootmgr.efi.顺带再一提,虽然我们经验上说MBR对应Legacy引导，GPT对应UEFI引导,但是实际上它们直接不是绝对的对应关系,而是一个两两组合的二维矩阵,换句话说，MBR+EFI，GPT+Legacy也是可以的,虽然不被推荐,是Windows强行绑定起来,把人都惯成了思维定式</p>
+<p>安装基本的东西</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install vim g++ openssh-server git net-tools</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h3><p><code>su root</code> 的话只是将当前身份转为 root，用户 shell 并没有改变，所以有些系统命令不能使用，所以使用su - root</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - root</span><br></pre></td></tr></table></figure>
+
+<p>配置ssh，利用vscode连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow ssh</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<p>编辑ssh的配置文件。将#PermitRootLogin prohibit-password中prohibit-password去掉改为yes，并把PermitRootLogin yes之前的#去掉：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PermitRootLogin yes</span><br></pre></td></tr></table></figure>
+
+<p>设置SSH开机启动 使用以下命令设置SSH开机启动： </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-rc.d ssh enable</span><br></pre></td></tr></table></figure>
+
+<p>重启ssh服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
+
+<p>在debian中查看ip地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<p>在vscode中安装ssh插件，然后即可实现局域网内ssh hunter@ip</p>
+<h3 id="利用cpolar实现公网访问远程服务器"><a href="#利用cpolar实现公网访问远程服务器" class="headerlink" title="利用cpolar实现公网访问远程服务器"></a>利用cpolar实现公网访问远程服务器</h3><p>很简单，等到学校装的时候再补充</p>
+<h2 id="配置CUDA"><a href="#配置CUDA" class="headerlink" title="配置CUDA"></a>配置CUDA</h2><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">CUDA各种版本</a></p>
+<p>安装驱动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.nvidia.cn/content/DriverDownloads/confirmation.php?url=/XFree86/Linux-x86_64/535.86.05/NVIDIA-Linux-x86_64-535.86.05.run</span><br><span class="line">sudo sh NVIDIA-Linux-x86_64-535.86.05.run</span><br></pre></td></tr></table></figure>
+
+<p>安装cudatoolkit</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://developer.download.nvidia.com/compute/cuda/12.1.0/local_installers/cuda_12.1.0_530.30.02_linux.run</span><br><span class="line">sudo sh cuda_12.1.0_530.30.02_linux.run</span><br></pre></td></tr></table></figure>
+
+<p>输入accept后只选择cudatoolkit就可以</p>
+<p>添加环境变量，vim &#x2F;etc&#x2F;profile，为所有用户添加CUDA环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/usr/local/cuda-12.1/bin:$PATH</span><br><span class="line"></span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda-12.1/lib64:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>source &#x2F;etc&#x2F;profile</p>
+<h2 id="添加多用户便于实验室组内共用"><a href="#添加多用户便于实验室组内共用" class="headerlink" title="添加多用户便于实验室组内共用"></a>添加多用户便于实验室组内共用</h2><p>注意服务器的root权限最好只有一个人掌握，其他人直接分配用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser cuirongpei</span><br></pre></td></tr></table></figure>
+
+<p>会提示输入密码什么的</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/07/25/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/AiHpc%E7%A7%91%E7%A0%94%E7%8E%AF%E5%A2%83%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" data-id="cll36y9ca000028v24dpadhxq" data-title="搭建科研环境远程服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-项目合集/KuiperInfer/第二课" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%BA%8C%E8%AF%BE/" class="article-date">
@@ -260,6 +448,14 @@
       <ul>
         
           <li>
+            <a href="/2023/08/12/leetcode/69x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/">x的平方根</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/12/leetcode/%E7%A9%BA%E7%99%BD%E6%A8%A1%E6%9D%BF/">名字</a>
+          </li>
+        
+          <li>
             <a href="/2023/08/12/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/2023%E7%BA%A7%E7%A0%94%E7%A9%B6%E7%94%9F%E6%8A%A5%E9%81%93%E9%A1%BB%E7%9F%A5/">2023级研究生报道须知</a>
           </li>
         
@@ -269,14 +465,6 @@
         
           <li>
             <a href="/2023/08/11/leetcode/34%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/">在排序数组中查找元素的第一个和最后一个位置</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/11/leetcode/35%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/">搜索插入位置</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/11/leetcode/704%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">二分查找</a>
           </li>
         
       </ul>
