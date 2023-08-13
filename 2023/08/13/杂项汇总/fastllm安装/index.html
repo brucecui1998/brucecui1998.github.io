@@ -6,17 +6,21 @@
   
   <title>fastllm安装 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="[toc] fastllm安装本机环境debian 12.1 gcc&#x2F;g++ 12.2 NVIDIA-SMI 535.86.05 cudatoolkit 12.1 cmake 3.25.1 python3. 安装minianaconda312wget https:&#x2F;&#x2F;repo.anaconda.com&#x2F;miniconda&#x2F;Miniconda3-py310_23.5.2-0-Linux-x">
+  <meta name="description" content="[toc] fastllm安装（linux）本机环境debian 12.1 gcc&#x2F;g++ 12.2 NVIDIA-SMI 535.86.05 cudatoolkit 12.1 cmake 3.25.1 python3.10 配置python环境安装minianaconda 12wget https:&#x2F;&#x2F;repo.anaconda.com&#x2F;miniconda&#x2F;Miniconda3-py3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="fastllm安装">
 <meta property="og:url" content="http://example.com/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm%E5%AE%89%E8%A3%85/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="[toc] fastllm安装本机环境debian 12.1 gcc&#x2F;g++ 12.2 NVIDIA-SMI 535.86.05 cudatoolkit 12.1 cmake 3.25.1 python3. 安装minianaconda312wget https:&#x2F;&#x2F;repo.anaconda.com&#x2F;miniconda&#x2F;Miniconda3-py310_23.5.2-0-Linux-x">
+<meta property="og:description" content="[toc] fastllm安装（linux）本机环境debian 12.1 gcc&#x2F;g++ 12.2 NVIDIA-SMI 535.86.05 cudatoolkit 12.1 cmake 3.25.1 python3.10 配置python环境安装minianaconda 12wget https:&#x2F;&#x2F;repo.anaconda.com&#x2F;miniconda&#x2F;Miniconda3-py3">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_cmake.png">
+<meta property="og:image" content="http://example.com/images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_shuxing.png">
+<meta property="og:image" content="http://example.com/images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_bianyi.png">
 <meta property="article:published_time" content="2023-08-13T10:29:26.219Z">
-<meta property="article:modified_time" content="2023-08-13T11:24:50.042Z">
+<meta property="article:modified_time" content="2023-08-13T12:07:34.218Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_cmake.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -102,13 +106,14 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>[toc]</p>
-<h1 id="fastllm安装"><a href="#fastllm安装" class="headerlink" title="fastllm安装"></a>fastllm安装</h1><h2 id="本机环境"><a href="#本机环境" class="headerlink" title="本机环境"></a>本机环境</h2><p>debian 12.1</p>
+<h1 id="fastllm安装（linux）"><a href="#fastllm安装（linux）" class="headerlink" title="fastllm安装（linux）"></a>fastllm安装（linux）</h1><h2 id="本机环境"><a href="#本机环境" class="headerlink" title="本机环境"></a>本机环境</h2><p>debian 12.1</p>
 <p>gcc&#x2F;g++ 12.2</p>
 <p>NVIDIA-SMI 535.86.05</p>
 <p>cudatoolkit 12.1</p>
 <p>cmake 3.25.1</p>
-<p>python3.</p>
-<h2 id="安装minianaconda3"><a href="#安装minianaconda3" class="headerlink" title="安装minianaconda3"></a>安装minianaconda3</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.5.2-0-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-py310_23.5.2-0-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+<p>python3.10</p>
+<h2 id="配置python环境"><a href="#配置python环境" class="headerlink" title="配置python环境"></a>配置python环境</h2><p>安装minianaconda</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.5.2-0-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-py310_23.5.2-0-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
 
 <p>配置一个python环境</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n fastllm python=3.10 -y</span><br><span class="line">conda activate fastllm</span><br></pre></td></tr></table></figure>
@@ -118,7 +123,33 @@
 <p>编译完成后，可以使用如下命令安装简易python工具包 (暂时只支持Linux)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd tools # 这时在fastllm/build/tools目录下</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
 
-<h2 id="运行demo程序"><a href="#运行demo程序" class="headerlink" title="运行demo程序"></a>运行demo程序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 这时在fastllm/build目录下</span><br><span class="line">wget https://huggingface.co/huangyuyang/chatglm2-6b-fp16.flm/resolve/main/chatglm2-6b-fp16.flm</span><br><span class="line">./main -p chatglm2-6b-fp16.flm </span><br></pre></td></tr></table></figure>
+<h2 id="下载模型运行demo程序"><a href="#下载模型运行demo程序" class="headerlink" title="下载模型运行demo程序"></a>下载模型运行demo程序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 这时在fastllm/build目录下</span><br><span class="line">wget https://huggingface.co/huangyuyang/chatglm2-6b-fp16.flm/resolve/main/chatglm2-6b-fp16.flm</span><br><span class="line">./main -p chatglm2-6b-fp16.flm </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="fastllm安装（Windows）"><a href="#fastllm安装（Windows）" class="headerlink" title="fastllm安装（Windows）"></a>fastllm安装（Windows）</h1><h2 id="本机环境-1"><a href="#本机环境-1" class="headerlink" title="本机环境"></a>本机环境</h2><p>windows 10</p>
+<p>vs2019</p>
+<p>NVIDIA-SMI 528.24</p>
+<p>cudatoolkit 12.0</p>
+<p>cmake 3.27</p>
+<p>python3.10</p>
+<p>其中cudatoolkit和nvidia-smi安装教程可参考我的<a target="_blank" rel="noopener" href="https://brucecui1998.github.io/">个人博客</a>-杂项汇总-<a target="_blank" rel="noopener" href="https://brucecui1998.github.io/2023/08/09/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/pytorch-gpu%E9%85%8D%E7%BD%AE%E4%BB%A5unet%E4%B8%BA%E4%BE%8B/">pytorch-gpu环境配置以unet为例</a></p>
+<h2 id="配置python环境-1"><a href="#配置python环境-1" class="headerlink" title="配置python环境"></a>配置python环境</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n fastllm python=3.10 -y</span><br><span class="line">conda activate fastllm</span><br></pre></td></tr></table></figure>
+
+<p>可以使用如下命令安装简易python工具包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd tools # 这时在fastllm/build/tools目录下</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载并编译-1"><a href="#下载并编译-1" class="headerlink" title="下载并编译"></a>下载并编译</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:ztxz16/fastllm.git</span><br></pre></td></tr></table></figure>
+
+<p>进入fastllm，鼠标右键新建文件夹，取名叫build</p>
+<p>打开cmake-gui，配置好文件路径后，依次点击①②③</p>
+<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_cmake.png" alt="image-20230813195358044"></p>
+<p>在VS右侧解决方案资源管理其中选中main右键选择属性，如下图配置</p>
+<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_shuxing.png" alt="image-20230813195824432"></p>
+<p>点击</p>
+<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_bianyi.png" alt="image-20230813195914372"></p>
+<p>编译好的可执行文件在fastllm&#x2F;build&#x2F;Debug，每个人可能不一样，具体可看工程属性中输出文件目录设置</p>
+<h2 id="下载模型运行demo程序-1"><a href="#下载模型运行demo程序-1" class="headerlink" title="下载模型运行demo程序"></a>下载模型运行demo程序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 这时在fastllm/build/Debug目录下</span><br><span class="line">wget https://huggingface.co/huangyuyang/chatglm2-6b-fp16.flm/resolve/main/chatglm2-6b-fp16.flm</span><br><span class="line">./main -p chatglm2-6b-fp16.flm </span><br></pre></td></tr></table></figure>
 
 
       
