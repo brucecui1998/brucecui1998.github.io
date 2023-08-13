@@ -73,6 +73,69 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-30天Pandas挑战/文章浏览" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/" class="article-date">
+  <time class="dt-published" datetime="2023-08-13T08:38:14.647Z" itemprop="datePublished">2023-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/">文章浏览</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="文章浏览"><a href="#文章浏览" class="headerlink" title="文章浏览"></a>文章浏览</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/article-views-i/solutions/168689/wen-zhang-liu-lan-i-by-leetcode-solution/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata">题目</a></h2><p><code>Views</code> 表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+---------------+---------+</span><br><span class="line">| Column Name   | Type    |</span><br><span class="line">+---------------+---------+</span><br><span class="line">| article_id    | int     |</span><br><span class="line">| author_id     | int     |</span><br><span class="line">| viewer_id     | int     |</span><br><span class="line">| view_date     | date    |</span><br><span class="line">+---------------+---------+</span><br><span class="line">此表可能会存在重复行。（换句话说，在 SQL 中这个表没有主键）</span><br><span class="line">此表的每一行都表示某人在某天浏览了某位作者的某篇文章。</span><br><span class="line">请注意，同一人的 author_id 和 viewer_id 是相同的。</span><br></pre></td></tr></table></figure>
+
+<p>请查询出所有浏览过自己文章的作者</p>
+<p>结果按照 <code>id</code> 升序排列。</p>
+<p>查询结果的格式如下所示：</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">Views 表：</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line">| article_id | author_id | viewer_id | view_date  |</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line">| 1          | 3         | 5         | 2019-08-01 |</span><br><span class="line">| 1          | 3         | 6         | 2019-08-02 |</span><br><span class="line">| 2          | 7         | 7         | 2019-08-01 |</span><br><span class="line">| 2          | 7         | 6         | 2019-08-02 |</span><br><span class="line">| 4          | 7         | 1         | 2019-07-22 |</span><br><span class="line">| 3          | 4         | 4         | 2019-07-21 |</span><br><span class="line">| 3          | 4         | 4         | 2019-07-21 |</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">+------+</span><br><span class="line">| id   |</span><br><span class="line">+------+</span><br><span class="line">| 4    |</span><br><span class="line">| 7    |</span><br><span class="line">+------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>方法：根据条件选择行</p>
+<p>判断作者是否评论了自己文章的条件，即 <code>author_id</code> 等于 <code>viewer_id</code></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>pandas</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_views</span>(<span class="params">views: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    df = views[views[<span class="string">&#x27;author_id&#x27;</span>] == views[<span class="string">&#x27;viewer_id&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">    df = df.drop_duplicates(subset=[<span class="string">&#x27;author_id&#x27;</span>])</span><br><span class="line">    df = df.sort_values(by=[<span class="string">&#x27;author_id&#x27;</span>])</span><br><span class="line">    df = df.rename(columns=&#123;<span class="string">&#x27;author_id&#x27;</span>:<span class="string">&#x27;id&#x27;</span>&#125;)</span><br><span class="line">    df = df[[<span class="string">&#x27;id&#x27;</span>]]</span><br><span class="line">    <span class="keyword">return</span> df</span><br></pre></td></tr></table></figure>
+
+<p>mysql</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">SELECT </span><br><span class="line">    DISTINCT author_id AS id </span><br><span class="line">FROM </span><br><span class="line">    Views </span><br><span class="line">WHERE </span><br><span class="line">    author_id = viewer_id </span><br><span class="line">ORDER BY </span><br><span class="line">    id </span><br></pre></td></tr></table></figure>
+
+
+
+<p>在 SQL 中，我们可以在 SELECT 语句中使用 DISTINCT 关键字来从表 Views 中检索唯一元素</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/" data-id="cll97814q000070v2han14oyv" data-title="文章浏览" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-30天Pandas挑战/183.从不订购的客户" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/183.%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7/" class="article-date">
@@ -660,49 +723,6 @@
 
 
   
-    <article id="post-leetcode/空白模板" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/12/leetcode/%E7%A9%BA%E7%99%BD%E6%A8%A1%E6%9D%BF/" class="article-date">
-  <time class="dt-published" datetime="2023-08-12T05:27:26.512Z" itemprop="datePublished">2023-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/12/leetcode/%E7%A9%BA%E7%99%BD%E6%A8%A1%E6%9D%BF/">名字</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="名字"><a href="#名字" class="headerlink" title="名字"></a>名字</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="">题目</a></h2><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/12/leetcode/%E7%A9%BA%E7%99%BD%E6%A8%A1%E6%9D%BF/" data-id="cll7l872u0002b4v2a0s99y8l" data-title="名字" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -746,6 +766,10 @@
       <ul>
         
           <li>
+            <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/">文章浏览</a>
+          </li>
+        
+          <li>
             <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/183.%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7/">从不订购的客户</a>
           </li>
         
@@ -759,10 +783,6 @@
         
           <li>
             <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E7%A9%BA%E7%99%BD%E6%A8%A1%E6%9D%BF/">名字</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E5%B0%8F%E7%BA%A2%E4%B9%A6/">环境配置/软件安装/专业真题/搭建个人博客</a>
           </li>
         
       </ul>
