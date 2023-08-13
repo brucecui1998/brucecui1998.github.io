@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>找出数组排序后的目标下标 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="[toc] 找出数组排序后的目标下标题目给你一个下标从 0 开始的整数数组 nums 以及一个目标元素 target 。 目标下标 是一个满足 nums[i] &#x3D;&#x3D; target 的下标 i 。 将 nums 按 非递减 顺序排序后，返回由 nums 中目标下标组成的列表。如果不存在目标下标，返回一个 空 列表。返回的列表必须按 递增 顺序排列。 示例 1： 1234输入：nums &#x3D; [1,2,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="找出数组排序后的目标下标">
+<meta property="og:url" content="http://example.com/2023/08/13/leetcode/2089%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8B%E6%A0%87/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[toc] 找出数组排序后的目标下标题目给你一个下标从 0 开始的整数数组 nums 以及一个目标元素 target 。 目标下标 是一个满足 nums[i] &#x3D;&#x3D; target 的下标 i 。 将 nums 按 非递减 顺序排序后，返回由 nums 中目标下标组成的列表。如果不存在目标下标，返回一个 空 列表。返回的列表必须按 递增 顺序排列。 示例 1： 1234输入：nums &#x3D; [1,2,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-08-13T01:15:06.266Z">
+<meta property="article:modified_time" content="2023-08-13T02:16:49.471Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-leetcode/2089找出数组排序后的目标下标" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/13/leetcode/2089%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8B%E6%A0%87/" class="article-date">
+  <time class="dt-published" datetime="2023-08-13T01:15:06.266Z" itemprop="datePublished">2023-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      找出数组排序后的目标下标
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="找出数组排序后的目标下标"><a href="#找出数组排序后的目标下标" class="headerlink" title="找出数组排序后的目标下标"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-target-indices-after-sorting-array/">找出数组排序后的目标下标</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 以及一个目标元素 <code>target</code> 。</p>
+<p><strong>目标下标</strong> 是一个满足 <code>nums[i] == target</code> 的下标 <code>i</code> 。</p>
+<p>将 <code>nums</code> 按 <strong>非递减</strong> 顺序排序后，返回由 <code>nums</code> 中目标下标组成的列表。如果不存在目标下标，返回一个 <strong>空</strong> 列表。返回的列表必须按 <strong>递增</strong> 顺序排列。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,5,2,3], target = 2</span><br><span class="line">输出：[1,2]</span><br><span class="line">解释：排序后，nums 变为 [1,2,2,3,5] 。</span><br><span class="line">满足 nums[i] == 2 的下标是 1 和 2 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,5,2,3], target = 3</span><br><span class="line">输出：[3]</span><br><span class="line">解释：排序后，nums 变为 [1,2,2,3,5] 。</span><br><span class="line">满足 nums[i] == 3 的下标是 3 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,5,2,3], target = 5</span><br><span class="line">输出：[4]</span><br><span class="line">解释：排序后，nums 变为 [1,2,2,3,5] 。</span><br><span class="line">满足 nums[i] == 5 的下标是 4 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,5,2,3], target = 4</span><br><span class="line">输出：[]</span><br><span class="line">解释：nums 中不含值为 4 的元素。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 100</code></li>
+<li><code>1 &lt;= nums[i], target &lt;= 100</code></li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>一开始想用34题的思路去寻找左右边界，后来发现该题不是要求返回左右边界的。</p>
+<p>思路参考：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-target-indices-after-sorting-array/solutions/1127136/zhao-chu-shu-zu-pai-xu-hou-de-mu-biao-xi-2o22/">https://leetcode.cn/problems/find-target-indices-after-sorting-array/solutions/1127136/zhao-chu-shu-zu-pai-xu-hou-de-mu-biao-xi-2o22/</a></p>
+<p>问题：这题为什么会出现在二分查找里？既然给的是无序数组，如果要使用二分查找的话，必须要先排序才行，排序的时间复杂度是nlogn，还有使用二分查找的必要吗</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>方法一：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment">//方法一：排序后遍历 </span></span><br><span class="line">    <span class="comment">//时间复杂度：O(nlog⁡n) </span></span><br><span class="line">    <span class="comment">//空间复杂度：O(log⁡n)</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">targetIndices</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n ;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]==target)</span><br><span class="line">                res.<span class="built_in">push_back</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>方法二：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//方法二：直接统计数量</span></span><br><span class="line">    <span class="comment">//时间复杂度：O(n)，其中 n 为 nums的长度。遍历统计元素数量和构造数组时间复杂度为 O(n)</span></span><br><span class="line">    <span class="comment">//空间复杂度：O(1)，输出数组不计入空间复杂度</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">targetIndices</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> cnt1 = <span class="number">0</span>; <span class="comment">// 小于 target 的元素数量</span></span><br><span class="line">        <span class="type">int</span> cnt2 = <span class="number">0</span>; <span class="comment">// 等于 target 的元素数量</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &lt; target)&#123;</span><br><span class="line">                cnt1++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] == target)&#123;</span><br><span class="line">                cnt2++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res; <span class="comment">// 下标数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = cnt1; i &lt; cnt1 + cnt2; i++)&#123;</span><br><span class="line">            res.<span class="built_in">push_back</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/13/leetcode/2089%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8B%E6%A0%87/" data-id="cll91xixj0000a4v2eorzf753" data-title="找出数组排序后的目标下标" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          环境配置/软件安装/专业真题/搭建个人博客
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/08/12/leetcode/367%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">367有效的完全平方数</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E5%B0%8F%E7%BA%A2%E4%B9%A6/">环境配置/软件安装/专业真题/搭建个人博客</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/13/leetcode/2089%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8B%E6%A0%87/">找出数组排序后的目标下标</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/12/leetcode/367%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/">367有效的完全平方数</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E5%9C%A8%E6%9B%99%E5%85%89%E5%B9%B3%E5%8F%B0%E8%B7%91%E9%80%9A%E8%B5%9B%E9%A2%98%E4%BB%A3%E7%A0%81/">在曙光平台跑通赛题代码</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/12/leetcode/69x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/">x的平方根</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
