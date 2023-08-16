@@ -6,22 +6,23 @@
   
   <title>04.优化思路 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="[toc] 04.优化思路首先做简单测试，测试出单个epoch的耗时，8张dcu耗时77s，而单张4090耗时46s。 官方赛题给出的优化思路a. 考虑使用异步流进行计算传输重叠b. 考虑主机与设备内存的分配方式c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能英伟达MLPerf基准测试的优化思路   MLPerfv0.7 Optimizing NVIDIA AI Perfo">
+  <meta name="description" content="04.优化思路首先做简单测试，测试出单个epoch的耗时，8张dcu耗时77s，而单张4090耗时46s。 官方赛题给出的优化思路a. 考虑使用异步流进行计算传输重叠b. 考虑主机与设备内存的分配方式c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能英伟达MLPerf基准测试的优化思路   MLPerfv0.7 Optimizing NVIDIA AI Performanc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="04.优化思路">
 <meta property="og:url" content="http://example.com/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="[toc] 04.优化思路首先做简单测试，测试出单个epoch的耗时，8张dcu耗时77s，而单张4090耗时46s。 官方赛题给出的优化思路a. 考虑使用异步流进行计算传输重叠b. 考虑主机与设备内存的分配方式c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能英伟达MLPerf基准测试的优化思路   MLPerfv0.7 Optimizing NVIDIA AI Perfo">
+<meta property="og:description" content="04.优化思路首先做简单测试，测试出单个epoch的耗时，8张dcu耗时77s，而单张4090耗时46s。 官方赛题给出的优化思路a. 考虑使用异步流进行计算传输重叠b. 考虑主机与设备内存的分配方式c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能英伟达MLPerf基准测试的优化思路   MLPerfv0.7 Optimizing NVIDIA AI Performanc">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF.png">
 <meta property="og:image" content="https://s0.wp.com/latex.php?latex=p_i&bg=transparent&fg=000&s=0&c=20201002">
 <meta property="og:image" content="https://s0.wp.com/latex.php?latex=g_i&bg=transparent&fg=000&s=0&c=20201002">
 <meta property="og:image" content="https://s0.wp.com/latex.php?latex=p_i&bg=transparent&fg=000&s=0&c=20201002">
 <meta property="og:image" content="https://s0.wp.com/latex.php?latex=g_i&bg=transparent&fg=000&s=0&c=20201002">
 <meta property="article:published_time" content="2023-08-16T09:30:55.435Z">
-<meta property="article:modified_time" content="2023-08-16T10:13:10.668Z">
+<meta property="article:modified_time" content="2023-08-16T10:16:44.254Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s0.wp.com/latex.php?latex=p_i&bg=transparent&fg=000&s=0&c=20201002">
+<meta name="twitter:image" content="http://example.com/images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -106,7 +107,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>[toc]</p>
+        <p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF.png" alt="image-20230816181605388"></p>
 <h1 id="04-优化思路"><a href="#04-优化思路" class="headerlink" title="04.优化思路"></a>04.优化思路</h1><p>首先做简单测试，测试出单个epoch的耗时，8张dcu耗时77s，而单张4090耗时46s。</p>
 <h2 id="官方赛题给出的优化思路"><a href="#官方赛题给出的优化思路" class="headerlink" title="官方赛题给出的优化思路"></a>官方赛题给出的优化思路</h2><h3 id="a-考虑使用异步流进行计算传输重叠"><a href="#a-考虑使用异步流进行计算传输重叠" class="headerlink" title="a. 考虑使用异步流进行计算传输重叠"></a>a. 考虑使用异步流进行计算传输重叠</h3><h3 id="b-考虑主机与设备内存的分配方式"><a href="#b-考虑主机与设备内存的分配方式" class="headerlink" title="b. 考虑主机与设备内存的分配方式"></a>b. 考虑主机与设备内存的分配方式</h3><h3 id="c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能"><a href="#c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能" class="headerlink" title="c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能"></a>c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能</h3><h2 id="英伟达MLPerf基准测试的优化思路"><a href="#英伟达MLPerf基准测试的优化思路" class="headerlink" title="英伟达MLPerf基准测试的优化思路"></a>英伟达MLPerf基准测试的优化思路</h2><table>
 <thead>
