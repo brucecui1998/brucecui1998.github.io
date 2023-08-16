@@ -73,6 +73,114 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-项目合集/U-Net3D网络优化/04.优化思路" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/" class="article-date">
+  <time class="dt-published" datetime="2023-08-16T09:30:55.435Z" itemprop="datePublished">2023-08-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/">04.优化思路</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="04-优化思路"><a href="#04-优化思路" class="headerlink" title="04.优化思路"></a>04.优化思路</h1><p>首先做简单测试，测试出单个epoch的耗时，8张dcu耗时77s，而单张4090耗时46s。</p>
+<h2 id="官方赛题给出的优化思路"><a href="#官方赛题给出的优化思路" class="headerlink" title="官方赛题给出的优化思路"></a>官方赛题给出的优化思路</h2><h3 id="a-考虑使用异步流进行计算传输重叠"><a href="#a-考虑使用异步流进行计算传输重叠" class="headerlink" title="a. 考虑使用异步流进行计算传输重叠"></a>a. 考虑使用异步流进行计算传输重叠</h3><h3 id="b-考虑主机与设备内存的分配方式"><a href="#b-考虑主机与设备内存的分配方式" class="headerlink" title="b. 考虑主机与设备内存的分配方式"></a>b. 考虑主机与设备内存的分配方式</h3><h3 id="c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能"><a href="#c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能" class="headerlink" title="c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能"></a>c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能</h3><h2 id="英伟达MLPerf基准测试的优化思路"><a href="#英伟达MLPerf基准测试的优化思路" class="headerlink" title="英伟达MLPerf基准测试的优化思路"></a>英伟达MLPerf基准测试的优化思路</h2><table>
+<thead>
+<tr>
+<th>MLPerfv0.7</th>
+<th><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/optimizing-ai-performance-for-mlperf-v0-7-training/">Optimizing NVIDIA AI Performance for MLPerf v0.7 Training</a></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MLPerfv1.0</td>
+<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/">MLPerf v1.0 Training Benchmarks: Insights into a Record-Setting NVIDIA Performance</a></td>
+<td>在v1.0中，英伟达首次在MLPerf中测试UNet3D</td>
+</tr>
+<tr>
+<td>MLPerfv1.1</td>
+<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/boosting-mlperf-training-v1-1-performance-with-full-stack-optimization/">https://developer.nvidia.com/blog/boosting-mlperf-training-v1-1-performance-with-full-stack-optimization/</a></td>
+<td></td>
+</tr>
+<tr>
+<td>MLPerfv2.0</td>
+<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/boosting-mlperf-training-performance-with-full-stack-optimization/">The Full Stack Optimization Powering NVIDIA MLPerf Training v2.0 Performance</a> <br /><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/getting-the-best-performance-on-mlperf-inference-2-0/">Getting the Best Performance on MLPerf Inference 2.0</a></td>
+<td></td>
+</tr>
+<tr>
+<td>MLPerfv2.1</td>
+<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/full-stack-innovation-fuels-highest-mlperf-inference-2-1-results-for-nvidia/">https://developer.nvidia.com/blog/full-stack-innovation-fuels-highest-mlperf-inference-2-1-results-for-nvidia/</a></td>
+<td>在v2.1中，3D U-Net医学成像工作负载切换到KITS19数据集</td>
+</tr>
+<tr>
+<td>MLPerfv3.0</td>
+<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/breaking-mlperf-training-records-with-nvidia-h100-gpus/">NVIDIA is breaking MLPerf Training Records with H100 GPUs</a> <br /><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/setting-new-records-in-mlperf-inference-v3-0-with-full-stack-optimizations-for-ai/">Setting New Records in MLPerf Inference v3.0 with Full-Stack Optimizations for AI</a></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="英伟达在MLPerf-v1-0中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v1-0中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v1.0中U-Net3D的优化思路"></a>英伟达在MLPerf v1.0中U-Net3D的优化思路</h3><p>U-Net3D is one of the two new workloads in this round of MLPerf training. We used the following optimizations:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/#Spatial-parallelism">Spatial parallelism</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/#Asynchronous-evaluation">Asynchronous evaluation</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/#Data-loader">Data Loader</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/#Channels-Last-layout-support">Channels-Last layout support</a></li>
+</ul>
+<h3 id="英伟达在MLPerf-v1-1中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v1-1中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v1.1中U-Net3D的优化思路"></a>英伟达在MLPerf v1.1中U-Net3D的优化思路</h3><h4 id="矢量化串联和拆分操作"><a href="#矢量化串联和拆分操作" class="headerlink" title="矢量化串联和拆分操作"></a>矢量化串联和拆分操作</h4><p>3D-UNet  使用串联操作来连接解码器和编码器激活。这会导致在向前和向后传递中激活张量的设备到设备副本。我们通过使用矢量化加载和存储来优化这些副本，执行 4  倍宽的读&#x2F;写操作。这使连接和拆分运算符的速度提高了 2.4 倍以上，在单节点配置上实现了 4.7% 的端到端加速，在最大规模配置上实现了  1.3% 的端到端加速。 </p>
+<h4 id="高效的空间平行卷积"><a href="#高效的空间平行卷积" class="headerlink" title="高效的空间平行卷积"></a>高效的空间平行卷积</h4><p>在 MLPerf v1.0 中，我们引入了空间并行卷积，我们将输入激活拆分到多个 GPU（准确地说是 8 个）。空间平行卷积的实现使我们能够将光晕交换隐藏在卷积后面的卷积后面。 </p>
+<p>在 MLPerf v1.1 中，我们优化了通信和卷积操作的调度，以便在启动的通信和卷积内核之间获得更好的重叠。虽然这确保了光晕交换不会暴露，但它也有助于显着减少抖动。这种优化的调度将最大规模配置中的分数提高了 25% 以上。 </p>
+<h4 id="空间平行损耗计算"><a href="#空间平行损耗计算" class="headerlink" title="空间平行损耗计算"></a>空间平行损耗计算</h4><p>3D-Unet使用DICE损失和Softmax交叉熵损失作为其损失函数。DICE损失定义为以下公式： </p>
+<p>在这个公式中，  <img src="https://s0.wp.com/latex.php?latex=p_i&bg=transparent&fg=000&s=0&c=20201002" alt="p_i"> 和  <img src="https://s0.wp.com/latex.php?latex=g_i&bg=transparent&fg=000&s=0&c=20201002" alt="g_i"> 分别表示预测和地面实况的相应像素值对。 </p>
+<p>在最大比例配置中，由于单个 GPU 仅处理图像的一部分，因此每个 GPU 仅包含  <img src="https://s0.wp.com/latex.php?latex=p_i&bg=transparent&fg=000&s=0&c=20201002" alt="p_i"> 和  <img src="https://s0.wp.com/latex.php?latex=g_i&bg=transparent&fg=000&s=0&c=20201002" alt="g_i">.为了优化损耗计算，我们独立计算了每个GPU中的部分项，并通过NVLink在组内的所有GPU之间交换了部分项。然后将这些部分项组合起来形成DICE损失结果。这使损失计算速度加快了 4 倍以上，将最大规模分数提高了 7%。 </p>
+<h4 id="更好的配置"><a href="#更好的配置" class="headerlink" title="更好的配置"></a>更好的配置</h4><p>我们将全局批大小增加到数据集大小的一个因素。DALI 数据加载器库使我们能够使用相同的分片来训练不同的时期。这使我们能够显著减少在 GPU 中缓存数据集所需的时间。 </p>
+<p>由于每个 GPU 加载的图像要少得多，因此 DALI 中的边界框缓存预热速度也快得多。此优化显著缩短了启动时间，比 MLPerf v1.0 加速了 20%。 </p>
+<h4 id="数据并行异步评估"><a href="#数据并行异步评估" class="headerlink" title="数据并行异步评估"></a>数据并行异步评估</h4><p>随着训练速度越来越快，扩展评估以隐藏在训练后面变得具有挑战性。在 MLPerf v1.1 中，对单个图像的推理跨 GPU 进行分片，以提高评估缩放。然后将推理的结果全部收集起来，形成最终输出。这使得整个评估阶段隐藏在训练迭代后面。 </p>
+<h4 id="更快的组实例规范"><a href="#更快的组实例规范" class="headerlink" title="更快的组实例规范"></a>更快的组实例规范</h4><p>通过并行化多个通道块的 GPU 间通信，并通过矢量化内存读写来减少内核的 DRAM 时间，显著改进了多 GPU 实例范数内核。这导致最大规模配置的吞吐量提高了 5% 以上。 </p>
+<h3 id="英伟达在MLPerf-v2-0中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v2-0中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v2.0中U-Net3D的优化思路"></a>英伟达在MLPerf v2.0中U-Net3D的优化思路</h3><p>3D U-Net具有多个大层，其输入通道计数为32。对于wgrad内核，使用默认64x256x64的内核意味着显著的瓦片大小量化损失。 由于在cuDNN中引入了新的32x256x32 wgrad内核，节省了这种瓦片大小的量化损失。这导致MLPerf v2.0中的单个节点比MLPerf v1.1的速度提高了5%以上。</p>
+<h3 id="英伟达在MLPerf-v2-1中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v2-1中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v2.1中U-Net3D的优化思路"></a>英伟达在MLPerf v2.1中U-Net3D的优化思路</h3><p>In MLPerf Inference v2.0, the 3D U-Net medical imaging workload  switched to the KITS19 dataset, which increased image sizes by up to 8x  and raised the amount of compute processing required for a given sample  up to 18x due to the sliding window inference. For more information  about the NVIDIA MLPerf Inference v2.0 submission, see <a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/getting-the-best-performance-on-mlperf-inference-2-0/">Getting the Best Performance on MLPerf Inference 2.0</a>. </p>
+<p>For MLPerf Inference 2.1, we further improved the performance of the first convolution layer with the TensorRT <a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/tensorrt/api/c_api/classnvinfer1_1_1_i_plugin_v2_dynamic_ext.html">IPluginV2DDynamicExt</a> plugin.</p>
+<p>KiTS19 images are single-channel tensors, and this challenges the  performance of the very first 3D convolution in 3D U-Net. In 3D  convolution, this channel dimension typically contributes to GEMM’s K  dimension. This is specially relevant because the overall performance on 3D U-Net is dominated by the first two and last two 3D-Convolutions. In MLPerf Inference v2.0, these four convolutions contributed to roughly  38% of the entire network run-time; the very first layer responsible for 8%. A non-trivial factor that explains that is the need to use  zero-padding to accommodate for the NC&#x2F;32DHW32 vectorized format layout  in where the tensor cores can be utilized most efficiently.</p>
+<p>With our updated plugin, we use a INT8 Linear format to leverage  efficient computation on this single-channel limited 3D shape input. The advantages of this are twofold:</p>
+<ul>
+<li><strong>Higher effective use of flops</strong>: by not performing unneeded computations</li>
+<li><strong>PCIe transfer B&#x2F;W savings</strong>: avoids the overhead of  either moving zero padded input tensor between host and GPU memory or  zero-padding on GPU before sending the input tensor to TensorRT</li>
+</ul>
+<p>This optimization improved the first layer performance by 2.7x.  Additionally, the slicing kernel no longer needs to deal with  zero-padding, and therefore its performance also improved by 2x. As a  net result, 3D-UNet’s end-to-end performance improved by 5% in MLPerf  Inference 2.1.</p>
+<h3 id="英伟达在MLPerf-v3-0中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v3-0中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v3.0中U-Net3D的优化思路"></a>英伟达在MLPerf v3.0中U-Net3D的优化思路</h3><p>NVIDIA 提交了 432 台 NVIDIA H100 Tensor Core GPU 的结果，创下了 0.82 分钟（49 秒）训练基准的新纪录。与上一轮相比，H100 的每加速器性能也提高了 8.2%。 </p>
+<p>为了大规模实现出色的性能，更快的 GroupBatchNorm 内核是一项关键优化。  </p>
+<p>在我们最大规模的 3D U-Net 提交中，神经网络中的实例归一化操作需要对四个 GPU 的张量均值和方差执行缩减。通过使用更快的 GroupBatchNorm 内核来实现实例规范化，我们实现了 1.5% 的性能提升。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/" data-id="clldkpvud0001jov2bi2bfvg6" data-title="04.优化思路" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-leetcode/1351. 统计有序矩阵中的负数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/16/leetcode/1351.%20%E7%BB%9F%E8%AE%A1%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B4%9F%E6%95%B0/" class="article-date">
@@ -736,75 +844,6 @@
 
 
   
-    <article id="post-30天Pandas挑战/595.大的国家" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/595.%E5%A4%A7%E7%9A%84%E5%9B%BD%E5%AE%B6/" class="article-date">
-  <time class="dt-published" datetime="2023-08-13T07:39:14.008Z" itemprop="datePublished">2023-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/595.%E5%A4%A7%E7%9A%84%E5%9B%BD%E5%AE%B6/">大的国家</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="大的国家"><a href="#大的国家" class="headerlink" title="大的国家"></a>大的国家</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/big-countries/description/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata">题目</a></h2><p><code>World</code> 表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| name        | varchar |</span><br><span class="line">| continent   | varchar |</span><br><span class="line">| area        | int     |</span><br><span class="line">| population  | int     |</span><br><span class="line">| gdp         | bigint  |</span><br><span class="line">+-------------+---------+</span><br><span class="line">name 是该表的主键（具有唯一值的列）。</span><br><span class="line">这张表的每一行提供：国家名称、所属大陆、面积、人口和 GDP 值。</span><br></pre></td></tr></table></figure>
-
-<p>如果一个国家满足下述两个条件之一，则认为该国是 <strong>大国</strong> ：</p>
-<ul>
-<li>面积至少为 300 万平方公里（即，<code>3000000 km2</code>），或者</li>
-<li>人口至少为 2500 万（即 <code>25000000</code>）</li>
-</ul>
-<p>编写解决方案找出 <strong>大国</strong> 的国家名称、人口和面积。</p>
-<p>按 <strong>任意顺序</strong> 返回结果表。</p>
-<p>返回结果格式如下例所示。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">World 表：</span><br><span class="line">+-------------+-----------+---------+------------+--------------+</span><br><span class="line">| name        | continent | area    | population | gdp          |</span><br><span class="line">+-------------+-----------+---------+------------+--------------+</span><br><span class="line">| Afghanistan | Asia      | 652230  | 25500100   | 20343000000  |</span><br><span class="line">| Albania     | Europe    | 28748   | 2831741    | 12960000000  |</span><br><span class="line">| Algeria     | Africa    | 2381741 | 37100000   | 188681000000 |</span><br><span class="line">| Andorra     | Europe    | 468     | 78115      | 3712000000   |</span><br><span class="line">| Angola      | Africa    | 1246700 | 20609294   | 100990000000 |</span><br><span class="line">+-------------+-----------+---------+------------+--------------+</span><br><span class="line">输出：</span><br><span class="line">+-------------+------------+---------+</span><br><span class="line">| name        | population | area    |</span><br><span class="line">+-------------+------------+---------+</span><br><span class="line">| Afghanistan | 25500100   | 652230  |</span><br><span class="line">| Algeria     | 37100000   | 2381741 |</span><br><span class="line">+-------------+------------+---------+</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>行过滤</p>
-<p>要确定一个国家是否被认为是“大国”，有两个条件需要验证，如描述中所述：</p>
-<pre><code>该国家的面积至少为 300 万平方千米，表示为 area &gt;= 3,000,000。
-
-该国家的人口至少为 2500 万，表示为 population &gt;= 25,000,000。
-</code></pre>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">SELECT</span><br><span class="line">    name, population, area</span><br><span class="line">FROM</span><br><span class="line">    world</span><br><span class="line">WHERE</span><br><span class="line">    area &gt;= 3000000 OR population &gt;= 25000000</span><br></pre></td></tr></table></figure>
-
-<h3 id="pandas"><a href="#pandas" class="headerlink" title="pandas"></a>pandas</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">big_countries</span>(<span class="params">world: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    df = world[(world[<span class="string">&#x27;area&#x27;</span>] &gt;= <span class="number">3000000</span>) | (world[<span class="string">&#x27;population&#x27;</span>] &gt;= <span class="number">25000000</span>)]</span><br><span class="line">    <span class="keyword">return</span> df[[<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;population&#x27;</span>, <span class="string">&#x27;area&#x27;</span>]]</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/595.%E5%A4%A7%E7%9A%84%E5%9B%BD%E5%AE%B6/" data-id="cll96tnax000300v243653j0p" data-title="大的国家" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -848,6 +887,10 @@
       <ul>
         
           <li>
+            <a href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/">04.优化思路</a>
+          </li>
+        
+          <li>
             <a href="/2023/08/16/leetcode/1351.%20%E7%BB%9F%E8%AE%A1%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B4%9F%E6%95%B0/">1351. 统计有序矩阵中的负数</a>
           </li>
         
@@ -861,10 +904,6 @@
         
           <li>
             <a href="/2023/08/15/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/03.%E4%BA%86%E8%A7%A3MLPerf%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/">03.MLPerf基准测试</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm%E5%AE%89%E8%A3%85/">fastllm安装</a>
           </li>
         
       </ul>
