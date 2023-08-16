@@ -182,6 +182,73 @@
 
 
   
+    <article id="post-项目合集/U-Net3D网络优化/实验数据记录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE%E8%AE%B0%E5%BD%95/" class="article-date">
+  <time class="dt-published" datetime="2023-08-16T07:48:40.441Z" itemprop="datePublished">2023-08-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE%E8%AE%B0%E5%BD%95/">实验记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="实验记录"><a href="#实验记录" class="headerlink" title="实验记录"></a>实验记录</h1><p>所有实验数据都在github仓库<a target="_blank" rel="noopener" href="https://github.com/brucecui1998/fastUNet3D%E7%9A%84result%E7%9B%AE%E5%BD%95%E4%B8%8B%E9%9D%A2">https://github.com/brucecui1998/fastUNet3D的result目录下面</a></p>
+<p>注意到：基准代码中会记录每个运行阶段的时间戳，模型初始化时间（以unetd.log中init_start以及init_stop相对应时间戳之差为标准）耗时在30分钟内不计入总耗时内，超出该限制时长或出现run_start标识，则认定为运行记时开始，在满足精度收敛前提下，以run_stop为结束标识，前后两者对应的时间戳之差即为总运行耗时。</p>
+<p>在原始代码不加改动的情况下，成功收敛所耗时如下（其成功收敛的标志unet3d.log中出现”status”: “success”）</p>
+<table>
+<thead>
+<tr>
+<th>显卡</th>
+<th>收敛耗时</th>
+<th>单个epoch耗时</th>
+<th>对应数据文件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1*4090</td>
+<td>2424min</td>
+<td>48s</td>
+<td>&#x2F;result&#x2F;v0&#x2F;unet3d-4090.log</td>
+</tr>
+<tr>
+<td>8*dcu</td>
+<td>2305min</td>
+<td>77s</td>
+<td>&#x2F;result&#x2F;v0&#x2F;unet3d-8dcu.log</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE%E8%AE%B0%E5%BD%95/" data-id="clldrbhzv0000acv263x0c7u2" data-title="实验记录" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-leetcode/1351. 统计有序矩阵中的负数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/16/leetcode/1351.%20%E7%BB%9F%E8%AE%A1%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B4%9F%E6%95%B0/" class="article-date">
@@ -231,10 +298,12 @@
 空间复杂度：O(1)
 </code></pre>
 <p><strong>倒序遍历</strong>：</p>
+<p>考虑我们已经算出第 i 行的从前往后第一个负数的位置 posi，那么它下面的那个元素肯定也是负数。我们可以在遍历每一行时从后往前遍历，一旦遇到正数就break，遇到负数就记录它的位置，下一次接着从这个位置遍历</p>
+<p>时间复杂度：考虑每次循环变量的起始位置是单调不降的，所以起始位置最多移动 每一行有多少列 次，时间复杂度 O(n+m)。<br>空间复杂度：O(1)</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>二分查找</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">countNegatives</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> m = grid.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> n = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> num = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">            <span class="type">int</span> left = <span class="number">0</span>;</span><br><span class="line">            <span class="type">int</span> right = n - <span class="number">1</span>;</span><br><span class="line">            <span class="type">int</span> tmp= <span class="number">-1</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">                <span class="type">int</span> mid = left + (right - left)/<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span>(grid[i][mid] &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    tmp = mid;</span><br><span class="line">                    right = mid <span class="number">-1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(tmp != <span class="number">-1</span>)</span><br><span class="line">                num += n - tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-
+<h4 id="倒序遍历"><a href="#倒序遍历" class="headerlink" title="倒序遍历"></a>倒序遍历</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">countNegatives</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> m = grid.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> n = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> pos = n - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = pos; j &gt;= <span class="number">0</span> ; j--) &#123;</span><br><span class="line">                <span class="keyword">if</span>(grid[i][j] &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                    pos = j;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(grid[i][pos] &lt; <span class="number">0</span>)</span><br><span class="line">                num += n - pos; <span class="comment">// n-1 - pos + 1</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -790,70 +859,11 @@
 
 
   
-    <article id="post-30天Pandas挑战/1757.可回收且低脂的产品" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/1757.%E5%8F%AF%E5%9B%9E%E6%94%B6%E4%B8%94%E4%BD%8E%E8%84%82%E7%9A%84%E4%BA%A7%E5%93%81/" class="article-date">
-  <time class="dt-published" datetime="2023-08-13T07:45:00.875Z" itemprop="datePublished">2023-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/1757.%E5%8F%AF%E5%9B%9E%E6%94%B6%E4%B8%94%E4%BD%8E%E8%84%82%E7%9A%84%E4%BA%A7%E5%93%81/">可回收且低脂的产品</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="可回收且低脂的产品"><a href="#可回收且低脂的产品" class="headerlink" title="可回收且低脂的产品"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/recyclable-and-low-fat-products/">可回收且低脂的产品</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/recyclable-and-low-fat-products/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata">题目</a></h2><p>表：<code>Products</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| product_id  | int     |</span><br><span class="line">| low_fats    | enum    |</span><br><span class="line">| recyclable  | enum    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">product_id 是该表的主键（具有唯一值的列）。</span><br><span class="line">low_fats 是枚举类型，取值为以下两种 (&#x27;Y&#x27;, &#x27;N&#x27;)，其中 &#x27;Y&#x27; 表示该产品是低脂产品，&#x27;N&#x27; 表示不是低脂产品。</span><br><span class="line">recyclable 是枚举类型，取值为以下两种 (&#x27;Y&#x27;, &#x27;N&#x27;)，其中 &#x27;Y&#x27; 表示该产品可回收，而 &#x27;N&#x27; 表示不可回收。</span><br></pre></td></tr></table></figure>
-
-<p>编写解决方案找出既是低脂又是可回收的产品编号。</p>
-<p>返回结果 <strong>无顺序要求</strong> 。</p>
-<p>返回结果格式如下例所示：</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">Products 表：</span><br><span class="line">+-------------+----------+------------+</span><br><span class="line">| product_id  | low_fats | recyclable |</span><br><span class="line">+-------------+----------+------------+</span><br><span class="line">| 0           | Y        | N          |</span><br><span class="line">| 1           | Y        | Y          |</span><br><span class="line">| 2           | N        | Y          |</span><br><span class="line">| 3           | Y        | Y          |</span><br><span class="line">| 4           | N        | N          |</span><br><span class="line">+-------------+----------+------------+</span><br><span class="line">输出：</span><br><span class="line">+-------------+</span><br><span class="line">| product_id  |</span><br><span class="line">+-------------+</span><br><span class="line">| 1           |</span><br><span class="line">| 3           |</span><br><span class="line">+-------------+</span><br><span class="line">解释：</span><br><span class="line">只有产品 id 为 1 和 3 的产品，既是低脂又是可回收的产品。</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>方法：根据条件选择行</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>Pandas</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find_products</span>(<span class="params">products: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    df = products[(products[<span class="string">&#x27;low_fats&#x27;</span>] == <span class="string">&#x27;Y&#x27;</span>) &amp; (products[<span class="string">&#x27;recyclable&#x27;</span>] == <span class="string">&#x27;Y&#x27;</span>)]</span><br><span class="line">    <span class="keyword">return</span> df[[<span class="string">&#x27;product_id&#x27;</span>]]</span><br></pre></td></tr></table></figure>
-
-<p>mysql</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">SELECT</span><br><span class="line">    product_id</span><br><span class="line">FROM</span><br><span class="line">    Products</span><br><span class="line">WHERE</span><br><span class="line">    low_fats = &#x27;Y&#x27; AND recyclable= &#x27;Y&#x27;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/1757.%E5%8F%AF%E5%9B%9E%E6%94%B6%E4%B8%94%E4%BD%8E%E8%84%82%E7%9A%84%E4%BA%A7%E5%93%81/" data-id="cll96tnas000000v2hnay20de" data-title="可回收且低脂的产品" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -896,6 +906,10 @@
           </li>
         
           <li>
+            <a href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE%E8%AE%B0%E5%BD%95/">实验记录</a>
+          </li>
+        
+          <li>
             <a href="/2023/08/16/leetcode/1351.%20%E7%BB%9F%E8%AE%A1%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B4%9F%E6%95%B0/">1351. 统计有序矩阵中的负数</a>
           </li>
         
@@ -905,10 +919,6 @@
         
           <li>
             <a href="/2023/08/15/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl2%E5%A4%A7%E5%85%A8/">wsl2大全</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/15/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/03.%E4%BA%86%E8%A7%A3MLPerf%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/">03.MLPerf基准测试</a>
           </li>
         
       </ul>
