@@ -73,6 +73,544 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode/744. 寻找比目标字母大的最小字母" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/16/leetcode/744.%20%E5%AF%BB%E6%89%BE%E6%AF%94%E7%9B%AE%E6%A0%87%E5%AD%97%E6%AF%8D%E5%A4%A7%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%97%E6%AF%8D/" class="article-date">
+  <time class="dt-published" datetime="2023-08-16T01:23:48.810Z" itemprop="datePublished">2023-08-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/16/leetcode/744.%20%E5%AF%BB%E6%89%BE%E6%AF%94%E7%9B%AE%E6%A0%87%E5%AD%97%E6%AF%8D%E5%A4%A7%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%97%E6%AF%8D/">744. 寻找比目标字母大的最小字母</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="744-寻找比目标字母大的最小字母"><a href="#744-寻找比目标字母大的最小字母" class="headerlink" title="744. 寻找比目标字母大的最小字母"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-smallest-letter-greater-than-target/">744. 寻找比目标字母大的最小字母</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-smallest-letter-greater-than-target/">题目</a></h2><p>给你一个字符数组 <code>letters</code>，该数组按<strong>非递减顺序</strong>排序，以及一个字符 <code>target</code>。<code>letters</code> 里<strong>至少有两个不同</strong>的字符。</p>
+<p>返回 <code>letters</code> 中大于 <code>target</code> 的最小的字符。如果不存在这样的字符，则返回 <code>letters</code> 的第一个字符。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: letters = [&quot;c&quot;, &quot;f&quot;, &quot;j&quot;]，target = &quot;a&quot;</span><br><span class="line">输出: &quot;c&quot;</span><br><span class="line">解释：letters 中字典上比 &#x27;a&#x27; 大的最小字符是 &#x27;c&#x27;。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: letters = [&quot;c&quot;,&quot;f&quot;,&quot;j&quot;], target = &quot;c&quot;</span><br><span class="line">输出: &quot;f&quot;</span><br><span class="line">解释：letters 中字典顺序上大于 &#x27;c&#x27; 的最小字符是 &#x27;f&#x27;。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: letters = [&quot;x&quot;,&quot;x&quot;,&quot;y&quot;,&quot;y&quot;], target = &quot;z&quot;</span><br><span class="line">输出: &quot;x&quot;</span><br><span class="line">解释：letters 中没有一个字符在字典上大于 &#x27;z&#x27;，所以我们返回 letters[0]。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>2 &lt;= letters.length &lt;= 104</code></li>
+<li><code>letters[i]</code> 是一个小写字母</li>
+<li><code>letters</code> 按<strong>非递减顺序</strong>排序</li>
+<li><code>letters</code> 最少包含两个不同的字母</li>
+<li><code>target</code> 是一个小写字母</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>如果target大于最大的字符，则返回 <code>letters</code> 的第一个字符。</p>
+<p>否则就用二分查找，并设置一个ans存储暂时的比target大的数，循环退出条件是left&gt;right</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">char</span> <span class="title">nextGreatestLetter</span><span class="params">(vector&lt;<span class="type">char</span>&gt;&amp; letters, <span class="type">char</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = letters.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(target &gt;= letters[n<span class="number">-1</span>])</span><br><span class="line">            <span class="keyword">return</span> letters[<span class="number">0</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> right = n<span class="number">-1</span>;</span><br><span class="line">        <span class="type">int</span> ans;</span><br><span class="line">        <span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">            <span class="type">int</span> mid = left + (right-left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(letters[mid] &gt; target)&#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">                ans = mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> letters[ans];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/16/leetcode/744.%20%E5%AF%BB%E6%89%BE%E6%AF%94%E7%9B%AE%E6%A0%87%E5%AD%97%E6%AF%8D%E5%A4%A7%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%97%E6%AF%8D/" data-id="clldejn0e000130v2api4h6y2" data-title="744. 寻找比目标字母大的最小字母" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-杂项汇总/wsl2大全" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/15/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl2%E5%A4%A7%E5%85%A8/" class="article-date">
+  <time class="dt-published" datetime="2023-08-15T06:48:38.237Z" itemprop="datePublished">2023-08-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/15/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl2%E5%A4%A7%E5%85%A8/">wsl2大全</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="wsl2大全"><a href="#wsl2大全" class="headerlink" title="wsl2大全"></a>wsl2大全</h1><h2 id="安装wsl2和Windows-Terminal"><a href="#安装wsl2和Windows-Terminal" class="headerlink" title="安装wsl2和Windows Terminal"></a>安装wsl2和Windows Terminal</h2><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/wsl/install-manual">https://learn.microsoft.com/zh-cn/windows/wsl/install-manual</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/531799719">https://zhuanlan.zhihu.com/p/531799719</a></p>
+<p>安装Windows Terminal，更炫酷</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/terminal/install">https://learn.microsoft.com/zh-cn/windows/terminal/install</a></p>
+<p>Windows Terminal能帮助我们管理命令行工具、PowerShell和WSL等Shell用户的工具，能为我们提供最佳的 WSL 体验。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl -l -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl.png"></p>
+<p>设置默认wsl环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl -s Ubuntu-18.04</span><br></pre></td></tr></table></figure>
+
+<p>以后只需要输入wsl即可进入wsl的ubuntu环境</p>
+<h2 id="将wsl安装的linux系统从C盘迁移到D盘"><a href="#将wsl安装的linux系统从C盘迁移到D盘" class="headerlink" title="将wsl安装的linux系统从C盘迁移到D盘"></a>将wsl安装的linux系统从C盘迁移到D盘</h2><p>默认位置在C:\Users\Administrator\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc</p>
+<p>我在 PowerShell 中执行了这些命令，以将我的 Ubuntu 发行版从 C: 移动到驱动器 D:\wsl-ubuntu ：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; mkdir D:\wsl<span class="literal">-ubuntu</span>  (create new location)</span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">-l</span> <span class="literal">-v</span>            (list wsl distros)</span><br><span class="line">NAME                   STATE           VERSION</span><br><span class="line">Ubuntu                 Running         <span class="number">2</span></span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">--shutdown</span></span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">-l</span> <span class="literal">-v</span>            (verify <span class="keyword">if</span> is stopped)</span><br><span class="line">NAME                   STATE           VERSION</span><br><span class="line">Ubuntu                 Stopped         <span class="number">2</span></span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">--export</span> Ubuntu ubuntu.tar  </span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">--unregister</span> Ubuntu</span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">--import</span> Ubuntu D:\wsl<span class="literal">-ubuntu</span>\ .\ubuntu.tar <span class="literal">--version</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>最后重新启动计算机。</p>
+<h2 id="用户问题"><a href="#用户问题" class="headerlink" title="用户问题"></a>用户问题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser cuirongpei  创建用户</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su cuirongpei 切换到cuirongpei用户</span><br></pre></td></tr></table></figure>
+
+<p>win+ r输入wt打开命令行后输入debian进入Linux终端</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su cuirongpei</span><br></pre></td></tr></table></figure>
+
+<p>切换用户以避免使用root不小心做一些不可避免的事情</p>
+<p>给用户添加sudo 权限，使用root用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +w /etc/sudoers　　　　// 给/etc/sudoers添加写权限</span><br><span class="line">vim /etc/sudoers　　　　　　 //　修改sudoers文件</span><br></pre></td></tr></table></figure>
+
+<p>在最下面添加，为cuirongpei用户设置权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cuirongpei ALL=(ALL) ALL</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置wsl的基本环境（ubuntu）"><a href="#配置wsl的基本环境（ubuntu）" class="headerlink" title="配置wsl的基本环境（ubuntu）"></a>配置wsl的基本环境（ubuntu）</h2><p>换源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list_bak</span><br><span class="line">sudo sed -i &#x27;s/archive.ubuntu.com/mirrors.aliyun.com/g&#x27; /etc/apt/sources.list</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install gcc g++ cmake vim openssh-server git net-tools ufw</span><br></pre></td></tr></table></figure>
+
+<p>anaconda</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -P /tmp https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh</span><br><span class="line">bash Anaconda3-2022.05-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="在wsl2中使用CUDA"><a href="#在wsl2中使用CUDA" class="headerlink" title="在wsl2中使用CUDA"></a>在wsl2中使用CUDA</h2><p><a target="_blank" rel="noopener" href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html</a></p>
+<p>Windows10&#x2F;11 WSL2 安装nvidia-cuda驱动 <a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv14608547/">https://www.bilibili.com/read/cv14608547/</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.nvidia.cn/cuda/wsl-user-guide/index.html#step-3-set-up-a-linux-development-environment">CUDA on WSL User Guide</a> 英伟达官方文档，<strong>参考这个安装即可</strong></p>
+<p>切记 <strong>用户不得在 WSL 2 中安装任何 NVIDIA GPU Linux 驱动程序</strong></p>
+<p>在wsl2中使用CUDA的局限有很多，例如</p>
+<h3 id="Linux-CUDA-应用程序的已知限制-"><a href="#Linux-CUDA-应用程序的已知限制-" class="headerlink" title="Linux CUDA 应用程序的已知限制  "></a>Linux CUDA 应用程序的已知限制 <a target="_blank" rel="noopener" href="https://docs.nvidia.cn/cuda/wsl-user-guide/index.html#known-limitations-for-linux-cuda-applications"> </a></h3><p>下表列出了 WSL 2 上的已知限制，这些限制可能会影响使用 Linux 上完全支持的某些功能的 CUDA 应用程序。 </p>
+<table>
+<thead>
+<tr>
+<th>局限性</th>
+<th>冲击</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>不支持麦克斯韦 GPU。</td>
+<td>Maxwell GPU 在 WSL 2 中不受官方支持，但它可能仍然可以工作。建议使用 Pascal 和更高版本的 GPU。</td>
+</tr>
+<tr>
+<td>统一内存 - 完全托管内存支持在 Windows 本机上不可用，因此 WSL 2 在可预见的未来将不支持它。</td>
+<td>UVM 完整功能将不可用，因此依赖 UVM 完整功能的应用程序可能无法工作。  如果应用程序使用的是托管内存，则应用程序可能会看到性能降低和系统内存使用率较高。  不支持并发 CPU&#x2F;GPU 访问。CUDA 查询将说明它是否受支持，应用程序应检查这一点。</td>
+</tr>
+<tr>
+<td>固定系统内存（例如：应用程序驻留用于 GPU 访问的系统内存）应用程序的可用性有限。</td>
+<td>例如，某些深度学习训练工作负载（取决于所使用的框架、模型和数据集大小）可能会超过此限制，并且可能无法工作。</td>
+</tr>
+<tr>
+<td>裸机（不是容器）上的根用户不会在预期位置找到 nvidia-smi。</td>
+<td>用  <code>/usr/lib/wsl/lib/nvidia-smi</code> 或手动添加  <code>/usr/lib/wsl/lib/</code> 到路径）。</td>
+</tr>
+<tr>
+<td>使用 NVIDIA Container Toolkit for Docker 19.03，仅  <code>--gpus all</code> 受支持。</td>
+<td>在多 GPU 系统上，无法使用特定索引号枚举 GPU 来筛选特定 GPU 设备。</td>
+</tr>
+</tbody></table>
+<h3 id="尚不支持的功能-"><a href="#尚不支持的功能-" class="headerlink" title="尚不支持的功能  "></a>尚不支持的功能 <a target="_blank" rel="noopener" href="https://docs.nvidia.cn/cuda/wsl-user-guide/index.html#features-not-yet-supported"> </a></h3><p>下表列出了当前不支持的功能集。 </p>
+<table>
+<thead>
+<tr>
+<th>局限性</th>
+<th>冲击</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NVML（nvidia-smi）尚不支持所有查询。</td>
+<td>GPU 利用率、活动计算进程是一些尚不支持的查询。不支持可修改的状态功能（ECC、计算模式、持久性模式）。</td>
+</tr>
+<tr>
+<td>OpenGL-CUDA Interop 尚不受支持。</td>
+<td>依赖OpenGL的应用程序将无法工作。</td>
+</tr>
+</tbody></table>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/15/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl2%E5%A4%A7%E5%85%A8/" data-id="clldejn0g000230v2fjqdges4" data-title="wsl2大全" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-项目合集/U-Net3D网络优化/03.了解MLPerf基准测试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/15/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/03.%E4%BA%86%E8%A7%A3MLPerf%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/" class="article-date">
+  <time class="dt-published" datetime="2023-08-15T02:46:35.778Z" itemprop="datePublished">2023-08-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/15/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/03.%E4%BA%86%E8%A7%A3MLPerf%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/">03.MLPerf基准测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="03-MLPerf基准测试"><a href="#03-MLPerf基准测试" class="headerlink" title="03.MLPerf基准测试"></a>03.MLPerf基准测试</h1><p><a target="_blank" rel="noopener" href="https://www.nvidia.com/en-us/data-center/resources/mlperf-benchmarks/">MLPerf简介</a></p>
+<p><a href="%5BMLPerf%E7%AE%80%E4%BB%8B%5D(https://www.nvidia.com/en-us/data-center/resources/mlperf-benchmarks/)">MLcommons</a></p>
+<p>NVIDIA官方资料</p>
+<p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/deep-learning-performance-training-inference">英伟达数据中心深度学习产品性能</a></p>
+<p><a target="_blank" rel="noopener" href="https://catalog.ngc.nvidia.com/?filters=&orderBy=weightPopularDESC&query=">英伟达NGC目录</a></p>
+<p><a target="_blank" rel="noopener" href="https://forums.developer.nvidia.com/c/accelerated-computing/nvidia-gpu-cloud-ngc-users/25">NGC开发者社区论坛</a></p>
+<h2 id="学习英伟达NGC"><a href="#学习英伟达NGC" class="headerlink" title="学习英伟达NGC"></a>学习英伟达NGC</h2><h3 id="NGC-Getting-Started"><a href="#NGC-Getting-Started" class="headerlink" title="NGC - Getting Started"></a>NGC - Getting Started</h3><p>REF:<a target="_blank" rel="noopener" href="https://catalog.ngc.nvidia.com/orgs/nvidia/collections/gettingstarted">https://catalog.ngc.nvidia.com/orgs/nvidia/collections/gettingstarted</a></p>
+<p>按照这个网址配置NGC：<a target="_blank" rel="noopener" href="https://docs.ngc.nvidia.com/cli/cmd.html">https://docs.ngc.nvidia.com/cli/cmd.html</a></p>
+<p>配置wsl2：参见“杂项汇总”-“wsl2大全”</p>
+<p>搞了一下午，没搞定NGC教程，因为用不了nvidia-docker</p>
+<p>虽然配置好了wsl2和docker，但是仍然在windows上用不了nvidia-docker，又有人说必须是 Windows Insider Program 的成员才能用</p>
+<p>参见：<a target="_blank" rel="noopener" href="https://www.coder.work/article/7024492">https://www.coder.work/article/7024492</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions">https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/58169786/problem-in-installing-nvidia-docker-in-windows-10-system">https://stackoverflow.com/questions/58169786/problem-in-installing-nvidia-docker-in-windows-10-system</a></p>
+<p>还是老老实实装linux吧。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/15/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/03.%E4%BA%86%E8%A7%A3MLPerf%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/" data-id="clldejn0h000a30v26b8jc9bk" data-title="03.MLPerf基准测试" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-杂项汇总/fastllm安装" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm%E5%AE%89%E8%A3%85/" class="article-date">
+  <time class="dt-published" datetime="2023-08-13T10:29:26.219Z" itemprop="datePublished">2023-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm%E5%AE%89%E8%A3%85/">fastllm安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="fastllm安装（linux）"><a href="#fastllm安装（linux）" class="headerlink" title="fastllm安装（linux）"></a>fastllm安装（linux）</h1><h2 id="本机环境"><a href="#本机环境" class="headerlink" title="本机环境"></a>本机环境</h2><p>debian 12.1</p>
+<p>gcc&#x2F;g++ 12.2</p>
+<p>NVIDIA-SMI 535.86.05</p>
+<p>cudatoolkit 12.1</p>
+<p>cmake 3.25.1</p>
+<p>python3.10</p>
+<h2 id="配置python环境"><a href="#配置python环境" class="headerlink" title="配置python环境"></a>配置python环境</h2><p>安装minianaconda</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.5.2-0-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-py310_23.5.2-0-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+
+<p>配置一个python环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n fastllm python=3.10 -y</span><br><span class="line">conda activate fastllm</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载并编译"><a href="#下载并编译" class="headerlink" title="下载并编译"></a>下载并编译</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:ztxz16/fastllm.git</span><br><span class="line">cd fastllm</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake .. -DUSE_CUDA=ON</span><br><span class="line">make -j </span><br></pre></td></tr></table></figure>
+
+<p>编译完成后，可以使用如下命令安装简易python工具包 (暂时只支持Linux)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd tools # 这时在fastllm/build/tools目录下</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载模型运行demo程序"><a href="#下载模型运行demo程序" class="headerlink" title="下载模型运行demo程序"></a>下载模型运行demo程序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 这时在fastllm/build目录下</span><br><span class="line">wget https://huggingface.co/huangyuyang/chatglm2-6b-fp16.flm/resolve/main/chatglm2-6b-fp16.flm</span><br><span class="line">./main -p chatglm2-6b-fp16.flm </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="fastllm安装（Windows）"><a href="#fastllm安装（Windows）" class="headerlink" title="fastllm安装（Windows）"></a>fastllm安装（Windows）</h1><h2 id="本机环境-1"><a href="#本机环境-1" class="headerlink" title="本机环境"></a>本机环境</h2><p>windows 10</p>
+<p>vs2019</p>
+<p>NVIDIA-SMI 528.24</p>
+<p>cudatoolkit 12.0</p>
+<p>cmake 3.27</p>
+<p>python3.10</p>
+<p>其中cudatoolkit和nvidia-smi安装教程可参考我的<a target="_blank" rel="noopener" href="https://brucecui1998.github.io/">个人博客</a>-杂项汇总-<a target="_blank" rel="noopener" href="https://brucecui1998.github.io/2023/08/09/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/pytorch-gpu%E9%85%8D%E7%BD%AE%E4%BB%A5unet%E4%B8%BA%E4%BE%8B/">pytorch-gpu环境配置以unet为例</a></p>
+<h2 id="配置python环境-1"><a href="#配置python环境-1" class="headerlink" title="配置python环境"></a>配置python环境</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n fastllm python=3.10 -y</span><br><span class="line">conda activate fastllm</span><br></pre></td></tr></table></figure>
+
+<p>可以使用如下命令安装简易python工具包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd tools # 这时在fastllm/build/tools目录下</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载并编译-1"><a href="#下载并编译-1" class="headerlink" title="下载并编译"></a>下载并编译</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:ztxz16/fastllm.git</span><br></pre></td></tr></table></figure>
+
+<p>进入fastllm，鼠标右键新建文件夹，取名叫build</p>
+<p>打开cmake-gui，配置好文件路径后，依次点击①②③</p>
+<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_cmake.png" alt="image-20230813195358044"></p>
+<p>在VS右侧解决方案资源管理其中选中main右键选择属性，如下图配置</p>
+<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_shuxing.png" alt="image-20230813195824432"></p>
+<p>点击</p>
+<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_bianyi.png" alt="image-20230813195914372"></p>
+<p>编译好的可执行文件在fastllm&#x2F;build&#x2F;Debug，每个人可能不一样，具体可看工程属性中输出文件目录设置</p>
+<h2 id="下载模型运行demo程序-1"><a href="#下载模型运行demo程序-1" class="headerlink" title="下载模型运行demo程序"></a>下载模型运行demo程序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 这时在fastllm/build/Debug目录下</span><br><span class="line">wget https://huggingface.co/huangyuyang/chatglm2-6b-fp16.flm/resolve/main/chatglm2-6b-fp16.flm</span><br><span class="line">./main -p chatglm2-6b-fp16.flm </span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm%E5%AE%89%E8%A3%85/" data-id="cll9d53zt00008ov26b1v5nvn" data-title="fastllm安装" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-项目合集/U-Net3D网络优化/项目简介" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/13/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/" class="article-date">
+  <time class="dt-published" datetime="2023-08-13T08:58:42.298Z" itemprop="datePublished">2023-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/13/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/">项目简介</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="U-Net3D网络优化项目"><a href="#U-Net3D网络优化项目" class="headerlink" title="U-Net3D网络优化项目"></a>U-Net3D网络优化项目</h1><p>U-Net3D网络模型优化是2023年先导杯的一道<a target="_blank" rel="noopener" href="https://cas-pra.sugon.com/detail.html?tournament_id=28">赛题</a> ，本项目免费开放，供ai+hpc领域的同学们学习，一起进步！</p>
+<ul>
+<li>github地址：<a target="_blank" rel="noopener" href="https://github.com/brucecui1998/fastUNet3D">https://github.com/brucecui1998/fastUNet3D</a></li>
+<li>项目优化博客：<a target="_blank" rel="noopener" href="https://brucecui1998.github.io/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">https://brucecui1998.github.io/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/</a></li>
+</ul>
+<p>技术栈：cuda、hip、mpi</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/13/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/" data-id="cll9d53zv00018ov213vaayte" data-title="项目简介" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-30天Pandas挑战/文章浏览" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/" class="article-date">
+  <time class="dt-published" datetime="2023-08-13T08:38:14.647Z" itemprop="datePublished">2023-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/">文章浏览</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="文章浏览"><a href="#文章浏览" class="headerlink" title="文章浏览"></a>文章浏览</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/article-views-i/solutions/168689/wen-zhang-liu-lan-i-by-leetcode-solution/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata">题目</a></h2><p><code>Views</code> 表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+---------------+---------+</span><br><span class="line">| Column Name   | Type    |</span><br><span class="line">+---------------+---------+</span><br><span class="line">| article_id    | int     |</span><br><span class="line">| author_id     | int     |</span><br><span class="line">| viewer_id     | int     |</span><br><span class="line">| view_date     | date    |</span><br><span class="line">+---------------+---------+</span><br><span class="line">此表可能会存在重复行。（换句话说，在 SQL 中这个表没有主键）</span><br><span class="line">此表的每一行都表示某人在某天浏览了某位作者的某篇文章。</span><br><span class="line">请注意，同一人的 author_id 和 viewer_id 是相同的。</span><br></pre></td></tr></table></figure>
+
+<p>请查询出所有浏览过自己文章的作者</p>
+<p>结果按照 <code>id</code> 升序排列。</p>
+<p>查询结果的格式如下所示：</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">Views 表：</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line">| article_id | author_id | viewer_id | view_date  |</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line">| 1          | 3         | 5         | 2019-08-01 |</span><br><span class="line">| 1          | 3         | 6         | 2019-08-02 |</span><br><span class="line">| 2          | 7         | 7         | 2019-08-01 |</span><br><span class="line">| 2          | 7         | 6         | 2019-08-02 |</span><br><span class="line">| 4          | 7         | 1         | 2019-07-22 |</span><br><span class="line">| 3          | 4         | 4         | 2019-07-21 |</span><br><span class="line">| 3          | 4         | 4         | 2019-07-21 |</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">+------+</span><br><span class="line">| id   |</span><br><span class="line">+------+</span><br><span class="line">| 4    |</span><br><span class="line">| 7    |</span><br><span class="line">+------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>方法：根据条件选择行</p>
+<p>判断作者是否评论了自己文章的条件，即 <code>author_id</code> 等于 <code>viewer_id</code></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>pandas</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_views</span>(<span class="params">views: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    df = views[views[<span class="string">&#x27;author_id&#x27;</span>] == views[<span class="string">&#x27;viewer_id&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">    df = df.drop_duplicates(subset=[<span class="string">&#x27;author_id&#x27;</span>])</span><br><span class="line">    df = df.sort_values(by=[<span class="string">&#x27;author_id&#x27;</span>])</span><br><span class="line">    df = df.rename(columns=&#123;<span class="string">&#x27;author_id&#x27;</span>:<span class="string">&#x27;id&#x27;</span>&#125;)</span><br><span class="line">    df = df[[<span class="string">&#x27;id&#x27;</span>]]</span><br><span class="line">    <span class="keyword">return</span> df</span><br></pre></td></tr></table></figure>
+
+<p>mysql</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">SELECT </span><br><span class="line">    DISTINCT author_id AS id </span><br><span class="line">FROM </span><br><span class="line">    Views </span><br><span class="line">WHERE </span><br><span class="line">    author_id = viewer_id </span><br><span class="line">ORDER BY </span><br><span class="line">    id </span><br></pre></td></tr></table></figure>
+
+
+
+<p>在 SQL 中，我们可以在 SELECT 语句中使用 DISTINCT 关键字来从表 Views 中检索唯一元素</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/" data-id="cll97814q000070v2han14oyv" data-title="文章浏览" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-30天Pandas挑战/183.从不订购的客户" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/183.%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7/" class="article-date">
+  <time class="dt-published" datetime="2023-08-13T07:52:59.164Z" itemprop="datePublished">2023-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/183.%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7/">从不订购的客户</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="从不订购的客户"><a href="#从不订购的客户" class="headerlink" title="从不订购的客户"></a>从不订购的客户</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/customers-who-never-order/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata">题目</a></h2><p><code>Customers</code> 表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| id          | int     |</span><br><span class="line">| name        | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">在 SQL 中，id 是该表的主键。</span><br><span class="line">该表的每一行都表示客户的 ID 和名称。</span><br></pre></td></tr></table></figure>
+
+<p><code>Orders</code> 表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-------------+------+</span><br><span class="line">| Column Name | Type |</span><br><span class="line">+-------------+------+</span><br><span class="line">| id          | int  |</span><br><span class="line">| customerId  | int  |</span><br><span class="line">+-------------+------+</span><br><span class="line">在 SQL 中，id 是该表的主键。</span><br><span class="line">customerId 是 Customers 表中 ID 的外键( Pandas 中的连接键)。</span><br><span class="line">该表的每一行都表示订单的 ID 和订购该订单的客户的 ID。</span><br></pre></td></tr></table></figure>
+
+<p>找出所有从不点任何东西的顾客。</p>
+<p>以 <strong>任意顺序</strong> 返回结果表。</p>
+<p>结果格式如下所示。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">Customers table:</span><br><span class="line">+----+-------+</span><br><span class="line">| id | name  |</span><br><span class="line">+----+-------+</span><br><span class="line">| 1  | Joe   |</span><br><span class="line">| 2  | Henry |</span><br><span class="line">| 3  | Sam   |</span><br><span class="line">| 4  | Max   |</span><br><span class="line">+----+-------+</span><br><span class="line">Orders table:</span><br><span class="line">+----+------------+</span><br><span class="line">| id | customerId |</span><br><span class="line">+----+------------+</span><br><span class="line">| 1  | 3          |</span><br><span class="line">| 2  | 1          |</span><br><span class="line">+----+------------+</span><br><span class="line">输出：</span><br><span class="line">+-----------+</span><br><span class="line">| Customers |</span><br><span class="line">+-----------+</span><br><span class="line">| Henry     |</span><br><span class="line">| Max       |</span><br><span class="line">+-----------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>方法 1：使用排除条件过滤数据</p>
+<p>在 Pandas 中：</p>
+<pre><code>isin(values) 用于基于其值是否在给定集合 values 中来过滤和选择行。
+~ 表示逻辑非。
+</code></pre>
+<p>因此，可以通过~isin(values) 来选择它们的值不存在于 values 中的行。</p>
+<p>方法 2：在 customers上进行左连接（Left Join）</p>
+<p>思路是基于共同的客户 ID（在 customers 表中的 id 列和 orders 表中的 customerId 列），将表 customers 与表 orders 进行连接。</p>
+<p>通过进行左连接，并选择 customerId 为 null 的记录，我们可以确定哪些客户没有下过订单。</p>
+<pre><code>我们使用左连接（Left Join）在 customers 上，因为我们希望将所有来自 customers 的客户都包括进来，无论他们是否下过订单。 因此，通过使用左连接，我们可以保留所有来自左表（customers）的行，并将它们与右表（orders）中基于 id 和 customerId 进行匹配的相应行分别对应。
+</code></pre>
+<p>该表将如下所示：<br>id	name	id	customerId<br>1	Joe	2	1<br>2	Henry	null	null<br>3	Sam	1	3<br>4	Max	null	null</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="方法-1：使用排除条件过滤数据"><a href="#方法-1：使用排除条件过滤数据" class="headerlink" title="方法 1：使用排除条件过滤数据"></a>方法 1：使用排除条件过滤数据</h3><p>pandas</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find_customers</span>(<span class="params">customers: pd.DataFrame, orders: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    <span class="comment"># 选择 orders[&#x27;customerId&#x27;] 中 &#x27;id&#x27; 不存在的行</span></span><br><span class="line">    df = ~customers[<span class="string">&#x27;id&#x27;</span>].isin(orders[<span class="string">&#x27;customerId&#x27;</span>])</span><br><span class="line">    <span class="comment"># 将列 name 重命名为 Customers</span></span><br><span class="line">    <span class="keyword">return</span> customers.loc[df,[<span class="string">&#x27;name&#x27;</span>]].rename(columns=&#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;Customers&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>mysql</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">select customers.name as &#x27;Customers&#x27;</span><br><span class="line">from customers</span><br><span class="line">where customers.id not in</span><br><span class="line">(</span><br><span class="line">    select customerid from orders</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法-2：在-customers上进行左连接（Left-Join）"><a href="#方法-2：在-customers上进行左连接（Left-Join）" class="headerlink" title="方法 2：在 customers上进行左连接（Left Join）"></a>方法 2：在 customers上进行左连接（Left Join）</h3><p>pandas</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">find_customers</span>(<span class="params">customers: pd.DataFrame, orders: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    df = customers.merge(orders, left_on=<span class="string">&#x27;id&#x27;</span>, right_on=<span class="string">&#x27;customerId&#x27;</span>, how=<span class="string">&#x27;left&#x27;</span>)</span><br><span class="line">    df = df[df[<span class="string">&#x27;customerId&#x27;</span>].isna()]</span><br><span class="line">    df = df[[<span class="string">&#x27;name&#x27;</span>]].rename(columns=&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Customers&#x27;</span>&#125;)</span><br><span class="line">    <span class="keyword">return</span> df</span><br></pre></td></tr></table></figure>
+
+<p>mysql</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select name as &#x27;Customers&#x27;</span><br><span class="line">from Customers</span><br><span class="line">left join Orders on Customers.id = Orders.customerid</span><br><span class="line">where Orders.customerid is null</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/183.%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7/" data-id="cll96tnav000100v2h7tsdd17" data-title="从不订购的客户" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-30天Pandas挑战/1757.可回收且低脂的产品" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/1757.%E5%8F%AF%E5%9B%9E%E6%94%B6%E4%B8%94%E4%BD%8E%E8%84%82%E7%9A%84%E4%BA%A7%E5%93%81/" class="article-date">
@@ -244,686 +782,6 @@
 
 
   
-    <article id="post-杂项汇总/小红书" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" class="article-date">
-  <time class="dt-published" datetime="2023-08-13T05:14:58.159Z" itemprop="datePublished">2023-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E5%B0%8F%E7%BA%A2%E4%B9%A6/">环境配置/软件安装/专业真题/搭建个人博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="环境配置-软件安装-专业真题-搭建个人博客"><a href="#环境配置-软件安装-专业真题-搭建个人博客" class="headerlink" title="环境配置&#x2F;软件安装&#x2F;专业真题&#x2F;搭建个人博客"></a>环境配置&#x2F;软件安装&#x2F;专业真题&#x2F;搭建个人博客</h1><h2 id="1-计算机专业常用环境配置"><a href="#1-计算机专业常用环境配置" class="headerlink" title="1.计算机专业常用环境配置"></a>1.计算机专业常用环境配置</h2><p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E8%BF%9C%E7%A8%8B%E5%AE%89%E8%A3%85.png" alt="远程安装"></p>
-<p>深度学习环境，anaconda环境，python环境，cuda环境，linux双系统安装，java环境配置</p>
-<h2 id="2-计算机专业常用软件安装"><a href="#2-计算机专业常用软件安装" class="headerlink" title="2.计算机专业常用软件安装"></a>2.计算机专业常用软件安装</h2><p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.png" alt="软件安装"></p>
-<p>Dev-c++、Visual Studio、MATLAB、VMware、ArcGIS Pro、latex、cp2k、understand、typora</p>
-<p>​	</p>
-<h2 id="3-计算机专业真题-河南省内一本期末真题"><a href="#3-计算机专业真题-河南省内一本期末真题" class="headerlink" title="3.计算机专业真题(河南省内一本期末真题)"></a>3.计算机专业真题(河南省内一本期末真题)</h2><p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E4%B8%93%E4%B8%9A%E8%AF%BE%E8%B5%84%E6%96%99.png" alt="专业课资料"></p>
-<p>数据结构：电子版教材、期末真题、严蔚敏版数据结构全书代码、严蔚敏数据结构题集、严蔚敏版配套题库、严蔚敏版笔记和习题<br>计算机网络：教材、计算机网络释疑与习题解答、期末宝典<br>操作系统：教材、学习指导与题解、期末试卷、划重点大题<br>马原：期末真题、亲自整理期末考点(实测90分)<br>软件工程：期末真题</p>
-<h2 id="4-基于hexo-github个人博客搭建"><a href="#4-基于hexo-github个人博客搭建" class="headerlink" title="4.基于hexo+github个人博客搭建"></a>4.基于hexo+github个人博客搭建</h2><p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA.png" alt="个人博客搭建"></p>
-<p>搭建属于自己的免费个人博客，无需域名<br>求职提高核心竞争力</p>
-<h2 id="5-双4090代跑深度学习实验"><a href="#5-双4090代跑深度学习实验" class="headerlink" title="5.双4090代跑深度学习实验"></a>5.双4090代跑深度学习实验</h2><p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E5%8F%8C4090%E4%BB%A3%E8%B7%91%E5%AE%9E%E9%AA%8C.png" alt="双4090代跑实验"></p>
-<p>双4090代跑深度学习实验，低于云gpu市场租赁价</p>
-<h2 id="6-大学逆袭指南答疑咨询"><a href="#6-大学逆袭指南答疑咨询" class="headerlink" title="6.大学逆袭指南答疑咨询"></a>6.大学逆袭指南答疑咨询</h2><p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E5%B0%8F%E7%BA%A2%E4%B9%A6/%E7%AD%94%E7%96%91%E5%92%A8%E8%AF%A2.png" alt="答疑咨询"></p>
-<p>保研211退伍学长答疑咨询，涵盖以下方面<br>1、学习保研方面<br>2、参军入伍方面<br>3、学生工作方面</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E5%B0%8F%E7%BA%A2%E4%B9%A6/" data-id="cll91xixm0001a4v2829177ln" data-title="环境配置/软件安装/专业真题/搭建个人博客" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-leetcode/2089找出数组排序后的目标下标" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/13/leetcode/2089%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8B%E6%A0%87/" class="article-date">
-  <time class="dt-published" datetime="2023-08-13T01:15:06.266Z" itemprop="datePublished">2023-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/13/leetcode/2089%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8B%E6%A0%87/">找出数组排序后的目标下标</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="找出数组排序后的目标下标"><a href="#找出数组排序后的目标下标" class="headerlink" title="找出数组排序后的目标下标"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-target-indices-after-sorting-array/">找出数组排序后的目标下标</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 以及一个目标元素 <code>target</code> 。</p>
-<p><strong>目标下标</strong> 是一个满足 <code>nums[i] == target</code> 的下标 <code>i</code> 。</p>
-<p>将 <code>nums</code> 按 <strong>非递减</strong> 顺序排序后，返回由 <code>nums</code> 中目标下标组成的列表。如果不存在目标下标，返回一个 <strong>空</strong> 列表。返回的列表必须按 <strong>递增</strong> 顺序排列。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,5,2,3], target = 2</span><br><span class="line">输出：[1,2]</span><br><span class="line">解释：排序后，nums 变为 [1,2,2,3,5] 。</span><br><span class="line">满足 nums[i] == 2 的下标是 1 和 2 。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,5,2,3], target = 3</span><br><span class="line">输出：[3]</span><br><span class="line">解释：排序后，nums 变为 [1,2,2,3,5] 。</span><br><span class="line">满足 nums[i] == 3 的下标是 3 。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 3：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,5,2,3], target = 5</span><br><span class="line">输出：[4]</span><br><span class="line">解释：排序后，nums 变为 [1,2,2,3,5] 。</span><br><span class="line">满足 nums[i] == 5 的下标是 4 。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 4：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,5,2,3], target = 4</span><br><span class="line">输出：[]</span><br><span class="line">解释：nums 中不含值为 4 的元素。</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>1 &lt;= nums.length &lt;= 100</code></li>
-<li><code>1 &lt;= nums[i], target &lt;= 100</code></li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>一开始想用34题的思路去寻找左右边界，后来发现该题不是要求返回左右边界的。</p>
-<p>思路参考：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-target-indices-after-sorting-array/solutions/1127136/zhao-chu-shu-zu-pai-xu-hou-de-mu-biao-xi-2o22/">https://leetcode.cn/problems/find-target-indices-after-sorting-array/solutions/1127136/zhao-chu-shu-zu-pai-xu-hou-de-mu-biao-xi-2o22/</a></p>
-<p>问题：这题为什么会出现在二分查找里？既然给的是无序数组，如果要使用二分查找的话，必须要先排序才行，排序的时间复杂度是nlogn，还有使用二分查找的必要吗</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>方法一：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment">//方法一：排序后遍历 </span></span><br><span class="line">    <span class="comment">//时间复杂度：O(nlog⁡n) </span></span><br><span class="line">    <span class="comment">//空间复杂度：O(log⁡n)</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">targetIndices</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n ;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]==target)</span><br><span class="line">                res.<span class="built_in">push_back</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>方法二：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//方法二：直接统计数量</span></span><br><span class="line">    <span class="comment">//时间复杂度：O(n)，其中 n 为 nums的长度。遍历统计元素数量和构造数组时间复杂度为 O(n)</span></span><br><span class="line">    <span class="comment">//空间复杂度：O(1)，输出数组不计入空间复杂度</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">targetIndices</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> cnt1 = <span class="number">0</span>; <span class="comment">// 小于 target 的元素数量</span></span><br><span class="line">        <span class="type">int</span> cnt2 = <span class="number">0</span>; <span class="comment">// 等于 target 的元素数量</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &lt; target)&#123;</span><br><span class="line">                cnt1++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] == target)&#123;</span><br><span class="line">                cnt2++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res; <span class="comment">// 下标数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = cnt1; i &lt; cnt1 + cnt2; i++)&#123;</span><br><span class="line">            res.<span class="built_in">push_back</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/13/leetcode/2089%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8B%E6%A0%87/" data-id="cll91xixj0000a4v2eorzf753" data-title="找出数组排序后的目标下标" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-leetcode/367有效的完全平方数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/12/leetcode/367%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/" class="article-date">
-  <time class="dt-published" datetime="2023-08-12T12:10:10.605Z" itemprop="datePublished">2023-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/12/leetcode/367%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/">367有效的完全平方数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="有效的完全平方数"><a href="#有效的完全平方数" class="headerlink" title="有效的完全平方数"></a>有效的完全平方数</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-perfect-square/">题目</a></h2><p>给你一个正整数 <code>num</code> 。如果 <code>num</code> 是一个完全平方数，则返回 <code>true</code> ，否则返回 <code>false</code> 。</p>
-<p><strong>完全平方数</strong> 是一个可以写成某个整数的平方的整数。换句话说，它可以写成某个整数和自身的乘积。</p>
-<p>不能使用任何内置的库函数，如 <code>sqrt</code> 。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：num = 16</span><br><span class="line">输出：true</span><br><span class="line">解释：返回 true ，因为 4 * 4 = 16 且 4 是一个整数。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：num = 14</span><br><span class="line">输出：false</span><br><span class="line">解释：返回 false ，因为 3.742 * 3.742 = 14 但 3.742 不是一个整数。</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>1 &lt;= num &lt;= 231 - 1</code></li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>和69.x的平方根思路一样，只不过这次要return</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isPerfectSquare</span><span class="params">(<span class="type">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> r = num;</span><br><span class="line">        <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">            <span class="type">int</span> mid = l + (r - l )/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>((<span class="type">long</span> <span class="type">long</span>)mid*mid &gt; num)&#123;</span><br><span class="line">                r = mid <span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>((<span class="type">long</span> <span class="type">long</span>)mid*mid &lt; num)&#123;</span><br><span class="line">                l = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/12/leetcode/367%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/" data-id="cll7zfm87000040v271tvdzx8" data-title="367有效的完全平方数" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-项目合集/U-Net3D网络优化/02.在曙光平台跑通赛题代码" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/02.%E5%9C%A8%E6%9B%99%E5%85%89%E5%B9%B3%E5%8F%B0%E8%B7%91%E9%80%9A%E8%B5%9B%E9%A2%98%E4%BB%A3%E7%A0%81/" class="article-date">
-  <time class="dt-published" datetime="2023-08-12T05:50:27.989Z" itemprop="datePublished">2023-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/02.%E5%9C%A8%E6%9B%99%E5%85%89%E5%B9%B3%E5%8F%B0%E8%B7%91%E9%80%9A%E8%B5%9B%E9%A2%98%E4%BB%A3%E7%A0%81/">02.在曙光平台跑通赛题代码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="在曙光平台跑通赛题代码"><a href="#在曙光平台跑通赛题代码" class="headerlink" title="在曙光平台跑通赛题代码"></a>在曙光平台跑通赛题代码</h1><ul>
-<li><p><a target="_blank" rel="noopener" href="https://cas-pra.sugon.com/detail.html?tournament_id=28">赛题链接</a>,2023年先导杯U-Net3D网络模型优化赛题。</p>
-</li>
-<li><p>赛题代码：PRA_unet3d.tar.gz （在赛题链接文末附件下载）</p>
-</li>
-<li><p>赛题数据：链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1c24g8bv0VVVM-3ovFC0iIA">https://pan.baidu.com/s/1c24g8bv0VVVM-3ovFC0iIA</a> 提取码: 1c6v </p>
-</li>
-<li><p>赛题参考代码：<a target="_blank" rel="noopener" href="https://github.com/mlcommons/training/tree/master/image_segmentation/pytorch%E3%80%81https://github.com/mlcommons/training_policies/blob/master/training_rules.adoc">https://github.com/mlcommons/training/tree/master/image_segmentation/pytorch、https://github.com/mlcommons/training_policies/blob/master/training_rules.adoc</a></p>
-</li>
-<li><p>赛题辅助说明：【腾讯文档】先导杯U-Net3D网络模型优化赛题辅助说明：<a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DVFF0ZUpHekdaZnZN">https://docs.qq.com/doc/DVFF0ZUpHekdaZnZN</a></p>
-</li>
-<li><p>赛方算力平台：<a target="_blank" rel="noopener" href="https://tycloud.nsccty.com/ac/console3/index.html#/space/dashboard">https://tycloud.nsccty.com/ac/console3/index.html#/space/dashboard</a> 注意先导杯全国赛使用的是山西云时代太原超算中心（不同超算中心配置略有不同）</p>
-</li>
-</ul>
-<h2 id="账号准备"><a href="#账号准备" class="headerlink" title="账号准备"></a>账号准备</h2><p>与之前我们在windows本机运行代码不同，赛题要求在赛题算力平台运行并使用dcu C86异构加速卡。</p>
-<p>所以我们必须在赛题官方网站选择“报名比赛”-“答题”选项卡注册账号，报名比赛以及申请算力环境，一般需要数个工作日</p>
-<h2 id="配置赛题环境"><a href="#配置赛题环境" class="headerlink" title="配置赛题环境"></a>配置赛题环境</h2><h3 id="准备代码、数据"><a href="#准备代码、数据" class="headerlink" title="准备代码、数据"></a>准备代码、数据</h3><p>在家目录下准备public_data目录，以备不时之需，将赛题代码、数据、以及赛方代码缺失的文件<a target="_blank" rel="noopener" href="https://github.com/mlcommons/training/tree/master/image_segmentation/pytorch">evaluation_cases.txt</a>其都上传至自己创建的public_data下面</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir public_data</span><br></pre></td></tr></table></figure>
-
-<p>准备工作目录，这里我取名叫blog_learn，取什么名字都行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p content/blog_learn</span><br></pre></td></tr></table></figure>
-
-<p>将public_data下的文件复制到工作目录下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd content/blog_learn</span><br><span class="line">cp ~/public_data/PRA_unet3d.tar.gz .</span><br><span class="line">tar -xvf PRA_unet3d.tar.gz </span><br><span class="line">cd PRA</span><br><span class="line">cp ~/public_data/evaluation_cases.txt ~/public_data/data.tar.gz .</span><br><span class="line">tar -xvf data.tar.gz</span><br><span class="line">rm data.tar.gz</span><br></pre></td></tr></table></figure>
-
-<h2 id="准备python环境"><a href="#准备python环境" class="headerlink" title="准备python环境"></a>准备python环境</h2><p>由于权限问题，我们需要自己安装anaconda3，<a target="_blank" rel="noopener" href="https://docs.conda.io/en/latest/miniconda.html#linux-installers">anaconda官网下载</a>后上传服务器安装minianaconda</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">conda create -n unet3d_learn python=3.7 -y</span><br><span class="line">conda activate unet3d_learn</span><br><span class="line">pip install torch-1.10.0a0+git2040069.dtk2210-cp37-cp37m-manylinux2014_x86_64.whl </span><br><span class="line">pip install apex-0.1+gitdb7007a.dtk2210-cp37-cp37m-manylinux2014_x86_64.whl</span><br><span class="line">pip install torchvision-0.10.0a0+e04d001.dtk2210-cp37-cp37m-manylinux2014_x86_64.whl </span><br><span class="line">pip install scipy pandas numpy tqdm -i https://pypi.douban.com/simple/</span><br><span class="line">cd ~/content/blog_learn/PRA/logging-master</span><br><span class="line">python setup.py install ; cd .. ;</span><br><span class="line">cd ./dllogger-master</span><br><span class="line">python setup.py install; cd ..;</span><br></pre></td></tr></table></figure>
-
-<p>注意到上述提及的whl包需要到光合开发者社区自行进行下载，链接如下：<a target="_blank" rel="noopener" href="https://cancon.hpccube.com:65024/4/main">https://cancon.hpccube.com:65024/4/main</a></p>
-<h2 id="运行赛题代码"><a href="#运行赛题代码" class="headerlink" title="运行赛题代码"></a>运行赛题代码</h2><p>vim mpi.sbatch做略微修改</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -p ty_xd</span> </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -N 2</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH --ntasks-per-node=4</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH --cpus-per-task=8</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH --gres=dcu:4</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -J mlperf_blog</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -e myjob.e</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -o myjob.o</span></span><br><span class="line"></span><br><span class="line">echo &quot;###### [1] SET ENVIRONMENT ######&quot;</span><br><span class="line">module purge</span><br><span class="line">module load compiler/devtoolset/7.3.1</span><br><span class="line">module load mpi/hpcx/2.11.0/gcc-7.3.1</span><br><span class="line">module load compiler/dtk/22.10.1</span><br><span class="line">export LD_LIBRARY_PATH=/xddata/home/ac8kw4me6g/content/blog_learn/PRA/lib:$LD_LIBRARY_PATH</span><br><span class="line">conda init bash</span><br><span class="line">conda activate unet3d_learn</span><br><span class="line"></span><br><span class="line">echo &quot;###### [2] RUN TEST ######&quot;</span><br><span class="line">hostfile=./$SLURM_JOB_ID</span><br><span class="line">scontrol show hostnames $SLURM_JOB_NODELIST &gt; $&#123;hostfile&#125;</span><br><span class="line">rm `pwd`/hostfile-dl -f</span><br><span class="line"></span><br><span class="line">for i in `cat $hostfile`</span><br><span class="line">do</span><br><span class="line">    echo $&#123;i&#125; slots=4 &gt;&gt; `pwd`/hostfile-dl</span><br><span class="line">done</span><br><span class="line">np=$(cat $hostfile|sort|uniq |wc -l)</span><br><span class="line"></span><br><span class="line">np=$(($np*4))</span><br><span class="line"></span><br><span class="line">nodename=$(cat $hostfile |sed -n &quot;1p&quot;)</span><br><span class="line">echo $nodename</span><br><span class="line">dist_url=`echo $nodename | awk &#x27;&#123;print $1&#125;&#x27;`</span><br><span class="line">start=$(date +%s)</span><br><span class="line">start_fmt=$(date +%Y-%m-%d\ %r)</span><br><span class="line">echo &quot;STARTING TIMING RUN AT $start_fmt&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mpirun -np $np --hostfile hostfile-dl --bind-to none `pwd`/single.sh $dist_url</span><br><span class="line">end=$(date +%s)</span><br><span class="line">end_fmt=$(date +%Y-%m-%d\ %r)</span><br><span class="line">echo &quot;ENDING TIMING RUN AT $end_fmt&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">report result</span></span><br><span class="line">result=$(( $end - $start ))</span><br><span class="line">result_name=&quot;image_segmentation&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo &quot;RESULT,$result_name,$SEED,$result,$USER,$start_fmt&quot;</span><br><span class="line">echo &quot;###### ALL TEST FINISHED ######&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>vim single.sh略微修改，注意LOG_DIR需要自己设置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">set -e</span><br><span class="line">export OMP_NUM_THREADS=1</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="keyword">for</span> <span class="built_in">env</span></span></span><br><span class="line">export HSA_FORCE_FINE_GRAIN_PCIE=1</span><br><span class="line">export MIOPEN_FIND_MODE=3</span><br><span class="line">export MIOPEN_USE_APPROXIMATE_PERFORMANCE=0</span><br><span class="line"></span><br><span class="line">lrank=$OMPI_COMM_WORLD_LOCAL_RANK</span><br><span class="line">comm_rank=$OMPI_COMM_WORLD_RANK</span><br><span class="line">comm_size=$OMPI_COMM_WORLD_SIZE</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#mlperf_1x8x7</span></span></span><br><span class="line">MAX_EPOCHS=10000</span><br><span class="line">QUALITY_THRESHOLD=&quot;0.908&quot;</span><br><span class="line">START_EVAL_AT=1000</span><br><span class="line">EVALUATE_EVERY=20</span><br><span class="line">LEARNING_RATE=&quot;2.0&quot;</span><br><span class="line">LR_WARMUP_EPOCHS=1000</span><br><span class="line">DATASET_DIR=&quot;./data&quot;</span><br><span class="line">BATCH_SIZE=1</span><br><span class="line">GRADIENT_ACCUMULATION_STEPS=7</span><br><span class="line">LOG_DIR=&quot;/xddata/home/ac8kw4me6g/blog_tmp&quot;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#mlperf_1x8x7</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">CLEAR YOUR CACHE HERE</span></span><br><span class="line">python -c &quot;</span><br><span class="line">from mlperf_logging.mllog import constants</span><br><span class="line">from runtime.logging import mllog_event</span><br><span class="line">mllog_event(key=constants.CACHE_CLEAR, value=True)&quot;</span><br><span class="line"></span><br><span class="line">APP=&quot;python3 `pwd`/main.py --data_dir $&#123;DATASET_DIR&#125; \</span><br><span class="line">    --log_dir $&#123;LOG_DIR&#125; \</span><br><span class="line">    --epochs $&#123;MAX_EPOCHS&#125; \</span><br><span class="line">    --evaluate_every $&#123;EVALUATE_EVERY&#125; \</span><br><span class="line">    --start_eval_at $&#123;START_EVAL_AT&#125; \</span><br><span class="line">    --quality_threshold $&#123;QUALITY_THRESHOLD&#125; \</span><br><span class="line">    --batch_size $&#123;BATCH_SIZE&#125; \</span><br><span class="line">    --optimizer sgd \</span><br><span class="line">    --ga_steps $&#123;GRADIENT_ACCUMULATION_STEPS&#125; \</span><br><span class="line">    --learning_rate $&#123;LEARNING_RATE&#125; \</span><br><span class="line">    --local_rank $&#123;comm_rank&#125; \</span><br><span class="line">    --world_size $&#123;comm_size&#125; \</span><br><span class="line">    --num_workers 1</span><br><span class="line">    --master_addr $&#123;1&#125; \</span><br><span class="line">    --master_port 4567</span><br><span class="line">    --lr_warmup_epochs $&#123;LR_WARMUP_EPOCHS&#125;&quot;</span><br><span class="line"></span><br><span class="line">case $&#123;lrank&#125; in</span><br><span class="line">[0])</span><br><span class="line">  export HIP_VISIBLE_DEVICES=0</span><br><span class="line">  export UCX_NET_DEVICES=mlx5_0:1</span><br><span class="line">  export UCX_IB_PCI_BW=mlx5_0:50Gbs</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">echo</span> NCCL_SOCKET_IFNAME=ib0 numactl --cpunodebind=0 --membind=0 <span class="variable">$&#123;APP&#125;</span></span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">NCCL_SOCKET_IFNAME=ib0</span> </span><br><span class="line">  numactl --cpunodebind=0 --membind=0 $&#123;APP&#125;</span><br><span class="line">  ;;</span><br><span class="line">[1])</span><br><span class="line">  export HIP_VISIBLE_DEVICES=1</span><br><span class="line">  export UCX_NET_DEVICES=mlx5_1:1</span><br><span class="line">  export UCX_IB_PCI_BW=mlx5_1:50Gbs</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">echo</span> NCCL_SOCKET_IFNAME=ib0 numactl --cpunodebind=1 --membind=1 <span class="variable">$&#123;APP&#125;</span></span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">NCCL_SOCKET_IFNAME=ib0</span> </span><br><span class="line">  numactl --cpunodebind=1 --membind=1 $&#123;APP&#125;</span><br><span class="line">  ;;</span><br><span class="line">[2])</span><br><span class="line">  export HIP_VISIBLE_DEVICES=2</span><br><span class="line">  export UCX_NET_DEVICES=mlx5_2:1</span><br><span class="line">  export UCX_IB_PCI_BW=mlx5_2:50Gbs</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">echo</span> NCCL_SOCKET_IFNAME=ib0 numactl --cpunodebind=2 --membind=2 <span class="variable">$&#123;APP&#125;</span></span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">NCCL_SOCKET_IFNAME=ib0</span> </span><br><span class="line">  numactl --cpunodebind=2 --membind=2 $&#123;APP&#125;</span><br><span class="line">  ;;</span><br><span class="line">[3])</span><br><span class="line">  export HIP_VISIBLE_DEVICES=3</span><br><span class="line">  export UCX_NET_DEVICES=mlx5_3:1</span><br><span class="line">  export UCX_IB_PCI_BW=mlx5_3:50Gbs</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">echo</span> NCCL_SOCKET_IFNAME=ib0 numactl --cpunodebind=3 --membind=3 <span class="variable">$&#123;APP&#125;</span></span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">NCCL_SOCKET_IFNAME=ib0</span> </span><br><span class="line">  numactl --cpunodebind=3 --membind=3 $&#123;APP&#125;</span><br><span class="line">  ;;</span><br><span class="line">esac</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>提交作业</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbatch mpi.sbatch</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/02.%E5%9C%A8%E6%9B%99%E5%85%89%E5%B9%B3%E5%8F%B0%E8%B7%91%E9%80%9A%E8%B5%9B%E9%A2%98%E4%BB%A3%E7%A0%81/" data-id="clldejn0h000930v2fonegnuh" data-title="02.在曙光平台跑通赛题代码" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-leetcode/69x的平方根" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/12/leetcode/69x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/" class="article-date">
-  <time class="dt-published" datetime="2023-08-12T05:28:38.710Z" itemprop="datePublished">2023-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/12/leetcode/69x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/">x的平方根</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="x的平方根"><a href="#x的平方根" class="headerlink" title="x的平方根"></a>x的平方根</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sqrtx/">题目</a></h2><p>给你一个非负整数 <code>x</code> ，计算并返回 <code>x</code> 的 <strong>算术平方根</strong> 。</p>
-<p>由于返回类型是整数，结果只保留 <strong>整数部分</strong> ，小数部分将被 <strong>舍去 。</strong></p>
-<p><strong>注意：</strong>不允许使用任何内置指数函数和算符，例如 <code>pow(x, 0.5)</code> 或者 <code>x ** 0.5</code> 。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：x = 4</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：x = 8</span><br><span class="line">输出：2</span><br><span class="line">解释：8 的算术平方根是 2.82842..., 由于返回类型是整数，小数部分将被舍去。</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>0 &lt;= x &lt;= 231 - 1</code></li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>二分查找条件：有序、无重复</p>
-<p>时间复杂度 O（logn）</p>
-<p>判断条件是(long long)mid*mid &lt;&#x3D; x</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">mySqrt</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> right = x;</span><br><span class="line">        <span class="type">int</span> ans ;</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="type">int</span> mid = left + (right-left)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>((<span class="type">long</span> <span class="type">long</span>)mid*mid &lt;= x)&#123;</span><br><span class="line">                ans = mid;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                right = mid <span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/12/leetcode/69x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/" data-id="cll7l872q0000b4v2fb7y18bn" data-title="x的平方根" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-leetcode/空白模板" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/12/leetcode/%E7%A9%BA%E7%99%BD%E6%A8%A1%E6%9D%BF/" class="article-date">
-  <time class="dt-published" datetime="2023-08-12T05:27:26.512Z" itemprop="datePublished">2023-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/12/leetcode/%E7%A9%BA%E7%99%BD%E6%A8%A1%E6%9D%BF/">名字</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="名字"><a href="#名字" class="headerlink" title="名字"></a>名字</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="">题目</a></h2><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/12/leetcode/%E7%A9%BA%E7%99%BD%E6%A8%A1%E6%9D%BF/" data-id="cll7l872u0002b4v2a0s99y8l" data-title="名字" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-杂项汇总/2023级研究生报道须知" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/12/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/2023%E7%BA%A7%E7%A0%94%E7%A9%B6%E7%94%9F%E6%8A%A5%E9%81%93%E9%A1%BB%E7%9F%A5/" class="article-date">
-  <time class="dt-published" datetime="2023-08-12T03:27:57.813Z" itemprop="datePublished">2023-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/12/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/2023%E7%BA%A7%E7%A0%94%E7%A9%B6%E7%94%9F%E6%8A%A5%E9%81%93%E9%A1%BB%E7%9F%A5/">2023级研究生报道须知</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>2023 级研究生报到须知</p>
-<p>2023 级研究生新生：</p>
-<p>欢迎来到西安电子科技大学进行研究生阶段的学习。</p>
-<p>为帮助同学们顺利完成网上手续办理和现场报到，现将有关事项</p>
-<p>通知如下。</p>
-<p><strong>一、网上手续办理</strong></p>
-<p>8 月 1 日至 8 月 20 日，2023 级研究生进入西安电子科技大学迎</p>
-<p>新网首页（<a target="_blank" rel="noopener" href="https://xdyx.xidian.edu.cn/index.htm%EF%BC%89%EF%BC%8C%E7%82%B9%E5%87%BB%E2%80%9C%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E2%80%9D%EF%BC%8C">https://xdyx.xidian.edu.cn/index.htm），点击“用户登录”，</a></p>
-<p>选择登录菜单下方的“账号激活”，激活过程中设置密码，完成后重</p>
-<p>新登录办理网上手续。</p>
-<p>（一）新生教育（咨询电话：029-81891290）</p>
-<p>8 月 1 日至 8 月 20 日，新生须在迎新系统内参加入学前教育，</p>
-<p>完成相关学习和测验流程。</p>
-<p>（二）一卡通照片采集（咨询电话：029-88201252）</p>
-<p>8 月 1 日至 8 月 20 日，新生须在迎新系统内上传制式电子照片，</p>
-<p>用于办理校园一卡通。</p>
-<p>电子照片标准：</p>
-<p>1.图像：640 像素（高）×480 像素（宽），JPG 格式。</p>
-<p>2.要求：三个月内正面免冠彩色半身电子照片，照片背景为蓝色，</p>
-<p>其他颜色不予受理。照片要求人像清晰，轮廓分明，层次丰富，神态</p>
-<p>自然。</p>
-<p>3.照片建议到专业机构拍摄，不得进行任何修饰。</p>
-<p>12</p>
-<p>校园一卡通可用于身份识别、图书借阅、门禁出入、医院诊疗、</p>
-<p>食堂就餐、班车乘坐等，仅限本人使用，不得转借他人。</p>
-<p>（三）人脸识别照片采集（咨询电话：029-88201650）</p>
-<p>8 月 13 日至 8 月 15 日，新生须绑定西安电子科技大学企业号</p>
-<p>（具体步骤见附件 1），进行人脸识别照片采集（具体步骤见附件 2），</p>
-<p>用于校门、图书馆、宿舍、操场等校内场所出入的身份验证。</p>
-<p>（四）网上选宿（宿舍问题咨询电话：北校区公寓服务中心办公</p>
-<p>室 029-88204384&#x2F;88204385 、南校区 公 寓 服 务 中 心 办 公 室 029-</p>
-<p>81892773&#x2F;81891186，选宿系统问题咨询电话：4006183090）</p>
-<p><strong>全日制硕士研究生宿舍通过在线方式选取，分为预选房、正式选</strong></p>
-<p><strong>房两个环节（网上选宿操作手册见附件</strong> <strong>3****）：</strong></p>
-<p><strong>1.</strong> <strong>预选房环节旨在帮助新生熟悉选房系统，开放时间为</strong> <strong>8</strong> <strong>月</strong> <strong>15</strong></p>
-<p><strong>日</strong> <strong>9<strong><strong>：</strong></strong>00-16<strong><strong>：</strong></strong>00****（杭州研究院另行通知），其结果在测试完毕后清除，</strong></p>
-<p><strong>不作为最终选房依据。</strong></p>
-<p><strong>2.</strong> <strong>正式选房环节开放时间为</strong> <strong>8</strong> <strong>月</strong> <strong>16</strong> <strong>日</strong> <strong>9<strong><strong>：</strong></strong>00-16<strong><strong>：</strong></strong>00****（杭州研究</strong></p>
-<p><strong>院另行通知）。</strong></p>
-<p><strong>3.</strong> <strong>各学院预选房及正式选房环节时间分配如下。</strong></p>
-<p>选宿时间 </p>
-<p>学院</p>
-<p>9:00-10:00 </p>
-<p>广州研究院（本部报到）</p>
-<p>10:30-11:30 </p>
-<p>通信工程学院、电子工程学院</p>
-<p>12:00-13:00 </p>
-<p>机电工程学院、光电工程学院、物理学院、微电子学院</p>
-<p>13:30-14:30</p>
-<p>计算机科学与技术学院、经济与管理学院、数学与统计学院、</p>
-<p>人文学院、外国语学院、生命科学技术学院、空间科学与技术学院、</p>
-<p>先进材料与纳米科技学院、网络与信息安全学院、人工智能学院、</p>
-<p>马克思主义学院、体育部</p>
-<p>15:00-16:00 </p>
-<p>补选3</p>
-<p>\4. 在系统开放后尽快完成选宿，未完成在线选宿的研究生，将默</p>
-<p>认为不住宿，原则上不再分配宿舍。</p>
-<p>*****<strong>注：博士不参与线上选宿，报到当天在后勤保障部接待点线下</strong></p>
-<p><strong>办理。硕博连读生暂住原硕士宿舍，待同级硕士生毕业当年的秋季学</strong></p>
-<p><strong>期前调换至博士生宿舍；定向工程博士、非全日制研究生不提供住宿。</strong></p>
-<p>（五）各类费用缴纳（咨询电话：029-81891316）</p>
-<p>8 月 18 日中午 12:00 起，研究生新生应登录迎新系统，在“财务</p>
-<p>缴费”版块缴纳相关费用。学费及住宿费缴费成功 1 小时后，可登录</p>
-<p>迎新系统查询缴费结果；医保费和体检费缴费后可在系统中查看缴费</p>
-<p>记录。学宿费电子票据在统一支付平台自行下载，具体流程可查看迎</p>
-<p>新网站相关说明。</p>
-<p>因家庭经济困难需要缓交学费和住宿费的新生，请于 8 月 18 日</p>
-<p>12:00 至 8 月 24 日 12:00 网上办理绿色通道手续。具体方式如下：</p>
-<p>1.已办理生源地国家助学贷款的新生</p>
-<p>登录迎新系统，在“绿色通道”版块，选择申请生源地国家助学贷</p>
-<p>款，上传“生源地受理回执”；</p>
-<p>2.准备申请校园地国家助学贷款的新生</p>
-<p>请自行下载《西安电子科技大学家庭经济困难研究生认定申请表》</p>
-<p>（附件 4），按要求填写后，在“绿色通道”版块，选择申请校园地国</p>
-<p>家助学贷款，将申请表扫描或拍照上传。4</p>
-<p>学校将每日审核绿色通道申请，相关新生可在提交申请次日，登</p>
-<p>录迎新系统查看审核结果。通过审核的新生，须缴纳剩余费用；未通</p>
-<p>过审核的新生，须补充材料重新提交申请或缴纳全部费用。</p>
-<p><em>特别提醒：*<em>国家助学贷款仅用于支付学费和住宿费，医保费和</em></em></p>
-<p><strong>体检费须单独缴纳。</strong>生源地国家助学贷款额度，以实际放贷金额为准；</p>
-<p>校园地国家助学贷款额度为：全日制研究生最高 16000 元&#x2F;年，若贷</p>
-<p>款额度不足以冲抵学费和住宿费，须补缴差额；若贷款额度超过学费</p>
-<p>和住宿费合计，差额部分将在贷款放款的 1~2 个月内退给申贷学生。</p>
-<p>开学后，中国银行将来校受理校园地国家助学贷款申请，具体通</p>
-<p>知请留意研究生院网站（gr.xidian.edu.cn）和“西电研究生”微信公众</p>
-<p>号。</p>
-<p>“西电研究生”微信公众号</p>
-<p>（六）本科期间成果数据填报（咨询电话：029-81891235）</p>
-<p>8 月 17 日至 8 月 22 日，新生须登录“研究生综合服务平台”</p>
-<p>（yjspt.xidian.edu.cn），在“研究生成长数据库”模块，填报本科期</p>
-<p>间获得的各类成果数据（研究生成长数据库使用手册见附件 5）。</p>
-<p>（七）研究生生涯规划测评（咨询电话：029-81891235）5</p>
-<p>8 月 23 日至 8 月 24 日，新生须登录“生涯教育一体化平台”</p>
-<p>（xdyjs.careersky.cn）进行生涯规划测评（生涯教育一体化平台使用</p>
-<p>手册见附件 6）。</p>
-<p>（八）心理健康测评（咨询电话：029-81891125）</p>
-<p>8 月 25 日至 8 月 28 日，新生须登录“基于应激-素质模型的心理</p>
-<p>健康教育大数据平台”（<a target="_blank" rel="noopener" href="https://xlzx.xidian.edu.cn/%EF%BC%89%E8%BF%9B%E8%A1%8C%E5%BF%83%E7%90%86%E5%81%A5%E5%BA%B7%E6%B5%8B%E8%AF%84">https://xlzx.xidian.edu.cn/）进行心理健康测评</a></p>
-<p>（基于应激-素质模型的心理健康教育大数据平台使用手册见附件 7）。</p>
-<p><strong>二、现场报到</strong></p>
-<p>包含缴费确认、学历学位证书及录取通知书查验、校园一卡通领</p>
-<p>取、入住宿舍、入学体检等环节。</p>
-<p>（一）报到时间</p>
-<p><strong>2023</strong> <strong>年</strong> <strong>9</strong> <strong>月</strong> <strong>3</strong> <strong>日（星期日）<strong><strong>8:00-20:00</strong></strong>。</strong></p>
-<p>（二）报到地点及联系人</p>
-<p>学院 </p>
-<p>报到地点 </p>
-<p>迎新联系人 </p>
-<p>联系方式</p>
-<p>通信工程学院 </p>
-<p>北校区体育馆 </p>
-<p>关老师 </p>
-<p>029-88201804</p>
-<p>电子工程学院 </p>
-<p>北校区体育馆 </p>
-<p>吴老师 </p>
-<p>029-88201842</p>
-<p>计算机科学与技术学院 </p>
-<p>南校区网安大楼 A1-223 会议室 </p>
-<p>牛老师</p>
-<p>何老师 </p>
-<p>029-81891030</p>
-<p>机电工程学院 </p>
-<p>北校区主楼 III 区 143 南 </p>
-<p>周老师 </p>
-<p>029-88202453</p>
-<p>光电工程学院 </p>
-<p>北校区西大楼三区一楼大厅 </p>
-<p>姜老师 </p>
-<p>029-88201480</p>
-<p>物理学院 </p>
-<p>北校区西大楼三区四楼大厅 </p>
-<p>胡老师 </p>
-<p>029-88202798</p>
-<p>经济与管理学院 </p>
-<p>南校区信远 II 区 324 报告厅 </p>
-<p>朱老师 </p>
-<p>029-81891033</p>
-<p>数学与统计学院 </p>
-<p>南校区行政辅楼 235 </p>
-<p>孙老师 </p>
-<p>029-81892698</p>
-<p>人文学院 </p>
-<p>南校区信远 II 区 106 </p>
-<p>郭老师 </p>
-<p>029-81891117</p>
-<p>外国语学院 </p>
-<p>南校区信远 II 区 424 </p>
-<p>唐老师 </p>
-<p>029-81891387</p>
-<p>微电子学院 </p>
-<p>北校区办公楼 102 </p>
-<p>张老师 </p>
-<p>029-88203317</p>
-<p>生命科学技术学院 </p>
-<p>南校区 G 楼 420 </p>
-<p>郭老师 </p>
-<p>029-818910326</p>
-<p>空间科学与技术学院 </p>
-<p>南校区 G 楼 251 </p>
-<p>尹老师 </p>
-<p>029-81891034</p>
-<p>先进材料与纳米科技学院 </p>
-<p>南校区工训中心 IV 区 302 会议室 </p>
-<p>刘老师 </p>
-<p>029-81891417</p>
-<p>网络与信息安全学院 </p>
-<p>南校区网安大楼 AII 区二楼大厅 </p>
-<p>陈老师 </p>
-<p>029-81891650</p>
-<p>人工智能学院 </p>
-<p>南校区网安大楼 C2-0205 </p>
-<p>李老师 </p>
-<p>029-81891373</p>
-<p>马克思主义学院 </p>
-<p>南校区信远 II 区 135 </p>
-<p>章老师 </p>
-<p>029-81891162</p>
-<p>体育部 </p>
-<p>南校区游泳中心 207 </p>
-<p>左老师 </p>
-<p>029-81891197</p>
-<p>广州研究院 </p>
-<p>北校区教辅楼 227 </p>
-<p>吉老师 </p>
-<p>020-32030125</p>
-<p>杭州研究院 </p>
-<p>杭州研究院综合楼大厅 </p>
-<p>于老师 </p>
-<p>0571-22828364</p>
-<p>后勤保障部</p>
-<p>北校区体育馆 </p>
-<p>杜老师 </p>
-<p>029-88204385</p>
-<p>南校区男博士：丁香 14、15 号楼服务台</p>
-<p>燕老师 </p>
-<p>029-81892773</p>
-<p>南校区女博士：海棠 20 号楼服务台</p>
-<p>财务处</p>
-<p>北校区一站式服务大厅</p>
-<p>王老师 </p>
-<p>029-81891002</p>
-<p>南校区 D 楼计划财务处资金管理科</p>
-<p>（三）现场报到流程</p>
-<p>\1. 缴费确认</p>
-<p>新生须在缴纳应缴费用后，方可办理现场报到手续，建议通过迎</p>
-<p>新系统提前缴纳各类费用。</p>
-<p>\2. 学历学位证书查验</p>
-<p>现场报到时，应携带录取通知书、有效身份证件和学历学位证书</p>
-<p>原件，在报到点查验。</p>
-<p>\3. 校园一卡通领取</p>
-<p>校园一卡通在报到现场领取。</p>
-<p>4．入学体检和医保办理</p>
-<p>根据学校有关规定，新生须接受入学体检，并须于入校前完成网</p>
-<p>上注册，关于入学体检和医保办理的具体步骤见附件 8。</p>
-<p>5．入住宿舍7</p>
-<p>完成在线选宿的新生，9 月 3 日当天可持录取通知书和身份证直</p>
-<p>接到所在宿舍楼办理入住手续，入住后宿舍问题请联系各公寓楼服务</p>
-<p>台处理。</p>
-<p><strong>四、注意事项</strong></p>
-<p>（一）因特殊原因不能按时报到者，须联系学院办理相关手续。</p>
-<p>逾期两周无故不报到者，按放弃入学资格处理。</p>
-<p>（二）户口迁移手续可于开学后一周内携录取通知书前往保卫处</p>
-<p>户籍室办理。</p>
-<p>北校区：例行实验楼 107 室，电话：029-88202961</p>
-<p>南校区：行政辅楼 1 层户籍室，电话：029-81891008</p>
-<p>（三）完成线上选宿及缴费的新生，9 月 3 日当天可先行前往宿</p>
-<p>舍楼入住，再前往各学院报到点报到。提前到校的新生请自行安排住</p>
-<p>宿。</p>
-<p>（四）新生在报到期间有任何问题应及时与所在学院联系。</p>
-<p><strong>五、温情提示</strong></p>
-<p>（一）请及时加入新生 QQ 群</p>
-<p><strong>QQ</strong> <strong>群号</strong> </p>
-<p><strong>学院</strong></p>
-<p>497869680 </p>
-<p>通信工程学院、电子工程学院、光电工程学院、物理学院、</p>
-<p>497912262 </p>
-<p>机电工程学院、微电子学院</p>
-<p>701903483</p>
-<p>计算机科学与技术学院、经济与管理学院、数学与统计学院、</p>
-<p>人文学院、外国语学院、生命科学技术学院、空间科学与技</p>
-<p>术学院、先进材料与纳米科技学院、网络与信息安全学院、</p>
-<p>人工智能学院、马克思主义学院、体育部</p>
-<p>241578694 </p>
-<p>广州研究院</p>
-<p>537329299 </p>
-<p>杭州研究院</p>
-<p>注：请新生根据录取学院加入对应 QQ 群。（二）请及时关注“西电研究生”微信公众号，第一时间接收研</p>
-<p>究生各类资讯和通知。</p>
-<p>（三）校区地址</p>
-<p>1.北校区地址：西安市雁塔区太白南路 2 号</p>
-<p>乘车建议：西安站&#x2F;西安北站可乘坐地铁 2 号线&#x2F;4 号线，换乘 3 号</p>
-<p>线至太白南路站下车；西安站还可乘坐 608、6、游 7 路公交至西安电</p>
-<p>子科技大学站&#x2F;太白立交站；咸阳机场可乘坐机场巴士至高新志诚丽</p>
-<p>柏酒店。</p>
-<p>\2. 南校区地址：西安市西沣路兴隆段 266 号</p>
-<p>乘车建议：西安站&#x2F;西安北站可乘坐地铁 2 号线&#x2F;4 号线，换乘 3 号</p>
-<p>线，再换乘地铁 6 号线至西安国际医学中心站下车。咸阳机场可乘坐</p>
-<p>机场巴士至吉源国际酒店或高新希尔顿花园酒店，再换乘公交。</p>
-<p>请各位同学留意学校后续通知。</p>
-<p>8</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/12/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/2023%E7%BA%A7%E7%A0%94%E7%A9%B6%E7%94%9F%E6%8A%A5%E9%81%93%E9%A1%BB%E7%9F%A5/" data-id="cll7gmvo50008w4v2fuqsc42i" data-title="2023级研究生报道须知" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -939,7 +797,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -967,23 +825,23 @@
       <ul>
         
           <li>
-            <a href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/">04.优化思路</a>
+            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200%E2%86%92Level%201/">Bandit Level 0 → Level 1</a>
           </li>
         
           <li>
-            <a href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE%E8%AE%B0%E5%BD%95/">实验记录</a>
+            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200/">Bandit Level 0</a>
           </li>
         
           <li>
-            <a href="/2023/08/16/leetcode/1351.%20%E7%BB%9F%E8%AE%A1%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B4%9F%E6%95%B0/">1351. 统计有序矩阵中的负数</a>
+            <a href="/2023/08/19/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Linux%E5%B0%8F%E5%B8%B8%E8%AF%86/">Linux小常识</a>
           </li>
         
           <li>
-            <a href="/2023/08/16/leetcode/744.%20%E5%AF%BB%E6%89%BE%E6%AF%94%E7%9B%AE%E6%A0%87%E5%AD%97%E6%AF%8D%E5%A4%A7%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%97%E6%AF%8D/">744. 寻找比目标字母大的最小字母</a>
+            <a href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/06.%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91torch/">06.源码编译torch</a>
           </li>
         
           <li>
-            <a href="/2023/08/15/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl2%E5%A4%A7%E5%85%A8/">wsl2大全</a>
+            <a href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/conda%E5%B0%8F%E5%B8%B8%E8%AF%86/">conda小常识</a>
           </li>
         
       </ul>

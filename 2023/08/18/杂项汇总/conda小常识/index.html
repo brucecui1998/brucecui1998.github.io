@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>conda小常识 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="[toc] conda小常识安装Anaconda后默认不进入conda环境方法 通过将auto_activate_base参数设置为false实现：  1conda config --set auto_activate_base false   那要进入的话通过conda activate base 如果反悔了还是希望base一直留着的话通过conda config --set auto_acti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="conda小常识">
+<meta property="og:url" content="http://example.com/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/conda%E5%B0%8F%E5%B8%B8%E8%AF%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[toc] conda小常识安装Anaconda后默认不进入conda环境方法 通过将auto_activate_base参数设置为false实现：  1conda config --set auto_activate_base false   那要进入的话通过conda activate base 如果反悔了还是希望base一直留着的话通过conda config --set auto_acti">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-08-18T12:38:12.261Z">
+<meta property="article:modified_time" content="2023-08-18T12:38:50.172Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-杂项汇总/conda小常识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/conda%E5%B0%8F%E5%B8%B8%E8%AF%86/" class="article-date">
+  <time class="dt-published" datetime="2023-08-18T12:38:12.261Z" itemprop="datePublished">2023-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      conda小常识
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="conda小常识"><a href="#conda小常识" class="headerlink" title="conda小常识"></a>conda小常识</h1><h2 id="安装Anaconda后默认不进入conda环境方法"><a href="#安装Anaconda后默认不进入conda环境方法" class="headerlink" title="安装Anaconda后默认不进入conda环境方法"></a>安装Anaconda后默认不进入conda环境方法</h2><ol>
+<li>通过将<code>auto_activate_base</code>参数设置为false实现：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda config --set auto_activate_base false</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>那要进入的话通过<code>conda activate base</code></li>
+<li>如果反悔了还是希望base一直留着的话通过<code>conda config --set auto_activate_base true</code>来恢复</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/conda%E5%B0%8F%E5%B8%B8%E8%AF%86/" data-id="cllt0b5e0000198v2a4yehz34" data-title="conda小常识" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/06.%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91torch/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          06.源码编译torch
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/git%E5%B0%8F%E5%B8%B8%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">git小常识</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200%E2%86%92Level%201/">Bandit Level 0 → Level 1</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200/">Bandit Level 0</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/19/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Linux%E5%B0%8F%E5%B8%B8%E8%AF%86/">Linux小常识</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/06.%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91torch/">06.源码编译torch</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/conda%E5%B0%8F%E5%B8%B8%E8%AF%86/">conda小常识</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

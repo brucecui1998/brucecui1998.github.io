@@ -73,6 +73,434 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-安全/OverTheWire/Bandit Level 0→Level 1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200%E2%86%92Level%201/" class="article-date">
+  <time class="dt-published" datetime="2023-08-27T05:21:38.126Z" itemprop="datePublished">2023-08-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a>►<a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200%E2%86%92Level%201/">Bandit Level 0 → Level 1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="OverTheWire-Bandit-Level-0-→-Level-1"><a href="#OverTheWire-Bandit-Level-0-→-Level-1" class="headerlink" title="OverTheWire: Bandit Level 0 → Level 1"></a>OverTheWire: Bandit Level 0 → Level 1</h1><h2 id="Level-Goal"><a href="#Level-Goal" class="headerlink" title="Level Goal"></a>Level Goal</h2><blockquote>
+<p>The password for the next level is stored in a file called <strong>readme</strong> located in the home directory. Use this password to log into bandit1  using SSH. Whenever you find a password for a level, use SSH (on port  2220) to log into that level and continue the game.</p>
+</blockquote>
+<h2 id="Commands-you-may-need-to-solve-this-level"><a href="#Commands-you-may-need-to-solve-this-level" class="headerlink" title="Commands you may need to solve this level"></a>Commands you may need to solve this level</h2><blockquote>
+<p>ls, cd, cat, file, du, find</p>
+</blockquote>
+<p><strong>Note:</strong> All commands don’t have to be used to complete level</p>
+<h2 id="Helpful-Reading-Material"><a href="#Helpful-Reading-Material" class="headerlink" title="Helpful Reading Material"></a>Helpful Reading Material</h2><p><a target="_blank" rel="noopener" href="https://www.tecmint.com/13-basic-cat-command-examples-in-linux/">13 Basic Cat Command Examples in Linux Terminal</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.tecmint.com/15-basic-ls-command-examples-in-linux/">15 Basic ‘ls’ Command Examples for Linux Beginners</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.tecmint.com/pwd-command-examples/">15 ‘pwd’ (Print Working Directory) Command Examples in Linux</a><a target="_blank" rel="noopener" href="https://www.wikihow.com/Use-SSH">https://www.wikihow.com/Use-SSH</a>)</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>使用ls命令查看当前工作目录中存在的文件 （“pwd”命令可用于查看当前工作目录）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bandit0@bandit:~$ ls  </span><br><span class="line">readme</span><br></pre></td></tr></table></figure>
+
+<p>我们看到有一个名为readme的文件来查看这个文件的内容，我们可以使用cat命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bandit0@bandit:~$ cat readme   </span><br><span class="line">boJ9jbbUNNfktd78OOpsqOltutMc3MY1</span><br></pre></td></tr></table></figure>
+
+<p>我们已找到下一级别的密码！！ 使用上面找到的密码以bandit1身份登录并访问下一级别</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">ssh bandit1@bandit.labs.overthewire.org -p 2220</span>  </span><br><span class="line">This is a OverTheWire game server. More information on http://www.overthewire.org/wargames</span><br><span class="line"></span><br><span class="line">bandit1@bandit.labs.overthewire.org&#x27;s password: boJ9jbbUNNfktd78OOpsqOltutMc3MY1</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200%E2%86%92Level%201/" data-id="cllt0b5e5000698v24x4kgmrp" data-title="Bandit Level 0 → Level 1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-安全/OverTheWire/Bandit Level 0" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200/" class="article-date">
+  <time class="dt-published" datetime="2023-08-27T05:13:11.269Z" itemprop="datePublished">2023-08-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a>►<a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200/">Bandit Level 0</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="OverTheWire-Bandit-Level-0"><a href="#OverTheWire-Bandit-Level-0" class="headerlink" title="OverTheWire: Bandit Level 0"></a>OverTheWire: Bandit Level 0</h1><h2 id="Level-Goal"><a href="#Level-Goal" class="headerlink" title="Level Goal"></a>Level Goal</h2><p>The goal of this level is for you to log into the game using SSH. The host to which you need to connect is <strong>bandit.labs.overthewire.org</strong>, on port 2220. The username is <strong>bandit0</strong> and the password is <strong>bandit0</strong>. Once logged in, go to the <a target="_blank" rel="noopener" href="https://overthewire.org/wargames/bandit/bandit1.html">Level 1</a> page to find out how to beat Level 1.</p>
+<h2 id="Commands-you-may-need-to-solve-this-level"><a href="#Commands-you-may-need-to-solve-this-level" class="headerlink" title="Commands you may need to solve this level"></a>Commands you may need to solve this level</h2><blockquote>
+<p>ssh</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; whatis ssh    ssh (1) - OpenSSH remote login client </span><br></pre></td></tr></table></figure>
+
+<h2 id="Helpful-Reading-Material"><a href="#Helpful-Reading-Material" class="headerlink" title="Helpful Reading Material"></a>Helpful Reading Material</h2><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/SSH_(Secure_Shell)">Secure Shell - Wikipedia</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.wikihow.com/Use-SSH">How to Use SSH (with Pictures) - wikiHow</a></p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>Username: <code>bandit0</code></li>
+<li>Hostname: <code>bandit.labs.overthewire.org</code></li>
+<li>Port: <code>2220</code></li>
+<li>Password: <code>bandit0</code></li>
+</ul>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh &lt;username&gt;@&lt;hostname&gt; -p &lt;port&gt;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200/" data-id="cllt0b5e1000298v2cxjlavga" data-title="Bandit Level 0" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-杂项汇总/Linux小常识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/19/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Linux%E5%B0%8F%E5%B8%B8%E8%AF%86/" class="article-date">
+  <time class="dt-published" datetime="2023-08-19T02:16:04.707Z" itemprop="datePublished">2023-08-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/19/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Linux%E5%B0%8F%E5%B8%B8%E8%AF%86/">Linux小常识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="Linux小常识"><a href="#Linux小常识" class="headerlink" title="Linux小常识"></a>Linux小常识</h1><h2 id="使用命令行查看u盘"><a href="#使用命令行查看u盘" class="headerlink" title="使用命令行查看u盘"></a>使用命令行查看u盘</h2><p>在linux系统下，我们可以通过使用命令行的方式来查看u盘。首先需要找到u盘的挂载点，通常情况下，u盘会自动挂载在‘&#x2F;media’目录下。我们可以通过输入命令‘cd &#x2F;media &amp;&amp; ls’来进入该目录并查看当前目录下的文件和文件夹。</p>
+<p>如果u盘没有自动挂载，我们可以手动挂载u盘。首先需要创建一个mount_point用来作为该u盘的挂载点。比如我们可以在‘&#x2F;mnt’目录下创建一个名为‘usb’的文件夹来作为挂载点。然后，我们可以通过输入命令‘sudo mount &#x2F;dev&#x2F;sdb1 &#x2F;mnt&#x2F;usb’来挂载该u盘到‘&#x2F;mnt&#x2F;usb’目录下。</p>
+<p>挂载u盘</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mount /dev/sdb1 /mnt/usb</span><br></pre></td></tr></table></figure>
+
+<p>最后，我们可以通过输入命令‘cd &#x2F;mnt&#x2F;usb &amp;&amp; ls’来进入该目录并查看u盘中的文件和文件夹。</p>
+<p>安全退出u盘</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sync &amp;&amp; sudo umount -q -l /dev/sdb1</span><br></pre></td></tr></table></figure>
+
+<h2 id="打包并压缩目录"><a href="#打包并压缩目录" class="headerlink" title="打包并压缩目录"></a>打包并压缩目录</h2><p>先用 tar 命令将目录打包，然后才能用 gzip 命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf pytorch-1.13.1.tar pytorch-1.13.1/</span><br><span class="line">gzip pytorch-1.13.1.tar</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/19/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Linux%E5%B0%8F%E5%B8%B8%E8%AF%86/" data-id="cllt0b5dw000098v23pgp3ug8" data-title="Linux小常识" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-项目合集/U-Net3D网络优化/06.源码编译torch" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/06.%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91torch/" class="article-date">
+  <time class="dt-published" datetime="2023-08-18T12:39:43.768Z" itemprop="datePublished">2023-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/06.%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91torch/">06.源码编译torch</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="06-源码编译torch"><a href="#06-源码编译torch" class="headerlink" title="06.源码编译torch"></a>06.源码编译torch</h1><h2 id="Debian源码编译torch-v1-13-1"><a href="#Debian源码编译torch-v1-13-1" class="headerlink" title="Debian源码编译torch-v1.13.1"></a>Debian源码编译torch-v1.13.1</h2><p>本机环境：</p>
+<ul>
+<li>Debian 12.1</li>
+<li>gcc&#x2F;g++ 12.2</li>
+<li>python 3.10.12</li>
+</ul>
+<p>安装过程参考：<a target="_blank" rel="noopener" href="https://github.com/pytorch/pytorch/tree/v1.13.1#from-source">https://github.com/pytorch/pytorch/tree/v1.13.1#from-source</a></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h3 id="准备cuda环境"><a href="#准备cuda环境" class="headerlink" title="准备cuda环境"></a>准备cuda环境</h3><p>参考本博客 “杂项汇总”-“搭建科研环境远程服务器”</p>
+<h3 id="准备cudnn"><a href="#准备cudnn" class="headerlink" title="准备cudnn"></a>准备cudnn</h3><p>下载<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cudnn">cudnn</a> （<a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/cudnn/pdf/cuDNN-Support-Matrix.pdf">cudnn Support Matrix版本对照</a>）</p>
+<p>安装<a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html">cudnn</a></p>
+<h3 id="准备anaconda环境"><a href="#准备anaconda环境" class="headerlink" title="准备anaconda环境"></a>准备anaconda环境</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n src_torch python=3.10</span><br><span class="line">conda activate src_torch</span><br></pre></td></tr></table></figure>
+
+<p>Install Dependencies</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda install astunparse numpy ninja pyyaml setuptools cmake cffi typing_extensions future six requests dataclasses</span><br><span class="line">conda install mkl mkl-include</span><br><span class="line">conda install -c pytorch magma-cuda121  # or the magma-cuda* that matches your CUDA version from https://anaconda.org/pytorch/repo</span><br></pre></td></tr></table></figure>
+
+<h3 id="准备源码以及第三方库"><a href="#准备源码以及第三方库" class="headerlink" title="准备源码以及第三方库"></a>准备源码以及第三方库</h3><p>由于网速问题，torch源码的submodule很难clone下来，这里我们先手动把torch源码所需要的submodule全部下载下来拷在u盘准备拷到linux系统上。</p>
+<p>submodule下载可以看一下.gitsubmodule</p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/third-party.png" alt="image-20230819200335385"></p>
+<h2 id="编译源码"><a href="#编译源码" class="headerlink" title="编译源码"></a>编译源码</h2><p>将pytorch-1.13.1.zip和这些submodule都上传到linux服务器。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /mnt/usb</span><br><span class="line">sudo mount /dev/sdb1 /mnt/usb</span><br><span class="line">cp pytorch-1.13.1.zip /your-path/</span><br></pre></td></tr></table></figure>
+
+<p>编译</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export CMAKE_PREFIX_PATH=$&#123;CONDA_PREFIX:-&quot;$(dirname $(which conda))/../&quot;&#125;</span><br><span class="line">export USE_CUDA=True DEBUG=1 USE_MKLDNN=0</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+
+<h3 id="常见报错"><a href="#常见报错" class="headerlink" title="常见报错"></a>常见报错</h3><ul>
+<li>报错：C++: fatal error: Killed signal terminated program cc1plus</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44796670/article/details/121234446">https://blog.csdn.net/weixin_44796670/article/details/121234446</a></p>
+<ul>
+<li>编译报错error: invalid conversion from ‘void<em>’ to ‘const char</em>’ [-fpermissive]</li>
+</ul>
+<p>在CMakeLists.txt中添加</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span>(APPEND CMAKE_CXX_FLAGS <span class="string">&quot; -fpermissive&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>报错：cc1plus: warnings being treated as errors</li>
+</ul>
+<p>将CMakeLists.txt中有关-Werror&#x3D;return_type的设置给注释掉</p>
+<h2 id="曙光x86平台源码编译torch-v1-10-0"><a href="#曙光x86平台源码编译torch-v1-10-0" class="headerlink" title="曙光x86平台源码编译torch-v1.10.0"></a>曙光x86平台源码编译torch-v1.10.0</h2><ul>
+<li>Python 3.6.2 or later </li>
+<li>C++14 compiler</li>
+<li><a target="_blank" rel="noopener" href="https://rocmdocs.amd.com/en/latest/Installation_Guide/Installation-Guide.html">AMD ROCm</a> 4.0 and above installation</li>
+</ul>
+<p><strong>Install Dependencies</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install astunparse numpy ninja pyyaml mkl mkl-include setuptools cmake cffi typing_extensions future six requests dataclasses</span><br></pre></td></tr></table></figure>
+
+<p><strong>Get the PyTorch Source</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:pytorch/pytorch.git</span><br><span class="line">git checkout v1.10.0</span><br><span class="line">git submodule sync</span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+
+<p><strong>Install PyTorch</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python tools/amd_build/build_amd.py</span><br><span class="line">export CMAKE_PREFIX_PATH=$&#123;CONDA_PREFIX:-&quot;$(dirname $(which conda))/../&quot;&#125;</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/06.%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91torch/" data-id="cllt0b5e6000898v2at00hluo" data-title="06.源码编译torch" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-杂项汇总/conda小常识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/conda%E5%B0%8F%E5%B8%B8%E8%AF%86/" class="article-date">
+  <time class="dt-published" datetime="2023-08-18T12:38:12.261Z" itemprop="datePublished">2023-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/conda%E5%B0%8F%E5%B8%B8%E8%AF%86/">conda小常识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="conda小常识"><a href="#conda小常识" class="headerlink" title="conda小常识"></a>conda小常识</h1><h2 id="安装Anaconda后默认不进入conda环境方法"><a href="#安装Anaconda后默认不进入conda环境方法" class="headerlink" title="安装Anaconda后默认不进入conda环境方法"></a>安装Anaconda后默认不进入conda环境方法</h2><ol>
+<li>通过将<code>auto_activate_base</code>参数设置为false实现：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda config --set auto_activate_base false</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>那要进入的话通过<code>conda activate base</code></li>
+<li>如果反悔了还是希望base一直留着的话通过<code>conda config --set auto_activate_base true</code>来恢复</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/conda%E5%B0%8F%E5%B8%B8%E8%AF%86/" data-id="cllt0b5e0000198v2a4yehz34" data-title="conda小常识" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-杂项汇总/git小常识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/git%E5%B0%8F%E5%B8%B8%E8%AF%86/" class="article-date">
+  <time class="dt-published" datetime="2023-08-18T12:11:53.567Z" itemprop="datePublished">2023-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/git%E5%B0%8F%E5%B8%B8%E8%AF%86/">git小常识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="git小常识"><a href="#git小常识" class="headerlink" title="git小常识"></a>git小常识</h1><h2 id="配置SSH免密和Token登录"><a href="#配置SSH免密和Token登录" class="headerlink" title="配置SSH免密和Token登录"></a>配置SSH免密和Token登录</h2><p>根据<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904102846005255%E9%85%8D%E7%BD%AEssh%E5%85%AC%E5%8C%99">https://juejin.cn/post/6844904102846005255配置ssh公匙</a></p>
+<p>根据<a target="_blank" rel="noopener" href="https://www.itxm.cn/post/hcbee1a8.html%E9%85%8D%E7%BD%AEToken%E7%99%BB%E5%BD%95">https://www.itxm.cn/post/hcbee1a8.html配置Token登录</a></p>
+<h2 id="网速问题"><a href="#网速问题" class="headerlink" title="网速问题"></a>网速问题</h2><p>很多时候在git使用过程中经常出现 Failed to connect to github.com port 443 after 21126 ms问题，在科学上网后仍然还是有问题。</p>
+<p>在网站<a target="_blank" rel="noopener" href="https://www.ipaddress.com/">https://www.ipaddress.com/</a> 分别搜索（记得查，根据时间不同会变）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">github.global.ssl.fastly.net</span><br><span class="line">github.com</span><br></pre></td></tr></table></figure>
+
+<p>得到ip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.69.194</span><br><span class="line">140.82.112.3</span><br></pre></td></tr></table></figure>
+
+<p>于是编辑”C:\Windows\System32\drivers\etc\hosts”在最下方两行加入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">140.82.112.4  github.com</span><br><span class="line">151.101.1.194 github.global.ssl    </span><br><span class="line">151.101.65.194 github.global.ssl   </span><br><span class="line">151.101.129.194 github.global.ssl </span><br><span class="line">151.101.193.194 github.global.ssl </span><br></pre></td></tr></table></figure>
+
+<p>linux系统的话就编辑&#x2F;etc&#x2F;hosts，改完之后就再也不会出现Failed to connect的问题了</p>
+<h2 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git branch -M main</span><br><span class="line">git remote add origin https://github.com/brucecui1998/xxxxxxx.git</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/git%E5%B0%8F%E5%B8%B8%E8%AF%86/" data-id="cllt0b5e2000398v24jus5d4m" data-title="git小常识" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-项目合集/U-Net3D网络优化/05.性能分析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/05.%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" class="article-date">
+  <time class="dt-published" datetime="2023-08-18T06:51:20.583Z" itemprop="datePublished">2023-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/05.%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/">05.性能分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="05-性能分析"><a href="#05-性能分析" class="headerlink" title="05.性能分析"></a>05.性能分析</h1><p>为了便于在windows上调试性能分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:brucecui1998/fastUNet3D.git</span><br><span class="line">cd fastUNet3D</span><br></pre></td></tr></table></figure>
+
+<h2 id="利用torch-profiler-profile分析性能"><a href="#利用torch-profiler-profile分析性能" class="headerlink" title="利用torch.profiler.profile分析性能"></a>利用torch.profiler.profile分析性能</h2><p>使用torch.profiler.profile分析核心耗时的代码，会将分析结果输出至当前路径下的profile.txt</p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/profile.png" alt="image-20230818145906464"></p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/profile_output.png" alt="image-20230818195620874"></p>
+<p>可以看到每一轮epoch最耗时的是aten::convolution_backward操作，我们只能在本机中找到该函数的声明”C:\Users\Administrator\anaconda3\envs\unet\Lib\site-packages\torch\include\ATen\ops\convolution_backward.h”，于是考虑源码编译torch，目的为了更好优化底层算子</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/05.%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" data-id="cllt0b5e8000j98v268t7f9nr" data-title="05.性能分析" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-项目合集/U-Net3D网络优化/04.优化思路" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/" class="article-date">
@@ -101,7 +529,7 @@
       
         <p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF.png" alt="image-20230816181605388"></p>
 <h1 id="04-优化思路"><a href="#04-优化思路" class="headerlink" title="04.优化思路"></a>04.优化思路</h1><p>首先做简单测试，测试出单个epoch的耗时，8张dcu耗时77s，而单张4090耗时46s。</p>
-<h2 id="官方赛题给出的优化思路"><a href="#官方赛题给出的优化思路" class="headerlink" title="官方赛题给出的优化思路"></a>官方赛题给出的优化思路</h2><h3 id="a-考虑使用异步流进行计算传输重叠"><a href="#a-考虑使用异步流进行计算传输重叠" class="headerlink" title="a. 考虑使用异步流进行计算传输重叠"></a>a. 考虑使用异步流进行计算传输重叠</h3><h3 id="b-考虑主机与设备内存的分配方式"><a href="#b-考虑主机与设备内存的分配方式" class="headerlink" title="b. 考虑主机与设备内存的分配方式"></a>b. 考虑主机与设备内存的分配方式</h3><h3 id="c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能"><a href="#c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能" class="headerlink" title="c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能"></a>c．可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能</h3><h2 id="英伟达MLPerf基准测试的优化思路"><a href="#英伟达MLPerf基准测试的优化思路" class="headerlink" title="英伟达MLPerf基准测试的优化思路"></a>英伟达MLPerf基准测试的优化思路</h2><table>
+<h2 id="官方赛题给出的优化思路"><a href="#官方赛题给出的优化思路" class="headerlink" title="官方赛题给出的优化思路"></a>官方赛题给出的优化思路</h2><h3 id="a-考虑使用异步流进行计算传输重叠"><a href="#a-考虑使用异步流进行计算传输重叠" class="headerlink" title="a. 考虑使用异步流进行计算传输重叠"></a>a. 考虑使用异步流进行计算传输重叠</h3><h3 id="b-考虑主机与设备内存的分配方式"><a href="#b-考虑主机与设备内存的分配方式" class="headerlink" title="b. 考虑主机与设备内存的分配方式"></a>b. 考虑主机与设备内存的分配方式</h3><h3 id="c-可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能"><a href="#c-可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能" class="headerlink" title="c. 可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能"></a>c. 可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能</h3><h2 id="英伟达MLPerf基准测试的优化思路"><a href="#英伟达MLPerf基准测试的优化思路" class="headerlink" title="英伟达MLPerf基准测试的优化思路"></a>英伟达MLPerf基准测试的优化思路</h2><table>
 <thead>
 <tr>
 <th>MLPerfv0.7</th>
@@ -233,6 +661,23 @@
 <td>&#x2F;result&#x2F;v0&#x2F;unet3d-8dcu.log</td>
 </tr>
 </tbody></table>
+<p><strong>4090加了–cudnn_benchmark加速后</strong></p>
+<table>
+<thead>
+<tr>
+<th>显卡</th>
+<th>收敛耗时</th>
+<th>单个epoch耗时</th>
+<th>对应数据文件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1*4090</td>
+<td></td>
+<td>45s</td>
+<td></td>
+</tr>
+</tbody></table>
 
       
     </div>
@@ -321,544 +766,6 @@
 
 
   
-    <article id="post-leetcode/744. 寻找比目标字母大的最小字母" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/16/leetcode/744.%20%E5%AF%BB%E6%89%BE%E6%AF%94%E7%9B%AE%E6%A0%87%E5%AD%97%E6%AF%8D%E5%A4%A7%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%97%E6%AF%8D/" class="article-date">
-  <time class="dt-published" datetime="2023-08-16T01:23:48.810Z" itemprop="datePublished">2023-08-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/16/leetcode/744.%20%E5%AF%BB%E6%89%BE%E6%AF%94%E7%9B%AE%E6%A0%87%E5%AD%97%E6%AF%8D%E5%A4%A7%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%97%E6%AF%8D/">744. 寻找比目标字母大的最小字母</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="744-寻找比目标字母大的最小字母"><a href="#744-寻找比目标字母大的最小字母" class="headerlink" title="744. 寻找比目标字母大的最小字母"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-smallest-letter-greater-than-target/">744. 寻找比目标字母大的最小字母</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-smallest-letter-greater-than-target/">题目</a></h2><p>给你一个字符数组 <code>letters</code>，该数组按<strong>非递减顺序</strong>排序，以及一个字符 <code>target</code>。<code>letters</code> 里<strong>至少有两个不同</strong>的字符。</p>
-<p>返回 <code>letters</code> 中大于 <code>target</code> 的最小的字符。如果不存在这样的字符，则返回 <code>letters</code> 的第一个字符。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: letters = [&quot;c&quot;, &quot;f&quot;, &quot;j&quot;]，target = &quot;a&quot;</span><br><span class="line">输出: &quot;c&quot;</span><br><span class="line">解释：letters 中字典上比 &#x27;a&#x27; 大的最小字符是 &#x27;c&#x27;。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: letters = [&quot;c&quot;,&quot;f&quot;,&quot;j&quot;], target = &quot;c&quot;</span><br><span class="line">输出: &quot;f&quot;</span><br><span class="line">解释：letters 中字典顺序上大于 &#x27;c&#x27; 的最小字符是 &#x27;f&#x27;。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 3:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: letters = [&quot;x&quot;,&quot;x&quot;,&quot;y&quot;,&quot;y&quot;], target = &quot;z&quot;</span><br><span class="line">输出: &quot;x&quot;</span><br><span class="line">解释：letters 中没有一个字符在字典上大于 &#x27;z&#x27;，所以我们返回 letters[0]。</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>2 &lt;= letters.length &lt;= 104</code></li>
-<li><code>letters[i]</code> 是一个小写字母</li>
-<li><code>letters</code> 按<strong>非递减顺序</strong>排序</li>
-<li><code>letters</code> 最少包含两个不同的字母</li>
-<li><code>target</code> 是一个小写字母</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>如果target大于最大的字符，则返回 <code>letters</code> 的第一个字符。</p>
-<p>否则就用二分查找，并设置一个ans存储暂时的比target大的数，循环退出条件是left&gt;right</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">char</span> <span class="title">nextGreatestLetter</span><span class="params">(vector&lt;<span class="type">char</span>&gt;&amp; letters, <span class="type">char</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = letters.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(target &gt;= letters[n<span class="number">-1</span>])</span><br><span class="line">            <span class="keyword">return</span> letters[<span class="number">0</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> right = n<span class="number">-1</span>;</span><br><span class="line">        <span class="type">int</span> ans;</span><br><span class="line">        <span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">            <span class="type">int</span> mid = left + (right-left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(letters[mid] &gt; target)&#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">                ans = mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> letters[ans];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/16/leetcode/744.%20%E5%AF%BB%E6%89%BE%E6%AF%94%E7%9B%AE%E6%A0%87%E5%AD%97%E6%AF%8D%E5%A4%A7%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%97%E6%AF%8D/" data-id="clldejn0e000130v2api4h6y2" data-title="744. 寻找比目标字母大的最小字母" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-杂项汇总/wsl2大全" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/15/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl2%E5%A4%A7%E5%85%A8/" class="article-date">
-  <time class="dt-published" datetime="2023-08-15T06:48:38.237Z" itemprop="datePublished">2023-08-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/15/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl2%E5%A4%A7%E5%85%A8/">wsl2大全</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="wsl2大全"><a href="#wsl2大全" class="headerlink" title="wsl2大全"></a>wsl2大全</h1><h2 id="安装wsl2和Windows-Terminal"><a href="#安装wsl2和Windows-Terminal" class="headerlink" title="安装wsl2和Windows Terminal"></a>安装wsl2和Windows Terminal</h2><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/wsl/install-manual">https://learn.microsoft.com/zh-cn/windows/wsl/install-manual</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/531799719">https://zhuanlan.zhihu.com/p/531799719</a></p>
-<p>安装Windows Terminal，更炫酷</p>
-<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/terminal/install">https://learn.microsoft.com/zh-cn/windows/terminal/install</a></p>
-<p>Windows Terminal能帮助我们管理命令行工具、PowerShell和WSL等Shell用户的工具，能为我们提供最佳的 WSL 体验。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl -l -v</span><br></pre></td></tr></table></figure>
-
-<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl.png"></p>
-<p>设置默认wsl环境</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl -s Ubuntu-18.04</span><br></pre></td></tr></table></figure>
-
-<p>以后只需要输入wsl即可进入wsl的ubuntu环境</p>
-<h2 id="将wsl安装的linux系统从C盘迁移到D盘"><a href="#将wsl安装的linux系统从C盘迁移到D盘" class="headerlink" title="将wsl安装的linux系统从C盘迁移到D盘"></a>将wsl安装的linux系统从C盘迁移到D盘</h2><p>默认位置在C:\Users\Administrator\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc</p>
-<p>我在 PowerShell 中执行了这些命令，以将我的 Ubuntu 发行版从 C: 移动到驱动器 D:\wsl-ubuntu ：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; mkdir D:\wsl<span class="literal">-ubuntu</span>  (create new location)</span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">-l</span> <span class="literal">-v</span>            (list wsl distros)</span><br><span class="line">NAME                   STATE           VERSION</span><br><span class="line">Ubuntu                 Running         <span class="number">2</span></span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">--shutdown</span></span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">-l</span> <span class="literal">-v</span>            (verify <span class="keyword">if</span> is stopped)</span><br><span class="line">NAME                   STATE           VERSION</span><br><span class="line">Ubuntu                 Stopped         <span class="number">2</span></span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">--export</span> Ubuntu ubuntu.tar  </span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">--unregister</span> Ubuntu</span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">--import</span> Ubuntu D:\wsl<span class="literal">-ubuntu</span>\ .\ubuntu.tar <span class="literal">--version</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-<p>最后重新启动计算机。</p>
-<h2 id="用户问题"><a href="#用户问题" class="headerlink" title="用户问题"></a>用户问题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser cuirongpei  创建用户</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su cuirongpei 切换到cuirongpei用户</span><br></pre></td></tr></table></figure>
-
-<p>win+ r输入wt打开命令行后输入debian进入Linux终端</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su cuirongpei</span><br></pre></td></tr></table></figure>
-
-<p>切换用户以避免使用root不小心做一些不可避免的事情</p>
-<p>给用户添加sudo 权限，使用root用户</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +w /etc/sudoers　　　　// 给/etc/sudoers添加写权限</span><br><span class="line">vim /etc/sudoers　　　　　　 //　修改sudoers文件</span><br></pre></td></tr></table></figure>
-
-<p>在最下面添加，为cuirongpei用户设置权限</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cuirongpei ALL=(ALL) ALL</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置wsl的基本环境（ubuntu）"><a href="#配置wsl的基本环境（ubuntu）" class="headerlink" title="配置wsl的基本环境（ubuntu）"></a>配置wsl的基本环境（ubuntu）</h2><p>换源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list_bak</span><br><span class="line">sudo sed -i &#x27;s/archive.ubuntu.com/mirrors.aliyun.com/g&#x27; /etc/apt/sources.list</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install gcc g++ cmake vim openssh-server git net-tools ufw</span><br></pre></td></tr></table></figure>
-
-<p>anaconda</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -P /tmp https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh</span><br><span class="line">bash Anaconda3-2022.05-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="在wsl2中使用CUDA"><a href="#在wsl2中使用CUDA" class="headerlink" title="在wsl2中使用CUDA"></a>在wsl2中使用CUDA</h2><p><a target="_blank" rel="noopener" href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html</a></p>
-<p>Windows10&#x2F;11 WSL2 安装nvidia-cuda驱动 <a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv14608547/">https://www.bilibili.com/read/cv14608547/</a></p>
-<p><a target="_blank" rel="noopener" href="https://docs.nvidia.cn/cuda/wsl-user-guide/index.html#step-3-set-up-a-linux-development-environment">CUDA on WSL User Guide</a> 英伟达官方文档，<strong>参考这个安装即可</strong></p>
-<p>切记 <strong>用户不得在 WSL 2 中安装任何 NVIDIA GPU Linux 驱动程序</strong></p>
-<p>在wsl2中使用CUDA的局限有很多，例如</p>
-<h3 id="Linux-CUDA-应用程序的已知限制-"><a href="#Linux-CUDA-应用程序的已知限制-" class="headerlink" title="Linux CUDA 应用程序的已知限制  "></a>Linux CUDA 应用程序的已知限制 <a target="_blank" rel="noopener" href="https://docs.nvidia.cn/cuda/wsl-user-guide/index.html#known-limitations-for-linux-cuda-applications"> </a></h3><p>下表列出了 WSL 2 上的已知限制，这些限制可能会影响使用 Linux 上完全支持的某些功能的 CUDA 应用程序。 </p>
-<table>
-<thead>
-<tr>
-<th>局限性</th>
-<th>冲击</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>不支持麦克斯韦 GPU。</td>
-<td>Maxwell GPU 在 WSL 2 中不受官方支持，但它可能仍然可以工作。建议使用 Pascal 和更高版本的 GPU。</td>
-</tr>
-<tr>
-<td>统一内存 - 完全托管内存支持在 Windows 本机上不可用，因此 WSL 2 在可预见的未来将不支持它。</td>
-<td>UVM 完整功能将不可用，因此依赖 UVM 完整功能的应用程序可能无法工作。  如果应用程序使用的是托管内存，则应用程序可能会看到性能降低和系统内存使用率较高。  不支持并发 CPU&#x2F;GPU 访问。CUDA 查询将说明它是否受支持，应用程序应检查这一点。</td>
-</tr>
-<tr>
-<td>固定系统内存（例如：应用程序驻留用于 GPU 访问的系统内存）应用程序的可用性有限。</td>
-<td>例如，某些深度学习训练工作负载（取决于所使用的框架、模型和数据集大小）可能会超过此限制，并且可能无法工作。</td>
-</tr>
-<tr>
-<td>裸机（不是容器）上的根用户不会在预期位置找到 nvidia-smi。</td>
-<td>用  <code>/usr/lib/wsl/lib/nvidia-smi</code> 或手动添加  <code>/usr/lib/wsl/lib/</code> 到路径）。</td>
-</tr>
-<tr>
-<td>使用 NVIDIA Container Toolkit for Docker 19.03，仅  <code>--gpus all</code> 受支持。</td>
-<td>在多 GPU 系统上，无法使用特定索引号枚举 GPU 来筛选特定 GPU 设备。</td>
-</tr>
-</tbody></table>
-<h3 id="尚不支持的功能-"><a href="#尚不支持的功能-" class="headerlink" title="尚不支持的功能  "></a>尚不支持的功能 <a target="_blank" rel="noopener" href="https://docs.nvidia.cn/cuda/wsl-user-guide/index.html#features-not-yet-supported"> </a></h3><p>下表列出了当前不支持的功能集。 </p>
-<table>
-<thead>
-<tr>
-<th>局限性</th>
-<th>冲击</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>NVML（nvidia-smi）尚不支持所有查询。</td>
-<td>GPU 利用率、活动计算进程是一些尚不支持的查询。不支持可修改的状态功能（ECC、计算模式、持久性模式）。</td>
-</tr>
-<tr>
-<td>OpenGL-CUDA Interop 尚不受支持。</td>
-<td>依赖OpenGL的应用程序将无法工作。</td>
-</tr>
-</tbody></table>
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/15/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl2%E5%A4%A7%E5%85%A8/" data-id="clldejn0g000230v2fjqdges4" data-title="wsl2大全" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-项目合集/U-Net3D网络优化/03.了解MLPerf基准测试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/15/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/03.%E4%BA%86%E8%A7%A3MLPerf%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/" class="article-date">
-  <time class="dt-published" datetime="2023-08-15T02:46:35.778Z" itemprop="datePublished">2023-08-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/15/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/03.%E4%BA%86%E8%A7%A3MLPerf%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/">03.MLPerf基准测试</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="03-MLPerf基准测试"><a href="#03-MLPerf基准测试" class="headerlink" title="03.MLPerf基准测试"></a>03.MLPerf基准测试</h1><p><a target="_blank" rel="noopener" href="https://www.nvidia.com/en-us/data-center/resources/mlperf-benchmarks/">MLPerf简介</a></p>
-<p><a href="%5BMLPerf%E7%AE%80%E4%BB%8B%5D(https://www.nvidia.com/en-us/data-center/resources/mlperf-benchmarks/)">MLcommons</a></p>
-<p>NVIDIA官方资料</p>
-<p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/deep-learning-performance-training-inference">英伟达数据中心深度学习产品性能</a></p>
-<p><a target="_blank" rel="noopener" href="https://catalog.ngc.nvidia.com/?filters=&orderBy=weightPopularDESC&query=">英伟达NGC目录</a></p>
-<p><a target="_blank" rel="noopener" href="https://forums.developer.nvidia.com/c/accelerated-computing/nvidia-gpu-cloud-ngc-users/25">NGC开发者社区论坛</a></p>
-<h2 id="学习英伟达NGC"><a href="#学习英伟达NGC" class="headerlink" title="学习英伟达NGC"></a>学习英伟达NGC</h2><h3 id="NGC-Getting-Started"><a href="#NGC-Getting-Started" class="headerlink" title="NGC - Getting Started"></a>NGC - Getting Started</h3><p>REF:<a target="_blank" rel="noopener" href="https://catalog.ngc.nvidia.com/orgs/nvidia/collections/gettingstarted">https://catalog.ngc.nvidia.com/orgs/nvidia/collections/gettingstarted</a></p>
-<p>按照这个网址配置NGC：<a target="_blank" rel="noopener" href="https://docs.ngc.nvidia.com/cli/cmd.html">https://docs.ngc.nvidia.com/cli/cmd.html</a></p>
-<p>配置wsl2：参见“杂项汇总”-“wsl2大全”</p>
-<p>搞了一下午，没搞定NGC教程，因为用不了nvidia-docker</p>
-<p>虽然配置好了wsl2和docker，但是仍然在windows上用不了nvidia-docker，又有人说必须是 Windows Insider Program 的成员才能用</p>
-<p>参见：<a target="_blank" rel="noopener" href="https://www.coder.work/article/7024492">https://www.coder.work/article/7024492</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions">https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions</a></p>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/58169786/problem-in-installing-nvidia-docker-in-windows-10-system">https://stackoverflow.com/questions/58169786/problem-in-installing-nvidia-docker-in-windows-10-system</a></p>
-<p>还是老老实实装linux吧。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/15/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/03.%E4%BA%86%E8%A7%A3MLPerf%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/" data-id="clldejn0h000a30v26b8jc9bk" data-title="03.MLPerf基准测试" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-杂项汇总/fastllm安装" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm%E5%AE%89%E8%A3%85/" class="article-date">
-  <time class="dt-published" datetime="2023-08-13T10:29:26.219Z" itemprop="datePublished">2023-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm%E5%AE%89%E8%A3%85/">fastllm安装</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="fastllm安装（linux）"><a href="#fastllm安装（linux）" class="headerlink" title="fastllm安装（linux）"></a>fastllm安装（linux）</h1><h2 id="本机环境"><a href="#本机环境" class="headerlink" title="本机环境"></a>本机环境</h2><p>debian 12.1</p>
-<p>gcc&#x2F;g++ 12.2</p>
-<p>NVIDIA-SMI 535.86.05</p>
-<p>cudatoolkit 12.1</p>
-<p>cmake 3.25.1</p>
-<p>python3.10</p>
-<h2 id="配置python环境"><a href="#配置python环境" class="headerlink" title="配置python环境"></a>配置python环境</h2><p>安装minianaconda</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.5.2-0-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-py310_23.5.2-0-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
-
-<p>配置一个python环境</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n fastllm python=3.10 -y</span><br><span class="line">conda activate fastllm</span><br></pre></td></tr></table></figure>
-
-<h2 id="下载并编译"><a href="#下载并编译" class="headerlink" title="下载并编译"></a>下载并编译</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:ztxz16/fastllm.git</span><br><span class="line">cd fastllm</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake .. -DUSE_CUDA=ON</span><br><span class="line">make -j </span><br></pre></td></tr></table></figure>
-
-<p>编译完成后，可以使用如下命令安装简易python工具包 (暂时只支持Linux)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd tools # 这时在fastllm/build/tools目录下</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
-
-<h2 id="下载模型运行demo程序"><a href="#下载模型运行demo程序" class="headerlink" title="下载模型运行demo程序"></a>下载模型运行demo程序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 这时在fastllm/build目录下</span><br><span class="line">wget https://huggingface.co/huangyuyang/chatglm2-6b-fp16.flm/resolve/main/chatglm2-6b-fp16.flm</span><br><span class="line">./main -p chatglm2-6b-fp16.flm </span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="fastllm安装（Windows）"><a href="#fastllm安装（Windows）" class="headerlink" title="fastllm安装（Windows）"></a>fastllm安装（Windows）</h1><h2 id="本机环境-1"><a href="#本机环境-1" class="headerlink" title="本机环境"></a>本机环境</h2><p>windows 10</p>
-<p>vs2019</p>
-<p>NVIDIA-SMI 528.24</p>
-<p>cudatoolkit 12.0</p>
-<p>cmake 3.27</p>
-<p>python3.10</p>
-<p>其中cudatoolkit和nvidia-smi安装教程可参考我的<a target="_blank" rel="noopener" href="https://brucecui1998.github.io/">个人博客</a>-杂项汇总-<a target="_blank" rel="noopener" href="https://brucecui1998.github.io/2023/08/09/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/pytorch-gpu%E9%85%8D%E7%BD%AE%E4%BB%A5unet%E4%B8%BA%E4%BE%8B/">pytorch-gpu环境配置以unet为例</a></p>
-<h2 id="配置python环境-1"><a href="#配置python环境-1" class="headerlink" title="配置python环境"></a>配置python环境</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n fastllm python=3.10 -y</span><br><span class="line">conda activate fastllm</span><br></pre></td></tr></table></figure>
-
-<p>可以使用如下命令安装简易python工具包</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd tools # 这时在fastllm/build/tools目录下</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
-
-<h2 id="下载并编译-1"><a href="#下载并编译-1" class="headerlink" title="下载并编译"></a>下载并编译</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:ztxz16/fastllm.git</span><br></pre></td></tr></table></figure>
-
-<p>进入fastllm，鼠标右键新建文件夹，取名叫build</p>
-<p>打开cmake-gui，配置好文件路径后，依次点击①②③</p>
-<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_cmake.png" alt="image-20230813195358044"></p>
-<p>在VS右侧解决方案资源管理其中选中main右键选择属性，如下图配置</p>
-<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_shuxing.png" alt="image-20230813195824432"></p>
-<p>点击</p>
-<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_bianyi.png" alt="image-20230813195914372"></p>
-<p>编译好的可执行文件在fastllm&#x2F;build&#x2F;Debug，每个人可能不一样，具体可看工程属性中输出文件目录设置</p>
-<h2 id="下载模型运行demo程序-1"><a href="#下载模型运行demo程序-1" class="headerlink" title="下载模型运行demo程序"></a>下载模型运行demo程序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 这时在fastllm/build/Debug目录下</span><br><span class="line">wget https://huggingface.co/huangyuyang/chatglm2-6b-fp16.flm/resolve/main/chatglm2-6b-fp16.flm</span><br><span class="line">./main -p chatglm2-6b-fp16.flm </span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm%E5%AE%89%E8%A3%85/" data-id="cll9d53zt00008ov26b1v5nvn" data-title="fastllm安装" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-项目合集/U-Net3D网络优化/项目简介" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/13/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/" class="article-date">
-  <time class="dt-published" datetime="2023-08-13T08:58:42.298Z" itemprop="datePublished">2023-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/13/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/">项目简介</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="U-Net3D网络优化项目"><a href="#U-Net3D网络优化项目" class="headerlink" title="U-Net3D网络优化项目"></a>U-Net3D网络优化项目</h1><p>U-Net3D网络模型优化是2023年先导杯的一道<a target="_blank" rel="noopener" href="https://cas-pra.sugon.com/detail.html?tournament_id=28">赛题</a> ，本项目免费开放，供ai+hpc领域的同学们学习，一起进步！</p>
-<ul>
-<li>github地址：<a target="_blank" rel="noopener" href="https://github.com/brucecui1998/fastUNet3D">https://github.com/brucecui1998/fastUNet3D</a></li>
-<li>项目优化博客：<a target="_blank" rel="noopener" href="https://brucecui1998.github.io/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">https://brucecui1998.github.io/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/</a></li>
-</ul>
-<p>技术栈：cuda、hip、mpi</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/13/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/" data-id="cll9d53zv00018ov213vaayte" data-title="项目简介" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-30天Pandas挑战/文章浏览" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/" class="article-date">
-  <time class="dt-published" datetime="2023-08-13T08:38:14.647Z" itemprop="datePublished">2023-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/">文章浏览</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="文章浏览"><a href="#文章浏览" class="headerlink" title="文章浏览"></a>文章浏览</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/article-views-i/solutions/168689/wen-zhang-liu-lan-i-by-leetcode-solution/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata">题目</a></h2><p><code>Views</code> 表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+---------------+---------+</span><br><span class="line">| Column Name   | Type    |</span><br><span class="line">+---------------+---------+</span><br><span class="line">| article_id    | int     |</span><br><span class="line">| author_id     | int     |</span><br><span class="line">| viewer_id     | int     |</span><br><span class="line">| view_date     | date    |</span><br><span class="line">+---------------+---------+</span><br><span class="line">此表可能会存在重复行。（换句话说，在 SQL 中这个表没有主键）</span><br><span class="line">此表的每一行都表示某人在某天浏览了某位作者的某篇文章。</span><br><span class="line">请注意，同一人的 author_id 和 viewer_id 是相同的。</span><br></pre></td></tr></table></figure>
-
-<p>请查询出所有浏览过自己文章的作者</p>
-<p>结果按照 <code>id</code> 升序排列。</p>
-<p>查询结果的格式如下所示：</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">Views 表：</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line">| article_id | author_id | viewer_id | view_date  |</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line">| 1          | 3         | 5         | 2019-08-01 |</span><br><span class="line">| 1          | 3         | 6         | 2019-08-02 |</span><br><span class="line">| 2          | 7         | 7         | 2019-08-01 |</span><br><span class="line">| 2          | 7         | 6         | 2019-08-02 |</span><br><span class="line">| 4          | 7         | 1         | 2019-07-22 |</span><br><span class="line">| 3          | 4         | 4         | 2019-07-21 |</span><br><span class="line">| 3          | 4         | 4         | 2019-07-21 |</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">+------+</span><br><span class="line">| id   |</span><br><span class="line">+------+</span><br><span class="line">| 4    |</span><br><span class="line">| 7    |</span><br><span class="line">+------+</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>方法：根据条件选择行</p>
-<p>判断作者是否评论了自己文章的条件，即 <code>author_id</code> 等于 <code>viewer_id</code></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>pandas</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_views</span>(<span class="params">views: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    df = views[views[<span class="string">&#x27;author_id&#x27;</span>] == views[<span class="string">&#x27;viewer_id&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">    df = df.drop_duplicates(subset=[<span class="string">&#x27;author_id&#x27;</span>])</span><br><span class="line">    df = df.sort_values(by=[<span class="string">&#x27;author_id&#x27;</span>])</span><br><span class="line">    df = df.rename(columns=&#123;<span class="string">&#x27;author_id&#x27;</span>:<span class="string">&#x27;id&#x27;</span>&#125;)</span><br><span class="line">    df = df[[<span class="string">&#x27;id&#x27;</span>]]</span><br><span class="line">    <span class="keyword">return</span> df</span><br></pre></td></tr></table></figure>
-
-<p>mysql</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">SELECT </span><br><span class="line">    DISTINCT author_id AS id </span><br><span class="line">FROM </span><br><span class="line">    Views </span><br><span class="line">WHERE </span><br><span class="line">    author_id = viewer_id </span><br><span class="line">ORDER BY </span><br><span class="line">    id </span><br></pre></td></tr></table></figure>
-
-
-
-<p>在 SQL 中，我们可以在 SELECT 语句中使用 DISTINCT 关键字来从表 Views 中检索唯一元素</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/" data-id="cll97814q000070v2han14oyv" data-title="文章浏览" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-30天Pandas挑战/183.从不订购的客户" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/183.%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7/" class="article-date">
-  <time class="dt-published" datetime="2023-08-13T07:52:59.164Z" itemprop="datePublished">2023-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/183.%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7/">从不订购的客户</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="从不订购的客户"><a href="#从不订购的客户" class="headerlink" title="从不订购的客户"></a>从不订购的客户</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/customers-who-never-order/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata">题目</a></h2><p><code>Customers</code> 表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| id          | int     |</span><br><span class="line">| name        | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">在 SQL 中，id 是该表的主键。</span><br><span class="line">该表的每一行都表示客户的 ID 和名称。</span><br></pre></td></tr></table></figure>
-
-<p><code>Orders</code> 表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-------------+------+</span><br><span class="line">| Column Name | Type |</span><br><span class="line">+-------------+------+</span><br><span class="line">| id          | int  |</span><br><span class="line">| customerId  | int  |</span><br><span class="line">+-------------+------+</span><br><span class="line">在 SQL 中，id 是该表的主键。</span><br><span class="line">customerId 是 Customers 表中 ID 的外键( Pandas 中的连接键)。</span><br><span class="line">该表的每一行都表示订单的 ID 和订购该订单的客户的 ID。</span><br></pre></td></tr></table></figure>
-
-<p>找出所有从不点任何东西的顾客。</p>
-<p>以 <strong>任意顺序</strong> 返回结果表。</p>
-<p>结果格式如下所示。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">Customers table:</span><br><span class="line">+----+-------+</span><br><span class="line">| id | name  |</span><br><span class="line">+----+-------+</span><br><span class="line">| 1  | Joe   |</span><br><span class="line">| 2  | Henry |</span><br><span class="line">| 3  | Sam   |</span><br><span class="line">| 4  | Max   |</span><br><span class="line">+----+-------+</span><br><span class="line">Orders table:</span><br><span class="line">+----+------------+</span><br><span class="line">| id | customerId |</span><br><span class="line">+----+------------+</span><br><span class="line">| 1  | 3          |</span><br><span class="line">| 2  | 1          |</span><br><span class="line">+----+------------+</span><br><span class="line">输出：</span><br><span class="line">+-----------+</span><br><span class="line">| Customers |</span><br><span class="line">+-----------+</span><br><span class="line">| Henry     |</span><br><span class="line">| Max       |</span><br><span class="line">+-----------+</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>方法 1：使用排除条件过滤数据</p>
-<p>在 Pandas 中：</p>
-<pre><code>isin(values) 用于基于其值是否在给定集合 values 中来过滤和选择行。
-~ 表示逻辑非。
-</code></pre>
-<p>因此，可以通过~isin(values) 来选择它们的值不存在于 values 中的行。</p>
-<p>方法 2：在 customers上进行左连接（Left Join）</p>
-<p>思路是基于共同的客户 ID（在 customers 表中的 id 列和 orders 表中的 customerId 列），将表 customers 与表 orders 进行连接。</p>
-<p>通过进行左连接，并选择 customerId 为 null 的记录，我们可以确定哪些客户没有下过订单。</p>
-<pre><code>我们使用左连接（Left Join）在 customers 上，因为我们希望将所有来自 customers 的客户都包括进来，无论他们是否下过订单。 因此，通过使用左连接，我们可以保留所有来自左表（customers）的行，并将它们与右表（orders）中基于 id 和 customerId 进行匹配的相应行分别对应。
-</code></pre>
-<p>该表将如下所示：<br>id	name	id	customerId<br>1	Joe	2	1<br>2	Henry	null	null<br>3	Sam	1	3<br>4	Max	null	null</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="方法-1：使用排除条件过滤数据"><a href="#方法-1：使用排除条件过滤数据" class="headerlink" title="方法 1：使用排除条件过滤数据"></a>方法 1：使用排除条件过滤数据</h3><p>pandas</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find_customers</span>(<span class="params">customers: pd.DataFrame, orders: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    <span class="comment"># 选择 orders[&#x27;customerId&#x27;] 中 &#x27;id&#x27; 不存在的行</span></span><br><span class="line">    df = ~customers[<span class="string">&#x27;id&#x27;</span>].isin(orders[<span class="string">&#x27;customerId&#x27;</span>])</span><br><span class="line">    <span class="comment"># 将列 name 重命名为 Customers</span></span><br><span class="line">    <span class="keyword">return</span> customers.loc[df,[<span class="string">&#x27;name&#x27;</span>]].rename(columns=&#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;Customers&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>mysql</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">select customers.name as &#x27;Customers&#x27;</span><br><span class="line">from customers</span><br><span class="line">where customers.id not in</span><br><span class="line">(</span><br><span class="line">    select customerid from orders</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h3 id="方法-2：在-customers上进行左连接（Left-Join）"><a href="#方法-2：在-customers上进行左连接（Left-Join）" class="headerlink" title="方法 2：在 customers上进行左连接（Left Join）"></a>方法 2：在 customers上进行左连接（Left Join）</h3><p>pandas</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">find_customers</span>(<span class="params">customers: pd.DataFrame, orders: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    df = customers.merge(orders, left_on=<span class="string">&#x27;id&#x27;</span>, right_on=<span class="string">&#x27;customerId&#x27;</span>, how=<span class="string">&#x27;left&#x27;</span>)</span><br><span class="line">    df = df[df[<span class="string">&#x27;customerId&#x27;</span>].isna()]</span><br><span class="line">    df = df[[<span class="string">&#x27;name&#x27;</span>]].rename(columns=&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Customers&#x27;</span>&#125;)</span><br><span class="line">    <span class="keyword">return</span> df</span><br></pre></td></tr></table></figure>
-
-<p>mysql</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select name as &#x27;Customers&#x27;</span><br><span class="line">from Customers</span><br><span class="line">left join Orders on Customers.id = Orders.customerid</span><br><span class="line">where Orders.customerid is null</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/183.%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7/" data-id="cll96tnav000100v2h7tsdd17" data-title="从不订购的客户" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -874,7 +781,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -902,23 +809,23 @@
       <ul>
         
           <li>
-            <a href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/">04.优化思路</a>
+            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200%E2%86%92Level%201/">Bandit Level 0 → Level 1</a>
           </li>
         
           <li>
-            <a href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE%E8%AE%B0%E5%BD%95/">实验记录</a>
+            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200/">Bandit Level 0</a>
           </li>
         
           <li>
-            <a href="/2023/08/16/leetcode/1351.%20%E7%BB%9F%E8%AE%A1%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B4%9F%E6%95%B0/">1351. 统计有序矩阵中的负数</a>
+            <a href="/2023/08/19/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Linux%E5%B0%8F%E5%B8%B8%E8%AF%86/">Linux小常识</a>
           </li>
         
           <li>
-            <a href="/2023/08/16/leetcode/744.%20%E5%AF%BB%E6%89%BE%E6%AF%94%E7%9B%AE%E6%A0%87%E5%AD%97%E6%AF%8D%E5%A4%A7%E7%9A%84%E6%9C%80%E5%B0%8F%E5%AD%97%E6%AF%8D/">744. 寻找比目标字母大的最小字母</a>
+            <a href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/06.%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91torch/">06.源码编译torch</a>
           </li>
         
           <li>
-            <a href="/2023/08/15/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl2%E5%A4%A7%E5%85%A8/">wsl2大全</a>
+            <a href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/conda%E5%B0%8F%E5%B8%B8%E8%AF%86/">conda小常识</a>
           </li>
         
       </ul>

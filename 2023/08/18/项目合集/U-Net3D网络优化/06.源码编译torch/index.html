@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>06.源码编译torch | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="[toc] 06.源码编译torchDebian源码编译torch-v1.13.1本机环境：  Debian 12.1 gcc&#x2F;g++ 12.2 python 3.10.12  安装过程参考：https:&#x2F;&#x2F;github.com&#x2F;pytorch&#x2F;pytorch&#x2F;tree&#x2F;v1.13.1#from-source 准备工作准备cuda环境参考本博客 “杂项汇总”-“搭建科研环境远程服务器”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="06.源码编译torch">
+<meta property="og:url" content="http://example.com/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/06.%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91torch/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[toc] 06.源码编译torchDebian源码编译torch-v1.13.1本机环境：  Debian 12.1 gcc&#x2F;g++ 12.2 python 3.10.12  安装过程参考：https:&#x2F;&#x2F;github.com&#x2F;pytorch&#x2F;pytorch&#x2F;tree&#x2F;v1.13.1#from-source 准备工作准备cuda环境参考本博客 “杂项汇总”-“搭建科研环境远程服务器”">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/third-party.png">
+<meta property="article:published_time" content="2023-08-18T12:39:43.768Z">
+<meta property="article:modified_time" content="2023-08-20T09:57:43.775Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/third-party.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-项目合集/U-Net3D网络优化/06.源码编译torch" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/06.%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91torch/" class="article-date">
+  <time class="dt-published" datetime="2023-08-18T12:39:43.768Z" itemprop="datePublished">2023-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      06.源码编译torch
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="06-源码编译torch"><a href="#06-源码编译torch" class="headerlink" title="06.源码编译torch"></a>06.源码编译torch</h1><h2 id="Debian源码编译torch-v1-13-1"><a href="#Debian源码编译torch-v1-13-1" class="headerlink" title="Debian源码编译torch-v1.13.1"></a>Debian源码编译torch-v1.13.1</h2><p>本机环境：</p>
+<ul>
+<li>Debian 12.1</li>
+<li>gcc&#x2F;g++ 12.2</li>
+<li>python 3.10.12</li>
+</ul>
+<p>安装过程参考：<a target="_blank" rel="noopener" href="https://github.com/pytorch/pytorch/tree/v1.13.1#from-source">https://github.com/pytorch/pytorch/tree/v1.13.1#from-source</a></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h3 id="准备cuda环境"><a href="#准备cuda环境" class="headerlink" title="准备cuda环境"></a>准备cuda环境</h3><p>参考本博客 “杂项汇总”-“搭建科研环境远程服务器”</p>
+<h3 id="准备cudnn"><a href="#准备cudnn" class="headerlink" title="准备cudnn"></a>准备cudnn</h3><p>下载<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cudnn">cudnn</a> （<a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/cudnn/pdf/cuDNN-Support-Matrix.pdf">cudnn Support Matrix版本对照</a>）</p>
+<p>安装<a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html">cudnn</a></p>
+<h3 id="准备anaconda环境"><a href="#准备anaconda环境" class="headerlink" title="准备anaconda环境"></a>准备anaconda环境</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n src_torch python=3.10</span><br><span class="line">conda activate src_torch</span><br></pre></td></tr></table></figure>
+
+<p>Install Dependencies</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda install astunparse numpy ninja pyyaml setuptools cmake cffi typing_extensions future six requests dataclasses</span><br><span class="line">conda install mkl mkl-include</span><br><span class="line">conda install -c pytorch magma-cuda121  # or the magma-cuda* that matches your CUDA version from https://anaconda.org/pytorch/repo</span><br></pre></td></tr></table></figure>
+
+<h3 id="准备源码以及第三方库"><a href="#准备源码以及第三方库" class="headerlink" title="准备源码以及第三方库"></a>准备源码以及第三方库</h3><p>由于网速问题，torch源码的submodule很难clone下来，这里我们先手动把torch源码所需要的submodule全部下载下来拷在u盘准备拷到linux系统上。</p>
+<p>submodule下载可以看一下.gitsubmodule</p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/third-party.png" alt="image-20230819200335385"></p>
+<h2 id="编译源码"><a href="#编译源码" class="headerlink" title="编译源码"></a>编译源码</h2><p>将pytorch-1.13.1.zip和这些submodule都上传到linux服务器。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /mnt/usb</span><br><span class="line">sudo mount /dev/sdb1 /mnt/usb</span><br><span class="line">cp pytorch-1.13.1.zip /your-path/</span><br></pre></td></tr></table></figure>
+
+<p>编译</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export CMAKE_PREFIX_PATH=$&#123;CONDA_PREFIX:-&quot;$(dirname $(which conda))/../&quot;&#125;</span><br><span class="line">export USE_CUDA=True DEBUG=1 USE_MKLDNN=0</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+
+<h3 id="常见报错"><a href="#常见报错" class="headerlink" title="常见报错"></a>常见报错</h3><ul>
+<li>报错：C++: fatal error: Killed signal terminated program cc1plus</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44796670/article/details/121234446">https://blog.csdn.net/weixin_44796670/article/details/121234446</a></p>
+<ul>
+<li>编译报错error: invalid conversion from ‘void<em>’ to ‘const char</em>’ [-fpermissive]</li>
+</ul>
+<p>在CMakeLists.txt中添加</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">string</span>(APPEND CMAKE_CXX_FLAGS <span class="string">&quot; -fpermissive&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>报错：cc1plus: warnings being treated as errors</li>
+</ul>
+<p>将CMakeLists.txt中有关-Werror&#x3D;return_type的设置给注释掉</p>
+<h2 id="曙光x86平台源码编译torch-v1-10-0"><a href="#曙光x86平台源码编译torch-v1-10-0" class="headerlink" title="曙光x86平台源码编译torch-v1.10.0"></a>曙光x86平台源码编译torch-v1.10.0</h2><ul>
+<li>Python 3.6.2 or later </li>
+<li>C++14 compiler</li>
+<li><a target="_blank" rel="noopener" href="https://rocmdocs.amd.com/en/latest/Installation_Guide/Installation-Guide.html">AMD ROCm</a> 4.0 and above installation</li>
+</ul>
+<p><strong>Install Dependencies</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install astunparse numpy ninja pyyaml mkl mkl-include setuptools cmake cffi typing_extensions future six requests dataclasses</span><br></pre></td></tr></table></figure>
+
+<p><strong>Get the PyTorch Source</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:pytorch/pytorch.git</span><br><span class="line">git checkout v1.10.0</span><br><span class="line">git submodule sync</span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+
+<p><strong>Install PyTorch</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python tools/amd_build/build_amd.py</span><br><span class="line">export CMAKE_PREFIX_PATH=$&#123;CONDA_PREFIX:-&quot;$(dirname $(which conda))/../&quot;&#125;</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/06.%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91torch/" data-id="cllt0b5e6000898v2at00hluo" data-title="06.源码编译torch" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/08/19/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Linux%E5%B0%8F%E5%B8%B8%E8%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Linux小常识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/conda%E5%B0%8F%E5%B8%B8%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">conda小常识</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200%E2%86%92Level%201/">Bandit Level 0 → Level 1</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200/">Bandit Level 0</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/19/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Linux%E5%B0%8F%E5%B8%B8%E8%AF%86/">Linux小常识</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/06.%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91torch/">06.源码编译torch</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/conda%E5%B0%8F%E5%B8%B8%E8%AF%86/">conda小常识</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

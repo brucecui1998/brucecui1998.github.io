@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>05.性能分析 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="05.性能分析为了便于在windows上调试性能分析 12git clone git@github.com:brucecui1998&#x2F;fastUNet3D.gitcd fastUNet3D  利用torch.profiler.profile分析性能使用torch.profiler.profile分析核心耗时的代码，会将分析结果输出至当前路径下的profile.txt   可以看到每一轮epoch最">
+<meta property="og:type" content="article">
+<meta property="og:title" content="05.性能分析">
+<meta property="og:url" content="http://example.com/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/05.%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="05.性能分析为了便于在windows上调试性能分析 12git clone git@github.com:brucecui1998&#x2F;fastUNet3D.gitcd fastUNet3D  利用torch.profiler.profile分析性能使用torch.profiler.profile分析核心耗时的代码，会将分析结果输出至当前路径下的profile.txt   可以看到每一轮epoch最">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/profile.png">
+<meta property="og:image" content="http://example.com/images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/profile_output.png">
+<meta property="article:published_time" content="2023-08-18T06:51:20.583Z">
+<meta property="article:modified_time" content="2023-08-18T12:39:40.745Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/profile.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-项目合集/U-Net3D网络优化/05.性能分析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/05.%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" class="article-date">
+  <time class="dt-published" datetime="2023-08-18T06:51:20.583Z" itemprop="datePublished">2023-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      05.性能分析
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="05-性能分析"><a href="#05-性能分析" class="headerlink" title="05.性能分析"></a>05.性能分析</h1><p>为了便于在windows上调试性能分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:brucecui1998/fastUNet3D.git</span><br><span class="line">cd fastUNet3D</span><br></pre></td></tr></table></figure>
+
+<h2 id="利用torch-profiler-profile分析性能"><a href="#利用torch-profiler-profile分析性能" class="headerlink" title="利用torch.profiler.profile分析性能"></a>利用torch.profiler.profile分析性能</h2><p>使用torch.profiler.profile分析核心耗时的代码，会将分析结果输出至当前路径下的profile.txt</p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/profile.png" alt="image-20230818145906464"></p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/profile_output.png" alt="image-20230818195620874"></p>
+<p>可以看到每一轮epoch最耗时的是aten::convolution_backward操作，我们只能在本机中找到该函数的声明”C:\Users\Administrator\anaconda3\envs\unet\Lib\site-packages\torch\include\ATen\ops\convolution_backward.h”，于是考虑源码编译torch，目的为了更好优化底层算子</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/05.%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" data-id="cllt0b5e8000j98v268t7f9nr" data-title="05.性能分析" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/git%E5%B0%8F%E5%B8%B8%E8%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          git小常识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">04.优化思路</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200%E2%86%92Level%201/">Bandit Level 0 → Level 1</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200/">Bandit Level 0</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/19/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Linux%E5%B0%8F%E5%B8%B8%E8%AF%86/">Linux小常识</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/06.%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91torch/">06.源码编译torch</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/conda%E5%B0%8F%E5%B8%B8%E8%AF%86/">conda小常识</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
