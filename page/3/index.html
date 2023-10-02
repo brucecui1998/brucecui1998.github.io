@@ -73,6 +73,209 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-30天Pandas挑战/文章浏览" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/" class="article-date">
+  <time class="dt-published" datetime="2023-08-13T08:38:14.647Z" itemprop="datePublished">2023-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/">文章浏览</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="文章浏览"><a href="#文章浏览" class="headerlink" title="文章浏览"></a>文章浏览</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/article-views-i/solutions/168689/wen-zhang-liu-lan-i-by-leetcode-solution/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata">题目</a></h2><p><code>Views</code> 表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+---------------+---------+</span><br><span class="line">| Column Name   | Type    |</span><br><span class="line">+---------------+---------+</span><br><span class="line">| article_id    | int     |</span><br><span class="line">| author_id     | int     |</span><br><span class="line">| viewer_id     | int     |</span><br><span class="line">| view_date     | date    |</span><br><span class="line">+---------------+---------+</span><br><span class="line">此表可能会存在重复行。（换句话说，在 SQL 中这个表没有主键）</span><br><span class="line">此表的每一行都表示某人在某天浏览了某位作者的某篇文章。</span><br><span class="line">请注意，同一人的 author_id 和 viewer_id 是相同的。</span><br></pre></td></tr></table></figure>
+
+<p>请查询出所有浏览过自己文章的作者</p>
+<p>结果按照 <code>id</code> 升序排列。</p>
+<p>查询结果的格式如下所示：</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">Views 表：</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line">| article_id | author_id | viewer_id | view_date  |</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line">| 1          | 3         | 5         | 2019-08-01 |</span><br><span class="line">| 1          | 3         | 6         | 2019-08-02 |</span><br><span class="line">| 2          | 7         | 7         | 2019-08-01 |</span><br><span class="line">| 2          | 7         | 6         | 2019-08-02 |</span><br><span class="line">| 4          | 7         | 1         | 2019-07-22 |</span><br><span class="line">| 3          | 4         | 4         | 2019-07-21 |</span><br><span class="line">| 3          | 4         | 4         | 2019-07-21 |</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">+------+</span><br><span class="line">| id   |</span><br><span class="line">+------+</span><br><span class="line">| 4    |</span><br><span class="line">| 7    |</span><br><span class="line">+------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>方法：根据条件选择行</p>
+<p>判断作者是否评论了自己文章的条件，即 <code>author_id</code> 等于 <code>viewer_id</code></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>pandas</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_views</span>(<span class="params">views: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    df = views[views[<span class="string">&#x27;author_id&#x27;</span>] == views[<span class="string">&#x27;viewer_id&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">    df = df.drop_duplicates(subset=[<span class="string">&#x27;author_id&#x27;</span>])</span><br><span class="line">    df = df.sort_values(by=[<span class="string">&#x27;author_id&#x27;</span>])</span><br><span class="line">    df = df.rename(columns=&#123;<span class="string">&#x27;author_id&#x27;</span>:<span class="string">&#x27;id&#x27;</span>&#125;)</span><br><span class="line">    df = df[[<span class="string">&#x27;id&#x27;</span>]]</span><br><span class="line">    <span class="keyword">return</span> df</span><br></pre></td></tr></table></figure>
+
+<p>mysql</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">SELECT </span><br><span class="line">    DISTINCT author_id AS id </span><br><span class="line">FROM </span><br><span class="line">    Views </span><br><span class="line">WHERE </span><br><span class="line">    author_id = viewer_id </span><br><span class="line">ORDER BY </span><br><span class="line">    id </span><br></pre></td></tr></table></figure>
+
+
+
+<p>在 SQL 中，我们可以在 SELECT 语句中使用 DISTINCT 关键字来从表 Views 中检索唯一元素</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/" data-id="cll97814q000070v2han14oyv" data-title="文章浏览" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-30天Pandas挑战/183.从不订购的客户" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/183.%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7/" class="article-date">
+  <time class="dt-published" datetime="2023-08-13T07:52:59.164Z" itemprop="datePublished">2023-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/183.%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7/">从不订购的客户</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="从不订购的客户"><a href="#从不订购的客户" class="headerlink" title="从不订购的客户"></a>从不订购的客户</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/customers-who-never-order/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata">题目</a></h2><p><code>Customers</code> 表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| id          | int     |</span><br><span class="line">| name        | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">在 SQL 中，id 是该表的主键。</span><br><span class="line">该表的每一行都表示客户的 ID 和名称。</span><br></pre></td></tr></table></figure>
+
+<p><code>Orders</code> 表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-------------+------+</span><br><span class="line">| Column Name | Type |</span><br><span class="line">+-------------+------+</span><br><span class="line">| id          | int  |</span><br><span class="line">| customerId  | int  |</span><br><span class="line">+-------------+------+</span><br><span class="line">在 SQL 中，id 是该表的主键。</span><br><span class="line">customerId 是 Customers 表中 ID 的外键( Pandas 中的连接键)。</span><br><span class="line">该表的每一行都表示订单的 ID 和订购该订单的客户的 ID。</span><br></pre></td></tr></table></figure>
+
+<p>找出所有从不点任何东西的顾客。</p>
+<p>以 <strong>任意顺序</strong> 返回结果表。</p>
+<p>结果格式如下所示。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">Customers table:</span><br><span class="line">+----+-------+</span><br><span class="line">| id | name  |</span><br><span class="line">+----+-------+</span><br><span class="line">| 1  | Joe   |</span><br><span class="line">| 2  | Henry |</span><br><span class="line">| 3  | Sam   |</span><br><span class="line">| 4  | Max   |</span><br><span class="line">+----+-------+</span><br><span class="line">Orders table:</span><br><span class="line">+----+------------+</span><br><span class="line">| id | customerId |</span><br><span class="line">+----+------------+</span><br><span class="line">| 1  | 3          |</span><br><span class="line">| 2  | 1          |</span><br><span class="line">+----+------------+</span><br><span class="line">输出：</span><br><span class="line">+-----------+</span><br><span class="line">| Customers |</span><br><span class="line">+-----------+</span><br><span class="line">| Henry     |</span><br><span class="line">| Max       |</span><br><span class="line">+-----------+</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>方法 1：使用排除条件过滤数据</p>
+<p>在 Pandas 中：</p>
+<pre><code>isin(values) 用于基于其值是否在给定集合 values 中来过滤和选择行。
+~ 表示逻辑非。
+</code></pre>
+<p>因此，可以通过~isin(values) 来选择它们的值不存在于 values 中的行。</p>
+<p>方法 2：在 customers上进行左连接（Left Join）</p>
+<p>思路是基于共同的客户 ID（在 customers 表中的 id 列和 orders 表中的 customerId 列），将表 customers 与表 orders 进行连接。</p>
+<p>通过进行左连接，并选择 customerId 为 null 的记录，我们可以确定哪些客户没有下过订单。</p>
+<pre><code>我们使用左连接（Left Join）在 customers 上，因为我们希望将所有来自 customers 的客户都包括进来，无论他们是否下过订单。 因此，通过使用左连接，我们可以保留所有来自左表（customers）的行，并将它们与右表（orders）中基于 id 和 customerId 进行匹配的相应行分别对应。
+</code></pre>
+<p>该表将如下所示：<br>id	name	id	customerId<br>1	Joe	2	1<br>2	Henry	null	null<br>3	Sam	1	3<br>4	Max	null	null</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="方法-1：使用排除条件过滤数据"><a href="#方法-1：使用排除条件过滤数据" class="headerlink" title="方法 1：使用排除条件过滤数据"></a>方法 1：使用排除条件过滤数据</h3><p>pandas</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find_customers</span>(<span class="params">customers: pd.DataFrame, orders: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    <span class="comment"># 选择 orders[&#x27;customerId&#x27;] 中 &#x27;id&#x27; 不存在的行</span></span><br><span class="line">    df = ~customers[<span class="string">&#x27;id&#x27;</span>].isin(orders[<span class="string">&#x27;customerId&#x27;</span>])</span><br><span class="line">    <span class="comment"># 将列 name 重命名为 Customers</span></span><br><span class="line">    <span class="keyword">return</span> customers.loc[df,[<span class="string">&#x27;name&#x27;</span>]].rename(columns=&#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;Customers&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>mysql</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">select customers.name as &#x27;Customers&#x27;</span><br><span class="line">from customers</span><br><span class="line">where customers.id not in</span><br><span class="line">(</span><br><span class="line">    select customerid from orders</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法-2：在-customers上进行左连接（Left-Join）"><a href="#方法-2：在-customers上进行左连接（Left-Join）" class="headerlink" title="方法 2：在 customers上进行左连接（Left Join）"></a>方法 2：在 customers上进行左连接（Left Join）</h3><p>pandas</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">find_customers</span>(<span class="params">customers: pd.DataFrame, orders: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    df = customers.merge(orders, left_on=<span class="string">&#x27;id&#x27;</span>, right_on=<span class="string">&#x27;customerId&#x27;</span>, how=<span class="string">&#x27;left&#x27;</span>)</span><br><span class="line">    df = df[df[<span class="string">&#x27;customerId&#x27;</span>].isna()]</span><br><span class="line">    df = df[[<span class="string">&#x27;name&#x27;</span>]].rename(columns=&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Customers&#x27;</span>&#125;)</span><br><span class="line">    <span class="keyword">return</span> df</span><br></pre></td></tr></table></figure>
+
+<p>mysql</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select name as &#x27;Customers&#x27;</span><br><span class="line">from Customers</span><br><span class="line">left join Orders on Customers.id = Orders.customerid</span><br><span class="line">where Orders.customerid is null</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/183.%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7/" data-id="cll96tnav000100v2h7tsdd17" data-title="从不订购的客户" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-30天Pandas挑战/1757.可回收且低脂的产品" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/1757.%E5%8F%AF%E5%9B%9E%E6%94%B6%E4%B8%94%E4%BD%8E%E8%84%82%E7%9A%84%E4%BA%A7%E5%93%81/" class="article-date">
+  <time class="dt-published" datetime="2023-08-13T07:45:00.875Z" itemprop="datePublished">2023-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/1757.%E5%8F%AF%E5%9B%9E%E6%94%B6%E4%B8%94%E4%BD%8E%E8%84%82%E7%9A%84%E4%BA%A7%E5%93%81/">可回收且低脂的产品</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="可回收且低脂的产品"><a href="#可回收且低脂的产品" class="headerlink" title="可回收且低脂的产品"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/recyclable-and-low-fat-products/">可回收且低脂的产品</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/recyclable-and-low-fat-products/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata">题目</a></h2><p>表：<code>Products</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| product_id  | int     |</span><br><span class="line">| low_fats    | enum    |</span><br><span class="line">| recyclable  | enum    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">product_id 是该表的主键（具有唯一值的列）。</span><br><span class="line">low_fats 是枚举类型，取值为以下两种 (&#x27;Y&#x27;, &#x27;N&#x27;)，其中 &#x27;Y&#x27; 表示该产品是低脂产品，&#x27;N&#x27; 表示不是低脂产品。</span><br><span class="line">recyclable 是枚举类型，取值为以下两种 (&#x27;Y&#x27;, &#x27;N&#x27;)，其中 &#x27;Y&#x27; 表示该产品可回收，而 &#x27;N&#x27; 表示不可回收。</span><br></pre></td></tr></table></figure>
+
+<p>编写解决方案找出既是低脂又是可回收的产品编号。</p>
+<p>返回结果 <strong>无顺序要求</strong> 。</p>
+<p>返回结果格式如下例所示：</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">Products 表：</span><br><span class="line">+-------------+----------+------------+</span><br><span class="line">| product_id  | low_fats | recyclable |</span><br><span class="line">+-------------+----------+------------+</span><br><span class="line">| 0           | Y        | N          |</span><br><span class="line">| 1           | Y        | Y          |</span><br><span class="line">| 2           | N        | Y          |</span><br><span class="line">| 3           | Y        | Y          |</span><br><span class="line">| 4           | N        | N          |</span><br><span class="line">+-------------+----------+------------+</span><br><span class="line">输出：</span><br><span class="line">+-------------+</span><br><span class="line">| product_id  |</span><br><span class="line">+-------------+</span><br><span class="line">| 1           |</span><br><span class="line">| 3           |</span><br><span class="line">+-------------+</span><br><span class="line">解释：</span><br><span class="line">只有产品 id 为 1 和 3 的产品，既是低脂又是可回收的产品。</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>方法：根据条件选择行</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>Pandas</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find_products</span>(<span class="params">products: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    df = products[(products[<span class="string">&#x27;low_fats&#x27;</span>] == <span class="string">&#x27;Y&#x27;</span>) &amp; (products[<span class="string">&#x27;recyclable&#x27;</span>] == <span class="string">&#x27;Y&#x27;</span>)]</span><br><span class="line">    <span class="keyword">return</span> df[[<span class="string">&#x27;product_id&#x27;</span>]]</span><br></pre></td></tr></table></figure>
+
+<p>mysql</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">SELECT</span><br><span class="line">    product_id</span><br><span class="line">FROM</span><br><span class="line">    Products</span><br><span class="line">WHERE</span><br><span class="line">    low_fats = &#x27;Y&#x27; AND recyclable= &#x27;Y&#x27;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/1757.%E5%8F%AF%E5%9B%9E%E6%94%B6%E4%B8%94%E4%BD%8E%E8%84%82%E7%9A%84%E4%BA%A7%E5%93%81/" data-id="cll96tnas000000v2hnay20de" data-title="可回收且低脂的产品" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-30天Pandas挑战/595.大的国家" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/595.%E5%A4%A7%E7%9A%84%E5%9B%BD%E5%AE%B6/" class="article-date">
@@ -519,411 +722,11 @@
 
 
   
-    <article id="post-leetcode/空白模板" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/12/leetcode/%E7%A9%BA%E7%99%BD%E6%A8%A1%E6%9D%BF/" class="article-date">
-  <time class="dt-published" datetime="2023-08-12T05:27:26.512Z" itemprop="datePublished">2023-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/12/leetcode/%E7%A9%BA%E7%99%BD%E6%A8%A1%E6%9D%BF/">名字</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="名字"><a href="#名字" class="headerlink" title="名字"></a>名字</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="">题目</a></h2><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/12/leetcode/%E7%A9%BA%E7%99%BD%E6%A8%A1%E6%9D%BF/" data-id="cll7l872u0002b4v2a0s99y8l" data-title="名字" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-杂项汇总/2023级研究生报道须知" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/12/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/2023%E7%BA%A7%E7%A0%94%E7%A9%B6%E7%94%9F%E6%8A%A5%E9%81%93%E9%A1%BB%E7%9F%A5/" class="article-date">
-  <time class="dt-published" datetime="2023-08-12T03:27:57.813Z" itemprop="datePublished">2023-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/12/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/2023%E7%BA%A7%E7%A0%94%E7%A9%B6%E7%94%9F%E6%8A%A5%E9%81%93%E9%A1%BB%E7%9F%A5/">2023级研究生报道须知</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>2023 级研究生报到须知</p>
-<p>2023 级研究生新生：</p>
-<p>欢迎来到西安电子科技大学进行研究生阶段的学习。</p>
-<p>为帮助同学们顺利完成网上手续办理和现场报到，现将有关事项</p>
-<p>通知如下。</p>
-<p><strong>一、网上手续办理</strong></p>
-<p>8 月 1 日至 8 月 20 日，2023 级研究生进入西安电子科技大学迎</p>
-<p>新网首页（<a target="_blank" rel="noopener" href="https://xdyx.xidian.edu.cn/index.htm%EF%BC%89%EF%BC%8C%E7%82%B9%E5%87%BB%E2%80%9C%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E2%80%9D%EF%BC%8C">https://xdyx.xidian.edu.cn/index.htm），点击“用户登录”，</a></p>
-<p>选择登录菜单下方的“账号激活”，激活过程中设置密码，完成后重</p>
-<p>新登录办理网上手续。</p>
-<p>（一）新生教育（咨询电话：029-81891290）</p>
-<p>8 月 1 日至 8 月 20 日，新生须在迎新系统内参加入学前教育，</p>
-<p>完成相关学习和测验流程。</p>
-<p>（二）一卡通照片采集（咨询电话：029-88201252）</p>
-<p>8 月 1 日至 8 月 20 日，新生须在迎新系统内上传制式电子照片，</p>
-<p>用于办理校园一卡通。</p>
-<p>电子照片标准：</p>
-<p>1.图像：640 像素（高）×480 像素（宽），JPG 格式。</p>
-<p>2.要求：三个月内正面免冠彩色半身电子照片，照片背景为蓝色，</p>
-<p>其他颜色不予受理。照片要求人像清晰，轮廓分明，层次丰富，神态</p>
-<p>自然。</p>
-<p>3.照片建议到专业机构拍摄，不得进行任何修饰。</p>
-<p>12</p>
-<p>校园一卡通可用于身份识别、图书借阅、门禁出入、医院诊疗、</p>
-<p>食堂就餐、班车乘坐等，仅限本人使用，不得转借他人。</p>
-<p>（三）人脸识别照片采集（咨询电话：029-88201650）</p>
-<p>8 月 13 日至 8 月 15 日，新生须绑定西安电子科技大学企业号</p>
-<p>（具体步骤见附件 1），进行人脸识别照片采集（具体步骤见附件 2），</p>
-<p>用于校门、图书馆、宿舍、操场等校内场所出入的身份验证。</p>
-<p>（四）网上选宿（宿舍问题咨询电话：北校区公寓服务中心办公</p>
-<p>室 029-88204384&#x2F;88204385 、南校区 公 寓 服 务 中 心 办 公 室 029-</p>
-<p>81892773&#x2F;81891186，选宿系统问题咨询电话：4006183090）</p>
-<p><strong>全日制硕士研究生宿舍通过在线方式选取，分为预选房、正式选</strong></p>
-<p><strong>房两个环节（网上选宿操作手册见附件</strong> <strong>3****）：</strong></p>
-<p><strong>1.</strong> <strong>预选房环节旨在帮助新生熟悉选房系统，开放时间为</strong> <strong>8</strong> <strong>月</strong> <strong>15</strong></p>
-<p><strong>日</strong> <strong>9<strong><strong>：</strong></strong>00-16<strong><strong>：</strong></strong>00****（杭州研究院另行通知），其结果在测试完毕后清除，</strong></p>
-<p><strong>不作为最终选房依据。</strong></p>
-<p><strong>2.</strong> <strong>正式选房环节开放时间为</strong> <strong>8</strong> <strong>月</strong> <strong>16</strong> <strong>日</strong> <strong>9<strong><strong>：</strong></strong>00-16<strong><strong>：</strong></strong>00****（杭州研究</strong></p>
-<p><strong>院另行通知）。</strong></p>
-<p><strong>3.</strong> <strong>各学院预选房及正式选房环节时间分配如下。</strong></p>
-<p>选宿时间 </p>
-<p>学院</p>
-<p>9:00-10:00 </p>
-<p>广州研究院（本部报到）</p>
-<p>10:30-11:30 </p>
-<p>通信工程学院、电子工程学院</p>
-<p>12:00-13:00 </p>
-<p>机电工程学院、光电工程学院、物理学院、微电子学院</p>
-<p>13:30-14:30</p>
-<p>计算机科学与技术学院、经济与管理学院、数学与统计学院、</p>
-<p>人文学院、外国语学院、生命科学技术学院、空间科学与技术学院、</p>
-<p>先进材料与纳米科技学院、网络与信息安全学院、人工智能学院、</p>
-<p>马克思主义学院、体育部</p>
-<p>15:00-16:00 </p>
-<p>补选3</p>
-<p>\4. 在系统开放后尽快完成选宿，未完成在线选宿的研究生，将默</p>
-<p>认为不住宿，原则上不再分配宿舍。</p>
-<p>*****<strong>注：博士不参与线上选宿，报到当天在后勤保障部接待点线下</strong></p>
-<p><strong>办理。硕博连读生暂住原硕士宿舍，待同级硕士生毕业当年的秋季学</strong></p>
-<p><strong>期前调换至博士生宿舍；定向工程博士、非全日制研究生不提供住宿。</strong></p>
-<p>（五）各类费用缴纳（咨询电话：029-81891316）</p>
-<p>8 月 18 日中午 12:00 起，研究生新生应登录迎新系统，在“财务</p>
-<p>缴费”版块缴纳相关费用。学费及住宿费缴费成功 1 小时后，可登录</p>
-<p>迎新系统查询缴费结果；医保费和体检费缴费后可在系统中查看缴费</p>
-<p>记录。学宿费电子票据在统一支付平台自行下载，具体流程可查看迎</p>
-<p>新网站相关说明。</p>
-<p>因家庭经济困难需要缓交学费和住宿费的新生，请于 8 月 18 日</p>
-<p>12:00 至 8 月 24 日 12:00 网上办理绿色通道手续。具体方式如下：</p>
-<p>1.已办理生源地国家助学贷款的新生</p>
-<p>登录迎新系统，在“绿色通道”版块，选择申请生源地国家助学贷</p>
-<p>款，上传“生源地受理回执”；</p>
-<p>2.准备申请校园地国家助学贷款的新生</p>
-<p>请自行下载《西安电子科技大学家庭经济困难研究生认定申请表》</p>
-<p>（附件 4），按要求填写后，在“绿色通道”版块，选择申请校园地国</p>
-<p>家助学贷款，将申请表扫描或拍照上传。4</p>
-<p>学校将每日审核绿色通道申请，相关新生可在提交申请次日，登</p>
-<p>录迎新系统查看审核结果。通过审核的新生，须缴纳剩余费用；未通</p>
-<p>过审核的新生，须补充材料重新提交申请或缴纳全部费用。</p>
-<p><em>特别提醒：*<em>国家助学贷款仅用于支付学费和住宿费，医保费和</em></em></p>
-<p><strong>体检费须单独缴纳。</strong>生源地国家助学贷款额度，以实际放贷金额为准；</p>
-<p>校园地国家助学贷款额度为：全日制研究生最高 16000 元&#x2F;年，若贷</p>
-<p>款额度不足以冲抵学费和住宿费，须补缴差额；若贷款额度超过学费</p>
-<p>和住宿费合计，差额部分将在贷款放款的 1~2 个月内退给申贷学生。</p>
-<p>开学后，中国银行将来校受理校园地国家助学贷款申请，具体通</p>
-<p>知请留意研究生院网站（gr.xidian.edu.cn）和“西电研究生”微信公众</p>
-<p>号。</p>
-<p>“西电研究生”微信公众号</p>
-<p>（六）本科期间成果数据填报（咨询电话：029-81891235）</p>
-<p>8 月 17 日至 8 月 22 日，新生须登录“研究生综合服务平台”</p>
-<p>（yjspt.xidian.edu.cn），在“研究生成长数据库”模块，填报本科期</p>
-<p>间获得的各类成果数据（研究生成长数据库使用手册见附件 5）。</p>
-<p>（七）研究生生涯规划测评（咨询电话：029-81891235）5</p>
-<p>8 月 23 日至 8 月 24 日，新生须登录“生涯教育一体化平台”</p>
-<p>（xdyjs.careersky.cn）进行生涯规划测评（生涯教育一体化平台使用</p>
-<p>手册见附件 6）。</p>
-<p>（八）心理健康测评（咨询电话：029-81891125）</p>
-<p>8 月 25 日至 8 月 28 日，新生须登录“基于应激-素质模型的心理</p>
-<p>健康教育大数据平台”（<a target="_blank" rel="noopener" href="https://xlzx.xidian.edu.cn/%EF%BC%89%E8%BF%9B%E8%A1%8C%E5%BF%83%E7%90%86%E5%81%A5%E5%BA%B7%E6%B5%8B%E8%AF%84">https://xlzx.xidian.edu.cn/）进行心理健康测评</a></p>
-<p>（基于应激-素质模型的心理健康教育大数据平台使用手册见附件 7）。</p>
-<p><strong>二、现场报到</strong></p>
-<p>包含缴费确认、学历学位证书及录取通知书查验、校园一卡通领</p>
-<p>取、入住宿舍、入学体检等环节。</p>
-<p>（一）报到时间</p>
-<p><strong>2023</strong> <strong>年</strong> <strong>9</strong> <strong>月</strong> <strong>3</strong> <strong>日（星期日）<strong><strong>8:00-20:00</strong></strong>。</strong></p>
-<p>（二）报到地点及联系人</p>
-<p>学院 </p>
-<p>报到地点 </p>
-<p>迎新联系人 </p>
-<p>联系方式</p>
-<p>通信工程学院 </p>
-<p>北校区体育馆 </p>
-<p>关老师 </p>
-<p>029-88201804</p>
-<p>电子工程学院 </p>
-<p>北校区体育馆 </p>
-<p>吴老师 </p>
-<p>029-88201842</p>
-<p>计算机科学与技术学院 </p>
-<p>南校区网安大楼 A1-223 会议室 </p>
-<p>牛老师</p>
-<p>何老师 </p>
-<p>029-81891030</p>
-<p>机电工程学院 </p>
-<p>北校区主楼 III 区 143 南 </p>
-<p>周老师 </p>
-<p>029-88202453</p>
-<p>光电工程学院 </p>
-<p>北校区西大楼三区一楼大厅 </p>
-<p>姜老师 </p>
-<p>029-88201480</p>
-<p>物理学院 </p>
-<p>北校区西大楼三区四楼大厅 </p>
-<p>胡老师 </p>
-<p>029-88202798</p>
-<p>经济与管理学院 </p>
-<p>南校区信远 II 区 324 报告厅 </p>
-<p>朱老师 </p>
-<p>029-81891033</p>
-<p>数学与统计学院 </p>
-<p>南校区行政辅楼 235 </p>
-<p>孙老师 </p>
-<p>029-81892698</p>
-<p>人文学院 </p>
-<p>南校区信远 II 区 106 </p>
-<p>郭老师 </p>
-<p>029-81891117</p>
-<p>外国语学院 </p>
-<p>南校区信远 II 区 424 </p>
-<p>唐老师 </p>
-<p>029-81891387</p>
-<p>微电子学院 </p>
-<p>北校区办公楼 102 </p>
-<p>张老师 </p>
-<p>029-88203317</p>
-<p>生命科学技术学院 </p>
-<p>南校区 G 楼 420 </p>
-<p>郭老师 </p>
-<p>029-818910326</p>
-<p>空间科学与技术学院 </p>
-<p>南校区 G 楼 251 </p>
-<p>尹老师 </p>
-<p>029-81891034</p>
-<p>先进材料与纳米科技学院 </p>
-<p>南校区工训中心 IV 区 302 会议室 </p>
-<p>刘老师 </p>
-<p>029-81891417</p>
-<p>网络与信息安全学院 </p>
-<p>南校区网安大楼 AII 区二楼大厅 </p>
-<p>陈老师 </p>
-<p>029-81891650</p>
-<p>人工智能学院 </p>
-<p>南校区网安大楼 C2-0205 </p>
-<p>李老师 </p>
-<p>029-81891373</p>
-<p>马克思主义学院 </p>
-<p>南校区信远 II 区 135 </p>
-<p>章老师 </p>
-<p>029-81891162</p>
-<p>体育部 </p>
-<p>南校区游泳中心 207 </p>
-<p>左老师 </p>
-<p>029-81891197</p>
-<p>广州研究院 </p>
-<p>北校区教辅楼 227 </p>
-<p>吉老师 </p>
-<p>020-32030125</p>
-<p>杭州研究院 </p>
-<p>杭州研究院综合楼大厅 </p>
-<p>于老师 </p>
-<p>0571-22828364</p>
-<p>后勤保障部</p>
-<p>北校区体育馆 </p>
-<p>杜老师 </p>
-<p>029-88204385</p>
-<p>南校区男博士：丁香 14、15 号楼服务台</p>
-<p>燕老师 </p>
-<p>029-81892773</p>
-<p>南校区女博士：海棠 20 号楼服务台</p>
-<p>财务处</p>
-<p>北校区一站式服务大厅</p>
-<p>王老师 </p>
-<p>029-81891002</p>
-<p>南校区 D 楼计划财务处资金管理科</p>
-<p>（三）现场报到流程</p>
-<p>\1. 缴费确认</p>
-<p>新生须在缴纳应缴费用后，方可办理现场报到手续，建议通过迎</p>
-<p>新系统提前缴纳各类费用。</p>
-<p>\2. 学历学位证书查验</p>
-<p>现场报到时，应携带录取通知书、有效身份证件和学历学位证书</p>
-<p>原件，在报到点查验。</p>
-<p>\3. 校园一卡通领取</p>
-<p>校园一卡通在报到现场领取。</p>
-<p>4．入学体检和医保办理</p>
-<p>根据学校有关规定，新生须接受入学体检，并须于入校前完成网</p>
-<p>上注册，关于入学体检和医保办理的具体步骤见附件 8。</p>
-<p>5．入住宿舍7</p>
-<p>完成在线选宿的新生，9 月 3 日当天可持录取通知书和身份证直</p>
-<p>接到所在宿舍楼办理入住手续，入住后宿舍问题请联系各公寓楼服务</p>
-<p>台处理。</p>
-<p><strong>四、注意事项</strong></p>
-<p>（一）因特殊原因不能按时报到者，须联系学院办理相关手续。</p>
-<p>逾期两周无故不报到者，按放弃入学资格处理。</p>
-<p>（二）户口迁移手续可于开学后一周内携录取通知书前往保卫处</p>
-<p>户籍室办理。</p>
-<p>北校区：例行实验楼 107 室，电话：029-88202961</p>
-<p>南校区：行政辅楼 1 层户籍室，电话：029-81891008</p>
-<p>（三）完成线上选宿及缴费的新生，9 月 3 日当天可先行前往宿</p>
-<p>舍楼入住，再前往各学院报到点报到。提前到校的新生请自行安排住</p>
-<p>宿。</p>
-<p>（四）新生在报到期间有任何问题应及时与所在学院联系。</p>
-<p><strong>五、温情提示</strong></p>
-<p>（一）请及时加入新生 QQ 群</p>
-<p><strong>QQ</strong> <strong>群号</strong> </p>
-<p><strong>学院</strong></p>
-<p>497869680 </p>
-<p>通信工程学院、电子工程学院、光电工程学院、物理学院、</p>
-<p>497912262 </p>
-<p>机电工程学院、微电子学院</p>
-<p>701903483</p>
-<p>计算机科学与技术学院、经济与管理学院、数学与统计学院、</p>
-<p>人文学院、外国语学院、生命科学技术学院、空间科学与技</p>
-<p>术学院、先进材料与纳米科技学院、网络与信息安全学院、</p>
-<p>人工智能学院、马克思主义学院、体育部</p>
-<p>241578694 </p>
-<p>广州研究院</p>
-<p>537329299 </p>
-<p>杭州研究院</p>
-<p>注：请新生根据录取学院加入对应 QQ 群。（二）请及时关注“西电研究生”微信公众号，第一时间接收研</p>
-<p>究生各类资讯和通知。</p>
-<p>（三）校区地址</p>
-<p>1.北校区地址：西安市雁塔区太白南路 2 号</p>
-<p>乘车建议：西安站&#x2F;西安北站可乘坐地铁 2 号线&#x2F;4 号线，换乘 3 号</p>
-<p>线至太白南路站下车；西安站还可乘坐 608、6、游 7 路公交至西安电</p>
-<p>子科技大学站&#x2F;太白立交站；咸阳机场可乘坐机场巴士至高新志诚丽</p>
-<p>柏酒店。</p>
-<p>\2. 南校区地址：西安市西沣路兴隆段 266 号</p>
-<p>乘车建议：西安站&#x2F;西安北站可乘坐地铁 2 号线&#x2F;4 号线，换乘 3 号</p>
-<p>线，再换乘地铁 6 号线至西安国际医学中心站下车。咸阳机场可乘坐</p>
-<p>机场巴士至吉源国际酒店或高新希尔顿花园酒店，再换乘公交。</p>
-<p>请各位同学留意学校后续通知。</p>
-<p>8</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/12/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/2023%E7%BA%A7%E7%A0%94%E7%A9%B6%E7%94%9F%E6%8A%A5%E9%81%93%E9%A1%BB%E7%9F%A5/" data-id="cll7gmvo50008w4v2fuqsc42i" data-title="2023级研究生报道须知" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-个人规划/个人规划" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/12/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/" class="article-date">
-  <time class="dt-published" datetime="2023-08-12T02:48:22.881Z" itemprop="datePublished">2023-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/12/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">《啊培在努力的AI+HPC大厂之路》总纲</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="《啊培在努力的AI-HPC-考公之路》总纲"><a href="#《啊培在努力的AI-HPC-考公之路》总纲" class="headerlink" title="《啊培在努力的AI_HPC&#x2F;考公之路》总纲"></a>《啊培在努力的AI_HPC&#x2F;考公之路》总纲</h1><h2 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h2><p>2023年8月12日</p>
-<p>17年高考，超一本线28分，选了省内双非一本电子信息工程专业，大二入伍，两年军旅，退伍后转专业至计算机，退役复学后<a target="_blank" rel="noopener" href="https://blog.csdn.net/brucecui1998/article/details/108560114?spm=1001.2014.3001.5501">感触颇深</a>，开始更加努力好好学习（入伍前就是爱学习的哈哈哈每天晚上都是自己去自习）,退役后本科卷了三年，卷绩点、卷竞赛、卷学生工作，忙碌啦三年最后阴差阳错保研到控制专业（哈哈哈没错就是计算机跨控制），保研后开始躺平，想自学但是碍于毕业论文，一直没有自学的时间，当时一直想着，哎呀毕业论文这事一直压着我，占用我时间，导致没时间学自己想学的，总是想着等毕业论文写完再学，等实验跑出来再学、等跑出来更好的实验结果再学、等查完重再学、等毕业好好耍完再学…….经过这一年的时间我发现，原来不管是什么阶段、不管你是保研前每天卷的飞起，还是保研后有大把大把的时间，总是能找到现阶段的理由去阻碍你自学。保研前自己当时很想提高自己的编程能力（因为我觉得自己只适合考试、从来没怎么自己真正动手实践过，而大学里的评价体系就不太完善，虽然有实验课，但是大家也都是ctrl cv应付了事，用更多的时间去卷其他东西）总是想着，我要卷绩点、我还有比赛、我还有学生工作，所以其实自己的编程能力还是没有多大的提升。而保研后，虽然有大把的时间，还是像刚才说的一样，现在是23年8月，当我回想过去这一年的收获时，我竟然没什么自学的收获（虽然拿了优秀毕业论文、优秀毕业生）</p>
-<p>好在自己能清醒的认识到这点，好在自己现在才研0，距离开学还有不到一个月的时间，马上迎接我的又是一个三年，我要继续卷下去！读研三年不仅仅是拿学历，更重要的是这将是自己人生中最后拥有大把时间的三年，也是最最宝贵的时光，不管未来是进大厂打拼实现财务自由，还是回老家考公过安稳日子，我相信当以后老了面对自己孙子的时候能说出自己的硕士没有遗憾！爷的青春回来啦！</p>
-<h2 id="吾日三省吾身"><a href="#吾日三省吾身" class="headerlink" title="吾日三省吾身"></a>吾日三省吾身</h2><p>晚上睡太晚，早上起不来</p>
-<h2 id="毕业基本要求"><a href="#毕业基本要求" class="headerlink" title="毕业基本要求"></a>毕业基本要求</h2><ul>
-<li>完成2023 级研究生报到须知 几个重要的时间节点 8.13 8.15  8.17 8.18 8.23 8.25 9.3</li>
-</ul>
-<h2 id="自学提升"><a href="#自学提升" class="headerlink" title="自学提升"></a>自学提升</h2><ul>
-<li>UNet-3D网络优化</li>
-<li>leetcode2000题 （19&#x2F;2000）</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/12/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/" data-id="cll7gmvo50007w4v2csnna8f1" data-title="《啊培在努力的AI+HPC大厂之路》总纲" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -934,7 +737,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -949,7 +752,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
     </div>
   </div>
 
@@ -962,23 +765,23 @@
       <ul>
         
           <li>
+            <a href="/2023/10/02/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/01.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">01.环境配置</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%202%E2%86%92Level%203/">Bandit Level 2→Level 3</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%20%E6%A8%A1%E6%9D%BF/">模板</a>
+          </li>
+        
+          <li>
             <a href="/2023/08/27/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E7%BA%A2%E4%B9%A6%E8%87%AA%E5%8A%A8%E7%82%B9%E8%B5%9E%E3%80%81%E8%AF%84%E8%AE%BA%E8%84%9A%E6%9C%AC/">Level 1 ：小红书自动点赞、评论脚本</a>
           </li>
         
           <li>
             <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%201%E2%86%92Level%202/">Bandit Level 1→Level 2</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200%E2%86%92Level%201/">Bandit Level 0 → Level 1</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200/">Bandit Level 0</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/19/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Linux%E5%B0%8F%E5%B8%B8%E8%AF%86/">Linux小常识</a>
           </li>
         
       </ul>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-杂项汇总/AiHpc科研环境远程服务器配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/25/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/AiHpc%E7%A7%91%E7%A0%94%E7%8E%AF%E5%A2%83%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time class="dt-published" datetime="2023-07-25T03:36:13.580Z" itemprop="datePublished">2023-07-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/25/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/AiHpc%E7%A7%91%E7%A0%94%E7%8E%AF%E5%A2%83%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/">搭建科研环境远程服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="AI-hpc科研环境远程服务器配置"><a href="#AI-hpc科研环境远程服务器配置" class="headerlink" title="AI hpc科研环境远程服务器配置"></a>AI hpc科研环境远程服务器配置</h1><p>今天准备现在笔记本折腾一下debian，之前一直用ubuntu觉得不稳定，特此记录一下坑，开学再给实验室装服务器</p>
+<h2 id="安装debian"><a href="#安装debian" class="headerlink" title="安装debian"></a>安装debian</h2><p>服务器镜像：<a target="_blank" rel="noopener" href="http://mirrors.ustc.edu.cn/debian-cd/current-live/amd64/iso-hybrid/debian-live-12.1.0-amd64-standard.iso">debian-12.1-standard</a></p>
+<p>烧录软件：refus-3.1.3</p>
+<p>官方安装文档：<a target="_blank" rel="noopener" href="https://www.debian.org/releases/bookworm/amd64/index.zh-cn.html">https://www.debian.org/releases/bookworm/amd64/index.zh-cn.html</a></p>
+<p>准备工作：</p>
+<ul>
+<li>1、在win上压缩出100GB的空间，右键此电脑-磁盘管理-压缩卷</li>
+<li>2、使用refus制作启动盘</li>
+</ul>
+<p>重启选择UEFI启动项进入debian安装界面，照着文档做很简单</p>
+<p><strong>firmware</strong></p>
+<p>其中再detect firmware的时候，官方的 CD 映像不含商用的固件，缺少一些firmware，参考<a target="_blank" rel="noopener" href="https://www.debian.org/releases/jessie/amd64/ch06s04.html.zh-cn%EF%BC%8C%E5%8E%BB%E4%B8%8B%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%AC%E7%9A%84%E7%84%B6%E5%90%8E%E8%A7%A3%E5%8E%8B%E5%88%B0u%E7%9B%98%E7%9A%84/firmware%E4%B8%8B">https://www.debian.org/releases/jessie/amd64/ch06s04.html.zh-cn，去下载对应版本的然后解压到u盘的/firmware下</a></p>
+<p><strong>手动分区</strong></p>
+<p>参考<a target="_blank" rel="noopener" href="https://www.debian.org/releases/bookworm/amd64/ch06s03.zh-cn.html#di-user-setup%EF%BC%8C%E9%80%89%E6%8B%A9Manual%E5%90%8E%EF%BC%8C%E9%80%89%E4%B8%AD%E8%87%AA%E5%B7%B1%E6%8F%90%E5%89%8D%E5%88%86%E5%87%BA%E6%9D%A5%E7%9A%84%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%EF%BC%8C%E4%B8%8A%E9%9D%A2%E5%86%99%E7%9D%80FREE">https://www.debian.org/releases/bookworm/amd64/ch06s03.zh-cn.html#di-user-setup，选择Manual后，选中自己提前分出来的磁盘空间，上面写着FREE</a> SPACE</p>
+<p><strong>踩的坑：</strong></p>
+<p>1、当debian问要不要安装grub时，不要什么都不填直接点contiune，它允许你这么做，但你这么做之后你重启后找不到引导，这可太自由了…</p>
+<p><strong>配置grub Install the GRUB boot loader</strong></p>
+<p><img src="/../../images/LinuxC++/debian.jpg" alt="debian"></p>
+<p>在配置grub时，根据之前划分出来的100GB位于哪个硬盘，sda还是nvme（在分区那一步可以看到），就选哪一个。例如，我的100GB空闲是位于sda，我就应该选第三个&#x2F;dev&#x2F;sda&#x2F;。到底位于哪里，在手动分区那里可以看到</p>
+<p>2、如上操作后，由于我的sda磁盘没有EFI分区，安装完重启后还是没有办法引导。大佬说我的盘是MBR分区表，MBR分区表对应的是只能走grub的legacy模式引导（GPT分区表对应EFI引导），刚才找不到引导项是因为，legacy安装下它根本不走efi，而是通过直接选设备引导的，但是不知道我是否开启了lagacy引导支持。</p>
+<p><img src="/../../images/LinuxC++/disk.jpg" alt="debian"></p>
+<p>在大佬指导下，我选择了倒数第二个，从设备引导，引导成功，比较幸运，看来我开启了lagacy支持。</p>
+<p>tips大佬的话： 这里面机制有点复杂,EFI的引导检测机制是使用特殊的EFI分区中的efi程序,efi固件在进入时会扫描每个磁盘上的efi分区,把nvram里面保存的efi引导程序放在这里,你选一个就会根据记录找到对应的文件引导,但是老旧的legacy引导不是这样,让我们回到二十年前,那时候还没有efi固件,也不存在efi分区,引导方式就是简单的扫描零号扇区,因此只能通过选择设备区分不同的引导项,我说的很简单，其实细节远不止这样,你感兴趣可以看看GRUB的两阶段引导的具体实现,那个000H1就是保存在NVRAM里面的Windows引导项,它对应的efi程序是&#x2F;EFI&#x2F;Windows&#x2F;bootmgr.efi.顺带再一提,虽然我们经验上说MBR对应Legacy引导，GPT对应UEFI引导,但是实际上它们直接不是绝对的对应关系,而是一个两两组合的二维矩阵,换句话说，MBR+EFI，GPT+Legacy也是可以的,虽然不被推荐,是Windows强行绑定起来,把人都惯成了思维定式</p>
+<p>安装基本的东西</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install vim g++ openssh-server git net-tools</span><br></pre></td></tr></table></figure>
+
+<h2 id="换源（debian）"><a href="#换源（debian）" class="headerlink" title="换源（debian）"></a>换源（debian）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list_bak</span><br><span class="line">sudo sed -i &#x27;s/deb.debian.org/mirrors.ustc.edu.cn/g&#x27; /etc/apt/sources.list</span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置ssh"><a href="#配置ssh" class="headerlink" title="配置ssh"></a>配置ssh</h3><p><code>su root</code> 的话只是将当前身份转为 root，用户 shell 并没有改变，所以有些系统命令不能使用，所以使用su - root</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - root</span><br></pre></td></tr></table></figure>
+
+<p>配置ssh，利用vscode连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow ssh</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<p>编辑ssh的配置文件。将#PermitRootLogin prohibit-password中prohibit-password去掉改为yes，并把PermitRootLogin yes之前的#去掉：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PermitRootLogin yes</span><br></pre></td></tr></table></figure>
+
+<p>设置SSH开机启动 使用以下命令设置SSH开机启动： </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update-rc.d ssh enable</span><br></pre></td></tr></table></figure>
+
+<p>重启ssh服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
+
+<p>在linux中查看ip地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<p>在vscode中安装ssh插件，然后即可实现局域网内ssh hunter@ip</p>
+<h3 id="利用cpolar实现公网访问远程服务器"><a href="#利用cpolar实现公网访问远程服务器" class="headerlink" title="利用cpolar实现公网访问远程服务器"></a>利用cpolar实现公网访问远程服务器</h3><p>很简单，等到学校装的时候再补充</p>
+<h2 id="配置CUDA"><a href="#配置CUDA" class="headerlink" title="配置CUDA"></a>配置CUDA</h2><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">CUDA各种版本</a></p>
+<p>安装驱动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.nvidia.cn/content/DriverDownloads/confirmation.php?url=/XFree86/Linux-x86_64/535.86.05/NVIDIA-Linux-x86_64-535.86.05.run</span><br><span class="line">sudo sh NVIDIA-Linux-x86_64-535.86.05.run</span><br></pre></td></tr></table></figure>
+
+<p>安装cudatoolkit</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://developer.download.nvidia.com/compute/cuda/12.1.0/local_installers/cuda_12.1.0_530.30.02_linux.run</span><br><span class="line">sudo sh cuda_12.1.0_530.30.02_linux.run</span><br></pre></td></tr></table></figure>
+
+<p>输入accept后只选择cudatoolkit就可以</p>
+<p>添加环境变量，vim &#x2F;etc&#x2F;profile，为所有用户添加CUDA环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/usr/local/cuda-12.1/bin:$PATH</span><br><span class="line"></span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda-12.1/lib64:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>source &#x2F;etc&#x2F;profile</p>
+<h2 id="添加多用户便于实验室组内共用"><a href="#添加多用户便于实验室组内共用" class="headerlink" title="添加多用户便于实验室组内共用"></a>添加多用户便于实验室组内共用</h2><p>注意服务器的root权限最好只有一个人掌握，其他人直接分配用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser cuirongpei</span><br></pre></td></tr></table></figure>
+
+<p>会提示输入密码什么的</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/07/25/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/AiHpc%E7%A7%91%E7%A0%94%E7%8E%AF%E5%A2%83%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" data-id="cll36y9ca000028v24dpadhxq" data-title="搭建科研环境远程服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-项目合集/KuiperInfer/第二课" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%BA%8C%E8%AF%BE/" class="article-date">
+  <time class="dt-published" datetime="2023-07-24T03:33:13.514Z" itemprop="datePublished">2023-07-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%BA%8C%E8%AF%BE/">第二课</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="第二课"><a href="#第二课" class="headerlink" title="第二课"></a>第二课</h1><p>知识产权所有：</p>
+<ul>
+<li>B站up主：<a target="_blank" rel="noopener" href="https://space.bilibili.com/1822828582">我是傅傅猪</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zjhellofss/KuiperInfer">github链接</a> </li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1HV4y1A7H8/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=fe6c1940458efae8fa34a9a71403d0b4">视频链接</a></li>
+<li><a target="_blank" rel="noopener" href="https://cowtransfer.com/s/92602ff08d544b">第二节课课件</a></li>
+</ul>
+<p>手把手带学：B站up主：<a target="_blank" rel="noopener" href="https://space.bilibili.com/678390438?spm_id_from=333.788.0.0">啊培在努力</a></p>
+<p>视频初衷：帮助小白上手，手把手实操课程，对小白级同学比较友好，同时也是希望倒逼自己学习。</p>
+<h2 id="Tensor类对外的接口"><a href="#Tensor类对外的接口" class="headerlink" title="Tensor类对外的接口"></a>Tensor类对外的接口</h2><p>综合考虑灵活性和开发的难易度，我们会以Armadillo类中的arma::mat(矩阵 matrix)类和arma::cube 作为数据管理(三维矩阵)类来实现Tensor 我们库中类的主体，一个cube由多个matrix组成，cube又是Tensor类中的数据实际管理者。一块连续的大内存分配开始写一个tensor，工作量会特别大，折中！</p>
+<p>我们设计的类是以arma::cube为基础实现了Tensor类，我们主要是提供了更方便的访问方式和对外接口。</p>
+<p>Tensor和arma::cube的关系</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%BA%8C%E8%AF%BE/" data-id="cll374taz00013gv2fqu78wsb" data-title="第二课" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-项目合集/KuiperInfer/手把手从零带学KuiperInfer自制深度学习推理框架" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/" class="article-date">
+  <time class="dt-published" datetime="2023-07-24T03:22:52.711Z" itemprop="datePublished">2023-07-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/">第一课</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="手把手从0带学KuipeiInfer自制深度学习推理框架"><a href="#手把手从0带学KuipeiInfer自制深度学习推理框架" class="headerlink" title="手把手从0带学KuipeiInfer自制深度学习推理框架"></a>手把手从0带学KuipeiInfer自制深度学习推理框架</h1><p>知识产权所有：</p>
+<ul>
+<li><p>B站up主：<a target="_blank" rel="noopener" href="https://space.bilibili.com/1822828582">我是傅傅猪</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/zjhellofss/KuiperInfer">github链接</a> </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1HV4y1A7H8/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=fe6c1940458efae8fa34a9a71403d0b4">视频链接</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cowtransfer.com/s/eec6da6f7dee4c">第一节课课件</a></p>
+</li>
+</ul>
+<p>视频初衷：帮助小白上手，手把手实操课程，对小白级同学比较友好，同时也是希望倒逼自己学习。</p>
+<h2 id="虚拟机安装"><a href="#虚拟机安装" class="headerlink" title="虚拟机安装"></a>虚拟机安装</h2><p>VMware链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/14yh_ST14D1Evtg_NxXOcUg?pwd=abcd">https://pan.baidu.com/s/14yh_ST14D1Evtg_NxXOcUg?pwd=abcd</a><br>提取码：abcd</p>
+<p>镜像文件：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/20.04/ubuntu-20.04.6-desktop-amd64.iso">https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/20.04/ubuntu-20.04.6-desktop-amd64.iso</a></p>
+<h2 id="预置工作"><a href="#预置工作" class="headerlink" title="预置工作"></a>预置工作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list.old</span><br><span class="line">sudo vi /etc/apt/sources.list</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install net-tools</span><br><span class="line">sudo apt install vim g++ openssh-server git</span><br></pre></td></tr></table></figure>
+
+<p>配置ssh，利用vscode连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow ssh</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<p>编辑ssh的配置文件。将#PermitRootLogin prohibit-password中prohibit-password去掉改为yes，并把PermitRootLogin yes之前的#去掉：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PermitRootLogin yes</span><br></pre></td></tr></table></figure>
+
+<p>重启ssh服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
+
+<p>在虚拟机中查看ip地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<p>在vscode中安装ssh插件，然后 ssh hunter@ip</p>
+<h2 id="armadillo安装"><a href="#armadillo安装" class="headerlink" title="armadillo安装"></a>armadillo安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install cmake libopenblas-dev liblapack-dev libarpack2-dev libsuperlu-dev</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tar xf armadillo-11.4.2.tar.xz</span><br><span class="line">cd armadillo-11.4.2</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j8</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<h2 id="glog安装"><a href="#glog安装" class="headerlink" title="glog安装"></a>glog安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j8</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<h2 id="gtest安装"><a href="#gtest安装" class="headerlink" title="gtest安装"></a>gtest安装</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/google/googletest</span><br><span class="line">cd googletest/</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j8</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<p>设置环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行第一次课程的代码"><a href="#运行第一次课程的代码" class="headerlink" title="运行第一次课程的代码"></a>运行第一次课程的代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/zjhellofss/KuiperCourse.git</span><br><span class="line">git checkout first </span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make -j8</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hunter@ubuntu:~/content/workspace/KuiperCourse/build$ ./kuiper_course </span><br><span class="line">rows 32</span><br><span class="line">cols 32</span><br><span class="line">value 2</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/07/24/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E6%89%8B%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%9B%B6%E5%B8%A6%E5%AD%A6KuiperInfer%E8%87%AA%E5%88%B6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%8E%A8%E7%90%86%E6%A1%86%E6%9E%B6/" data-id="clkiderz90001iwv2b7et1l4b" data-title="第一课" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/02/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/01.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">01.环境配置</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%202%E2%86%92Level%203/">Bandit Level 2→Level 3</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%20%E6%A8%A1%E6%9D%BF/">模板</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/27/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E7%BA%A2%E4%B9%A6%E8%87%AA%E5%8A%A8%E7%82%B9%E8%B5%9E%E3%80%81%E8%AF%84%E8%AE%BA%E8%84%9A%E6%9C%AC/">Level 1 ：小红书自动点赞、评论脚本</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%201%E2%86%92Level%202/">Bandit Level 1→Level 2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

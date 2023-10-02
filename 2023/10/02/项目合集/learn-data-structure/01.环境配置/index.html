@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>01.环境配置 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="[toc] 环境配置 VMware vscode cmake glog&#x2F;gtest  配置vscode ssh连接Centos安装好VMware虚拟机并安装好Centos后 1sudo yum install openssh-server net-tools -y  12sudo vim &#x2F;etc&#x2F;ssh&#x2F;sshd_config将#Port 22和#PermitRootLogin yes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01.环境配置">
+<meta property="og:url" content="http://example.com/2023/10/02/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/01.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[toc] 环境配置 VMware vscode cmake glog&#x2F;gtest  配置vscode ssh连接Centos安装好VMware虚拟机并安装好Centos后 1sudo yum install openssh-server net-tools -y  12sudo vim &#x2F;etc&#x2F;ssh&#x2F;sshd_config将#Port 22和#PermitRootLogin yes">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-02T14:42:35.972Z">
+<meta property="article:modified_time" content="2023-10-02T15:33:11.929Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-项目合集/learn-data-structure/01.环境配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/02/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/01.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time class="dt-published" datetime="2023-10-02T14:42:35.972Z" itemprop="datePublished">2023-10-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      01.环境配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><ul>
+<li>VMware</li>
+<li>vscode</li>
+<li>cmake</li>
+<li>glog&#x2F;gtest</li>
+</ul>
+<h2 id="配置vscode-ssh连接Centos"><a href="#配置vscode-ssh连接Centos" class="headerlink" title="配置vscode ssh连接Centos"></a>配置vscode ssh连接Centos</h2><p>安装好VMware虚拟机并安装好Centos后</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install openssh-server net-tools -y</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br><span class="line">将#Port 22和#PermitRootLogin yes前的#去掉</span><br></pre></td></tr></table></figure>
+
+<p>检查sshd服务是否已经开启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">开启ssh服务</span><br><span class="line">sudo service sshd start</span><br><span class="line">重启ssh服务</span><br><span class="line">sudo service sshd restart</span><br><span class="line">检查 sshd 服务是否已经开启，或检查 22 号端口是否开启监听</span><br><span class="line"> ps -e | grep sshd</span><br><span class="line"> netstat -anlpt | grep 22</span><br><span class="line"> 检查sshd服务状态</span><br><span class="line"> systemctl status sshd</span><br></pre></td></tr></table></figure>
+
+<p>查看ip地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[hunter@localhost ssh]$ ifconfig</span><br><span class="line">ens33: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.79.128  netmask 255.255.255.0  broadcast 192.168.79.255</span><br><span class="line">        inet6 fe80::51b1:fa27:ccc:256d  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 00:0c:29:11:9d:c6  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 468508  bytes 684429226 (652.7 MiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 75941  bytes 4657421 (4.4 MiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 324  bytes 28188 (27.5 KiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 324  bytes 28188 (27.5 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">virbr0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255</span><br><span class="line">        ether 52:54:00:cd:eb:e7  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以看到虚拟机的ip地址为192.168.79.128</p>
+<p>在vscode中ssh </p>
+<p>ssh <a href="mailto:&#x68;&#117;&#x6e;&#x74;&#x65;&#x72;&#x40;&#x31;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#x2e;&#x37;&#x39;&#x2e;&#49;&#x32;&#x38;">&#x68;&#117;&#x6e;&#x74;&#x65;&#x72;&#x40;&#x31;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#x2e;&#x37;&#x39;&#x2e;&#49;&#x32;&#x38;</a>  -p 22</p>
+<h2 id="安装高版本的gcc-g"><a href="#安装高版本的gcc-g" class="headerlink" title="安装高版本的gcc g++"></a>安装高版本的gcc g++</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">查看当前的安装版本号</span><br><span class="line">rpm -q gcc</span><br><span class="line">卸载掉旧版本</span><br><span class="line">rpm -e [第二步查到的版本号]</span><br><span class="line">安装最新版本的gcc 、g++</span><br><span class="line"></span><br><span class="line">在安装之前，可以先去查询一下目前gcc 、g++的版本以及区别，本文用了第11版</span><br><span class="line"></span><br><span class="line">    1、在系统中安装存储库</span><br><span class="line"></span><br><span class="line">sudo yum install centos-release-scl</span><br><span class="line"></span><br><span class="line">    2、安装gcc和g++包（注意版本号：11版）</span><br><span class="line"></span><br><span class="line">sudo yum install -y devtoolset-11-gcc devtoolset-11-gcc-c++</span><br><span class="line"></span><br><span class="line">    3、配置安装好的包（注意版本号：11版）</span><br><span class="line"></span><br><span class="line">scl enable devtoolset-11 bash</span><br><span class="line"></span><br><span class="line">    4、验证安装</span><br><span class="line">gcc -v</span><br><span class="line">    配置环境变量</span><br><span class="line"></span><br><span class="line">    因为不配置环境变量的话，每打开一个客户端，就需要执行一次上面的第三步配置安装包</span><br><span class="line"></span><br><span class="line">//先查看gcc和g++安装位置</span><br><span class="line">[root@123 /]# which gcc</span><br><span class="line">/opt/rh/devtoolset-11/root/usr/bin/gcc</span><br><span class="line">[root@123 /]# which g++</span><br><span class="line">/opt/rh/devtoolset-11/root/usr/bin/g++</span><br><span class="line"></span><br><span class="line">    编辑文件</span><br><span class="line"></span><br><span class="line">sudo vim /etc/profile</span><br><span class="line"></span><br><span class="line">    在文件后面添加下面两行内容：</span><br><span class="line"></span><br><span class="line">export PATH=/opt/rh/devtoolset-11/root/usr/bin:$PATH</span><br><span class="line"></span><br><span class="line">    重新加载文件</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>安装依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install git make openssl openssl-devel -y</span><br></pre></td></tr></table></figure>
+
+<p>准备目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/workspace</span><br><span class="line">cd ~/workspace</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置项目-安装cmake-glog-gtest"><a href="#配置项目-安装cmake-glog-gtest" class="headerlink" title="配置项目 安装cmake glog gtest"></a>配置项目 安装cmake glog gtest</h2><p>下载项目代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/cui-rongpei/learn-data-structure.git</span><br><span class="line">cd learn-data-structure</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装cmake"><a href="#安装cmake" class="headerlink" title="安装cmake"></a>安装cmake</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git clone  https://gitee.com/brightxiaohan/CMake.git</span><br><span class="line">cd CMake</span><br><span class="line">git checkout v3.19.5</span><br><span class="line">./configure --prefix=~/lib/cmake-3.19.5</span><br><span class="line">make -j32</span><br><span class="line">make install</span><br><span class="line">cd ..</span><br><span class="line">rm -rf CMake</span><br></pre></td></tr></table></figure>
+
+<p>配置cmake环境变量,vim ~&#x2F;.bashrc在其中加入如下内容（注意替换成对应自己用户名的路径）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/home/hunter/lib/cmake-3.19.5/bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>激活~&#x2F;.bashrc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装glog"><a href="#安装glog" class="headerlink" title="安装glog"></a>安装glog</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/LauZanMo/glog.git</span><br><span class="line">cd glog</span><br><span class="line">git checkout v0.5.0</span><br><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line">cmake .. </span><br><span class="line">make -j32</span><br><span class="line">sudo make install</span><br><span class="line">cd ../..</span><br><span class="line">rm -rf glog</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装gtest"><a href="#安装gtest" class="headerlink" title="安装gtest"></a>安装gtest</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/jiajiduan/googletest.git</span><br><span class="line">cd googletest</span><br><span class="line">git checkout v1.14.0</span><br><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line">cmake .. </span><br><span class="line">make -j32</span><br><span class="line">sudo make install</span><br><span class="line">cd ../..</span><br><span class="line">rm -rf googletest</span><br></pre></td></tr></table></figure>
+
+<h2 id="跑通代码验证环境是否正常"><a href="#跑通代码验证环境是否正常" class="headerlink" title="跑通代码验证环境是否正常"></a>跑通代码验证环境是否正常</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/02/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/01.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" data-id="cln91w4ii000144v21xgx8523" data-title="01.环境配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%202%E2%86%92Level%203/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Bandit Level 2→Level 3</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/02/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/01.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">01.环境配置</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%202%E2%86%92Level%203/">Bandit Level 2→Level 3</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%20%E6%A8%A1%E6%9D%BF/">模板</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/27/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E7%BA%A2%E4%B9%A6%E8%87%AA%E5%8A%A8%E7%82%B9%E8%B5%9E%E3%80%81%E8%AF%84%E8%AE%BA%E8%84%9A%E6%9C%AC/">Level 1 ：小红书自动点赞、评论脚本</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%201%E2%86%92Level%202/">Bandit Level 1→Level 2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

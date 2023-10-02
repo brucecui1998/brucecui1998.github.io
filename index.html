@@ -73,6 +73,189 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-项目合集/learn-data-structure/01.环境配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/02/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/01.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time class="dt-published" datetime="2023-10-02T14:42:35.972Z" itemprop="datePublished">2023-10-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/10/02/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/01.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">01.环境配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><ul>
+<li>VMware</li>
+<li>vscode</li>
+<li>cmake</li>
+<li>glog&#x2F;gtest</li>
+</ul>
+<h2 id="配置vscode-ssh连接Centos"><a href="#配置vscode-ssh连接Centos" class="headerlink" title="配置vscode ssh连接Centos"></a>配置vscode ssh连接Centos</h2><p>安装好VMware虚拟机并安装好Centos后</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install openssh-server net-tools -y</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ssh/sshd_config</span><br><span class="line">将#Port 22和#PermitRootLogin yes前的#去掉</span><br></pre></td></tr></table></figure>
+
+<p>检查sshd服务是否已经开启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">开启ssh服务</span><br><span class="line">sudo service sshd start</span><br><span class="line">重启ssh服务</span><br><span class="line">sudo service sshd restart</span><br><span class="line">检查 sshd 服务是否已经开启，或检查 22 号端口是否开启监听</span><br><span class="line"> ps -e | grep sshd</span><br><span class="line"> netstat -anlpt | grep 22</span><br><span class="line"> 检查sshd服务状态</span><br><span class="line"> systemctl status sshd</span><br></pre></td></tr></table></figure>
+
+<p>查看ip地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[hunter@localhost ssh]$ ifconfig</span><br><span class="line">ens33: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.79.128  netmask 255.255.255.0  broadcast 192.168.79.255</span><br><span class="line">        inet6 fe80::51b1:fa27:ccc:256d  prefixlen 64  scopeid 0x20&lt;link&gt;</span><br><span class="line">        ether 00:0c:29:11:9d:c6  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 468508  bytes 684429226 (652.7 MiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 75941  bytes 4657421 (4.4 MiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 324  bytes 28188 (27.5 KiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 324  bytes 28188 (27.5 KiB)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">virbr0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255</span><br><span class="line">        ether 52:54:00:cd:eb:e7  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以看到虚拟机的ip地址为192.168.79.128</p>
+<p>在vscode中ssh </p>
+<p>ssh <a href="mailto:&#x68;&#117;&#x6e;&#x74;&#x65;&#x72;&#x40;&#x31;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#x2e;&#x37;&#x39;&#x2e;&#49;&#x32;&#x38;">&#x68;&#117;&#x6e;&#x74;&#x65;&#x72;&#x40;&#x31;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#x2e;&#x37;&#x39;&#x2e;&#49;&#x32;&#x38;</a>  -p 22</p>
+<h2 id="安装高版本的gcc-g"><a href="#安装高版本的gcc-g" class="headerlink" title="安装高版本的gcc g++"></a>安装高版本的gcc g++</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">查看当前的安装版本号</span><br><span class="line">rpm -q gcc</span><br><span class="line">卸载掉旧版本</span><br><span class="line">rpm -e [第二步查到的版本号]</span><br><span class="line">安装最新版本的gcc 、g++</span><br><span class="line"></span><br><span class="line">在安装之前，可以先去查询一下目前gcc 、g++的版本以及区别，本文用了第11版</span><br><span class="line"></span><br><span class="line">    1、在系统中安装存储库</span><br><span class="line"></span><br><span class="line">sudo yum install centos-release-scl</span><br><span class="line"></span><br><span class="line">    2、安装gcc和g++包（注意版本号：11版）</span><br><span class="line"></span><br><span class="line">sudo yum install -y devtoolset-11-gcc devtoolset-11-gcc-c++</span><br><span class="line"></span><br><span class="line">    3、配置安装好的包（注意版本号：11版）</span><br><span class="line"></span><br><span class="line">scl enable devtoolset-11 bash</span><br><span class="line"></span><br><span class="line">    4、验证安装</span><br><span class="line">gcc -v</span><br><span class="line">    配置环境变量</span><br><span class="line"></span><br><span class="line">    因为不配置环境变量的话，每打开一个客户端，就需要执行一次上面的第三步配置安装包</span><br><span class="line"></span><br><span class="line">//先查看gcc和g++安装位置</span><br><span class="line">[root@123 /]# which gcc</span><br><span class="line">/opt/rh/devtoolset-11/root/usr/bin/gcc</span><br><span class="line">[root@123 /]# which g++</span><br><span class="line">/opt/rh/devtoolset-11/root/usr/bin/g++</span><br><span class="line"></span><br><span class="line">    编辑文件</span><br><span class="line"></span><br><span class="line">sudo vim /etc/profile</span><br><span class="line"></span><br><span class="line">    在文件后面添加下面两行内容：</span><br><span class="line"></span><br><span class="line">export PATH=/opt/rh/devtoolset-11/root/usr/bin:$PATH</span><br><span class="line"></span><br><span class="line">    重新加载文件</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>安装依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install git make openssl openssl-devel -y</span><br></pre></td></tr></table></figure>
+
+<p>准备目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/workspace</span><br><span class="line">cd ~/workspace</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置项目-安装cmake-glog-gtest"><a href="#配置项目-安装cmake-glog-gtest" class="headerlink" title="配置项目 安装cmake glog gtest"></a>配置项目 安装cmake glog gtest</h2><p>下载项目代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/cui-rongpei/learn-data-structure.git</span><br><span class="line">cd learn-data-structure</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装cmake"><a href="#安装cmake" class="headerlink" title="安装cmake"></a>安装cmake</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git clone  https://gitee.com/brightxiaohan/CMake.git</span><br><span class="line">cd CMake</span><br><span class="line">git checkout v3.19.5</span><br><span class="line">./configure --prefix=~/lib/cmake-3.19.5</span><br><span class="line">make -j32</span><br><span class="line">make install</span><br><span class="line">cd ..</span><br><span class="line">rm -rf CMake</span><br></pre></td></tr></table></figure>
+
+<p>配置cmake环境变量,vim ~&#x2F;.bashrc在其中加入如下内容（注意替换成对应自己用户名的路径）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/home/hunter/lib/cmake-3.19.5/bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>激活~&#x2F;.bashrc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装glog"><a href="#安装glog" class="headerlink" title="安装glog"></a>安装glog</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/LauZanMo/glog.git</span><br><span class="line">cd glog</span><br><span class="line">git checkout v0.5.0</span><br><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line">cmake .. </span><br><span class="line">make -j32</span><br><span class="line">sudo make install</span><br><span class="line">cd ../..</span><br><span class="line">rm -rf glog</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装gtest"><a href="#安装gtest" class="headerlink" title="安装gtest"></a>安装gtest</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git clone https://gitee.com/jiajiduan/googletest.git</span><br><span class="line">cd googletest</span><br><span class="line">git checkout v1.14.0</span><br><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line">cmake .. </span><br><span class="line">make -j32</span><br><span class="line">sudo make install</span><br><span class="line">cd ../..</span><br><span class="line">rm -rf googletest</span><br></pre></td></tr></table></figure>
+
+<h2 id="跑通代码验证环境是否正常"><a href="#跑通代码验证环境是否正常" class="headerlink" title="跑通代码验证环境是否正常"></a>跑通代码验证环境是否正常</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/02/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/01.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" data-id="cln91w4ii000144v21xgx8523" data-title="01.环境配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-安全/OverTheWire/Bandit Level 2→Level 3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%202%E2%86%92Level%203/" class="article-date">
+  <time class="dt-published" datetime="2023-08-28T06:27:23.318Z" itemprop="datePublished">2023-08-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a>►<a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%202%E2%86%92Level%203/">Bandit Level 2→Level 3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="OverTheWire-Bandit-Level-2→Level-3"><a href="#OverTheWire-Bandit-Level-2→Level-3" class="headerlink" title="OverTheWire: Bandit Level 2→Level 3"></a>OverTheWire: Bandit Level 2→Level 3</h1><h2 id="Level-Goal"><a href="#Level-Goal" class="headerlink" title="Level Goal"></a>Level Goal</h2><p>The password for the next level is stored in a file called <strong>spaces in this filename</strong> located in the home directory</p>
+<h2 id="Commands-you-may-need-to-solve-this-level"><a href="#Commands-you-may-need-to-solve-this-level" class="headerlink" title="Commands you may need to solve this level"></a>Commands you may need to solve this level</h2><p><a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/ls.1.html">ls</a> , <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/cd.1p.html">cd</a> , <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/cat.1.html">cat</a> , <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/file.1.html">file</a> , <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/du.1.html">du</a> , <a target="_blank" rel="noopener" href="https://man7.org/linux/man-pages/man1/find.1.html">find</a></p>
+<h2 id="Helpful-Reading-Material"><a href="#Helpful-Reading-Material" class="headerlink" title="Helpful Reading Material"></a>Helpful Reading Material</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.google.com/search?q=spaces+in+filename">Google Search for “spaces in filename”</a></li>
+</ul>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &lt; spaces\ in\ this\ filename</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%202%E2%86%92Level%203/" data-id="cln91w4id000044v2azmm0a5f" data-title="Bandit Level 2→Level 3" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-安全/OverTheWire/Bandit Level 模板" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%20%E6%A8%A1%E6%9D%BF/" class="article-date">
+  <time class="dt-published" datetime="2023-08-28T05:27:02.630Z" itemprop="datePublished">2023-08-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a>►<a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%20%E6%A8%A1%E6%9D%BF/">模板</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="OverTheWire"><a href="#OverTheWire" class="headerlink" title="OverTheWire:"></a>OverTheWire:</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%20%E6%A8%A1%E6%9D%BF/" data-id="cln91w4ij000244v29b4nbuxf" data-title="模板" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-项目合集/基于本地知识库与大模型技术的自媒体自动运营项目/小红书自动点赞、评论脚本" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/27/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E7%BA%A2%E4%B9%A6%E8%87%AA%E5%8A%A8%E7%82%B9%E8%B5%9E%E3%80%81%E8%AF%84%E8%AE%BA%E8%84%9A%E6%9C%AC/" class="article-date">
@@ -186,17 +369,13 @@
 <p>ls, cd, cat, file, du, find</p>
 </blockquote>
 <h2 id="Helpful-Reading-Material"><a href="#Helpful-Reading-Material" class="headerlink" title="Helpful Reading Material"></a>Helpful Reading Material</h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/42187323/how-to-open-a-dashed-filename-using-terminal">Linux - How to open a “-“ dashed filename using terminal? - Stack Overflow</a></p>
-<p><a target="_blank" rel="noopener" href="https://linuxhandbook.com/redirection-linux/">Input Output &amp; Error Redirection in Linux Beginner’s Guide</a></p>
-<p>使用ls命令查看当前工作目录中存在的文件 （“pwd”命令可用于查看当前工作目录）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bandit0@bandit:~$ ls  </span><br><span class="line">readme</span><br></pre></td></tr></table></figure>
+<p>[Input Output &amp; Error Redirection in Linux <a target="_blank" rel="noopener" href="https://linuxhandbook.com/redirection-linux/">Beginner’s Guide]</a></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>View the files that are present in the current working directory using the <code>ls</code> command</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bandit1@bandit:~$ ls   - </span><br></pre></td></tr></table></figure>
 
-<p>我们看到有一个名为readme的文件来查看这个文件的内容，我们可以使用cat命令。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bandit0@bandit:~$ cat readme   </span><br><span class="line">boJ9jbbUNNfktd78OOpsqOltutMc3MY1</span><br></pre></td></tr></table></figure>
-
-<p>我们已找到下一级别的密码！！ 使用上面找到的密码以bandit1身份登录并访问下一级别</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">ssh bandit1@bandit.labs.overthewire.org -p 2220</span>  </span><br><span class="line">This is a OverTheWire game server. More information on http://www.overthewire.org/wargames</span><br><span class="line"></span><br><span class="line">bandit1@bandit.labs.overthewire.org&#x27;s password: boJ9jbbUNNfktd78OOpsqOltutMc3MY1</span><br></pre></td></tr></table></figure>
-
-
+<p>We can view the content of the file named <code>-</code> using the <code>cat</code> command</p>
+<p><strong>Note:</strong> Directly specifying the filename as shown in the previous level is not going to work as <code>-</code> is a special character on Linux that is used to denote Standard Input&#x2F;  Standard Output (STDIN&#x2F; STDOUT). We have to use the concept of  redirection or specify the absolute path to the file to access it.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bandit1@bandit:~$ cat &lt; -   </span><br><span class="line">CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9 bandit1@bandit:~$ cat ./-   CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9 </span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
@@ -533,227 +712,11 @@
 
 
   
-    <article id="post-杂项汇总/git小常识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/git%E5%B0%8F%E5%B8%B8%E8%AF%86/" class="article-date">
-  <time class="dt-published" datetime="2023-08-18T12:11:53.567Z" itemprop="datePublished">2023-08-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/git%E5%B0%8F%E5%B8%B8%E8%AF%86/">git小常识</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="git小常识"><a href="#git小常识" class="headerlink" title="git小常识"></a>git小常识</h1><h2 id="配置SSH免密和Token登录"><a href="#配置SSH免密和Token登录" class="headerlink" title="配置SSH免密和Token登录"></a>配置SSH免密和Token登录</h2><p>根据<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904102846005255%E9%85%8D%E7%BD%AEssh%E5%85%AC%E5%8C%99">https://juejin.cn/post/6844904102846005255配置ssh公匙</a></p>
-<p>根据<a target="_blank" rel="noopener" href="https://www.itxm.cn/post/hcbee1a8.html%E9%85%8D%E7%BD%AEToken%E7%99%BB%E5%BD%95">https://www.itxm.cn/post/hcbee1a8.html配置Token登录</a></p>
-<h2 id="网速问题"><a href="#网速问题" class="headerlink" title="网速问题"></a>网速问题</h2><p>很多时候在git使用过程中经常出现 Failed to connect to github.com port 443 after 21126 ms问题，在科学上网后仍然还是有问题。</p>
-<p>在网站<a target="_blank" rel="noopener" href="https://www.ipaddress.com/">https://www.ipaddress.com/</a> 分别搜索（记得查，根据时间不同会变）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">github.global.ssl.fastly.net</span><br><span class="line">github.com</span><br></pre></td></tr></table></figure>
-
-<p>得到ip</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.69.194</span><br><span class="line">140.82.112.3</span><br></pre></td></tr></table></figure>
-
-<p>于是编辑”C:\Windows\System32\drivers\etc\hosts”在最下方两行加入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">140.82.112.4  github.com</span><br><span class="line">151.101.1.194 github.global.ssl    </span><br><span class="line">151.101.65.194 github.global.ssl   </span><br><span class="line">151.101.129.194 github.global.ssl </span><br><span class="line">151.101.193.194 github.global.ssl </span><br></pre></td></tr></table></figure>
-
-<p>linux系统的话就编辑&#x2F;etc&#x2F;hosts，改完之后就再也不会出现Failed to connect的问题了</p>
-<h2 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git branch -M main</span><br><span class="line">git remote add origin https://github.com/brucecui1998/xxxxxxx.git</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/git%E5%B0%8F%E5%B8%B8%E8%AF%86/" data-id="cllt0b5e2000398v24jus5d4m" data-title="git小常识" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-项目合集/U-Net3D网络优化/05.性能分析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/05.%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" class="article-date">
-  <time class="dt-published" datetime="2023-08-18T06:51:20.583Z" itemprop="datePublished">2023-08-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/05.%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/">05.性能分析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="05-性能分析"><a href="#05-性能分析" class="headerlink" title="05.性能分析"></a>05.性能分析</h1><p>为了便于在windows上调试性能分析</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:brucecui1998/fastUNet3D.git</span><br><span class="line">cd fastUNet3D</span><br></pre></td></tr></table></figure>
-
-<h2 id="利用torch-profiler-profile分析性能"><a href="#利用torch-profiler-profile分析性能" class="headerlink" title="利用torch.profiler.profile分析性能"></a>利用torch.profiler.profile分析性能</h2><p>使用torch.profiler.profile分析核心耗时的代码，会将分析结果输出至当前路径下的profile.txt</p>
-<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/profile.png" alt="image-20230818145906464"></p>
-<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/profile_output.png" alt="image-20230818195620874"></p>
-<p>可以看到每一轮epoch最耗时的是aten::convolution_backward操作，我们只能在本机中找到该函数的声明”C:\Users\Administrator\anaconda3\envs\unet\Lib\site-packages\torch\include\ATen\ops\convolution_backward.h”，于是考虑源码编译torch，目的为了更好优化底层算子</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/05.%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" data-id="cllt0b5e8000j98v268t7f9nr" data-title="05.性能分析" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-项目合集/U-Net3D网络优化/04.优化思路" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/" class="article-date">
-  <time class="dt-published" datetime="2023-08-16T09:30:55.435Z" itemprop="datePublished">2023-08-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/">04.优化思路</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF.png" alt="image-20230816181605388"></p>
-<h1 id="04-优化思路"><a href="#04-优化思路" class="headerlink" title="04.优化思路"></a>04.优化思路</h1><p>首先做简单测试，测试出单个epoch的耗时，8张dcu耗时77s，而单张4090耗时46s。</p>
-<h2 id="官方赛题给出的优化思路"><a href="#官方赛题给出的优化思路" class="headerlink" title="官方赛题给出的优化思路"></a>官方赛题给出的优化思路</h2><h3 id="a-考虑使用异步流进行计算传输重叠"><a href="#a-考虑使用异步流进行计算传输重叠" class="headerlink" title="a. 考虑使用异步流进行计算传输重叠"></a>a. 考虑使用异步流进行计算传输重叠</h3><h3 id="b-考虑主机与设备内存的分配方式"><a href="#b-考虑主机与设备内存的分配方式" class="headerlink" title="b. 考虑主机与设备内存的分配方式"></a>b. 考虑主机与设备内存的分配方式</h3><h3 id="c-可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能"><a href="#c-可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能" class="headerlink" title="c. 可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能"></a>c. 可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能</h3><h2 id="英伟达MLPerf基准测试的优化思路"><a href="#英伟达MLPerf基准测试的优化思路" class="headerlink" title="英伟达MLPerf基准测试的优化思路"></a>英伟达MLPerf基准测试的优化思路</h2><table>
-<thead>
-<tr>
-<th>MLPerfv0.7</th>
-<th><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/optimizing-ai-performance-for-mlperf-v0-7-training/">Optimizing NVIDIA AI Performance for MLPerf v0.7 Training</a></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>MLPerfv1.0</td>
-<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/">MLPerf v1.0 Training Benchmarks: Insights into a Record-Setting NVIDIA Performance</a></td>
-<td>在v1.0中，英伟达首次在MLPerf中测试UNet3D</td>
-</tr>
-<tr>
-<td>MLPerfv1.1</td>
-<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/boosting-mlperf-training-v1-1-performance-with-full-stack-optimization/">https://developer.nvidia.com/blog/boosting-mlperf-training-v1-1-performance-with-full-stack-optimization/</a></td>
-<td></td>
-</tr>
-<tr>
-<td>MLPerfv2.0</td>
-<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/boosting-mlperf-training-performance-with-full-stack-optimization/">The Full Stack Optimization Powering NVIDIA MLPerf Training v2.0 Performance</a> <br /><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/getting-the-best-performance-on-mlperf-inference-2-0/">Getting the Best Performance on MLPerf Inference 2.0</a></td>
-<td></td>
-</tr>
-<tr>
-<td>MLPerfv2.1</td>
-<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/full-stack-innovation-fuels-highest-mlperf-inference-2-1-results-for-nvidia/">https://developer.nvidia.com/blog/full-stack-innovation-fuels-highest-mlperf-inference-2-1-results-for-nvidia/</a></td>
-<td>在v2.1中，3D U-Net医学成像工作负载切换到KITS19数据集</td>
-</tr>
-<tr>
-<td>MLPerfv3.0</td>
-<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/breaking-mlperf-training-records-with-nvidia-h100-gpus/">NVIDIA is breaking MLPerf Training Records with H100 GPUs</a> <br /><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/setting-new-records-in-mlperf-inference-v3-0-with-full-stack-optimizations-for-ai/">Setting New Records in MLPerf Inference v3.0 with Full-Stack Optimizations for AI</a></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>更多：<a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/search-posts/?q=MLPerf">https://developer.nvidia.com/blog/search-posts/?q=MLPerf</a></p>
-<h3 id="英伟达在MLPerf-v1-0中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v1-0中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v1.0中U-Net3D的优化思路"></a>英伟达在MLPerf v1.0中U-Net3D的优化思路</h3><p>U-Net3D is one of the two new workloads in this round of MLPerf training. We used the following optimizations:</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/#Spatial-parallelism">Spatial parallelism</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/#Asynchronous-evaluation">Asynchronous evaluation</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/#Data-loader">Data Loader</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/#Channels-Last-layout-support">Channels-Last layout support</a></li>
-</ul>
-<h3 id="英伟达在MLPerf-v1-1中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v1-1中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v1.1中U-Net3D的优化思路"></a>英伟达在MLPerf v1.1中U-Net3D的优化思路</h3><h4 id="矢量化串联和拆分操作"><a href="#矢量化串联和拆分操作" class="headerlink" title="矢量化串联和拆分操作"></a>矢量化串联和拆分操作</h4><p>3D-UNet  使用串联操作来连接解码器和编码器激活。这会导致在向前和向后传递中激活张量的设备到设备副本。我们通过使用矢量化加载和存储来优化这些副本，执行 4  倍宽的读&#x2F;写操作。这使连接和拆分运算符的速度提高了 2.4 倍以上，在单节点配置上实现了 4.7% 的端到端加速，在最大规模配置上实现了  1.3% 的端到端加速。 </p>
-<h4 id="高效的空间平行卷积"><a href="#高效的空间平行卷积" class="headerlink" title="高效的空间平行卷积"></a>高效的空间平行卷积</h4><p>在 MLPerf v1.0 中，我们引入了空间并行卷积，我们将输入激活拆分到多个 GPU（准确地说是 8 个）。空间平行卷积的实现使我们能够将光晕交换隐藏在卷积后面的卷积后面。 </p>
-<p>在 MLPerf v1.1 中，我们优化了通信和卷积操作的调度，以便在启动的通信和卷积内核之间获得更好的重叠。虽然这确保了光晕交换不会暴露，但它也有助于显着减少抖动。这种优化的调度将最大规模配置中的分数提高了 25% 以上。 </p>
-<h4 id="空间平行损耗计算"><a href="#空间平行损耗计算" class="headerlink" title="空间平行损耗计算"></a>空间平行损耗计算</h4><p>3D-Unet使用DICE损失和Softmax交叉熵损失作为其损失函数。DICE损失定义为以下公式： </p>
-<p>在这个公式中，  <img src="https://s0.wp.com/latex.php?latex=p_i&bg=transparent&fg=000&s=0&c=20201002" alt="p_i"> 和  <img src="https://s0.wp.com/latex.php?latex=g_i&bg=transparent&fg=000&s=0&c=20201002" alt="g_i"> 分别表示预测和地面实况的相应像素值对。 </p>
-<p>在最大比例配置中，由于单个 GPU 仅处理图像的一部分，因此每个 GPU 仅包含  <img src="https://s0.wp.com/latex.php?latex=p_i&bg=transparent&fg=000&s=0&c=20201002" alt="p_i"> 和  <img src="https://s0.wp.com/latex.php?latex=g_i&bg=transparent&fg=000&s=0&c=20201002" alt="g_i">.为了优化损耗计算，我们独立计算了每个GPU中的部分项，并通过NVLink在组内的所有GPU之间交换了部分项。然后将这些部分项组合起来形成DICE损失结果。这使损失计算速度加快了 4 倍以上，将最大规模分数提高了 7%。 </p>
-<h4 id="更好的配置"><a href="#更好的配置" class="headerlink" title="更好的配置"></a>更好的配置</h4><p>我们将全局批大小增加到数据集大小的一个因素。DALI 数据加载器库使我们能够使用相同的分片来训练不同的时期。这使我们能够显著减少在 GPU 中缓存数据集所需的时间。 </p>
-<p>由于每个 GPU 加载的图像要少得多，因此 DALI 中的边界框缓存预热速度也快得多。此优化显著缩短了启动时间，比 MLPerf v1.0 加速了 20%。 </p>
-<h4 id="数据并行异步评估"><a href="#数据并行异步评估" class="headerlink" title="数据并行异步评估"></a>数据并行异步评估</h4><p>随着训练速度越来越快，扩展评估以隐藏在训练后面变得具有挑战性。在 MLPerf v1.1 中，对单个图像的推理跨 GPU 进行分片，以提高评估缩放。然后将推理的结果全部收集起来，形成最终输出。这使得整个评估阶段隐藏在训练迭代后面。 </p>
-<h4 id="更快的组实例规范"><a href="#更快的组实例规范" class="headerlink" title="更快的组实例规范"></a>更快的组实例规范</h4><p>通过并行化多个通道块的 GPU 间通信，并通过矢量化内存读写来减少内核的 DRAM 时间，显著改进了多 GPU 实例范数内核。这导致最大规模配置的吞吐量提高了 5% 以上。 </p>
-<h3 id="英伟达在MLPerf-v2-0中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v2-0中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v2.0中U-Net3D的优化思路"></a>英伟达在MLPerf v2.0中U-Net3D的优化思路</h3><p>3D U-Net具有多个大层，其输入通道计数为32。对于wgrad内核，使用默认64x256x64的内核意味着显著的瓦片大小量化损失。 由于在cuDNN中引入了新的32x256x32 wgrad内核，节省了这种瓦片大小的量化损失。这导致MLPerf v2.0中的单个节点比MLPerf v1.1的速度提高了5%以上。</p>
-<h3 id="英伟达在MLPerf-v2-1中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v2-1中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v2.1中U-Net3D的优化思路"></a>英伟达在MLPerf v2.1中U-Net3D的优化思路</h3><p>In MLPerf Inference v2.0, the 3D U-Net medical imaging workload  switched to the KITS19 dataset, which increased image sizes by up to 8x  and raised the amount of compute processing required for a given sample  up to 18x due to the sliding window inference. For more information  about the NVIDIA MLPerf Inference v2.0 submission, see <a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/getting-the-best-performance-on-mlperf-inference-2-0/">Getting the Best Performance on MLPerf Inference 2.0</a>. </p>
-<p>For MLPerf Inference 2.1, we further improved the performance of the first convolution layer with the TensorRT <a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/tensorrt/api/c_api/classnvinfer1_1_1_i_plugin_v2_dynamic_ext.html">IPluginV2DDynamicExt</a> plugin.</p>
-<p>KiTS19 images are single-channel tensors, and this challenges the  performance of the very first 3D convolution in 3D U-Net. In 3D  convolution, this channel dimension typically contributes to GEMM’s K  dimension. This is specially relevant because the overall performance on 3D U-Net is dominated by the first two and last two 3D-Convolutions. In MLPerf Inference v2.0, these four convolutions contributed to roughly  38% of the entire network run-time; the very first layer responsible for 8%. A non-trivial factor that explains that is the need to use  zero-padding to accommodate for the NC&#x2F;32DHW32 vectorized format layout  in where the tensor cores can be utilized most efficiently.</p>
-<p>With our updated plugin, we use a INT8 Linear format to leverage  efficient computation on this single-channel limited 3D shape input. The advantages of this are twofold:</p>
-<ul>
-<li><strong>Higher effective use of flops</strong>: by not performing unneeded computations</li>
-<li><strong>PCIe transfer B&#x2F;W savings</strong>: avoids the overhead of  either moving zero padded input tensor between host and GPU memory or  zero-padding on GPU before sending the input tensor to TensorRT</li>
-</ul>
-<p>This optimization improved the first layer performance by 2.7x.  Additionally, the slicing kernel no longer needs to deal with  zero-padding, and therefore its performance also improved by 2x. As a  net result, 3D-UNet’s end-to-end performance improved by 5% in MLPerf  Inference 2.1.</p>
-<h3 id="英伟达在MLPerf-v3-0中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v3-0中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v3.0中U-Net3D的优化思路"></a>英伟达在MLPerf v3.0中U-Net3D的优化思路</h3><p>NVIDIA 提交了 432 台 NVIDIA H100 Tensor Core GPU 的结果，创下了 0.82 分钟（49 秒）训练基准的新纪录。与上一轮相比，H100 的每加速器性能也提高了 8.2%。 </p>
-<p>为了大规模实现出色的性能，更快的 GroupBatchNorm 内核是一项关键优化。  </p>
-<p>在我们最大规模的 3D U-Net 提交中，神经网络中的实例归一化操作需要对四个 GPU 的张量均值和方差执行缩减。通过使用更快的 GroupBatchNorm 内核来实现实例规范化，我们实现了 1.5% 的性能提升。 </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/" data-id="clldkpvud0001jov2bi2bfvg6" data-title="04.优化思路" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -764,7 +727,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -779,7 +742,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
     </div>
   </div>
 
@@ -792,23 +755,23 @@
       <ul>
         
           <li>
+            <a href="/2023/10/02/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/01.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">01.环境配置</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%202%E2%86%92Level%203/">Bandit Level 2→Level 3</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%20%E6%A8%A1%E6%9D%BF/">模板</a>
+          </li>
+        
+          <li>
             <a href="/2023/08/27/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E7%BA%A2%E4%B9%A6%E8%87%AA%E5%8A%A8%E7%82%B9%E8%B5%9E%E3%80%81%E8%AF%84%E8%AE%BA%E8%84%9A%E6%9C%AC/">Level 1 ：小红书自动点赞、评论脚本</a>
           </li>
         
           <li>
             <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%201%E2%86%92Level%202/">Bandit Level 1→Level 2</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200%E2%86%92Level%201/">Bandit Level 0 → Level 1</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200/">Bandit Level 0</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/19/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Linux%E5%B0%8F%E5%B8%B8%E8%AF%86/">Linux小常识</a>
           </li>
         
       </ul>

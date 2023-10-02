@@ -73,6 +73,222 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-杂项汇总/git小常识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/git%E5%B0%8F%E5%B8%B8%E8%AF%86/" class="article-date">
+  <time class="dt-published" datetime="2023-08-18T12:11:53.567Z" itemprop="datePublished">2023-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/git%E5%B0%8F%E5%B8%B8%E8%AF%86/">git小常识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="git小常识"><a href="#git小常识" class="headerlink" title="git小常识"></a>git小常识</h1><h2 id="配置SSH免密和Token登录"><a href="#配置SSH免密和Token登录" class="headerlink" title="配置SSH免密和Token登录"></a>配置SSH免密和Token登录</h2><p>根据<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904102846005255%E9%85%8D%E7%BD%AEssh%E5%85%AC%E5%8C%99">https://juejin.cn/post/6844904102846005255配置ssh公匙</a></p>
+<p>根据<a target="_blank" rel="noopener" href="https://www.itxm.cn/post/hcbee1a8.html%E9%85%8D%E7%BD%AEToken%E7%99%BB%E5%BD%95">https://www.itxm.cn/post/hcbee1a8.html配置Token登录</a></p>
+<h2 id="网速问题"><a href="#网速问题" class="headerlink" title="网速问题"></a>网速问题</h2><p>很多时候在git使用过程中经常出现 Failed to connect to github.com port 443 after 21126 ms问题，在科学上网后仍然还是有问题。</p>
+<p>在网站<a target="_blank" rel="noopener" href="https://www.ipaddress.com/">https://www.ipaddress.com/</a> 分别搜索（记得查，根据时间不同会变）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">github.global.ssl.fastly.net</span><br><span class="line">github.com</span><br></pre></td></tr></table></figure>
+
+<p>得到ip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.69.194</span><br><span class="line">140.82.112.3</span><br></pre></td></tr></table></figure>
+
+<p>于是编辑”C:\Windows\System32\drivers\etc\hosts”在最下方两行加入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">140.82.112.4  github.com</span><br><span class="line">151.101.1.194 github.global.ssl    </span><br><span class="line">151.101.65.194 github.global.ssl   </span><br><span class="line">151.101.129.194 github.global.ssl </span><br><span class="line">151.101.193.194 github.global.ssl </span><br></pre></td></tr></table></figure>
+
+<p>linux系统的话就编辑&#x2F;etc&#x2F;hosts，改完之后就再也不会出现Failed to connect的问题了</p>
+<h2 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git branch -M main</span><br><span class="line">git remote add origin https://github.com/brucecui1998/xxxxxxx.git</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/git%E5%B0%8F%E5%B8%B8%E8%AF%86/" data-id="cllt0b5e2000398v24jus5d4m" data-title="git小常识" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-项目合集/U-Net3D网络优化/05.性能分析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/05.%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" class="article-date">
+  <time class="dt-published" datetime="2023-08-18T06:51:20.583Z" itemprop="datePublished">2023-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/05.%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/">05.性能分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="05-性能分析"><a href="#05-性能分析" class="headerlink" title="05.性能分析"></a>05.性能分析</h1><p>为了便于在windows上调试性能分析</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:brucecui1998/fastUNet3D.git</span><br><span class="line">cd fastUNet3D</span><br></pre></td></tr></table></figure>
+
+<h2 id="利用torch-profiler-profile分析性能"><a href="#利用torch-profiler-profile分析性能" class="headerlink" title="利用torch.profiler.profile分析性能"></a>利用torch.profiler.profile分析性能</h2><p>使用torch.profiler.profile分析核心耗时的代码，会将分析结果输出至当前路径下的profile.txt</p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/profile.png" alt="image-20230818145906464"></p>
+<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/profile_output.png" alt="image-20230818195620874"></p>
+<p>可以看到每一轮epoch最耗时的是aten::convolution_backward操作，我们只能在本机中找到该函数的声明”C:\Users\Administrator\anaconda3\envs\unet\Lib\site-packages\torch\include\ATen\ops\convolution_backward.h”，于是考虑源码编译torch，目的为了更好优化底层算子</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/05.%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" data-id="cllt0b5e8000j98v268t7f9nr" data-title="05.性能分析" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-项目合集/U-Net3D网络优化/04.优化思路" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/" class="article-date">
+  <time class="dt-published" datetime="2023-08-16T09:30:55.435Z" itemprop="datePublished">2023-08-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/">04.优化思路</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF.png" alt="image-20230816181605388"></p>
+<h1 id="04-优化思路"><a href="#04-优化思路" class="headerlink" title="04.优化思路"></a>04.优化思路</h1><p>首先做简单测试，测试出单个epoch的耗时，8张dcu耗时77s，而单张4090耗时46s。</p>
+<h2 id="官方赛题给出的优化思路"><a href="#官方赛题给出的优化思路" class="headerlink" title="官方赛题给出的优化思路"></a>官方赛题给出的优化思路</h2><h3 id="a-考虑使用异步流进行计算传输重叠"><a href="#a-考虑使用异步流进行计算传输重叠" class="headerlink" title="a. 考虑使用异步流进行计算传输重叠"></a>a. 考虑使用异步流进行计算传输重叠</h3><h3 id="b-考虑主机与设备内存的分配方式"><a href="#b-考虑主机与设备内存的分配方式" class="headerlink" title="b. 考虑主机与设备内存的分配方式"></a>b. 考虑主机与设备内存的分配方式</h3><h3 id="c-可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能"><a href="#c-可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能" class="headerlink" title="c. 可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能"></a>c. 可以借助ROCm或DTK官方profiler帮助优化达到理论最大性能</h3><h2 id="英伟达MLPerf基准测试的优化思路"><a href="#英伟达MLPerf基准测试的优化思路" class="headerlink" title="英伟达MLPerf基准测试的优化思路"></a>英伟达MLPerf基准测试的优化思路</h2><table>
+<thead>
+<tr>
+<th>MLPerfv0.7</th>
+<th><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/optimizing-ai-performance-for-mlperf-v0-7-training/">Optimizing NVIDIA AI Performance for MLPerf v0.7 Training</a></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MLPerfv1.0</td>
+<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/">MLPerf v1.0 Training Benchmarks: Insights into a Record-Setting NVIDIA Performance</a></td>
+<td>在v1.0中，英伟达首次在MLPerf中测试UNet3D</td>
+</tr>
+<tr>
+<td>MLPerfv1.1</td>
+<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/boosting-mlperf-training-v1-1-performance-with-full-stack-optimization/">https://developer.nvidia.com/blog/boosting-mlperf-training-v1-1-performance-with-full-stack-optimization/</a></td>
+<td></td>
+</tr>
+<tr>
+<td>MLPerfv2.0</td>
+<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/boosting-mlperf-training-performance-with-full-stack-optimization/">The Full Stack Optimization Powering NVIDIA MLPerf Training v2.0 Performance</a> <br /><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/getting-the-best-performance-on-mlperf-inference-2-0/">Getting the Best Performance on MLPerf Inference 2.0</a></td>
+<td></td>
+</tr>
+<tr>
+<td>MLPerfv2.1</td>
+<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/full-stack-innovation-fuels-highest-mlperf-inference-2-1-results-for-nvidia/">https://developer.nvidia.com/blog/full-stack-innovation-fuels-highest-mlperf-inference-2-1-results-for-nvidia/</a></td>
+<td>在v2.1中，3D U-Net医学成像工作负载切换到KITS19数据集</td>
+</tr>
+<tr>
+<td>MLPerfv3.0</td>
+<td><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/breaking-mlperf-training-records-with-nvidia-h100-gpus/">NVIDIA is breaking MLPerf Training Records with H100 GPUs</a> <br /><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/setting-new-records-in-mlperf-inference-v3-0-with-full-stack-optimizations-for-ai/">Setting New Records in MLPerf Inference v3.0 with Full-Stack Optimizations for AI</a></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>更多：<a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/search-posts/?q=MLPerf">https://developer.nvidia.com/blog/search-posts/?q=MLPerf</a></p>
+<h3 id="英伟达在MLPerf-v1-0中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v1-0中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v1.0中U-Net3D的优化思路"></a>英伟达在MLPerf v1.0中U-Net3D的优化思路</h3><p>U-Net3D is one of the two new workloads in this round of MLPerf training. We used the following optimizations:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/#Spatial-parallelism">Spatial parallelism</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/#Asynchronous-evaluation">Asynchronous evaluation</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/#Data-loader">Data Loader</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/mlperf-v1-0-training-benchmarks-insights-into-a-record-setting-performance/#Channels-Last-layout-support">Channels-Last layout support</a></li>
+</ul>
+<h3 id="英伟达在MLPerf-v1-1中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v1-1中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v1.1中U-Net3D的优化思路"></a>英伟达在MLPerf v1.1中U-Net3D的优化思路</h3><h4 id="矢量化串联和拆分操作"><a href="#矢量化串联和拆分操作" class="headerlink" title="矢量化串联和拆分操作"></a>矢量化串联和拆分操作</h4><p>3D-UNet  使用串联操作来连接解码器和编码器激活。这会导致在向前和向后传递中激活张量的设备到设备副本。我们通过使用矢量化加载和存储来优化这些副本，执行 4  倍宽的读&#x2F;写操作。这使连接和拆分运算符的速度提高了 2.4 倍以上，在单节点配置上实现了 4.7% 的端到端加速，在最大规模配置上实现了  1.3% 的端到端加速。 </p>
+<h4 id="高效的空间平行卷积"><a href="#高效的空间平行卷积" class="headerlink" title="高效的空间平行卷积"></a>高效的空间平行卷积</h4><p>在 MLPerf v1.0 中，我们引入了空间并行卷积，我们将输入激活拆分到多个 GPU（准确地说是 8 个）。空间平行卷积的实现使我们能够将光晕交换隐藏在卷积后面的卷积后面。 </p>
+<p>在 MLPerf v1.1 中，我们优化了通信和卷积操作的调度，以便在启动的通信和卷积内核之间获得更好的重叠。虽然这确保了光晕交换不会暴露，但它也有助于显着减少抖动。这种优化的调度将最大规模配置中的分数提高了 25% 以上。 </p>
+<h4 id="空间平行损耗计算"><a href="#空间平行损耗计算" class="headerlink" title="空间平行损耗计算"></a>空间平行损耗计算</h4><p>3D-Unet使用DICE损失和Softmax交叉熵损失作为其损失函数。DICE损失定义为以下公式： </p>
+<p>在这个公式中，  <img src="https://s0.wp.com/latex.php?latex=p_i&bg=transparent&fg=000&s=0&c=20201002" alt="p_i"> 和  <img src="https://s0.wp.com/latex.php?latex=g_i&bg=transparent&fg=000&s=0&c=20201002" alt="g_i"> 分别表示预测和地面实况的相应像素值对。 </p>
+<p>在最大比例配置中，由于单个 GPU 仅处理图像的一部分，因此每个 GPU 仅包含  <img src="https://s0.wp.com/latex.php?latex=p_i&bg=transparent&fg=000&s=0&c=20201002" alt="p_i"> 和  <img src="https://s0.wp.com/latex.php?latex=g_i&bg=transparent&fg=000&s=0&c=20201002" alt="g_i">.为了优化损耗计算，我们独立计算了每个GPU中的部分项，并通过NVLink在组内的所有GPU之间交换了部分项。然后将这些部分项组合起来形成DICE损失结果。这使损失计算速度加快了 4 倍以上，将最大规模分数提高了 7%。 </p>
+<h4 id="更好的配置"><a href="#更好的配置" class="headerlink" title="更好的配置"></a>更好的配置</h4><p>我们将全局批大小增加到数据集大小的一个因素。DALI 数据加载器库使我们能够使用相同的分片来训练不同的时期。这使我们能够显著减少在 GPU 中缓存数据集所需的时间。 </p>
+<p>由于每个 GPU 加载的图像要少得多，因此 DALI 中的边界框缓存预热速度也快得多。此优化显著缩短了启动时间，比 MLPerf v1.0 加速了 20%。 </p>
+<h4 id="数据并行异步评估"><a href="#数据并行异步评估" class="headerlink" title="数据并行异步评估"></a>数据并行异步评估</h4><p>随着训练速度越来越快，扩展评估以隐藏在训练后面变得具有挑战性。在 MLPerf v1.1 中，对单个图像的推理跨 GPU 进行分片，以提高评估缩放。然后将推理的结果全部收集起来，形成最终输出。这使得整个评估阶段隐藏在训练迭代后面。 </p>
+<h4 id="更快的组实例规范"><a href="#更快的组实例规范" class="headerlink" title="更快的组实例规范"></a>更快的组实例规范</h4><p>通过并行化多个通道块的 GPU 间通信，并通过矢量化内存读写来减少内核的 DRAM 时间，显著改进了多 GPU 实例范数内核。这导致最大规模配置的吞吐量提高了 5% 以上。 </p>
+<h3 id="英伟达在MLPerf-v2-0中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v2-0中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v2.0中U-Net3D的优化思路"></a>英伟达在MLPerf v2.0中U-Net3D的优化思路</h3><p>3D U-Net具有多个大层，其输入通道计数为32。对于wgrad内核，使用默认64x256x64的内核意味着显著的瓦片大小量化损失。 由于在cuDNN中引入了新的32x256x32 wgrad内核，节省了这种瓦片大小的量化损失。这导致MLPerf v2.0中的单个节点比MLPerf v1.1的速度提高了5%以上。</p>
+<h3 id="英伟达在MLPerf-v2-1中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v2-1中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v2.1中U-Net3D的优化思路"></a>英伟达在MLPerf v2.1中U-Net3D的优化思路</h3><p>In MLPerf Inference v2.0, the 3D U-Net medical imaging workload  switched to the KITS19 dataset, which increased image sizes by up to 8x  and raised the amount of compute processing required for a given sample  up to 18x due to the sliding window inference. For more information  about the NVIDIA MLPerf Inference v2.0 submission, see <a target="_blank" rel="noopener" href="https://developer.nvidia.com/blog/getting-the-best-performance-on-mlperf-inference-2-0/">Getting the Best Performance on MLPerf Inference 2.0</a>. </p>
+<p>For MLPerf Inference 2.1, we further improved the performance of the first convolution layer with the TensorRT <a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/tensorrt/api/c_api/classnvinfer1_1_1_i_plugin_v2_dynamic_ext.html">IPluginV2DDynamicExt</a> plugin.</p>
+<p>KiTS19 images are single-channel tensors, and this challenges the  performance of the very first 3D convolution in 3D U-Net. In 3D  convolution, this channel dimension typically contributes to GEMM’s K  dimension. This is specially relevant because the overall performance on 3D U-Net is dominated by the first two and last two 3D-Convolutions. In MLPerf Inference v2.0, these four convolutions contributed to roughly  38% of the entire network run-time; the very first layer responsible for 8%. A non-trivial factor that explains that is the need to use  zero-padding to accommodate for the NC&#x2F;32DHW32 vectorized format layout  in where the tensor cores can be utilized most efficiently.</p>
+<p>With our updated plugin, we use a INT8 Linear format to leverage  efficient computation on this single-channel limited 3D shape input. The advantages of this are twofold:</p>
+<ul>
+<li><strong>Higher effective use of flops</strong>: by not performing unneeded computations</li>
+<li><strong>PCIe transfer B&#x2F;W savings</strong>: avoids the overhead of  either moving zero padded input tensor between host and GPU memory or  zero-padding on GPU before sending the input tensor to TensorRT</li>
+</ul>
+<p>This optimization improved the first layer performance by 2.7x.  Additionally, the slicing kernel no longer needs to deal with  zero-padding, and therefore its performance also improved by 2x. As a  net result, 3D-UNet’s end-to-end performance improved by 5% in MLPerf  Inference 2.1.</p>
+<h3 id="英伟达在MLPerf-v3-0中U-Net3D的优化思路"><a href="#英伟达在MLPerf-v3-0中U-Net3D的优化思路" class="headerlink" title="英伟达在MLPerf v3.0中U-Net3D的优化思路"></a>英伟达在MLPerf v3.0中U-Net3D的优化思路</h3><p>NVIDIA 提交了 432 台 NVIDIA H100 Tensor Core GPU 的结果，创下了 0.82 分钟（49 秒）训练基准的新纪录。与上一轮相比，H100 的每加速器性能也提高了 8.2%。 </p>
+<p>为了大规模实现出色的性能，更快的 GroupBatchNorm 内核是一项关键优化。  </p>
+<p>在我们最大规模的 3D U-Net 提交中，神经网络中的实例归一化操作需要对四个 GPU 的张量均值和方差执行缩减。通过使用更快的 GroupBatchNorm 内核来实现实例规范化，我们实现了 1.5% 的性能提升。 </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/04.%E4%BC%98%E5%8C%96%E6%80%9D%E8%B7%AF/" data-id="clldkpvud0001jov2bi2bfvg6" data-title="04.优化思路" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-项目合集/U-Net3D网络优化/实验数据记录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/16/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E5%AE%9E%E9%AA%8C%E6%95%B0%E6%8D%AE%E8%AE%B0%E5%BD%95/" class="article-date">
@@ -625,214 +841,11 @@
 
 
   
-    <article id="post-30天Pandas挑战/文章浏览" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/" class="article-date">
-  <time class="dt-published" datetime="2023-08-13T08:38:14.647Z" itemprop="datePublished">2023-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/">文章浏览</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="文章浏览"><a href="#文章浏览" class="headerlink" title="文章浏览"></a>文章浏览</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/article-views-i/solutions/168689/wen-zhang-liu-lan-i-by-leetcode-solution/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata">题目</a></h2><p><code>Views</code> 表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+---------------+---------+</span><br><span class="line">| Column Name   | Type    |</span><br><span class="line">+---------------+---------+</span><br><span class="line">| article_id    | int     |</span><br><span class="line">| author_id     | int     |</span><br><span class="line">| viewer_id     | int     |</span><br><span class="line">| view_date     | date    |</span><br><span class="line">+---------------+---------+</span><br><span class="line">此表可能会存在重复行。（换句话说，在 SQL 中这个表没有主键）</span><br><span class="line">此表的每一行都表示某人在某天浏览了某位作者的某篇文章。</span><br><span class="line">请注意，同一人的 author_id 和 viewer_id 是相同的。</span><br></pre></td></tr></table></figure>
-
-<p>请查询出所有浏览过自己文章的作者</p>
-<p>结果按照 <code>id</code> 升序排列。</p>
-<p>查询结果的格式如下所示：</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">Views 表：</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line">| article_id | author_id | viewer_id | view_date  |</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line">| 1          | 3         | 5         | 2019-08-01 |</span><br><span class="line">| 1          | 3         | 6         | 2019-08-02 |</span><br><span class="line">| 2          | 7         | 7         | 2019-08-01 |</span><br><span class="line">| 2          | 7         | 6         | 2019-08-02 |</span><br><span class="line">| 4          | 7         | 1         | 2019-07-22 |</span><br><span class="line">| 3          | 4         | 4         | 2019-07-21 |</span><br><span class="line">| 3          | 4         | 4         | 2019-07-21 |</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">+------+</span><br><span class="line">| id   |</span><br><span class="line">+------+</span><br><span class="line">| 4    |</span><br><span class="line">| 7    |</span><br><span class="line">+------+</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>方法：根据条件选择行</p>
-<p>判断作者是否评论了自己文章的条件，即 <code>author_id</code> 等于 <code>viewer_id</code></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>pandas</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_views</span>(<span class="params">views: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    df = views[views[<span class="string">&#x27;author_id&#x27;</span>] == views[<span class="string">&#x27;viewer_id&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">    df = df.drop_duplicates(subset=[<span class="string">&#x27;author_id&#x27;</span>])</span><br><span class="line">    df = df.sort_values(by=[<span class="string">&#x27;author_id&#x27;</span>])</span><br><span class="line">    df = df.rename(columns=&#123;<span class="string">&#x27;author_id&#x27;</span>:<span class="string">&#x27;id&#x27;</span>&#125;)</span><br><span class="line">    df = df[[<span class="string">&#x27;id&#x27;</span>]]</span><br><span class="line">    <span class="keyword">return</span> df</span><br></pre></td></tr></table></figure>
-
-<p>mysql</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">SELECT </span><br><span class="line">    DISTINCT author_id AS id </span><br><span class="line">FROM </span><br><span class="line">    Views </span><br><span class="line">WHERE </span><br><span class="line">    author_id = viewer_id </span><br><span class="line">ORDER BY </span><br><span class="line">    id </span><br></pre></td></tr></table></figure>
-
-
-
-<p>在 SQL 中，我们可以在 SELECT 语句中使用 DISTINCT 关键字来从表 Views 中检索唯一元素</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/" data-id="cll97814q000070v2han14oyv" data-title="文章浏览" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-30天Pandas挑战/183.从不订购的客户" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/183.%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7/" class="article-date">
-  <time class="dt-published" datetime="2023-08-13T07:52:59.164Z" itemprop="datePublished">2023-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/183.%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7/">从不订购的客户</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="从不订购的客户"><a href="#从不订购的客户" class="headerlink" title="从不订购的客户"></a>从不订购的客户</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/customers-who-never-order/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata">题目</a></h2><p><code>Customers</code> 表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| id          | int     |</span><br><span class="line">| name        | varchar |</span><br><span class="line">+-------------+---------+</span><br><span class="line">在 SQL 中，id 是该表的主键。</span><br><span class="line">该表的每一行都表示客户的 ID 和名称。</span><br></pre></td></tr></table></figure>
-
-<p><code>Orders</code> 表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-------------+------+</span><br><span class="line">| Column Name | Type |</span><br><span class="line">+-------------+------+</span><br><span class="line">| id          | int  |</span><br><span class="line">| customerId  | int  |</span><br><span class="line">+-------------+------+</span><br><span class="line">在 SQL 中，id 是该表的主键。</span><br><span class="line">customerId 是 Customers 表中 ID 的外键( Pandas 中的连接键)。</span><br><span class="line">该表的每一行都表示订单的 ID 和订购该订单的客户的 ID。</span><br></pre></td></tr></table></figure>
-
-<p>找出所有从不点任何东西的顾客。</p>
-<p>以 <strong>任意顺序</strong> 返回结果表。</p>
-<p>结果格式如下所示。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">Customers table:</span><br><span class="line">+----+-------+</span><br><span class="line">| id | name  |</span><br><span class="line">+----+-------+</span><br><span class="line">| 1  | Joe   |</span><br><span class="line">| 2  | Henry |</span><br><span class="line">| 3  | Sam   |</span><br><span class="line">| 4  | Max   |</span><br><span class="line">+----+-------+</span><br><span class="line">Orders table:</span><br><span class="line">+----+------------+</span><br><span class="line">| id | customerId |</span><br><span class="line">+----+------------+</span><br><span class="line">| 1  | 3          |</span><br><span class="line">| 2  | 1          |</span><br><span class="line">+----+------------+</span><br><span class="line">输出：</span><br><span class="line">+-----------+</span><br><span class="line">| Customers |</span><br><span class="line">+-----------+</span><br><span class="line">| Henry     |</span><br><span class="line">| Max       |</span><br><span class="line">+-----------+</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>方法 1：使用排除条件过滤数据</p>
-<p>在 Pandas 中：</p>
-<pre><code>isin(values) 用于基于其值是否在给定集合 values 中来过滤和选择行。
-~ 表示逻辑非。
-</code></pre>
-<p>因此，可以通过~isin(values) 来选择它们的值不存在于 values 中的行。</p>
-<p>方法 2：在 customers上进行左连接（Left Join）</p>
-<p>思路是基于共同的客户 ID（在 customers 表中的 id 列和 orders 表中的 customerId 列），将表 customers 与表 orders 进行连接。</p>
-<p>通过进行左连接，并选择 customerId 为 null 的记录，我们可以确定哪些客户没有下过订单。</p>
-<pre><code>我们使用左连接（Left Join）在 customers 上，因为我们希望将所有来自 customers 的客户都包括进来，无论他们是否下过订单。 因此，通过使用左连接，我们可以保留所有来自左表（customers）的行，并将它们与右表（orders）中基于 id 和 customerId 进行匹配的相应行分别对应。
-</code></pre>
-<p>该表将如下所示：<br>id	name	id	customerId<br>1	Joe	2	1<br>2	Henry	null	null<br>3	Sam	1	3<br>4	Max	null	null</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="方法-1：使用排除条件过滤数据"><a href="#方法-1：使用排除条件过滤数据" class="headerlink" title="方法 1：使用排除条件过滤数据"></a>方法 1：使用排除条件过滤数据</h3><p>pandas</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find_customers</span>(<span class="params">customers: pd.DataFrame, orders: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    <span class="comment"># 选择 orders[&#x27;customerId&#x27;] 中 &#x27;id&#x27; 不存在的行</span></span><br><span class="line">    df = ~customers[<span class="string">&#x27;id&#x27;</span>].isin(orders[<span class="string">&#x27;customerId&#x27;</span>])</span><br><span class="line">    <span class="comment"># 将列 name 重命名为 Customers</span></span><br><span class="line">    <span class="keyword">return</span> customers.loc[df,[<span class="string">&#x27;name&#x27;</span>]].rename(columns=&#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;Customers&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>mysql</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">select customers.name as &#x27;Customers&#x27;</span><br><span class="line">from customers</span><br><span class="line">where customers.id not in</span><br><span class="line">(</span><br><span class="line">    select customerid from orders</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h3 id="方法-2：在-customers上进行左连接（Left-Join）"><a href="#方法-2：在-customers上进行左连接（Left-Join）" class="headerlink" title="方法 2：在 customers上进行左连接（Left Join）"></a>方法 2：在 customers上进行左连接（Left Join）</h3><p>pandas</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">find_customers</span>(<span class="params">customers: pd.DataFrame, orders: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    df = customers.merge(orders, left_on=<span class="string">&#x27;id&#x27;</span>, right_on=<span class="string">&#x27;customerId&#x27;</span>, how=<span class="string">&#x27;left&#x27;</span>)</span><br><span class="line">    df = df[df[<span class="string">&#x27;customerId&#x27;</span>].isna()]</span><br><span class="line">    df = df[[<span class="string">&#x27;name&#x27;</span>]].rename(columns=&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;Customers&#x27;</span>&#125;)</span><br><span class="line">    <span class="keyword">return</span> df</span><br></pre></td></tr></table></figure>
-
-<p>mysql</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select name as &#x27;Customers&#x27;</span><br><span class="line">from Customers</span><br><span class="line">left join Orders on Customers.id = Orders.customerid</span><br><span class="line">where Orders.customerid is null</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/183.%E4%BB%8E%E4%B8%8D%E8%AE%A2%E8%B4%AD%E7%9A%84%E5%AE%A2%E6%88%B7/" data-id="cll96tnav000100v2h7tsdd17" data-title="从不订购的客户" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-30天Pandas挑战/1757.可回收且低脂的产品" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/1757.%E5%8F%AF%E5%9B%9E%E6%94%B6%E4%B8%94%E4%BD%8E%E8%84%82%E7%9A%84%E4%BA%A7%E5%93%81/" class="article-date">
-  <time class="dt-published" datetime="2023-08-13T07:45:00.875Z" itemprop="datePublished">2023-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/1757.%E5%8F%AF%E5%9B%9E%E6%94%B6%E4%B8%94%E4%BD%8E%E8%84%82%E7%9A%84%E4%BA%A7%E5%93%81/">可回收且低脂的产品</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="可回收且低脂的产品"><a href="#可回收且低脂的产品" class="headerlink" title="可回收且低脂的产品"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/recyclable-and-low-fat-products/">可回收且低脂的产品</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/recyclable-and-low-fat-products/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata">题目</a></h2><p>表：<code>Products</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">+-------------+---------+</span><br><span class="line">| Column Name | Type    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">| product_id  | int     |</span><br><span class="line">| low_fats    | enum    |</span><br><span class="line">| recyclable  | enum    |</span><br><span class="line">+-------------+---------+</span><br><span class="line">product_id 是该表的主键（具有唯一值的列）。</span><br><span class="line">low_fats 是枚举类型，取值为以下两种 (&#x27;Y&#x27;, &#x27;N&#x27;)，其中 &#x27;Y&#x27; 表示该产品是低脂产品，&#x27;N&#x27; 表示不是低脂产品。</span><br><span class="line">recyclable 是枚举类型，取值为以下两种 (&#x27;Y&#x27;, &#x27;N&#x27;)，其中 &#x27;Y&#x27; 表示该产品可回收，而 &#x27;N&#x27; 表示不可回收。</span><br></pre></td></tr></table></figure>
-
-<p>编写解决方案找出既是低脂又是可回收的产品编号。</p>
-<p>返回结果 <strong>无顺序要求</strong> 。</p>
-<p>返回结果格式如下例所示：</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">Products 表：</span><br><span class="line">+-------------+----------+------------+</span><br><span class="line">| product_id  | low_fats | recyclable |</span><br><span class="line">+-------------+----------+------------+</span><br><span class="line">| 0           | Y        | N          |</span><br><span class="line">| 1           | Y        | Y          |</span><br><span class="line">| 2           | N        | Y          |</span><br><span class="line">| 3           | Y        | Y          |</span><br><span class="line">| 4           | N        | N          |</span><br><span class="line">+-------------+----------+------------+</span><br><span class="line">输出：</span><br><span class="line">+-------------+</span><br><span class="line">| product_id  |</span><br><span class="line">+-------------+</span><br><span class="line">| 1           |</span><br><span class="line">| 3           |</span><br><span class="line">+-------------+</span><br><span class="line">解释：</span><br><span class="line">只有产品 id 为 1 和 3 的产品，既是低脂又是可回收的产品。</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>方法：根据条件选择行</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>Pandas</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">find_products</span>(<span class="params">products: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    df = products[(products[<span class="string">&#x27;low_fats&#x27;</span>] == <span class="string">&#x27;Y&#x27;</span>) &amp; (products[<span class="string">&#x27;recyclable&#x27;</span>] == <span class="string">&#x27;Y&#x27;</span>)]</span><br><span class="line">    <span class="keyword">return</span> df[[<span class="string">&#x27;product_id&#x27;</span>]]</span><br></pre></td></tr></table></figure>
-
-<p>mysql</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">SELECT</span><br><span class="line">    product_id</span><br><span class="line">FROM</span><br><span class="line">    Products</span><br><span class="line">WHERE</span><br><span class="line">    low_fats = &#x27;Y&#x27; AND recyclable= &#x27;Y&#x27;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/1757.%E5%8F%AF%E5%9B%9E%E6%94%B6%E4%B8%94%E4%BD%8E%E8%84%82%E7%9A%84%E4%BA%A7%E5%93%81/" data-id="cll96tnas000000v2hnay20de" data-title="可回收且低脂的产品" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -843,7 +856,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -858,7 +871,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
     </div>
   </div>
 
@@ -871,23 +884,23 @@
       <ul>
         
           <li>
+            <a href="/2023/10/02/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/01.%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">01.环境配置</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%202%E2%86%92Level%203/">Bandit Level 2→Level 3</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/28/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%20%E6%A8%A1%E6%9D%BF/">模板</a>
+          </li>
+        
+          <li>
             <a href="/2023/08/27/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E7%BA%A2%E4%B9%A6%E8%87%AA%E5%8A%A8%E7%82%B9%E8%B5%9E%E3%80%81%E8%AF%84%E8%AE%BA%E8%84%9A%E6%9C%AC/">Level 1 ：小红书自动点赞、评论脚本</a>
           </li>
         
           <li>
             <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%201%E2%86%92Level%202/">Bandit Level 1→Level 2</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200%E2%86%92Level%201/">Bandit Level 0 → Level 1</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/27/%E5%AE%89%E5%85%A8/OverTheWire/Bandit%20Level%200/">Bandit Level 0</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/19/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Linux%E5%B0%8F%E5%B8%B8%E8%AF%86/">Linux小常识</a>
           </li>
         
       </ul>
