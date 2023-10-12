@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>02.线性表的顺序表示和实现 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="线性表的顺序表示和实现本系列课程主要涉及编码实现，理论较少 数据结构：线性表，非线性（树、图） 线性结构：  线性表 栈和队列 串  顺序表示与实现：地址连续，容易实现随机存取线性表的第i个数据元素，但是在插入或者删除操作时要移动大量的元素，适用于数据相对稳定的线性表，如职工工资表，学生学籍表 具体实现：  存储结构 基本操作  就代表你已经掌握了线性表的顺序表示与实现的数据结构。 存储结构c2-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="02.线性表的顺序表示和实现">
+<meta property="og:url" content="http://example.com/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/02%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="线性表的顺序表示和实现本系列课程主要涉及编码实现，理论较少 数据结构：线性表，非线性（树、图） 线性结构：  线性表 栈和队列 串  顺序表示与实现：地址连续，容易实现随机存取线性表的第i个数据元素，但是在插入或者删除操作时要移动大量的元素，适用于数据相对稳定的线性表，如职工工资表，学生学籍表 具体实现：  存储结构 基本操作  就代表你已经掌握了线性表的顺序表示与实现的数据结构。 存储结构c2-">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-08T05:38:00.181Z">
+<meta property="article:modified_time" content="2023-10-08T05:38:45.780Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-项目合集/learn-data-structure/02线性表的顺序表示和实现" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/02%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%AE%9E%E7%8E%B0/" class="article-date">
+  <time class="dt-published" datetime="2023-10-08T05:38:00.181Z" itemprop="datePublished">2023-10-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      02.线性表的顺序表示和实现
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="线性表的顺序表示和实现"><a href="#线性表的顺序表示和实现" class="headerlink" title="线性表的顺序表示和实现"></a>线性表的顺序表示和实现</h1><p>本系列课程主要涉及编码实现，理论较少</p>
+<p>数据结构：线性表，非线性（树、图）</p>
+<p>线性结构：</p>
+<ul>
+<li>线性表</li>
+<li>栈和队列</li>
+<li>串</li>
+</ul>
+<p>顺序表示与实现：<strong>地址连续</strong>，容易实现<strong>随机存取</strong>线性表的第i个数据元素，但是在<strong>插入或者删除</strong>操作时要移动大量的元素，适用于数据相对稳定的线性表，如职工工资表，学生学籍表</p>
+<p>具体实现：</p>
+<ul>
+<li>存储结构</li>
+<li>基本操作</li>
+</ul>
+<p>就代表你已经掌握了线性表的顺序表示与实现的数据结构。</p>
+<p>存储结构c2-1.h</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// c2-1.h 线性表的动态分配顺序存储结构，在严书第22页</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LIST_INIT_SIZE 10 <span class="comment">// 线性表存储空间的初始分配量</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LIST_INCREMENT 2  <span class="comment">// 线性表存储空间的分配增量</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SqList</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ElemType * elem; <span class="comment">//存储空间基址</span></span><br><span class="line">    <span class="type">int</span> length; <span class="comment">//当前长度</span></span><br><span class="line">    <span class="type">int</span> listsize; <span class="comment">//当前分配的存储容量（以sizeof（ElemTypew）为单位）</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>基本操作函数bo2-1.h</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bo2-1.h 顺序存储的线性表（存储结构由c2-1.h定义）的基本操作12个</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">InitList</span><span class="params">(SqList &amp;L)</span></span><br><span class="line">&#123;<span class="comment">//操作结果：构造一个空的顺序线性表L</span></span><br><span class="line">    L.elem = (ElemType *)<span class="built_in">malloc</span>(LIST_INIT_SIZE*<span class="keyword">sizeof</span>(ElemType));</span><br><span class="line">    <span class="keyword">if</span>(!L.elem) <span class="comment">//存储分配失败</span></span><br><span class="line">        <span class="built_in">exit</span>(OVERFLOW);</span><br><span class="line">    L.length = <span class="number">0</span>;</span><br><span class="line">    L.listsize = LIST_INIT_SIZE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">DestroyList</span><span class="params">(SqList &amp;L)</span></span><br><span class="line">&#123;<span class="comment">//初始条件：顺序线性表L已存在。操作结果：销毁顺序线性表L</span></span><br><span class="line">    <span class="built_in">free</span>(L.elem);</span><br><span class="line">    L.elem=<span class="literal">NULL</span>;</span><br><span class="line">    L.length = <span class="number">0</span>;</span><br><span class="line">    L.listsize = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">ClearList</span><span class="params">(SqList &amp;L)</span></span><br><span class="line">&#123;<span class="comment">//初始条件：顺序线性表L已存在。操作结果：将L重置为空表</span></span><br><span class="line">    L.length = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status <span class="title function_">ListEmpty</span><span class="params">(SqList L)</span></span><br><span class="line">&#123;<span class="comment">//初始条件：顺序线性表L已存在。操作结果：判断L是否为空表，是则返回TRUE，否则返回FALSE</span></span><br><span class="line">    <span class="keyword">if</span>(L.length == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> TRUE;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> FALSE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">ListLength</span><span class="params">(SqList L)</span></span><br><span class="line">&#123;<span class="comment">//初始条件：顺序线性表L已存在。操作结果：返回L中数据元素的个数</span></span><br><span class="line">    <span class="keyword">return</span> L.length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status <span class="title function_">GetElem</span><span class="params">(SqList L, <span class="type">int</span> i, ElemType &amp;e)</span></span><br><span class="line">&#123;<span class="comment">//初始条件：顺序线性表L已存在。1&lt;=i&lt;=Listlength(L)</span></span><br><span class="line"><span class="comment">//操作结果：用e返回L中第i个数据元素的值</span></span><br><span class="line">    <span class="keyword">if</span>(i&lt;<span class="number">1</span> || i&gt;L.length)</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    e = *(L.elem + i - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">LocateElem</span><span class="params">(SqList L, ElemType e, Status(*compare)(ElemType, ElemType))</span></span><br><span class="line">&#123;<span class="comment">//初始条件：顺序线性表L已存在。compare()是数据元素判定函数（满足为1，否则为0）</span></span><br><span class="line"><span class="comment">//操作结果：返回L中第一个与e满足关系compare（）的数据元素的位序。</span></span><br><span class="line"><span class="comment">//          若这样的数据元素不存在，则返回值为0.  严书算法2.6</span></span><br><span class="line">    <span class="type">int</span> i = <span class="number">1</span>; <span class="comment">// i 的处置为第一个元素的位序</span></span><br><span class="line">    ElemType * p = L.elem; <span class="comment">// p 的初值为第一个元素的存储位置</span></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= L.length &amp;&amp; !compare(*p++, e)) <span class="comment">// i未超出表的范围且未找到满足关系的数据元素</span></span><br><span class="line">        i++;</span><br><span class="line">    <span class="keyword">if</span>(i &lt;= L.length)</span><br><span class="line">        <span class="keyword">return</span> i; <span class="comment">//找到了，返回其位序</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 没找到</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status <span class="title function_">PriorElem</span><span class="params">(SqList L, ElemType cur_e, ElemType &amp;pre_e)</span></span><br><span class="line">&#123;<span class="comment">//初始条件：顺序线性表L已存在。</span></span><br><span class="line"><span class="comment">//操作结果：若cur_e是L的数据元素，且不是第一个，则用pre_e返回它的前驱；</span></span><br><span class="line"><span class="comment">//          否则操作失败，pre_e无定义</span></span><br><span class="line">    <span class="type">int</span> i = <span class="number">2</span>; <span class="comment">// 从第二个元素开始</span></span><br><span class="line">    ElemType * p = L.elem + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=L.length &amp;&amp; *p!=cur_e) <span class="comment">//i未超出表的范围且未找到值为cur_e的元素</span></span><br><span class="line">    &#123;</span><br><span class="line">        p++; <span class="comment">// p指向下一个元素</span></span><br><span class="line">        i++; <span class="comment">//计数加1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(i &gt; L.length)</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        pre_e = * --p;<span class="comment">//p指向前一个元素（cur_e的前驱）</span></span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status <span class="title function_">NextElem</span><span class="params">(SqList L, ElemType cur_e, ElemType &amp;next_e)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">1</span>; <span class="comment">// 从第一个元素开始</span></span><br><span class="line">    ElemType * p = L.elem; <span class="comment">//p指向第一个元素</span></span><br><span class="line">    <span class="keyword">while</span>( i &lt; L.length &amp;&amp; *p != cur_e) <span class="comment">//i未超出表的范围且未找到值为cur_e的元素</span></span><br><span class="line">    &#123;</span><br><span class="line">        p++; <span class="comment">//p指向下一个元素</span></span><br><span class="line">        i++; <span class="comment">//计数加1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(i == L.length)</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        next_e = * ++p;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status <span class="title function_">ListInsert</span><span class="params">(SqList &amp;L, <span class="type">int</span> i, ElemType e)</span><span class="comment">//算法2.4</span></span><br><span class="line">&#123;<span class="comment">//初始条件：L已存在， 1&lt;= i &lt;=L.length+1</span></span><br><span class="line"><span class="comment">//操作结果： 在L中第i个位置之前 插入新的数据元素e，L的长度+1</span></span><br><span class="line">    ElemType * newbase, *q ,*p;</span><br><span class="line">    <span class="keyword">if</span>(i &lt; <span class="number">1</span> || i &gt; L.length+<span class="number">1</span>) <span class="comment">//i值不合法</span></span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    <span class="keyword">if</span>(L.length == L.listsize) <span class="comment">// 当前存储空间已满，增加分配</span></span><br><span class="line">    &#123;</span><br><span class="line">        newbase = (ElemType*)<span class="built_in">realloc</span>(L.elem, (L.listsize+LIST_INCREMENT) * <span class="keyword">sizeof</span>(ElemType));</span><br><span class="line">        <span class="keyword">if</span>(!newbase)</span><br><span class="line">            <span class="built_in">exit</span>(OVERFLOW);</span><br><span class="line">        L.elem = newbase; <span class="comment">// 新基地址赋给L.elem</span></span><br><span class="line">        L.listsize += LIST_INCREMENT;</span><br><span class="line">    &#125;</span><br><span class="line">    q = L.elem + i - <span class="number">1</span>; <span class="comment">// q为插入位置</span></span><br><span class="line">    <span class="keyword">for</span>(p = L.elem + L.length - <span class="number">1</span>; p &gt;= q; p--)<span class="comment">//把插入位置及之后的元素全部往后移动，从表尾开始移动</span></span><br><span class="line">        *(p+<span class="number">1</span>) = *p; <span class="comment">//后移动</span></span><br><span class="line">    *q = e; <span class="comment">//插入e</span></span><br><span class="line">    L.length++; <span class="comment">//表长度+1</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Status <span class="title function_">ListDelete</span><span class="params">(SqList &amp;L, <span class="type">int</span> i, ElemType &amp;e)</span></span><br><span class="line">&#123;<span class="comment">//初始条件：L已存在， 1&lt;= i &lt;=L.length</span></span><br><span class="line"><span class="comment">//操作结果：删除L的第i个元素，用e返回其值，L的长度减1</span></span><br><span class="line">    ElemType * p, *q;</span><br><span class="line">    <span class="keyword">if</span>(i &lt; <span class="number">1</span> || i &gt; L.length)</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    p = L.elem + i - <span class="number">1</span>;<span class="comment">//p为被删除元素的位置</span></span><br><span class="line">    e = *p; <span class="comment">// 被删除元素的值赋给e</span></span><br><span class="line">    q = L.elem + L.length - <span class="number">1</span>; <span class="comment">// q为表尾元素位置</span></span><br><span class="line">    <span class="keyword">for</span>(p=p+<span class="number">1</span>;p &lt;= q; p++) <span class="comment">// 被删除的元素之后全部往前移动， 从被删除的位置开始</span></span><br><span class="line">         *(p<span class="number">-1</span>) = *p;</span><br><span class="line">    L.length--;</span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">ListTraverse</span><span class="params">(SqList L, <span class="type">void</span>(*visit)(ElemType&amp;))</span></span><br><span class="line">&#123;<span class="comment">//初始条件：L已存在</span></span><br><span class="line"><span class="comment">//操作结果:以此对L的每个数据元素调用函数visit()</span></span><br><span class="line"><span class="comment">//      visit的形参加&amp;，表明可是通过调用visit改变元素的值</span></span><br><span class="line">    ElemType * p = L.elem; <span class="comment">//p指向第一个元素</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= L.length; i++)</span><br><span class="line">        visit(*p++); <span class="comment">//对每个数据元素调用visit（）</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>几个常用函数func2-2.h</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//几个常用的函数</span></span><br><span class="line">Status <span class="title function_">equal</span><span class="params">(ElemType c1, ElemType c2)</span></span><br><span class="line">&#123; <span class="comment">//判断是否相等的函数</span></span><br><span class="line">    <span class="keyword">if</span>(c1 == c2)</span><br><span class="line">        <span class="keyword">return</span> TRUE;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> FALSE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">comp</span><span class="params">(ElemType a, ElemType b)</span></span><br><span class="line">&#123;<span class="comment">// 根据 a&lt; 、=或&gt; b，分别返回-1， 0 ， 1</span></span><br><span class="line">    <span class="keyword">if</span>(a==b)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> (a-b)/<span class="built_in">abs</span>(a-b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">print</span><span class="params">(ElemType c)</span></span><br><span class="line">&#123;<span class="comment">//以十进制整型的格式输出元素的值</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, c);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">print1</span><span class="params">(ElemType &amp;c)</span></span><br><span class="line">&#123;<span class="comment">//以十进制整型的格式输出元素的值,设c为引用类型</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, c);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">print2</span><span class="params">(ElemType c)</span></span><br><span class="line">&#123;<span class="comment">//以字符型的格式输出元素的值</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%c &quot;</span>, c);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>测试函数test_main2-1.cpp</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;c1.h&quot;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="type">int</span> ElemType;</span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;c2-1.h&quot;</span> <span class="comment">//线性表的顺序存储结构</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;bo2-1.h&quot;</span><span class="comment">//线性表的顺序存储结构的基本操作</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;func2-2.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">Status <span class="title function_">sq</span><span class="params">(ElemType c1, ElemType c2)</span></span><br><span class="line">&#123;<span class="comment">//数据元素判定函数（平方关系） ，LocateElem（）要调用的函数</span></span><br><span class="line">    <span class="keyword">if</span>(c1 == c2*c2)</span><br><span class="line">        <span class="keyword">return</span> TRUE;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="keyword">return</span> FALSE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">db1</span><span class="params">(ElemType &amp;c)</span></span><br><span class="line">&#123;<span class="comment">//ListTraverse（）调用的另一函数（元素值加倍）</span></span><br><span class="line">    c = c * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TEST(test_main2_1, demo) <span class="comment">//gtest</span></span><br><span class="line">&#123;</span><br><span class="line">    LOG(INFO) &lt;&lt; <span class="string">&quot;\n开始测试线性表的顺序表示与实现！&quot;</span>;</span><br><span class="line">    SqList L;</span><br><span class="line">    ElemType e , e0;</span><br><span class="line">    Status i;</span><br><span class="line">    <span class="type">int</span> j,k;</span><br><span class="line">    InitList(L);<span class="comment">//初始化线性表</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;初始化L后，L.length=%d,L.listsize=%d, L.elem=%p\n&quot;</span>,L.length, L.listsize,L.elem);</span><br><span class="line">    ASSERT_EQ(<span class="number">0</span>,L.length);</span><br><span class="line">    ASSERT_EQ(<span class="number">10</span>,L.listsize);</span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">1</span>; j &lt;= <span class="number">5</span>; j++)</span><br><span class="line">        i = ListInsert(L, <span class="number">1</span>, j);<span class="comment">//在L的表头插入j</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;在L的表头依次插入1~5后，*L.elem=&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">1</span>; j &lt;= <span class="number">5</span>; j++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, *(L.elem + j - <span class="number">1</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n调用ListTraverse函数以此输出表L的元素！&quot;</span>);</span><br><span class="line">    ListTraverse(L, print1);<span class="comment">//依次对表L中的元素调用print1函数</span></span><br><span class="line">    i = ListEmpty(L); <span class="comment">//检测表是否为空</span></span><br><span class="line">    ASSERT_EQ(<span class="number">0</span>,i);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;L.length=%d,L.listsize=%d\n&quot;</span>,L.length, L.listsize);</span><br><span class="line">    ClearList(L);</span><br><span class="line">    i = ListEmpty(L); <span class="comment">//检测表是否为空</span></span><br><span class="line">    ASSERT_EQ(<span class="number">1</span>,i);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;清空后，L.length=%d,L.listsize=%d\n&quot;</span>,L.length, L.listsize);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;清空后，实际上.elem的那块内存单元上的数据元素是否还存在，*L.elem=&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(j = <span class="number">1</span>; j &lt;= <span class="number">5</span>; j++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, *(L.elem + j - <span class="number">1</span>));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j&lt;= <span class="number">10</span>; j++)</span><br><span class="line">        ListInsert(L, j , j);<span class="comment">//在表尾插入j</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;在L的表尾依次插入1-10后，L=&quot;</span>);</span><br><span class="line">    ListTraverse(L, print1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;L.length=%d,L.listsize=%d,L.elem:%p\n&quot;</span>,L.length, L.listsize,L.elem);</span><br><span class="line">    ListInsert(L, <span class="number">1</span>, <span class="number">0</span>);<span class="comment">//要扩容</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;在L的表头插入0后， L.length:%d, L.listsize:%d,L.elem:%p\n&quot;</span>,L.length, L.listsize,L.elem);</span><br><span class="line">    GetElem(L, <span class="number">5</span> ,e);<span class="comment">//第5个元素给e</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;第5个元素的值为%d\n&quot;</span>, e);</span><br><span class="line">    ASSERT_EQ(<span class="number">4</span>,e);</span><br><span class="line">    <span class="comment">//查找L中是否有10这个数据元素，有的话输出位序</span></span><br><span class="line">    j = <span class="number">10</span>;</span><br><span class="line">    k = LocateElem(L, j ,equal);</span><br><span class="line">    <span class="keyword">if</span>(k)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;第%d个元素的值为%d\n&quot;</span>, k , j);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;没有值为%d的元素\n&quot;</span>,j);</span><br><span class="line">    k = ListLength(L);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;L表长为:%d\n&quot;</span>,k);</span><br><span class="line">    i = NextElem(L , <span class="number">8</span>, e);</span><br><span class="line">    <span class="keyword">if</span>(i)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;元素8的后继为%d\n&quot;</span>, e);</span><br><span class="line">    <span class="keyword">else</span>    </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;元素8无后继\n&quot;</span>);</span><br><span class="line">    i = PriorElem(L , <span class="number">8</span>, e);</span><br><span class="line">    <span class="keyword">if</span>(i)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;元素8的前驱为%d\n&quot;</span>, e);</span><br><span class="line">    <span class="keyword">else</span>    </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;元素8无前驱\n&quot;</span>);</span><br><span class="line">    i = ListDelete(L, <span class="number">10</span>, e);<span class="comment">//删除第10个元素</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;删除第10个元素后， L.length:%d, L.listsize:%d,L.elem:%p\n&quot;</span>,L.length, L.listsize,L.elem);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;L=&quot;</span>);</span><br><span class="line">    ListTraverse(L, print1);</span><br><span class="line">    ListTraverse(L, db1);<span class="comment">//依次对元素调用db1，元素值乘2</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;L=&quot;</span>);</span><br><span class="line">    ListTraverse(L, print1);</span><br><span class="line">    DestroyList(L);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;销毁L后， L.length:%d, L.listsize:%d,L.elem:%p\n&quot;</span>,L.length, L.listsize,L.elem);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/02%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%AE%9E%E7%8E%B0/" data-id="clnmg2iiv0002d4v2b54c45lj" data-title="02.线性表的顺序表示和实现" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/07%E4%B8%8D%E5%B8%A6%E5%A4%B4%E8%8A%82%E7%82%B9%E7%9A%84%E5%8D%95%E9%93%BE%E8%A1%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          07不带头节点的单链表
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/03%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%93%BE%E5%BC%8F%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%AE%9E%E7%8E%B0(%E5%B8%A6%E5%A4%B4%E8%8A%82%E7%82%B9)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">03.线性表的链式表示和实现(带头节点)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/11%E6%A0%88/">11.栈</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/10%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">10.带头结点双向链表</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/09%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/">09.循环链表</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/07%E4%B8%8D%E5%B8%A6%E5%A4%B4%E8%8A%82%E7%82%B9%E7%9A%84%E5%8D%95%E9%93%BE%E8%A1%A8/">07不带头节点的单链表</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/02%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%AE%9E%E7%8E%B0/">02.线性表的顺序表示和实现</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
