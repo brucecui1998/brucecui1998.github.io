@@ -73,6 +73,64 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-杂项汇总/git小常识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/git%E5%B0%8F%E5%B8%B8%E8%AF%86/" class="article-date">
+  <time class="dt-published" datetime="2023-08-18T12:11:53.567Z" itemprop="datePublished">2023-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/git%E5%B0%8F%E5%B8%B8%E8%AF%86/">git小常识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="git小常识"><a href="#git小常识" class="headerlink" title="git小常识"></a>git小常识</h1><h2 id="配置SSH免密和Token登录"><a href="#配置SSH免密和Token登录" class="headerlink" title="配置SSH免密和Token登录"></a>配置SSH免密和Token登录</h2><p>根据<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904102846005255%E9%85%8D%E7%BD%AEssh%E5%85%AC%E5%8C%99">https://juejin.cn/post/6844904102846005255配置ssh公匙</a></p>
+<p>根据<a target="_blank" rel="noopener" href="https://www.itxm.cn/post/hcbee1a8.html%E9%85%8D%E7%BD%AEToken%E7%99%BB%E5%BD%95">https://www.itxm.cn/post/hcbee1a8.html配置Token登录</a></p>
+<h2 id="网速问题"><a href="#网速问题" class="headerlink" title="网速问题"></a>网速问题</h2><p>很多时候在git使用过程中经常出现 Failed to connect to github.com port 443 after 21126 ms问题，在科学上网后仍然还是有问题。</p>
+<p>在网站<a target="_blank" rel="noopener" href="https://www.ipaddress.com/">https://www.ipaddress.com/</a> 分别搜索（记得查，根据时间不同会变）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">github.global.ssl.fastly.net</span><br><span class="line">github.com</span><br></pre></td></tr></table></figure>
+
+<p>得到ip</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.69.194</span><br><span class="line">140.82.112.3</span><br></pre></td></tr></table></figure>
+
+<p>于是编辑”C:\Windows\System32\drivers\etc\hosts”在最下方两行加入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">140.82.112.4  github.com</span><br><span class="line">151.101.1.194 github.global.ssl    </span><br><span class="line">151.101.65.194 github.global.ssl   </span><br><span class="line">151.101.129.194 github.global.ssl </span><br><span class="line">151.101.193.194 github.global.ssl </span><br></pre></td></tr></table></figure>
+
+<p>linux系统的话就编辑&#x2F;etc&#x2F;hosts，改完之后就再也不会出现Failed to connect的问题了</p>
+<h2 id="创建新仓库"><a href="#创建新仓库" class="headerlink" title="创建新仓库"></a>创建新仓库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git branch -M main</span><br><span class="line">git remote add origin https://github.com/brucecui1998/xxxxxxx.git</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/18/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/git%E5%B0%8F%E5%B8%B8%E8%AF%86/" data-id="cllt0b5e2000398v24jus5d4m" data-title="git小常识" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-项目合集/U-Net3D网络优化/05.性能分析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/18/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/05.%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/" class="article-date">
@@ -783,69 +841,6 @@
 
 
   
-    <article id="post-30天Pandas挑战/文章浏览" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/" class="article-date">
-  <time class="dt-published" datetime="2023-08-13T08:38:14.647Z" itemprop="datePublished">2023-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/">文章浏览</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="文章浏览"><a href="#文章浏览" class="headerlink" title="文章浏览"></a>文章浏览</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/article-views-i/solutions/168689/wen-zhang-liu-lan-i-by-leetcode-solution/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata">题目</a></h2><p><code>Views</code> 表：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">+---------------+---------+</span><br><span class="line">| Column Name   | Type    |</span><br><span class="line">+---------------+---------+</span><br><span class="line">| article_id    | int     |</span><br><span class="line">| author_id     | int     |</span><br><span class="line">| viewer_id     | int     |</span><br><span class="line">| view_date     | date    |</span><br><span class="line">+---------------+---------+</span><br><span class="line">此表可能会存在重复行。（换句话说，在 SQL 中这个表没有主键）</span><br><span class="line">此表的每一行都表示某人在某天浏览了某位作者的某篇文章。</span><br><span class="line">请注意，同一人的 author_id 和 viewer_id 是相同的。</span><br></pre></td></tr></table></figure>
-
-<p>请查询出所有浏览过自己文章的作者</p>
-<p>结果按照 <code>id</code> 升序排列。</p>
-<p>查询结果的格式如下所示：</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">Views 表：</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line">| article_id | author_id | viewer_id | view_date  |</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line">| 1          | 3         | 5         | 2019-08-01 |</span><br><span class="line">| 1          | 3         | 6         | 2019-08-02 |</span><br><span class="line">| 2          | 7         | 7         | 2019-08-01 |</span><br><span class="line">| 2          | 7         | 6         | 2019-08-02 |</span><br><span class="line">| 4          | 7         | 1         | 2019-07-22 |</span><br><span class="line">| 3          | 4         | 4         | 2019-07-21 |</span><br><span class="line">| 3          | 4         | 4         | 2019-07-21 |</span><br><span class="line">+------------+-----------+-----------+------------+</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">+------+</span><br><span class="line">| id   |</span><br><span class="line">+------+</span><br><span class="line">| 4    |</span><br><span class="line">| 7    |</span><br><span class="line">+------+</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>方法：根据条件选择行</p>
-<p>判断作者是否评论了自己文章的条件，即 <code>author_id</code> 等于 <code>viewer_id</code></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>pandas</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">article_views</span>(<span class="params">views: pd.DataFrame</span>) -&gt; pd.DataFrame:</span><br><span class="line">    df = views[views[<span class="string">&#x27;author_id&#x27;</span>] == views[<span class="string">&#x27;viewer_id&#x27;</span>]]</span><br><span class="line"></span><br><span class="line">    df = df.drop_duplicates(subset=[<span class="string">&#x27;author_id&#x27;</span>])</span><br><span class="line">    df = df.sort_values(by=[<span class="string">&#x27;author_id&#x27;</span>])</span><br><span class="line">    df = df.rename(columns=&#123;<span class="string">&#x27;author_id&#x27;</span>:<span class="string">&#x27;id&#x27;</span>&#125;)</span><br><span class="line">    df = df[[<span class="string">&#x27;id&#x27;</span>]]</span><br><span class="line">    <span class="keyword">return</span> df</span><br></pre></td></tr></table></figure>
-
-<p>mysql</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line">SELECT </span><br><span class="line">    DISTINCT author_id AS id </span><br><span class="line">FROM </span><br><span class="line">    Views </span><br><span class="line">WHERE </span><br><span class="line">    author_id = viewer_id </span><br><span class="line">ORDER BY </span><br><span class="line">    id </span><br></pre></td></tr></table></figure>
-
-
-
-<p>在 SQL 中，我们可以在 SELECT 语句中使用 DISTINCT 关键字来从表 Views 中检索唯一元素</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/" data-id="cll97814q000070v2han14oyv" data-title="文章浏览" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -861,7 +856,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/">空战仿真</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -889,6 +884,10 @@
       <ul>
         
           <li>
+            <a href="/2023/10/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/01%E9%A3%9E%E8%A1%8C%E4%BB%BF%E7%9C%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">01.飞行仿真基础知识</a>
+          </li>
+        
+          <li>
             <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/11%E6%A0%88/">11.栈</a>
           </li>
         
@@ -902,10 +901,6 @@
         
           <li>
             <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/07%E4%B8%8D%E5%B8%A6%E5%A4%B4%E8%8A%82%E7%82%B9%E7%9A%84%E5%8D%95%E9%93%BE%E8%A1%A8/">07不带头节点的单链表</a>
-          </li>
-        
-          <li>
-            <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/02%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%AE%9E%E7%8E%B0/">02.线性表的顺序表示和实现</a>
           </li>
         
       </ul>
