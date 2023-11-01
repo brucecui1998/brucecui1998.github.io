@@ -73,6 +73,210 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode/367有效的完全平方数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/12/leetcode/367%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/" class="article-date">
+  <time class="dt-published" datetime="2023-08-12T12:10:10.605Z" itemprop="datePublished">2023-08-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/12/leetcode/367%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/">367有效的完全平方数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="有效的完全平方数"><a href="#有效的完全平方数" class="headerlink" title="有效的完全平方数"></a>有效的完全平方数</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-perfect-square/">题目</a></h2><p>给你一个正整数 <code>num</code> 。如果 <code>num</code> 是一个完全平方数，则返回 <code>true</code> ，否则返回 <code>false</code> 。</p>
+<p><strong>完全平方数</strong> 是一个可以写成某个整数的平方的整数。换句话说，它可以写成某个整数和自身的乘积。</p>
+<p>不能使用任何内置的库函数，如 <code>sqrt</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：num = 16</span><br><span class="line">输出：true</span><br><span class="line">解释：返回 true ，因为 4 * 4 = 16 且 4 是一个整数。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：num = 14</span><br><span class="line">输出：false</span><br><span class="line">解释：返回 false ，因为 3.742 * 3.742 = 14 但 3.742 不是一个整数。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= num &lt;= 231 - 1</code></li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>和69.x的平方根思路一样，只不过这次要return</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isPerfectSquare</span><span class="params">(<span class="type">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> r = num;</span><br><span class="line">        <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">            <span class="type">int</span> mid = l + (r - l )/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>((<span class="type">long</span> <span class="type">long</span>)mid*mid &gt; num)&#123;</span><br><span class="line">                r = mid <span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>((<span class="type">long</span> <span class="type">long</span>)mid*mid &lt; num)&#123;</span><br><span class="line">                l = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/12/leetcode/367%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/" data-id="cll7zfm87000040v271tvdzx8" data-title="367有效的完全平方数" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-项目合集/U-Net3D网络优化/02.在曙光平台跑通赛题代码" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/02.%E5%9C%A8%E6%9B%99%E5%85%89%E5%B9%B3%E5%8F%B0%E8%B7%91%E9%80%9A%E8%B5%9B%E9%A2%98%E4%BB%A3%E7%A0%81/" class="article-date">
+  <time class="dt-published" datetime="2023-08-12T05:50:27.989Z" itemprop="datePublished">2023-08-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/02.%E5%9C%A8%E6%9B%99%E5%85%89%E5%B9%B3%E5%8F%B0%E8%B7%91%E9%80%9A%E8%B5%9B%E9%A2%98%E4%BB%A3%E7%A0%81/">02.在曙光平台跑通赛题代码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="在曙光平台跑通赛题代码"><a href="#在曙光平台跑通赛题代码" class="headerlink" title="在曙光平台跑通赛题代码"></a>在曙光平台跑通赛题代码</h1><ul>
+<li><p><a target="_blank" rel="noopener" href="https://cas-pra.sugon.com/detail.html?tournament_id=28">赛题链接</a>,2023年先导杯U-Net3D网络模型优化赛题。</p>
+</li>
+<li><p>赛题代码：PRA_unet3d.tar.gz （在赛题链接文末附件下载）</p>
+</li>
+<li><p>赛题数据：链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1c24g8bv0VVVM-3ovFC0iIA">https://pan.baidu.com/s/1c24g8bv0VVVM-3ovFC0iIA</a> 提取码: 1c6v </p>
+</li>
+<li><p>赛题参考代码：<a target="_blank" rel="noopener" href="https://github.com/mlcommons/training/tree/master/image_segmentation/pytorch%E3%80%81https://github.com/mlcommons/training_policies/blob/master/training_rules.adoc">https://github.com/mlcommons/training/tree/master/image_segmentation/pytorch、https://github.com/mlcommons/training_policies/blob/master/training_rules.adoc</a></p>
+</li>
+<li><p>赛题辅助说明：【腾讯文档】先导杯U-Net3D网络模型优化赛题辅助说明：<a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DVFF0ZUpHekdaZnZN">https://docs.qq.com/doc/DVFF0ZUpHekdaZnZN</a></p>
+</li>
+<li><p>赛方算力平台：<a target="_blank" rel="noopener" href="https://tycloud.nsccty.com/ac/console3/index.html#/space/dashboard">https://tycloud.nsccty.com/ac/console3/index.html#/space/dashboard</a> 注意先导杯全国赛使用的是山西云时代太原超算中心（不同超算中心配置略有不同）</p>
+</li>
+</ul>
+<h2 id="账号准备"><a href="#账号准备" class="headerlink" title="账号准备"></a>账号准备</h2><p>与之前我们在windows本机运行代码不同，赛题要求在赛题算力平台运行并使用dcu C86异构加速卡。</p>
+<p>所以我们必须在赛题官方网站选择“报名比赛”-“答题”选项卡注册账号，报名比赛以及申请算力环境，一般需要数个工作日</p>
+<h2 id="配置赛题环境"><a href="#配置赛题环境" class="headerlink" title="配置赛题环境"></a>配置赛题环境</h2><h3 id="准备代码、数据"><a href="#准备代码、数据" class="headerlink" title="准备代码、数据"></a>准备代码、数据</h3><p>在家目录下准备public_data目录，以备不时之需，将赛题代码、数据、以及赛方代码缺失的文件<a target="_blank" rel="noopener" href="https://github.com/mlcommons/training/tree/master/image_segmentation/pytorch">evaluation_cases.txt</a>其都上传至自己创建的public_data下面</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir public_data</span><br></pre></td></tr></table></figure>
+
+<p>准备工作目录，这里我取名叫blog_learn，取什么名字都行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p content/blog_learn</span><br></pre></td></tr></table></figure>
+
+<p>将public_data下的文件复制到工作目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd content/blog_learn</span><br><span class="line">cp ~/public_data/PRA_unet3d.tar.gz .</span><br><span class="line">tar -xvf PRA_unet3d.tar.gz </span><br><span class="line">cd PRA</span><br><span class="line">cp ~/public_data/evaluation_cases.txt ~/public_data/data.tar.gz .</span><br><span class="line">tar -xvf data.tar.gz</span><br><span class="line">rm data.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h2 id="准备python环境"><a href="#准备python环境" class="headerlink" title="准备python环境"></a>准备python环境</h2><p>由于权限问题，我们需要自己安装anaconda3，<a target="_blank" rel="noopener" href="https://docs.conda.io/en/latest/miniconda.html#linux-installers">anaconda官网下载</a>后上传服务器安装minianaconda</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">conda create -n unet3d_learn python=3.7 -y</span><br><span class="line">conda activate unet3d_learn</span><br><span class="line">pip install torch-1.10.0a0+git2040069.dtk2210-cp37-cp37m-manylinux2014_x86_64.whl </span><br><span class="line">pip install apex-0.1+gitdb7007a.dtk2210-cp37-cp37m-manylinux2014_x86_64.whl</span><br><span class="line">pip install torchvision-0.10.0a0+e04d001.dtk2210-cp37-cp37m-manylinux2014_x86_64.whl </span><br><span class="line">pip install scipy pandas numpy tqdm -i https://pypi.douban.com/simple/</span><br><span class="line">cd ~/content/blog_learn/PRA/logging-master</span><br><span class="line">python setup.py install ; cd .. ;</span><br><span class="line">cd ./dllogger-master</span><br><span class="line">python setup.py install; cd ..;</span><br></pre></td></tr></table></figure>
+
+<p>注意到上述提及的whl包需要到光合开发者社区自行进行下载，链接如下：<a target="_blank" rel="noopener" href="https://cancon.hpccube.com:65024/4/main">https://cancon.hpccube.com:65024/4/main</a></p>
+<h2 id="运行赛题代码"><a href="#运行赛题代码" class="headerlink" title="运行赛题代码"></a>运行赛题代码</h2><p>vim mpi.sbatch做略微修改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -p ty_xd</span> </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -N 2</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH --ntasks-per-node=4</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH --cpus-per-task=8</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH --gres=dcu:4</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -J mlperf_blog</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -e myjob.e</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -o myjob.o</span></span><br><span class="line"></span><br><span class="line">echo &quot;###### [1] SET ENVIRONMENT ######&quot;</span><br><span class="line">module purge</span><br><span class="line">module load compiler/devtoolset/7.3.1</span><br><span class="line">module load mpi/hpcx/2.11.0/gcc-7.3.1</span><br><span class="line">module load compiler/dtk/22.10.1</span><br><span class="line">export LD_LIBRARY_PATH=/xddata/home/ac8kw4me6g/content/blog_learn/PRA/lib:$LD_LIBRARY_PATH</span><br><span class="line">conda init bash</span><br><span class="line">conda activate unet3d_learn</span><br><span class="line"></span><br><span class="line">echo &quot;###### [2] RUN TEST ######&quot;</span><br><span class="line">hostfile=./$SLURM_JOB_ID</span><br><span class="line">scontrol show hostnames $SLURM_JOB_NODELIST &gt; $&#123;hostfile&#125;</span><br><span class="line">rm `pwd`/hostfile-dl -f</span><br><span class="line"></span><br><span class="line">for i in `cat $hostfile`</span><br><span class="line">do</span><br><span class="line">    echo $&#123;i&#125; slots=4 &gt;&gt; `pwd`/hostfile-dl</span><br><span class="line">done</span><br><span class="line">np=$(cat $hostfile|sort|uniq |wc -l)</span><br><span class="line"></span><br><span class="line">np=$(($np*4))</span><br><span class="line"></span><br><span class="line">nodename=$(cat $hostfile |sed -n &quot;1p&quot;)</span><br><span class="line">echo $nodename</span><br><span class="line">dist_url=`echo $nodename | awk &#x27;&#123;print $1&#125;&#x27;`</span><br><span class="line">start=$(date +%s)</span><br><span class="line">start_fmt=$(date +%Y-%m-%d\ %r)</span><br><span class="line">echo &quot;STARTING TIMING RUN AT $start_fmt&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mpirun -np $np --hostfile hostfile-dl --bind-to none `pwd`/single.sh $dist_url</span><br><span class="line">end=$(date +%s)</span><br><span class="line">end_fmt=$(date +%Y-%m-%d\ %r)</span><br><span class="line">echo &quot;ENDING TIMING RUN AT $end_fmt&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">report result</span></span><br><span class="line">result=$(( $end - $start ))</span><br><span class="line">result_name=&quot;image_segmentation&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo &quot;RESULT,$result_name,$SEED,$result,$USER,$start_fmt&quot;</span><br><span class="line">echo &quot;###### ALL TEST FINISHED ######&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>vim single.sh略微修改，注意LOG_DIR需要自己设置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">set -e</span><br><span class="line">export OMP_NUM_THREADS=1</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="keyword">for</span> <span class="built_in">env</span></span></span><br><span class="line">export HSA_FORCE_FINE_GRAIN_PCIE=1</span><br><span class="line">export MIOPEN_FIND_MODE=3</span><br><span class="line">export MIOPEN_USE_APPROXIMATE_PERFORMANCE=0</span><br><span class="line"></span><br><span class="line">lrank=$OMPI_COMM_WORLD_LOCAL_RANK</span><br><span class="line">comm_rank=$OMPI_COMM_WORLD_RANK</span><br><span class="line">comm_size=$OMPI_COMM_WORLD_SIZE</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#mlperf_1x8x7</span></span></span><br><span class="line">MAX_EPOCHS=10000</span><br><span class="line">QUALITY_THRESHOLD=&quot;0.908&quot;</span><br><span class="line">START_EVAL_AT=1000</span><br><span class="line">EVALUATE_EVERY=20</span><br><span class="line">LEARNING_RATE=&quot;2.0&quot;</span><br><span class="line">LR_WARMUP_EPOCHS=1000</span><br><span class="line">DATASET_DIR=&quot;./data&quot;</span><br><span class="line">BATCH_SIZE=1</span><br><span class="line">GRADIENT_ACCUMULATION_STEPS=7</span><br><span class="line">LOG_DIR=&quot;/xddata/home/ac8kw4me6g/blog_tmp&quot;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#mlperf_1x8x7</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">CLEAR YOUR CACHE HERE</span></span><br><span class="line">python -c &quot;</span><br><span class="line">from mlperf_logging.mllog import constants</span><br><span class="line">from runtime.logging import mllog_event</span><br><span class="line">mllog_event(key=constants.CACHE_CLEAR, value=True)&quot;</span><br><span class="line"></span><br><span class="line">APP=&quot;python3 `pwd`/main.py --data_dir $&#123;DATASET_DIR&#125; \</span><br><span class="line">    --log_dir $&#123;LOG_DIR&#125; \</span><br><span class="line">    --epochs $&#123;MAX_EPOCHS&#125; \</span><br><span class="line">    --evaluate_every $&#123;EVALUATE_EVERY&#125; \</span><br><span class="line">    --start_eval_at $&#123;START_EVAL_AT&#125; \</span><br><span class="line">    --quality_threshold $&#123;QUALITY_THRESHOLD&#125; \</span><br><span class="line">    --batch_size $&#123;BATCH_SIZE&#125; \</span><br><span class="line">    --optimizer sgd \</span><br><span class="line">    --ga_steps $&#123;GRADIENT_ACCUMULATION_STEPS&#125; \</span><br><span class="line">    --learning_rate $&#123;LEARNING_RATE&#125; \</span><br><span class="line">    --local_rank $&#123;comm_rank&#125; \</span><br><span class="line">    --world_size $&#123;comm_size&#125; \</span><br><span class="line">    --num_workers 1</span><br><span class="line">    --master_addr $&#123;1&#125; \</span><br><span class="line">    --master_port 4567</span><br><span class="line">    --lr_warmup_epochs $&#123;LR_WARMUP_EPOCHS&#125;&quot;</span><br><span class="line"></span><br><span class="line">case $&#123;lrank&#125; in</span><br><span class="line">[0])</span><br><span class="line">  export HIP_VISIBLE_DEVICES=0</span><br><span class="line">  export UCX_NET_DEVICES=mlx5_0:1</span><br><span class="line">  export UCX_IB_PCI_BW=mlx5_0:50Gbs</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">echo</span> NCCL_SOCKET_IFNAME=ib0 numactl --cpunodebind=0 --membind=0 <span class="variable">$&#123;APP&#125;</span></span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">NCCL_SOCKET_IFNAME=ib0</span> </span><br><span class="line">  numactl --cpunodebind=0 --membind=0 $&#123;APP&#125;</span><br><span class="line">  ;;</span><br><span class="line">[1])</span><br><span class="line">  export HIP_VISIBLE_DEVICES=1</span><br><span class="line">  export UCX_NET_DEVICES=mlx5_1:1</span><br><span class="line">  export UCX_IB_PCI_BW=mlx5_1:50Gbs</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">echo</span> NCCL_SOCKET_IFNAME=ib0 numactl --cpunodebind=1 --membind=1 <span class="variable">$&#123;APP&#125;</span></span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">NCCL_SOCKET_IFNAME=ib0</span> </span><br><span class="line">  numactl --cpunodebind=1 --membind=1 $&#123;APP&#125;</span><br><span class="line">  ;;</span><br><span class="line">[2])</span><br><span class="line">  export HIP_VISIBLE_DEVICES=2</span><br><span class="line">  export UCX_NET_DEVICES=mlx5_2:1</span><br><span class="line">  export UCX_IB_PCI_BW=mlx5_2:50Gbs</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">echo</span> NCCL_SOCKET_IFNAME=ib0 numactl --cpunodebind=2 --membind=2 <span class="variable">$&#123;APP&#125;</span></span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">NCCL_SOCKET_IFNAME=ib0</span> </span><br><span class="line">  numactl --cpunodebind=2 --membind=2 $&#123;APP&#125;</span><br><span class="line">  ;;</span><br><span class="line">[3])</span><br><span class="line">  export HIP_VISIBLE_DEVICES=3</span><br><span class="line">  export UCX_NET_DEVICES=mlx5_3:1</span><br><span class="line">  export UCX_IB_PCI_BW=mlx5_3:50Gbs</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">echo</span> NCCL_SOCKET_IFNAME=ib0 numactl --cpunodebind=3 --membind=3 <span class="variable">$&#123;APP&#125;</span></span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">NCCL_SOCKET_IFNAME=ib0</span> </span><br><span class="line">  numactl --cpunodebind=3 --membind=3 $&#123;APP&#125;</span><br><span class="line">  ;;</span><br><span class="line">esac</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>提交作业</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbatch mpi.sbatch</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/02.%E5%9C%A8%E6%9B%99%E5%85%89%E5%B9%B3%E5%8F%B0%E8%B7%91%E9%80%9A%E8%B5%9B%E9%A2%98%E4%BB%A3%E7%A0%81/" data-id="clldejn0h000930v2fonegnuh" data-title="02.在曙光平台跑通赛题代码" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-leetcode/69x的平方根" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/12/leetcode/69x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/" class="article-date">
+  <time class="dt-published" datetime="2023-08-12T05:28:38.710Z" itemprop="datePublished">2023-08-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/12/leetcode/69x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/">x的平方根</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="x的平方根"><a href="#x的平方根" class="headerlink" title="x的平方根"></a>x的平方根</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sqrtx/">题目</a></h2><p>给你一个非负整数 <code>x</code> ，计算并返回 <code>x</code> 的 <strong>算术平方根</strong> 。</p>
+<p>由于返回类型是整数，结果只保留 <strong>整数部分</strong> ，小数部分将被 <strong>舍去 。</strong></p>
+<p><strong>注意：</strong>不允许使用任何内置指数函数和算符，例如 <code>pow(x, 0.5)</code> 或者 <code>x ** 0.5</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：x = 4</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：x = 8</span><br><span class="line">输出：2</span><br><span class="line">解释：8 的算术平方根是 2.82842..., 由于返回类型是整数，小数部分将被舍去。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>0 &lt;= x &lt;= 231 - 1</code></li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>二分查找条件：有序、无重复</p>
+<p>时间复杂度 O（logn）</p>
+<p>判断条件是(long long)mid*mid &lt;&#x3D; x</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">mySqrt</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> right = x;</span><br><span class="line">        <span class="type">int</span> ans ;</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="type">int</span> mid = left + (right-left)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>((<span class="type">long</span> <span class="type">long</span>)mid*mid &lt;= x)&#123;</span><br><span class="line">                ans = mid;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                right = mid <span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/12/leetcode/69x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/" data-id="cll7l872q0000b4v2fb7y18bn" data-title="x的平方根" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-leetcode/空白模板" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/12/leetcode/%E7%A9%BA%E7%99%BD%E6%A8%A1%E6%9D%BF/" class="article-date">
@@ -800,397 +1004,6 @@
 
 
   
-    <article id="post-杂项汇总/人工智能相关环境搭建" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/07/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-date">
-  <time class="dt-published" datetime="2023-08-07T05:53:35.190Z" itemprop="datePublished">2023-08-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/07/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">双系统及深度学习环境搭建</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="Win-Linux双系统安装"><a href="#Win-Linux双系统安装" class="headerlink" title="Win + Linux双系统安装"></a>Win + Linux双系统安装</h1><p>淘宝花30块踩坑..</p>
-<p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/jammy/ubuntu-22.04.2-desktop-amd64.iso">https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/jammy/ubuntu-22.04.2-desktop-amd64.iso</a></p>
-<h2 id="制作启动盘"><a href="#制作启动盘" class="headerlink" title="制作启动盘"></a>制作启动盘</h2><p>在windows上压缩100gb空间，Refus制作启动盘<br>引导黑屏后注意用hdmi线(不要用dp线，hdmi是两个缺口，dp线是一个)，主机箱上下两个接口都试试。一个是主板的，一个是显卡的<br>进入ubuntu后创建分区时，先删除那100GB的分区(点那个-号)，然后继续，选第一个选项与windows共存<br>如果重新回到windows分辨率改不了的话，下载一个驱动大师更新下驱动即可</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/modprobe.d/blacklist.conf</span><br><span class="line">加参数到最底下回车另起一行内容为</span><br><span class="line">blacklist nouveau</span><br><span class="line">options nouveau modeset=0</span><br><span class="line">保存再终端更新内核命令 终端输入</span><br><span class="line">sudo update-initramfs -u</span><br><span class="line">sudo apt update </span><br><span class="line">sudo apt install gcc g++ make</span><br><span class="line"></span><br><span class="line">然后好了以后重启电脑</span><br><span class="line">百度nvidia 官网去下对应显卡版本的驱动https://www.nvidia.cn/drivers/results/200481/举例（下面XXX是版本的意思） NVIDIA-Linux-x86_64-440.run （384或者440都可以版本里面的）下好的文件放在 主文件夹 或者说叫home 目录下</span><br><span class="line">先按Ctrl + Alt + F3到控制台，关闭当前图形环境 输入</span><br><span class="line">sudo telinit 3 </span><br><span class="line">再安装驱动程序输入</span><br><span class="line">cd /home/用户名 </span><br><span class="line">进入到驱动所在文件夹 （下好的驱动文件放在home 或者叫主文件夹下）输入</span><br><span class="line">sudo chmod a+x NVIDIA-Linux-x86_64-xxx.run</span><br><span class="line">sudo sh NVIDIA-Linux-x86_64-xxx.run -no-opengl-files</span><br><span class="line"></span><br><span class="line">最后重新启动 reboot</span><br></pre></td></tr></table></figure>
-
-<h1 id="PYTORCH-GPU版"><a href="#PYTORCH-GPU版" class="headerlink" title="PYTORCH GPU版"></a>PYTORCH GPU版</h1><h2 id="更新驱动程序"><a href="#更新驱动程序" class="headerlink" title="更新驱动程序"></a>更新驱动程序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-J69ZVhZA-1590658049693)(G:\githubblog\source\_posts\深度学习\环境搭建\人工智能相关环境搭建.assets\cuda与驱动对应关系-1665491036353.png)]</span><br></pre></td></tr></table></figure>
-
-<p><strong>windows:</strong></p>
-<p>“我的电脑”右键-“管理”“-显示适配器”-“驱动信息”-“更新驱动程序”</p>
-<p>更新后我的驱动版本为472.19，最高可支持到CUDA11.4</p>
-<p><strong>linux:</strong></p>
-<p>如上，更新驱动。</p>
-<h2 id="安装CUDA11-3"><a href="#安装CUDA11-3" class="headerlink" title="安装CUDA11.3"></a>安装CUDA11.3</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">https://developer.nvidia.com/cuda-toolkit-archive</a></p>
-<p><a target="_blank" rel="noopener" href="https://pytorch.org/">https://pytorch.org/</a></p>
-<p>注意pytorch官网上说pytorch win版已不支持cuda10.2</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">创建环境conda create -n torch_gpu python=3.7</span><br><span class="line">激活环境 conda activate torch_gpu</span><br><span class="line">安装torch</span><br><span class="line">pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113</span><br><span class="line"></span><br><span class="line">检查环境装好没</span><br><span class="line">conda activate torch</span><br><span class="line">python</span><br><span class="line">import torch</span><br><span class="line">torch.cuda.is_available()</span><br><span class="line">TRUE</span><br><span class="line"></span><br><span class="line">conda常用命令</span><br><span class="line">退出当前环境 conda deactivate</span><br><span class="line">看包conda list</span><br><span class="line">#删除环境，慎用！</span><br><span class="line">conda remove -n torch --all 把刚才建立的torch环境统统删掉（慎用！）</span><br></pre></td></tr></table></figure>
-
-<p><strong>踩的一个坑就是不要用清华源的conda install，这样安装的torch是cpu版的，直接区torch官网用它的pip install</strong>，亲测有效，十几分钟就Ok了！</p>
-<h3 id="Linux服务器"><a href="#Linux服务器" class="headerlink" title="Linux服务器"></a>Linux服务器</h3><p><strong>法一：官网推荐pip直接安装。<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/previous-versions/">Pytorch官方网站</a></strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install torch==1.12.0+cu113 torchvision==0.13.0+cu113 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu113</span><br></pre></td></tr></table></figure>
-
-<p>这种方法最简单，适用于网络好、可访问国外官网的服务器。</p>
-<p>学校的g101n01节点的网络不稳定，只下载了这几个Collecting torch&#x3D;&#x3D;1.12.0+cu113、Collecting torchvision&#x3D;&#x3D;0.13.0+cu113、Collecting torchaudio&#x3D;&#x3D;0.12.0，其余库只能在国内源下载，特再次总结</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install pillow -i https://pypi.douban.com/simple</span><br><span class="line">pip install typing-extensions -i https://pypi.douban.com/simple</span><br><span class="line">pip install numpy -i https://pypi.douban.com/simple</span><br><span class="line">pip install requests -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
-
-<p>学校g01n01等大部分节点显卡驱动版本较老375.26，没有root权限升级驱动的情况下只能需要使用低版本cuda</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n mario_cu8.0 python=3.7 nomkl</span><br><span class="line">conda install pytorch==1.0.0 torchvision==0.2.1 cuda80 -c pytorch</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line">&gt;&gt;&gt;import torch</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/gpfs1/home/nc/hpc1/miniconda3/envs/mario_cu9.0/lib/python3.7/site-packages/torch/__init__.py&quot;, line 84, in &lt;module&gt;</span><br><span class="line">    from torch._C import *</span><br><span class="line">ImportError: /usr/lib64/libstdc++.so.6: version `CXXABI_1.3.8&#x27; not found (required by /gpfs1/home/nc/hpc1/miniconda3/envs/mario_cu9.0/lib/python3.7/site-packages/torch/lib/libtorch_python.so)</span><br></pre></td></tr></table></figure>
-
-<p>在学校服务器总是会遇到基础库的问题，<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012322399/article/details/120065301">看这篇文章</a>！</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/siamzj/article/details/120995732">Anaconda中mkl的坑</a></p>
-<p><strong>法二：下载wheel文件安装。<a target="_blank" rel="noopener" href="https://download.pytorch.org/whl/torch_stable.html">Pytorch的wheel文件下载地址</a></strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://download.pytorch.org/whl/cu113/torch-1.10.2%2Bcu113-cp37-cp37m-linux_x86_64.whl</span><br></pre></td></tr></table></figure>
-
-<p><strong>法三：下载现成的包安装。<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/linux-64/">Pytorch包下载地址</a>（踩坑中）</strong></p>
-<p>考虑到某些linux服务器上可能不能访问不了Pytorch的官网，可以自己下载下来然后上传</p>
-<p>或者可以直接在国内镜像源下载编译好的pytorch包 进行离线安装（注意显卡驱动版本和CUDA版本对应关系）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/linux-64/pytorch-1.10.0-py3.6_cuda11.3_cudnn8.2.0_0.tar.bz2 --no-check-certificate</span><br><span class="line"></span><br><span class="line">cd $anaconda3/envs/yourself-env-name/</span><br><span class="line">tar -xvf pytorch-1.10.0-py3.6_cuda11.3_cudnn8.2.0_0.tar.bz2</span><br></pre></td></tr></table></figure>
-
-<p>我在学校平台上需要先加载cuda环境</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module load cuda/11.5</span><br></pre></td></tr></table></figure>
-
-<p>然而以这种离线方式安装，会报没有Mkl动态库的错误</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$python</span><br><span class="line">&gt;&gt;&gt; import torch</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">  File &quot;/gpfs1/home/nc/hpc1/miniconda3/envs/mario/lib/python3.7/site-packages/torch/__init__.py&quot;, line 201, in &lt;module&gt;</span><br><span class="line">    _load_global_deps()</span><br><span class="line">  File &quot;/gpfs1/home/nc/hpc1/miniconda3/envs/mario/lib/python3.7/site-packages/torch/__init__.py&quot;, line 154, in _load_global_deps</span><br><span class="line">    ctypes.CDLL(lib_path, mode=ctypes.RTLD_GLOBAL)</span><br><span class="line">  File &quot;/gpfs1/home/nc/hpc1/miniconda3/envs/mario/lib/python3.7/ctypes/__init__.py&quot;, line 364, in __init__</span><br><span class="line">    self._handle = _dlopen(self._name, mode)</span><br><span class="line">OSError: libmkl_intel_lp64.so: cannot open shared object file: No such file or directory</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line">[5]+  Stopped                 python</span><br></pre></td></tr></table></figure>
-
-<p>安装一下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install mkl -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
-
-<p>貌似还是缺少那个动态库…</p>
-<h1 id="TENSORFLOW-GPU版"><a href="#TENSORFLOW-GPU版" class="headerlink" title="TENSORFLOW GPU版"></a>TENSORFLOW GPU版</h1><h2 id="Win10-1050Ti搭建tensorflow-gpu环境"><a href="#Win10-1050Ti搭建tensorflow-gpu环境" class="headerlink" title="Win10 1050Ti搭建tensorflow-gpu环境"></a>Win10 1050Ti搭建tensorflow-gpu环境</h2><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38899860/article/details/106067102">https://blog.csdn.net/weixin_38899860/article/details/106067102</a></p>
-<p>**CUDA9.0.176_win10:**<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-90-download-archive">https://developer.nvidia.com/cuda-90-download-archive</a></p>
-<p>**Cudnn7.3.1:**<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-archive">https://developer.nvidia.com/rdp/cudnn-archive</a></p>
-<p>cuda与tensorflow对应关系</p>
-<p><img src="/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.assets/cuda%E4%B8%8Etensorflow%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB-1663572940070.png" alt="cuda与tensorflow对应关系-1663572940070"></p>
-<h3 id="解压Cudnn"><a href="#解压Cudnn" class="headerlink" title="解压Cudnn"></a>解压Cudnn</h3><p>可以看到bin、include、lib目录<br>打开 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA<br>找到你安装的版本目录，打开，找到bin、include、lib目录，将cuDNN压缩包内对应的文件复制到bin、include、lib目录。<br>注意：是复制文件到bin、include、lib目录，不是复制目录。</p>
-<h3 id="添加PATH环境变量（根据自己路径设置）"><a href="#添加PATH环境变量（根据自己路径设置）" class="headerlink" title="添加PATH环境变量（根据自己路径设置）"></a>添加PATH环境变量（根据自己路径设置）</h3><p>记得添加环境变量到path</p>
-<p>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\lib\x64</p>
-<h3 id="检查安装结果"><a href="#检查安装结果" class="headerlink" title="检查安装结果"></a>检查安装结果</h3><p>在cmd窗口输入nvcc -V</p>
-<h3 id="安装tensorflow-gpu"><a href="#安装tensorflow-gpu" class="headerlink" title="安装tensorflow-gpu"></a>安装tensorflow-gpu</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda create -n tf_1.10 python=3.6</span><br><span class="line">python -m pip install --upgrade pip</span><br><span class="line">pip install --ignore-installed --upgrade tensorflow-gpu==1.10.0 -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
-
-<h3 id="验证tensorflow是否连上gpu"><a href="#验证tensorflow是否连上gpu" class="headerlink" title="验证tensorflow是否连上gpu"></a>验证tensorflow是否连上gpu</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line">from tensorflow.python.client import device_lib</span><br><span class="line">print(device_lib.list_local_devices())</span><br></pre></td></tr></table></figure>
-
-<p>删除环境</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove -n your_env_name(虚拟环境名称) --all</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda install cudatoolkit=9.0 -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/linux-64/</span><br><span class="line"></span><br><span class="line">conda install cudnn=7.6.4 -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/linux-64/</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-i <span class="symbol">https:</span>/<span class="regexp">/pypi.tuna.tsinghua.edu.cn/simple</span></span><br><span class="line">-i <span class="symbol">https:</span>/<span class="regexp">/mirrors.aliyun.com/pypi</span><span class="regexp">/simple</span></span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/64662085/fix-not-load-dynamic-library-for-tensorflow-gpu">https://stackoverflow.com/questions/64662085/fix-not-load-dynamic-library-for-tensorflow-gpu</a></p>
-<h2 id="Ubuntu-20-04-3090-搭建tensorflow-gpu环境"><a href="#Ubuntu-20-04-3090-搭建tensorflow-gpu环境" class="headerlink" title="Ubuntu 20.04 + 3090 搭建tensorflow-gpu环境"></a>Ubuntu 20.04 + 3090 搭建tensorflow-gpu环境</h2><p>tensorflow cuda cudnn对应关系</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44560088/article/details/117457619">https://blog.csdn.net/weixin_44560088/article/details/117457619</a> </p>
-<h3 id="CUDA安装"><a href="#CUDA安装" class="headerlink" title="CUDA安装"></a>CUDA安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://developer.download.nvidia.com/compute/cuda/11.3.0/local_installers/cuda_11.3.0_465.19.01_linux.runsudo sh cuda_11.3.0_465.19.01_linux.run</span><br><span class="line">sudo sh cuda_11.3.0_465.19.01_linux.run</span><br></pre></td></tr></table></figure>
-
-<p>vi ~&#x2F;.bashrc加入环境变量</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export LD_LIBRARY_PATH=:$LD_LIBRARY_PATH</span><br><span class="line">export PATH=:$PATH</span><br><span class="line">export CUDA_HOME=:CUDA_HOME</span><br></pre></td></tr></table></figure>
-
-<p>source ~&#x2F;.bashrc使其生效</p>
-<h3 id="CUDNN安装"><a href="#CUDNN安装" class="headerlink" title="CUDNN安装"></a>CUDNN安装</h3><p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-download">https://developer.nvidia.com/rdp/cudnn-download</a></p>
-<p>官方教程：<a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html">https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html</a></p>
-<p>安装与tensorflow cuda 对应版本的cudnn</p>
-<p>1、Enable the local repository.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zlib1g</span><br><span class="line">wget https://developer.nvidia.com/compute/cudnn/secure/8.6.0/local_installers/11.8/cudnn-local-repo-ubuntu2004-8.6.0.163_1.0-1_amd64.deb</span><br><span class="line">sudo dpkg -i cudnn-local-repo-ubuntu2004-8.6.0.163_1.0-1_amd64.deb</span><br></pre></td></tr></table></figure>
-
-<p>2、Import the CUDA GPG key.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /var/cudnn-local-repo-*/cudnn-local-*-keyring.gpg /usr/share/keyrings/</span><br></pre></td></tr></table></figure>
-
-<p>3、Refresh the repository metadata.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
-
-<p>4、 Install the runtime library.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libcudnn8=8.x.x.x-1+cudaX.Y</span><br></pre></td></tr></table></figure>
-
-<p>5、Install the developer library.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libcudnn8-dev=8.x.x.x-1+cudaX.Y</span><br></pre></td></tr></table></figure>
-
-<p>6、Install the code samples and the cuDNN library documentation.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libcudnn8-samples=8.x.x.x-1+cudaX.Y</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装tensorflow-gpu-2-5-0"><a href="#安装tensorflow-gpu-2-5-0" class="headerlink" title="安装tensorflow_gpu-2.5.0"></a>安装tensorflow_gpu-2.5.0</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda create -n tf_2.5.0 python=3.7</span><br><span class="line">python -m pip install --upgrade pip</span><br><span class="line">pip3 install tensorflow-gpu==2.5.0 -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
-
-<p>测试是否能用TensorFlow-GPU版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python</span><br><span class="line">from tensorflow.python.client import device_lib</span><br><span class="line">print(device_lib.list_local_devices())</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/07/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" data-id="cll36y9ce000428v2b73mf4sw" data-title="双系统及深度学习环境搭建" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-项目合集/U-Net3D网络优化/01.打基础之U-Net学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/01.%E6%89%93%E5%9F%BA%E7%A1%80%E4%B9%8BU-Net%E5%AD%A6%E4%B9%A0/" class="article-date">
-  <time class="dt-published" datetime="2023-08-07T05:43:06.764Z" itemprop="datePublished">2023-08-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/01.%E6%89%93%E5%9F%BA%E7%A1%80%E4%B9%8BU-Net%E5%AD%A6%E4%B9%A0/">01.打基础之U-Net学习</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="U-Net学习"><a href="#U-Net学习" class="headerlink" title="U-Net学习"></a>U-Net学习</h1><p>赛题是U-Net3D，为了更好的理解赛题，从U-Net学起，打好基础。</p>
-<p>参考资料：</p>
-<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1505.04597.pdf">U-Net论文</a></p>
-<p><a target="_blank" rel="noopener" href="https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/">U-Net官方网站</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33924470/article/details/106891015">从零开始的U-net入门</a> （个人感觉是目前最全面、理解最深透的教程）</p>
-<p><a target="_blank" rel="noopener" href="https://nn.labml.ai/unet/index.html">U-Net论文代码逐行实现解读</a> 我们最终要学习并实践的代码</p>
-<h2 id="u-net代码环境配置"><a href="#u-net代码环境配置" class="headerlink" title="u-net代码环境配置"></a>u-net代码环境配置</h2><h3 id="本机cuda配置"><a href="#本机cuda配置" class="headerlink" title="本机cuda配置"></a>本机cuda配置</h3><ul>
-<li>检查cuda环境</li>
-</ul>
-<p>u-net代码中主要用到了torch，如何安装gpu版torch是重点，以windows操作系统为例，首先我们电脑需要安装有cuda，如何检验电脑是否安装好了cuda呢？win+r输入cmd回车，后在命令行中输入nvcc -V，如果正常输出信息即可。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvcc -V</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>配置cuda环境变量</li>
-</ul>
-<p>如果没有正常输出呢？我们需要检查电脑中是否已经安装有cudatoolkit，可能是没有设置好环境变量，我们打开C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA这个路径下查看有无cuda（也可能是在C:\Program Files (x86)\NVIDIA GPU Computing Toolkit\CUDA）。如果有的话，设置CUDA的环境变量即可，编辑windows系统环境变量，编辑Path变量如图将其修改为自己的对应路径，我这里将cuda v12.0放在上面，因为我电脑装了两个cuda版本，但是我自己设置的12.0的优先级比11.3高（可以通过上移或下移来设置），系统会默认我使用12.0的版本</p>
-<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/CUDA%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.png" alt="image-20230807140609242"></p>
-<ul>
-<li>如果本机没有安装cudatoolkit，安装cudatoolkit！</li>
-</ul>
-<p>以上情况是电脑里已经安装了cudatoolkit，那么如果没有安装cudatoolkit呢？当然是先安装cudatoolkit啦！但是别着急，在安装cudatoolkit之前，我们需要win+r输入cmd，在命令行中输入nvidia-smi(如果没有正常输出的话，在windows搜索功能栏中输入nvidia-smi，找到nvidia-smi.exe的位置，后把其加入windows的Path环境变量中即可，例如我的位置是在”C:\Windows\System32\nvidia-smi.exe”)</p>
-<ul>
-<li>检查cuda驱动版本所能支持的cuda最高版本</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi</span><br></pre></td></tr></table></figure>
-
-<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/nvidia-smi.png" alt="image-20230807141126542"></p>
-<ul>
-<li>安装cuda驱动</li>
-</ul>
-<p>好啦，现在我们知道我的cuda驱动版本是528.24，最高支持的cuda版本是12.0，在这里由于每个人电脑配置不一样，下载的cuda驱动版本不一样，有的人可能驱动比较老，但是一般来说能支持到cuda 11.x的版本都够用，实在是驱动版本太低的话，可以重新安装cuda驱动，方法也非常简单</p>
-<p>进入<a target="_blank" rel="noopener" href="https://www.nvidia.cn/Download/index.aspx?lang=cn">NVIDIA官方网站</a>，根据自己显卡配置选择相应的驱动版本，然后正常一路安装即可</p>
-<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/cuda%E9%A9%B1%E5%8A%A8%E4%B8%8B%E8%BD%BD" alt="image-20230807142533314"></p>
-<ul>
-<li>安装cudatoolkit</li>
-</ul>
-<p>这里我们尽量不去安装cuda10.2的版本，因为注意pytorch官网上说pytorch win版已不支持cuda10.2，所以我们可以安装cuda11.6或者cuda12.0都可以，安装12.0最好，因为12.0可以用所有的低版本。当然，最高能安装哪个版本的cudatoolkit，还要看nvidia-smi所支持的最高版本，总之安装最高版本肯定没有问题！</p>
-<p>这里我们进入<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">NVIDIA官方网站下载</a> 对应的cudatoolkit，注意安装的时候选择自定义安装，会提醒你安装哪些东西，我们只需要选择cudatoolkit足矣，不需要再重新安装cuda driver驱动了，可以直接安装在C盘默认位置。</p>
-<p>这时候我们的windows的cuda环境就配置好了，接下来配置我们的anaconda的python环境</p>
-<h3 id="anaconda中python环境配置"><a href="#anaconda中python环境配置" class="headerlink" title="anaconda中python环境配置"></a>anaconda中python环境配置</h3><p>我们采用anaconda管理python环境，每次遇到一个新的python项目，就新建一个python环境，这种方式管理的python环境清晰，不引起冲突</p>
-<p>没有anaconda的话，百度anaconda下载一路安装即可。</p>
-<p>打开anaconda power prompt命令行窗口，首先新建名为unet的python环境</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n unet python=3.10</span><br></pre></td></tr></table></figure>
-
-<p>接下来是关键，我们可以通过简单浏览代码，发现代码中使用的是pytorch，那么最重要的三个包就是torch、torchaudio和torchvision，当然安装gpu版本的方法很简单也很多，感兴趣可以<a target="_blank" rel="noopener" href="https://brucecui1998.github.io/2023/08/07/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">之前我总结的方法</a>,但是对于小白来说，使用pytorch官网推荐的安装方法固然简单，但是需要解决网速慢的问题。在这里我推荐手动下载.whl文件，然后pip install的方法。</p>
-<ul>
-<li>安装u-net项目依赖</li>
-</ul>
-<p>在项目没有明确依赖包的版本要求说明的情况下（比如没有requirements.txt），我们需要自己去尝试依赖包的版本问题，最简单的办法就是直接运行主程序，缺少哪个包就装哪个包,unet项目的主程序是experiment.py</p>
-<p>激活刚刚新建的python环境</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate unet</span><br></pre></td></tr></table></figure>
-
-<p>运行主程序</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python experiment.py</span><br></pre></td></tr></table></figure>
-
-<p>很明显会报错</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;.\experiment.py&quot;, line 23, in &lt;module&gt;</span><br><span class="line">    import numpy as np</span><br><span class="line">ModuleNotFoundError: No module named &#x27;numpy&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>我们就pip install就行,-i 参数意思是使用清华的国内镜像源，网速快！</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install numpy -i https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
-
-<p>以上就是基本思想，那么最重要也是最容易出错的三个模块torch、torchaudio和torchvision这里我推荐直接从<a target="_blank" rel="noopener" href="https://download.pytorch.org/whl/torch_stable.html">官方whl文件下载地址</a> 下载，根据个人踩坑经验，这里版本我推荐torch-1.13.1+cu116-cp310-cp310-win_amd64.whl、torchaudio-0.13.1+cu116-cp310-cp310-win_amd64.whl和torchvision-0.14.1+cu116-cp310-cp310-win_amd64.whl，将他们手动下载下来，然后再进入他们路径下面分别pip install即可，将以上三个文件下载好之后，执行下面我这个命令即可</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install torch-1.13.1+cu116-cp310-cp310-win_amd64.whl torchaudio-0.13.1+cu116-cp310-cp310-win_amd64.whl  torchvision-0.14.1+cu116-cp310-cp310-win_amd64.whl labml labml_helpers matplotlib</span><br></pre></td></tr></table></figure>
-
-<p>然后运行，程序就可以运行起来了！</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python experiment.py</span><br></pre></td></tr></table></figure>
-
-<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/unet%E8%BF%90%E8%A1%8C%E5%9B%BE.png" alt="image-20230807153537190">s</p>
-<h2 id="unet代码解析"><a href="#unet代码解析" class="headerlink" title="unet代码解析"></a>unet代码解析</h2><p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84.png" alt="网络结构"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">UNet</span>(nn.Module):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    ## U-Net</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, in_channels: <span class="built_in">int</span>, out_channels: <span class="built_in">int</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :param in_channels: number of channels in the input image</span></span><br><span class="line"><span class="string">        输入图像中的通道数</span></span><br><span class="line"><span class="string">        :param out_channels: number of channels in the result feature map</span></span><br><span class="line"><span class="string">        输出图像中的通道数</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Double convolution layers for the contracting path.</span></span><br><span class="line">        <span class="comment"># The number of features gets doubled at each step starting from $64$.</span></span><br><span class="line">        <span class="comment"># 双卷积层用于收缩路径</span></span><br><span class="line">        self.down_conv = nn.ModuleList([DoubleConvolution(i, o) <span class="keyword">for</span> i, o <span class="keyword">in</span></span><br><span class="line">                                        [(in_channels, <span class="number">64</span>), (<span class="number">64</span>, <span class="number">128</span>), (<span class="number">128</span>, <span class="number">256</span>), (<span class="number">256</span>, <span class="number">512</span>)]])</span><br><span class="line">        <span class="comment"># Down sampling layers for the contracting path</span></span><br><span class="line">        <span class="comment"># 下采样层用于收缩路径</span></span><br><span class="line">        self.down_sample = nn.ModuleList([DownSample() <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># The two convolution layers at the lowest resolution (the bottom of the U).</span></span><br><span class="line">        <span class="comment"># U的底部，双卷积层</span></span><br><span class="line">        self.middle_conv = DoubleConvolution(<span class="number">512</span>, <span class="number">1024</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Up sampling layers for the expansive path.</span></span><br><span class="line">        <span class="comment"># The number of features is halved with up-sampling.</span></span><br><span class="line">        <span class="comment"># 扩展路径的上采样层，经过上采样，特征数量减半</span></span><br><span class="line">        self.up_sample = nn.ModuleList([UpSample(i, o) <span class="keyword">for</span> i, o <span class="keyword">in</span></span><br><span class="line">                                        [(<span class="number">1024</span>, <span class="number">512</span>), (<span class="number">512</span>, <span class="number">256</span>), (<span class="number">256</span>, <span class="number">128</span>), (<span class="number">128</span>, <span class="number">64</span>)]])</span><br><span class="line">        <span class="comment"># Double convolution layers for the expansive path.</span></span><br><span class="line">        <span class="comment"># Their input is the concatenation of the current feature map and the feature map from the</span></span><br><span class="line">        <span class="comment"># contracting path. Therefore, the number of input features is double the number of features</span></span><br><span class="line">        <span class="comment"># from up-sampling.</span></span><br><span class="line">        self.up_conv = nn.ModuleList([DoubleConvolution(i, o) <span class="keyword">for</span> i, o <span class="keyword">in</span></span><br><span class="line">                                      [(<span class="number">1024</span>, <span class="number">512</span>), (<span class="number">512</span>, <span class="number">256</span>), (<span class="number">256</span>, <span class="number">128</span>), (<span class="number">128</span>, <span class="number">64</span>)]])</span><br><span class="line">        <span class="comment"># Crop and concatenate layers for the expansive path.</span></span><br><span class="line">        <span class="comment"># 裁剪并连接用于扩展路径的层</span></span><br><span class="line">        self.concat = nn.ModuleList([CropAndConcat() <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>)])</span><br><span class="line">        <span class="comment"># Final $1 \times 1$ convolution layer to produce the output</span></span><br><span class="line">        <span class="comment"># 最终经过1*1的卷积核输出</span></span><br><span class="line">        self.final_conv = nn.Conv2d(<span class="number">64</span>, out_channels, kernel_size=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x: torch.Tensor</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :param x: input image</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="comment"># To collect the outputs of contracting path for later concatenation with the expansive path.</span></span><br><span class="line">        <span class="comment"># 收集收缩路径的输出，以便稍后与扩展路径连接。</span></span><br><span class="line">        pass_through = []</span><br><span class="line">        <span class="comment"># Contracting path</span></span><br><span class="line">        <span class="comment"># 收缩路径</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(self.down_conv)):</span><br><span class="line">            <span class="comment"># Two $3 \times 3$ convolutional layers</span></span><br><span class="line">            <span class="comment"># 经过3*3的卷积层</span></span><br><span class="line">            x = self.down_conv[i](x)</span><br><span class="line">            <span class="comment"># Collect the output</span></span><br><span class="line">            <span class="comment"># 收集收缩路径的输出</span></span><br><span class="line">            pass_through.append(x)</span><br><span class="line">            <span class="comment"># Down-sample</span></span><br><span class="line">            <span class="comment"># 池化层下采样</span></span><br><span class="line">            x = self.down_sample[i](x)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Two $3 \times 3$ convolutional layers at the bottom of the U-Net</span></span><br><span class="line">        <span class="comment"># U的底部，双卷积层</span></span><br><span class="line">        x = self.middle_conv(x)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Expansive path</span></span><br><span class="line">        <span class="comment"># 扩展路径</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(self.up_conv)):</span><br><span class="line">            <span class="comment"># Up-sample</span></span><br><span class="line">            x = self.up_sample[i](x)</span><br><span class="line">            <span class="comment"># Concatenate the output of the contracting path</span></span><br><span class="line">            x = self.concat[i](x, pass_through.pop())</span><br><span class="line">            <span class="comment"># Two $3 \times 3$ convolutional layers</span></span><br><span class="line">            x = self.up_conv[i](x)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Final $1 \times 1$ convolution layer</span></span><br><span class="line">        <span class="comment"># 最终经过1*1的卷积核</span></span><br><span class="line">        x = self.final_conv(x)</span><br><span class="line"></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
-
-<p>我们首先根据论文中网络结构图来看unet的网络结构部分的代码，我们先来看UNet类中的__init__方法，</p>
-<ul>
-<li><p>首先是一个双卷积层self.down_conv用于收缩路径，对应图中的蓝色箭头</p>
-</li>
-<li><p>self.down_sample下采样层用于收缩路径，对应图中的红色箭头</p>
-</li>
-<li><p>self.middle_conv是图中底部的双卷积层，对应图中最底部的蓝色箭头</p>
-</li>
-<li><p>self.up_sample扩展路径的上采样层，经过上采样，特征数量减半，对应图中绿色箭头（注意不包含左边白色的）</p>
-</li>
-<li><p>self.up_conv用于扩展路径的双卷积层</p>
-</li>
-<li><p>self.concat裁剪并连接用于扩展路径的层对应灰色部分（注意这里才是左半边白色部分的512个特征通道）</p>
-</li>
-<li><p>self.final_conv最终经过1*1的卷积核输出把64个特征通道变成2个，也就是最后的388×388×2，其实这里就是一个二分类的操作，把图片分成<strong>背景</strong>和<strong>目标</strong>两个类别。</p>
-</li>
-</ul>
-<p>我们再来看unet中的forward方法，forward可以理解为沿着网络结构前向传播</p>
-<ul>
-<li><p>pass_through变量，收集收缩路径的输出，以便稍后与扩展路径连接。也就是提前准备好灰色箭头的输入</p>
-</li>
-<li><p>第一个for循环，可以理解为沿着U型结构的左边收缩路径走，len(self.down_conv)的长度为4，也就是双卷积层总共做4次，也和图中能对应上。</p>
-<ul>
-<li>首先是x &#x3D; self.down_conv[i] (x) i是输入输出通道参数的索引，对应四个值，分别是(in_channels, 64), (64, 128), (128, 256), (256, 512)，x是输入的图片</li>
-<li>pass_through.append(x)，接着收集一下收缩路径的输出</li>
-<li>x &#x3D; self.down_sample[i] (x) 最后池化层下采样</li>
-</ul>
-<p>以上三步操作重复执行四次，此时已经走到了U型结构的底部</p>
-</li>
-<li><p>在底部，x &#x3D; self.middle_conv(x)再来一个双卷积层，对应论文图中最底部的两个蓝色箭头</p>
-</li>
-<li><p>第二个for循环，相同的道理，循环四次，分别先后进行上采样、拼接、反卷积</p>
-</li>
-<li><p>最终x &#x3D; self.final_conv(x)经过2个1*1的卷积核，就是一个二分类的操作，把图片分成<strong>背景</strong>和<strong>目标</strong>两个类别，并将x返回</p>
-</li>
-</ul>
-<p>以上是unet的网络结构。我们再看一下unet.py中的其他类class DoubleConvolution、class DownSample、class UpSample、class CropAndConcat其实就是刚才unet的forward中的具体操作</p>
-<p>这里只讲解一个DoubleConvolution例子</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DoubleConvolution</span>(nn.Module):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    ### Two $3 \times 3$ Convolution Layers</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Each step in the contraction path and expansive path have two $3 \times 3$</span></span><br><span class="line"><span class="string">    convolutional layers followed by ReLU activations.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    In the U-Net paper they used $0$ padding,</span></span><br><span class="line"><span class="string">    but we use $1$ padding so that final feature map is not cropped.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    收缩路径和扩展路径中的每一步都有两个3×3的卷积层，然后是ReLU激活。</span></span><br><span class="line"><span class="string">    在U-Net论文中，他们使用了0填充，但我们使用了1填充，这样最终的特征图就不会被裁剪。</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    深蓝色箭头：利用3×3的卷积核对图片进行卷积后，通过ReLU激活函数输出特征通道</span></span><br><span class="line"><span class="string">    灰色箭头：对左边下采样过程中的图片进行裁剪复制</span></span><br><span class="line"><span class="string">    红色箭头：通过最大池化对图片进行下采样，池化核大小为2×2</span></span><br><span class="line"><span class="string">    绿色箭头：反卷积，对图像进行上采样，卷积核大小为2×2</span></span><br><span class="line"><span class="string">    青色箭头：使用1×1的卷积核对图片进行卷积</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, in_channels: <span class="built_in">int</span>, out_channels: <span class="built_in">int</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :param in_channels: is the number of input channels 输入的通道数量</span></span><br><span class="line"><span class="string">        :param out_channels: is the number of output channels 输出的通道数量</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 第一个3*3的卷积层</span></span><br><span class="line">        self.first = nn.Conv2d(in_channels, out_channels, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.act1 = nn.ReLU()</span><br><span class="line">        <span class="comment"># 第二个3*3的卷积层</span></span><br><span class="line">        self.second = nn.Conv2d(out_channels, out_channels, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        self.act2 = nn.ReLU()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x: torch.Tensor</span>):</span><br><span class="line">        <span class="comment"># Apply the two convolution layers and activations</span></span><br><span class="line">        <span class="comment"># 应用两个卷积层和Relu激活，相当于向前走，也叫前向传播</span></span><br><span class="line">        x = self.first(x)</span><br><span class="line">        x = self.act1(x)</span><br><span class="line">        x = self.second(x)</span><br><span class="line">        <span class="keyword">return</span> self.act2(x)</span><br></pre></td></tr></table></figure>
-
-<p>在unet网络结构中的init方法的self.down_conv其实就是调用了自己编写的DoubleConvolution，那我们来看看双卷积层的操作是怎么定义的，首先在DoubleConvolution的init方法中，实际是通过torch来定义双卷积层的</p>
-<ul>
-<li>nn.Conv2d</li>
-<li>nn.ReLU</li>
-</ul>
-<p>DoubleConvolution的forward方法其实就是将这些操作按顺序拼接起来,先卷积一下，再relu激活一下，再卷积一下，再relu激活一下，这样子就拼成了一个双卷积层的操作。class DownSample、class UpSample、class CropAndConcat与其原理类似，都是调用pytorch来定义网络结构</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/07/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/01.%E6%89%93%E5%9F%BA%E7%A1%80%E4%B9%8BU-Net%E5%AD%A6%E4%B9%A0/" data-id="clldejn0g000430v2fzty9bis" data-title="01.打基础之U-Net学习" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-项目合集/KuiperInfer/第二课 vector与cube多维数组内存连续问题详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/07/26/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%BA%8C%E8%AF%BE%20vector%E4%B8%8Ecube%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E8%BF%9E%E7%BB%AD%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/" class="article-date">
-  <time class="dt-published" datetime="2023-07-26T08:39:16.478Z" itemprop="datePublished">2023-07-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/07/26/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%BA%8C%E8%AF%BE%20vector%E4%B8%8Ecube%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E8%BF%9E%E7%BB%AD%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/">第二课 vector与cube多维数组内存连续问题详解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="vector与cube多维数组内存连续问题详解"><a href="#vector与cube多维数组内存连续问题详解" class="headerlink" title="vector与cube多维数组内存连续问题详解"></a>vector与cube多维数组内存连续问题详解</h1><p>知识产权所有：</p>
-<ul>
-<li>B站up主：<a target="_blank" rel="noopener" href="https://space.bilibili.com/1822828582">我是傅傅猪</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/zjhellofss/KuiperInfer">github链接</a> </li>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1HV4y1A7H8/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=fe6c1940458efae8fa34a9a71403d0b4">视频链接</a></li>
-<li><a target="_blank" rel="noopener" href="https://cowtransfer.com/s/92602ff08d544b">第二节课课件</a></li>
-</ul>
-<p>手把手带学：B站up主：<a target="_blank" rel="noopener" href="https://space.bilibili.com/678390438?spm_id_from=333.788.0.0">啊培在努力</a></p>
-<p>视频初衷：帮助小白上手，手把手实操课程，对小白级同学比较友好，同时也是希望倒逼自己学习。</p>
-<h2 id="对比std-vector三维矩阵与arma-cube的效率"><a href="#对比std-vector三维矩阵与arma-cube的效率" class="headerlink" title="对比std::vector三维矩阵与arma::cube的效率"></a>对比std::vector三维矩阵与arma::cube的效率</h2><p>int m&#x3D;10000,n&#x3D;10000,channel&#x3D;2;&#x2F;&#x2F;channel<em>m</em>n的三维数组，初始值为1</p>
-<p>测试代码在test&#x2F;test_compare_vector_cube.cpp中</p>
-<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/image-20230720085219816.png" alt="image-20230720085219816"></p>
-<h2 id="打印内存地址"><a href="#打印内存地址" class="headerlink" title="打印内存地址"></a>打印内存地址</h2><p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/4dda78a3eb6a2fde0c335c864ab746a.png" alt="4dda78a3eb6a2fde0c335c864ab746a"></p>
-<p>下载编译测试代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/brucecui1998/KuiperInferLearn.git</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line">../bin/test_kuiper_course</span><br></pre></td></tr></table></figure>
-
-<p>用std::vector构建二维数组在内存访问上性能不如arma::cube的原因有两个：</p>
-<p>1、虽然一个vector向量内的地址连续，但是向量间内存地址不联系</p>
-<p>2、在对vector扩容后，被扩容的那个向量的内存地址也整体被修改了，相当于向量间不是整体连续。</p>
-<p>我们创建一个4*4的vector组成的二维数组，对第1行vector扩容：插入两个元素，最后打印出他们的地址</p>
-<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/image-20230719220715697.png" alt="image-20230719220715697"></p>
-<p>​                                                             4*4的 vector二维数组扩容前后内存地址</p>
-<p>通过上图我们可以看到，四行向量虽然内部连续，但是向量与向量间地址不连续。而且扩容后的第一行的内存地址，与整体内存地址不是整体连续的关系。</p>
-<p><img src="/../../../images/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/image-20230719220946774.png" alt="image-20230719220946774"></p>
-<p>​                                                                        4*4的 cube二维数组扩容前后内存地址图</p>
-<p>我们创建一个4*4的fcube二维矩阵，在最后一行后面<strong>插入两行元素</strong>进行扩容，最后打印出他们的地址</p>
-<p>通过上图我们可以发现arma::cube创建的多维数组（列主序），不管是扩容前与扩容后，都拥有完整一块的内存地址，所以内存访问速度快</p>
-<h2 id="github代码仓库"><a href="#github代码仓库" class="headerlink" title="github代码仓库"></a>github代码仓库</h2><p>将代码上传至远程仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/brucecui1998/KuiperInferLearn.git</span><br><span class="line">git branch -M main</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
-
-<p><strong>常见问题：Failed to connect to github.com port 443</strong></p>
-<p>在网站<a target="_blank" rel="noopener" href="https://www.ipaddress.com/">https://www.ipaddress.com/</a> 分别搜索</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">github.global.ssl.fastly.net</span><br><span class="line">github.com</span><br></pre></td></tr></table></figure>
-
-<p>得到ip</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.69.194</span><br><span class="line">140.82.112.4</span><br></pre></td></tr></table></figure>
-
-<p>修改hosts文件：vim &#x2F;etc&#x2F;hosts<br>在hosts文件末尾添加两行(对应上面查到的ip)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">199.232.69.194  github.global.ssl.fastly.net</span><br><span class="line">140.82.112.4  github.com</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/07/26/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/%E7%AC%AC%E4%BA%8C%E8%AF%BE%20vector%E4%B8%8Ecube%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E8%BF%9E%E7%BB%AD%E9%97%AE%E9%A2%98%E8%AF%A6%E8%A7%A3/" data-id="cll374tax00003gv28t5q15r3" data-title="第二课 vector与cube多维数组内存连续问题详解" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -1206,7 +1019,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/">空战仿真</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/">空战仿真</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/C-in-Aerospace-simulations/">C++ in Aerospace simulations</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -1221,7 +1034,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
     </div>
   </div>
 
@@ -1234,23 +1047,23 @@
       <ul>
         
           <li>
+            <a href="/2023/11/01/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/C++%20in%20Aerospace%20simulations/03.%E5%8D%AB%E6%98%9F%E6%A8%A1%E6%8B%9F/">03.卫星模拟</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/30/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/C++%20in%20Aerospace%20simulations/02.QuickStart/">02.QuickStart</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/30/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/C++%20in%20Aerospace%20simulations/01.%E4%BB%8B%E7%BB%8D/">01.介绍</a>
+          </li>
+        
+          <li>
             <a href="/2023/10/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/01%E9%A3%9E%E8%A1%8C%E4%BB%BF%E7%9C%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">01.飞行仿真基础知识</a>
           </li>
         
           <li>
             <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/11%E6%A0%88/">11.栈</a>
-          </li>
-        
-          <li>
-            <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/10%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">10.带头结点双向链表</a>
-          </li>
-        
-          <li>
-            <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/09%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/">09.循环链表</a>
-          </li>
-        
-          <li>
-            <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/07%E4%B8%8D%E5%B8%A6%E5%A4%B4%E8%8A%82%E7%82%B9%E7%9A%84%E5%8D%95%E9%93%BE%E8%A1%A8/">07不带头节点的单链表</a>
           </li>
         
       </ul>

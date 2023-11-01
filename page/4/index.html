@@ -73,6 +73,201 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-项目合集/U-Net3D网络优化/03.了解MLPerf基准测试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/15/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/03.%E4%BA%86%E8%A7%A3MLPerf%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/" class="article-date">
+  <time class="dt-published" datetime="2023-08-15T02:46:35.778Z" itemprop="datePublished">2023-08-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/15/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/03.%E4%BA%86%E8%A7%A3MLPerf%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/">03.MLPerf基准测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="03-MLPerf基准测试"><a href="#03-MLPerf基准测试" class="headerlink" title="03.MLPerf基准测试"></a>03.MLPerf基准测试</h1><p><a target="_blank" rel="noopener" href="https://www.nvidia.com/en-us/data-center/resources/mlperf-benchmarks/">MLPerf简介</a></p>
+<p><a href="%5BMLPerf%E7%AE%80%E4%BB%8B%5D(https://www.nvidia.com/en-us/data-center/resources/mlperf-benchmarks/)">MLcommons</a></p>
+<p>NVIDIA官方资料</p>
+<p><a target="_blank" rel="noopener" href="https://developer.nvidia.com/deep-learning-performance-training-inference">英伟达数据中心深度学习产品性能</a></p>
+<p><a target="_blank" rel="noopener" href="https://catalog.ngc.nvidia.com/?filters=&orderBy=weightPopularDESC&query=">英伟达NGC目录</a></p>
+<p><a target="_blank" rel="noopener" href="https://forums.developer.nvidia.com/c/accelerated-computing/nvidia-gpu-cloud-ngc-users/25">NGC开发者社区论坛</a></p>
+<h2 id="学习英伟达NGC"><a href="#学习英伟达NGC" class="headerlink" title="学习英伟达NGC"></a>学习英伟达NGC</h2><h3 id="NGC-Getting-Started"><a href="#NGC-Getting-Started" class="headerlink" title="NGC - Getting Started"></a>NGC - Getting Started</h3><p>REF:<a target="_blank" rel="noopener" href="https://catalog.ngc.nvidia.com/orgs/nvidia/collections/gettingstarted">https://catalog.ngc.nvidia.com/orgs/nvidia/collections/gettingstarted</a></p>
+<p>按照这个网址配置NGC：<a target="_blank" rel="noopener" href="https://docs.ngc.nvidia.com/cli/cmd.html">https://docs.ngc.nvidia.com/cli/cmd.html</a></p>
+<p>配置wsl2：参见“杂项汇总”-“wsl2大全”</p>
+<p>搞了一下午，没搞定NGC教程，因为用不了nvidia-docker</p>
+<p>虽然配置好了wsl2和docker，但是仍然在windows上用不了nvidia-docker，又有人说必须是 Windows Insider Program 的成员才能用</p>
+<p>参见：<a target="_blank" rel="noopener" href="https://www.coder.work/article/7024492">https://www.coder.work/article/7024492</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions">https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/58169786/problem-in-installing-nvidia-docker-in-windows-10-system">https://stackoverflow.com/questions/58169786/problem-in-installing-nvidia-docker-in-windows-10-system</a></p>
+<p>还是老老实实装linux吧。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/15/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/03.%E4%BA%86%E8%A7%A3MLPerf%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/" data-id="clldejn0h000a30v26b8jc9bk" data-title="03.MLPerf基准测试" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-杂项汇总/fastllm安装" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm%E5%AE%89%E8%A3%85/" class="article-date">
+  <time class="dt-published" datetime="2023-08-13T10:29:26.219Z" itemprop="datePublished">2023-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm%E5%AE%89%E8%A3%85/">fastllm安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="fastllm安装（linux）"><a href="#fastllm安装（linux）" class="headerlink" title="fastllm安装（linux）"></a>fastllm安装（linux）</h1><h2 id="本机环境"><a href="#本机环境" class="headerlink" title="本机环境"></a>本机环境</h2><p>debian 12.1</p>
+<p>gcc&#x2F;g++ 12.2</p>
+<p>NVIDIA-SMI 535.86.05</p>
+<p>cudatoolkit 12.1</p>
+<p>cmake 3.25.1</p>
+<p>python3.10</p>
+<h2 id="配置python环境"><a href="#配置python环境" class="headerlink" title="配置python环境"></a>配置python环境</h2><p>安装minianaconda</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.5.2-0-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-py310_23.5.2-0-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+
+<p>配置一个python环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n fastllm python=3.10 -y</span><br><span class="line">conda activate fastllm</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载并编译"><a href="#下载并编译" class="headerlink" title="下载并编译"></a>下载并编译</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:ztxz16/fastllm.git</span><br><span class="line">cd fastllm</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake .. -DUSE_CUDA=ON</span><br><span class="line">make -j </span><br></pre></td></tr></table></figure>
+
+<p>编译完成后，可以使用如下命令安装简易python工具包 (暂时只支持Linux)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd tools # 这时在fastllm/build/tools目录下</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载模型运行demo程序"><a href="#下载模型运行demo程序" class="headerlink" title="下载模型运行demo程序"></a>下载模型运行demo程序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 这时在fastllm/build目录下</span><br><span class="line">wget https://huggingface.co/huangyuyang/chatglm2-6b-fp16.flm/resolve/main/chatglm2-6b-fp16.flm</span><br><span class="line">./main -p chatglm2-6b-fp16.flm </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="fastllm安装（Windows）"><a href="#fastllm安装（Windows）" class="headerlink" title="fastllm安装（Windows）"></a>fastllm安装（Windows）</h1><h2 id="本机环境-1"><a href="#本机环境-1" class="headerlink" title="本机环境"></a>本机环境</h2><p>windows 10</p>
+<p>vs2019</p>
+<p>NVIDIA-SMI 528.24</p>
+<p>cudatoolkit 12.0</p>
+<p>cmake 3.27</p>
+<p>python3.10</p>
+<p>其中cudatoolkit和nvidia-smi安装教程可参考我的<a target="_blank" rel="noopener" href="https://brucecui1998.github.io/">个人博客</a>-杂项汇总-<a target="_blank" rel="noopener" href="https://brucecui1998.github.io/2023/08/09/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/pytorch-gpu%E9%85%8D%E7%BD%AE%E4%BB%A5unet%E4%B8%BA%E4%BE%8B/">pytorch-gpu环境配置以unet为例</a></p>
+<h2 id="配置python环境-1"><a href="#配置python环境-1" class="headerlink" title="配置python环境"></a>配置python环境</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n fastllm python=3.10 -y</span><br><span class="line">conda activate fastllm</span><br></pre></td></tr></table></figure>
+
+<p>可以使用如下命令安装简易python工具包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd tools # 这时在fastllm/build/tools目录下</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载并编译-1"><a href="#下载并编译-1" class="headerlink" title="下载并编译"></a>下载并编译</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:ztxz16/fastllm.git</span><br></pre></td></tr></table></figure>
+
+<p>进入fastllm，鼠标右键新建文件夹，取名叫build</p>
+<p>打开cmake-gui，配置好文件路径后，依次点击①②③</p>
+<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_cmake.png" alt="image-20230813195358044"></p>
+<p>在VS右侧解决方案资源管理其中选中main右键选择属性，如下图配置</p>
+<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_shuxing.png" alt="image-20230813195824432"></p>
+<p>点击</p>
+<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm_bianyi.png" alt="image-20230813195914372"></p>
+<p>编译好的可执行文件在fastllm&#x2F;build&#x2F;Debug，每个人可能不一样，具体可看工程属性中输出文件目录设置</p>
+<h2 id="下载模型运行demo程序-1"><a href="#下载模型运行demo程序-1" class="headerlink" title="下载模型运行demo程序"></a>下载模型运行demo程序</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 这时在fastllm/build/Debug目录下</span><br><span class="line">wget https://huggingface.co/huangyuyang/chatglm2-6b-fp16.flm/resolve/main/chatglm2-6b-fp16.flm</span><br><span class="line">./main -p chatglm2-6b-fp16.flm </span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/13/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/fastllm%E5%AE%89%E8%A3%85/" data-id="cll9d53zt00008ov26b1v5nvn" data-title="fastllm安装" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-项目合集/U-Net3D网络优化/项目简介" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/13/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/" class="article-date">
+  <time class="dt-published" datetime="2023-08-13T08:58:42.298Z" itemprop="datePublished">2023-08-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/13/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/">项目简介</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="U-Net3D网络优化项目"><a href="#U-Net3D网络优化项目" class="headerlink" title="U-Net3D网络优化项目"></a>U-Net3D网络优化项目</h1><p>U-Net3D网络模型优化是2023年先导杯的一道<a target="_blank" rel="noopener" href="https://cas-pra.sugon.com/detail.html?tournament_id=28">赛题</a> ，本项目免费开放，供ai+hpc领域的同学们学习，一起进步！</p>
+<ul>
+<li>github地址：<a target="_blank" rel="noopener" href="https://github.com/brucecui1998/fastUNet3D">https://github.com/brucecui1998/fastUNet3D</a></li>
+<li>项目优化博客：<a target="_blank" rel="noopener" href="https://brucecui1998.github.io/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">https://brucecui1998.github.io/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/</a></li>
+</ul>
+<p>技术栈：cuda、hip、mpi</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/13/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/" data-id="cll9d53zv00018ov213vaayte" data-title="项目简介" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-30天Pandas挑战/文章浏览" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/13/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/%E6%96%87%E7%AB%A0%E6%B5%8F%E8%A7%88/" class="article-date">
@@ -518,210 +713,6 @@
 
 
   
-    <article id="post-leetcode/367有效的完全平方数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/12/leetcode/367%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/" class="article-date">
-  <time class="dt-published" datetime="2023-08-12T12:10:10.605Z" itemprop="datePublished">2023-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/12/leetcode/367%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/">367有效的完全平方数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="有效的完全平方数"><a href="#有效的完全平方数" class="headerlink" title="有效的完全平方数"></a>有效的完全平方数</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-perfect-square/">题目</a></h2><p>给你一个正整数 <code>num</code> 。如果 <code>num</code> 是一个完全平方数，则返回 <code>true</code> ，否则返回 <code>false</code> 。</p>
-<p><strong>完全平方数</strong> 是一个可以写成某个整数的平方的整数。换句话说，它可以写成某个整数和自身的乘积。</p>
-<p>不能使用任何内置的库函数，如 <code>sqrt</code> 。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：num = 16</span><br><span class="line">输出：true</span><br><span class="line">解释：返回 true ，因为 4 * 4 = 16 且 4 是一个整数。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：num = 14</span><br><span class="line">输出：false</span><br><span class="line">解释：返回 false ，因为 3.742 * 3.742 = 14 但 3.742 不是一个整数。</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>1 &lt;= num &lt;= 231 - 1</code></li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>和69.x的平方根思路一样，只不过这次要return</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isPerfectSquare</span><span class="params">(<span class="type">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> r = num;</span><br><span class="line">        <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">            <span class="type">int</span> mid = l + (r - l )/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>((<span class="type">long</span> <span class="type">long</span>)mid*mid &gt; num)&#123;</span><br><span class="line">                r = mid <span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>((<span class="type">long</span> <span class="type">long</span>)mid*mid &lt; num)&#123;</span><br><span class="line">                l = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/12/leetcode/367%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/" data-id="cll7zfm87000040v271tvdzx8" data-title="367有效的完全平方数" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-项目合集/U-Net3D网络优化/02.在曙光平台跑通赛题代码" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/02.%E5%9C%A8%E6%9B%99%E5%85%89%E5%B9%B3%E5%8F%B0%E8%B7%91%E9%80%9A%E8%B5%9B%E9%A2%98%E4%BB%A3%E7%A0%81/" class="article-date">
-  <time class="dt-published" datetime="2023-08-12T05:50:27.989Z" itemprop="datePublished">2023-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/02.%E5%9C%A8%E6%9B%99%E5%85%89%E5%B9%B3%E5%8F%B0%E8%B7%91%E9%80%9A%E8%B5%9B%E9%A2%98%E4%BB%A3%E7%A0%81/">02.在曙光平台跑通赛题代码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="在曙光平台跑通赛题代码"><a href="#在曙光平台跑通赛题代码" class="headerlink" title="在曙光平台跑通赛题代码"></a>在曙光平台跑通赛题代码</h1><ul>
-<li><p><a target="_blank" rel="noopener" href="https://cas-pra.sugon.com/detail.html?tournament_id=28">赛题链接</a>,2023年先导杯U-Net3D网络模型优化赛题。</p>
-</li>
-<li><p>赛题代码：PRA_unet3d.tar.gz （在赛题链接文末附件下载）</p>
-</li>
-<li><p>赛题数据：链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1c24g8bv0VVVM-3ovFC0iIA">https://pan.baidu.com/s/1c24g8bv0VVVM-3ovFC0iIA</a> 提取码: 1c6v </p>
-</li>
-<li><p>赛题参考代码：<a target="_blank" rel="noopener" href="https://github.com/mlcommons/training/tree/master/image_segmentation/pytorch%E3%80%81https://github.com/mlcommons/training_policies/blob/master/training_rules.adoc">https://github.com/mlcommons/training/tree/master/image_segmentation/pytorch、https://github.com/mlcommons/training_policies/blob/master/training_rules.adoc</a></p>
-</li>
-<li><p>赛题辅助说明：【腾讯文档】先导杯U-Net3D网络模型优化赛题辅助说明：<a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DVFF0ZUpHekdaZnZN">https://docs.qq.com/doc/DVFF0ZUpHekdaZnZN</a></p>
-</li>
-<li><p>赛方算力平台：<a target="_blank" rel="noopener" href="https://tycloud.nsccty.com/ac/console3/index.html#/space/dashboard">https://tycloud.nsccty.com/ac/console3/index.html#/space/dashboard</a> 注意先导杯全国赛使用的是山西云时代太原超算中心（不同超算中心配置略有不同）</p>
-</li>
-</ul>
-<h2 id="账号准备"><a href="#账号准备" class="headerlink" title="账号准备"></a>账号准备</h2><p>与之前我们在windows本机运行代码不同，赛题要求在赛题算力平台运行并使用dcu C86异构加速卡。</p>
-<p>所以我们必须在赛题官方网站选择“报名比赛”-“答题”选项卡注册账号，报名比赛以及申请算力环境，一般需要数个工作日</p>
-<h2 id="配置赛题环境"><a href="#配置赛题环境" class="headerlink" title="配置赛题环境"></a>配置赛题环境</h2><h3 id="准备代码、数据"><a href="#准备代码、数据" class="headerlink" title="准备代码、数据"></a>准备代码、数据</h3><p>在家目录下准备public_data目录，以备不时之需，将赛题代码、数据、以及赛方代码缺失的文件<a target="_blank" rel="noopener" href="https://github.com/mlcommons/training/tree/master/image_segmentation/pytorch">evaluation_cases.txt</a>其都上传至自己创建的public_data下面</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir public_data</span><br></pre></td></tr></table></figure>
-
-<p>准备工作目录，这里我取名叫blog_learn，取什么名字都行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p content/blog_learn</span><br></pre></td></tr></table></figure>
-
-<p>将public_data下的文件复制到工作目录下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd content/blog_learn</span><br><span class="line">cp ~/public_data/PRA_unet3d.tar.gz .</span><br><span class="line">tar -xvf PRA_unet3d.tar.gz </span><br><span class="line">cd PRA</span><br><span class="line">cp ~/public_data/evaluation_cases.txt ~/public_data/data.tar.gz .</span><br><span class="line">tar -xvf data.tar.gz</span><br><span class="line">rm data.tar.gz</span><br></pre></td></tr></table></figure>
-
-<h2 id="准备python环境"><a href="#准备python环境" class="headerlink" title="准备python环境"></a>准备python环境</h2><p>由于权限问题，我们需要自己安装anaconda3，<a target="_blank" rel="noopener" href="https://docs.conda.io/en/latest/miniconda.html#linux-installers">anaconda官网下载</a>后上传服务器安装minianaconda</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">conda create -n unet3d_learn python=3.7 -y</span><br><span class="line">conda activate unet3d_learn</span><br><span class="line">pip install torch-1.10.0a0+git2040069.dtk2210-cp37-cp37m-manylinux2014_x86_64.whl </span><br><span class="line">pip install apex-0.1+gitdb7007a.dtk2210-cp37-cp37m-manylinux2014_x86_64.whl</span><br><span class="line">pip install torchvision-0.10.0a0+e04d001.dtk2210-cp37-cp37m-manylinux2014_x86_64.whl </span><br><span class="line">pip install scipy pandas numpy tqdm -i https://pypi.douban.com/simple/</span><br><span class="line">cd ~/content/blog_learn/PRA/logging-master</span><br><span class="line">python setup.py install ; cd .. ;</span><br><span class="line">cd ./dllogger-master</span><br><span class="line">python setup.py install; cd ..;</span><br></pre></td></tr></table></figure>
-
-<p>注意到上述提及的whl包需要到光合开发者社区自行进行下载，链接如下：<a target="_blank" rel="noopener" href="https://cancon.hpccube.com:65024/4/main">https://cancon.hpccube.com:65024/4/main</a></p>
-<h2 id="运行赛题代码"><a href="#运行赛题代码" class="headerlink" title="运行赛题代码"></a>运行赛题代码</h2><p>vim mpi.sbatch做略微修改</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -p ty_xd</span> </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -N 2</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH --ntasks-per-node=4</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH --cpus-per-task=8</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH --gres=dcu:4</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -J mlperf_blog</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -e myjob.e</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">SBATCH -o myjob.o</span></span><br><span class="line"></span><br><span class="line">echo &quot;###### [1] SET ENVIRONMENT ######&quot;</span><br><span class="line">module purge</span><br><span class="line">module load compiler/devtoolset/7.3.1</span><br><span class="line">module load mpi/hpcx/2.11.0/gcc-7.3.1</span><br><span class="line">module load compiler/dtk/22.10.1</span><br><span class="line">export LD_LIBRARY_PATH=/xddata/home/ac8kw4me6g/content/blog_learn/PRA/lib:$LD_LIBRARY_PATH</span><br><span class="line">conda init bash</span><br><span class="line">conda activate unet3d_learn</span><br><span class="line"></span><br><span class="line">echo &quot;###### [2] RUN TEST ######&quot;</span><br><span class="line">hostfile=./$SLURM_JOB_ID</span><br><span class="line">scontrol show hostnames $SLURM_JOB_NODELIST &gt; $&#123;hostfile&#125;</span><br><span class="line">rm `pwd`/hostfile-dl -f</span><br><span class="line"></span><br><span class="line">for i in `cat $hostfile`</span><br><span class="line">do</span><br><span class="line">    echo $&#123;i&#125; slots=4 &gt;&gt; `pwd`/hostfile-dl</span><br><span class="line">done</span><br><span class="line">np=$(cat $hostfile|sort|uniq |wc -l)</span><br><span class="line"></span><br><span class="line">np=$(($np*4))</span><br><span class="line"></span><br><span class="line">nodename=$(cat $hostfile |sed -n &quot;1p&quot;)</span><br><span class="line">echo $nodename</span><br><span class="line">dist_url=`echo $nodename | awk &#x27;&#123;print $1&#125;&#x27;`</span><br><span class="line">start=$(date +%s)</span><br><span class="line">start_fmt=$(date +%Y-%m-%d\ %r)</span><br><span class="line">echo &quot;STARTING TIMING RUN AT $start_fmt&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mpirun -np $np --hostfile hostfile-dl --bind-to none `pwd`/single.sh $dist_url</span><br><span class="line">end=$(date +%s)</span><br><span class="line">end_fmt=$(date +%Y-%m-%d\ %r)</span><br><span class="line">echo &quot;ENDING TIMING RUN AT $end_fmt&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">report result</span></span><br><span class="line">result=$(( $end - $start ))</span><br><span class="line">result_name=&quot;image_segmentation&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo &quot;RESULT,$result_name,$SEED,$result,$USER,$start_fmt&quot;</span><br><span class="line">echo &quot;###### ALL TEST FINISHED ######&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>vim single.sh略微修改，注意LOG_DIR需要自己设置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">set -e</span><br><span class="line">export OMP_NUM_THREADS=1</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="keyword">for</span> <span class="built_in">env</span></span></span><br><span class="line">export HSA_FORCE_FINE_GRAIN_PCIE=1</span><br><span class="line">export MIOPEN_FIND_MODE=3</span><br><span class="line">export MIOPEN_USE_APPROXIMATE_PERFORMANCE=0</span><br><span class="line"></span><br><span class="line">lrank=$OMPI_COMM_WORLD_LOCAL_RANK</span><br><span class="line">comm_rank=$OMPI_COMM_WORLD_RANK</span><br><span class="line">comm_size=$OMPI_COMM_WORLD_SIZE</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#mlperf_1x8x7</span></span></span><br><span class="line">MAX_EPOCHS=10000</span><br><span class="line">QUALITY_THRESHOLD=&quot;0.908&quot;</span><br><span class="line">START_EVAL_AT=1000</span><br><span class="line">EVALUATE_EVERY=20</span><br><span class="line">LEARNING_RATE=&quot;2.0&quot;</span><br><span class="line">LR_WARMUP_EPOCHS=1000</span><br><span class="line">DATASET_DIR=&quot;./data&quot;</span><br><span class="line">BATCH_SIZE=1</span><br><span class="line">GRADIENT_ACCUMULATION_STEPS=7</span><br><span class="line">LOG_DIR=&quot;/xddata/home/ac8kw4me6g/blog_tmp&quot;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#mlperf_1x8x7</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">CLEAR YOUR CACHE HERE</span></span><br><span class="line">python -c &quot;</span><br><span class="line">from mlperf_logging.mllog import constants</span><br><span class="line">from runtime.logging import mllog_event</span><br><span class="line">mllog_event(key=constants.CACHE_CLEAR, value=True)&quot;</span><br><span class="line"></span><br><span class="line">APP=&quot;python3 `pwd`/main.py --data_dir $&#123;DATASET_DIR&#125; \</span><br><span class="line">    --log_dir $&#123;LOG_DIR&#125; \</span><br><span class="line">    --epochs $&#123;MAX_EPOCHS&#125; \</span><br><span class="line">    --evaluate_every $&#123;EVALUATE_EVERY&#125; \</span><br><span class="line">    --start_eval_at $&#123;START_EVAL_AT&#125; \</span><br><span class="line">    --quality_threshold $&#123;QUALITY_THRESHOLD&#125; \</span><br><span class="line">    --batch_size $&#123;BATCH_SIZE&#125; \</span><br><span class="line">    --optimizer sgd \</span><br><span class="line">    --ga_steps $&#123;GRADIENT_ACCUMULATION_STEPS&#125; \</span><br><span class="line">    --learning_rate $&#123;LEARNING_RATE&#125; \</span><br><span class="line">    --local_rank $&#123;comm_rank&#125; \</span><br><span class="line">    --world_size $&#123;comm_size&#125; \</span><br><span class="line">    --num_workers 1</span><br><span class="line">    --master_addr $&#123;1&#125; \</span><br><span class="line">    --master_port 4567</span><br><span class="line">    --lr_warmup_epochs $&#123;LR_WARMUP_EPOCHS&#125;&quot;</span><br><span class="line"></span><br><span class="line">case $&#123;lrank&#125; in</span><br><span class="line">[0])</span><br><span class="line">  export HIP_VISIBLE_DEVICES=0</span><br><span class="line">  export UCX_NET_DEVICES=mlx5_0:1</span><br><span class="line">  export UCX_IB_PCI_BW=mlx5_0:50Gbs</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">echo</span> NCCL_SOCKET_IFNAME=ib0 numactl --cpunodebind=0 --membind=0 <span class="variable">$&#123;APP&#125;</span></span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">NCCL_SOCKET_IFNAME=ib0</span> </span><br><span class="line">  numactl --cpunodebind=0 --membind=0 $&#123;APP&#125;</span><br><span class="line">  ;;</span><br><span class="line">[1])</span><br><span class="line">  export HIP_VISIBLE_DEVICES=1</span><br><span class="line">  export UCX_NET_DEVICES=mlx5_1:1</span><br><span class="line">  export UCX_IB_PCI_BW=mlx5_1:50Gbs</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">echo</span> NCCL_SOCKET_IFNAME=ib0 numactl --cpunodebind=1 --membind=1 <span class="variable">$&#123;APP&#125;</span></span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">NCCL_SOCKET_IFNAME=ib0</span> </span><br><span class="line">  numactl --cpunodebind=1 --membind=1 $&#123;APP&#125;</span><br><span class="line">  ;;</span><br><span class="line">[2])</span><br><span class="line">  export HIP_VISIBLE_DEVICES=2</span><br><span class="line">  export UCX_NET_DEVICES=mlx5_2:1</span><br><span class="line">  export UCX_IB_PCI_BW=mlx5_2:50Gbs</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">echo</span> NCCL_SOCKET_IFNAME=ib0 numactl --cpunodebind=2 --membind=2 <span class="variable">$&#123;APP&#125;</span></span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">NCCL_SOCKET_IFNAME=ib0</span> </span><br><span class="line">  numactl --cpunodebind=2 --membind=2 $&#123;APP&#125;</span><br><span class="line">  ;;</span><br><span class="line">[3])</span><br><span class="line">  export HIP_VISIBLE_DEVICES=3</span><br><span class="line">  export UCX_NET_DEVICES=mlx5_3:1</span><br><span class="line">  export UCX_IB_PCI_BW=mlx5_3:50Gbs</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash"><span class="built_in">echo</span> NCCL_SOCKET_IFNAME=ib0 numactl --cpunodebind=3 --membind=3 <span class="variable">$&#123;APP&#125;</span></span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">NCCL_SOCKET_IFNAME=ib0</span> </span><br><span class="line">  numactl --cpunodebind=3 --membind=3 $&#123;APP&#125;</span><br><span class="line">  ;;</span><br><span class="line">esac</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>提交作业</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbatch mpi.sbatch</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/02.%E5%9C%A8%E6%9B%99%E5%85%89%E5%B9%B3%E5%8F%B0%E8%B7%91%E9%80%9A%E8%B5%9B%E9%A2%98%E4%BB%A3%E7%A0%81/" data-id="clldejn0h000930v2fonegnuh" data-title="02.在曙光平台跑通赛题代码" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-leetcode/69x的平方根" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/12/leetcode/69x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/" class="article-date">
-  <time class="dt-published" datetime="2023-08-12T05:28:38.710Z" itemprop="datePublished">2023-08-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/12/leetcode/69x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/">x的平方根</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="x的平方根"><a href="#x的平方根" class="headerlink" title="x的平方根"></a>x的平方根</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sqrtx/">题目</a></h2><p>给你一个非负整数 <code>x</code> ，计算并返回 <code>x</code> 的 <strong>算术平方根</strong> 。</p>
-<p>由于返回类型是整数，结果只保留 <strong>整数部分</strong> ，小数部分将被 <strong>舍去 。</strong></p>
-<p><strong>注意：</strong>不允许使用任何内置指数函数和算符，例如 <code>pow(x, 0.5)</code> 或者 <code>x ** 0.5</code> 。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：x = 4</span><br><span class="line">输出：2</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：x = 8</span><br><span class="line">输出：2</span><br><span class="line">解释：8 的算术平方根是 2.82842..., 由于返回类型是整数，小数部分将被舍去。</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>0 &lt;= x &lt;= 231 - 1</code></li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>二分查找条件：有序、无重复</p>
-<p>时间复杂度 O（logn）</p>
-<p>判断条件是(long long)mid*mid &lt;&#x3D; x</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">mySqrt</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> right = x;</span><br><span class="line">        <span class="type">int</span> ans ;</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="type">int</span> mid = left + (right-left)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>((<span class="type">long</span> <span class="type">long</span>)mid*mid &lt;= x)&#123;</span><br><span class="line">                ans = mid;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                right = mid <span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/12/leetcode/69x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/" data-id="cll7l872q0000b4v2fb7y18bn" data-title="x的平方根" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -737,7 +728,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/">空战仿真</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/">空战仿真</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/C-in-Aerospace-simulations/">C++ in Aerospace simulations</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -752,7 +743,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
     </div>
   </div>
 
@@ -765,23 +756,23 @@
       <ul>
         
           <li>
+            <a href="/2023/11/01/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/C++%20in%20Aerospace%20simulations/03.%E5%8D%AB%E6%98%9F%E6%A8%A1%E6%8B%9F/">03.卫星模拟</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/30/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/C++%20in%20Aerospace%20simulations/02.QuickStart/">02.QuickStart</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/30/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/C++%20in%20Aerospace%20simulations/01.%E4%BB%8B%E7%BB%8D/">01.介绍</a>
+          </li>
+        
+          <li>
             <a href="/2023/10/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/01%E9%A3%9E%E8%A1%8C%E4%BB%BF%E7%9C%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">01.飞行仿真基础知识</a>
           </li>
         
           <li>
             <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/11%E6%A0%88/">11.栈</a>
-          </li>
-        
-          <li>
-            <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/10%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/">10.带头结点双向链表</a>
-          </li>
-        
-          <li>
-            <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/09%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8/">09.循环链表</a>
-          </li>
-        
-          <li>
-            <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/07%E4%B8%8D%E5%B8%A6%E5%A4%B4%E8%8A%82%E7%82%B9%E7%9A%84%E5%8D%95%E9%93%BE%E8%A1%A8/">07不带头节点的单链表</a>
           </li>
         
       </ul>
