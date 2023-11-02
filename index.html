@@ -99,12 +99,19 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="卫星模拟"><a href="#卫星模拟" class="headerlink" title="卫星模拟"></a>卫星模拟</h1><blockquote>
+        <p>[toc]</p>
+<p>参考资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1150063812093825024">例说姿态解算与导航</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AA4y197wZ/?spm_id_from=333.788.top_right_bar_window_custom_collection.content.click&vd_source=fe6c1940458efae8fa34a9a71403d0b4">惯性导航1 - 坐标系转换</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/hltt3838/article/details/110433602">常用导航坐标系 及 转换关系 （理论+程序）</a></li>
+</ul>
+<h1 id="卫星模拟"><a href="#卫星模拟" class="headerlink" title="卫星模拟"></a>卫星模拟</h1><blockquote>
 <p>… is the simplest simulation</p>
 </blockquote>
 <h2 id="What-will-you-learn"><a href="#What-will-you-learn" class="headerlink" title="What will you learn"></a>What will you learn</h2><p>![image-20231101092059550](.&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;images&#x2F;项目合集&#x2F;空战仿真&#x2F;C++ in Aerospace simulations&#x2F;Satellite_wwyl.png)</p>
 <p>![image-20231101092803293](.&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;images&#x2F;项目合集&#x2F;空战仿真&#x2F;C++ in Aerospace simulations&#x2F;S_features.png)</p>
-<ul>
+<h2 id="术语解释"><a href="#术语解释" class="headerlink" title="术语解释"></a>术语解释</h2><ul>
 <li>3 DoF</li>
 </ul>
 <blockquote>
@@ -116,6 +123,55 @@
 </ol>
 <p>这意味着一个有3 DoF的设备或系统只能在这三个方向上进行旋转，而不能进行平移。</p>
 </blockquote>
+<ul>
+<li>longitude, latitude, altitude</li>
+</ul>
+<blockquote>
+<ol>
+<li>**经度 (Longitude)**：是从地球的西半球到东半球的角度度量，它描述了位置相对于本初子午线（通过格林尼治的一条经线）的东西方向的位置。经度的范围是从-180°到+180°。其中，0°是本初子午线，正值表示东经，负值表示西经。</li>
+<li>**纬度 (Latitude)**：是从地球的南极到北极的角度度量，它描述了位置相对于赤道的南北方向的位置。纬度的范围是从-90°到+90°。其中，0°是赤道，正值表示北纬，负值表示南纬。</li>
+<li>**海拔高度 (Altitude)**：描述了一个位置相对于平均海平面的高度。通常，海拔高度是从地球的平均海平面开始测量的，但在飞行等其它领域中，可能会使用其它参考点，如机场的跑道等。所以，是的，当我们通常提到”Altitude”时，我们是指海拔高度。但在某些上下文中，它也可能指其他高度测量方式。</li>
+</ol>
+<p>综上所述，通过这三个坐标，我们可以精确地描述地球上任何位置的位置和高度。</p>
+</blockquote>
+<ul>
+<li>重力</li>
+</ul>
+<blockquote>
+<p>其实重力在地球表明上并不是恒定不变的，而且重力也随着高度变化而变化，而这些变化对于低精度导航来说都不是很重要，一般使用WGS84标准给出的公式即可：</p>
+</blockquote>
+<p>![image-20231101095902470](.&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;images&#x2F;项目合集&#x2F;空战仿真&#x2F;C++ in Aerospace simulations&#x2F;g.png)</p>
+<p>其中L 为纬度(弧度)</p>
+<h2 id="层次结构"><a href="#层次结构" class="headerlink" title="层次结构"></a>层次结构</h2><p>![image-20231101094058105](.&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;images&#x2F;项目合集&#x2F;空战仿真&#x2F;C++ in Aerospace simulations&#x2F;image-20231101094058105.png)</p>
+<h2 id="常用坐标系"><a href="#常用坐标系" class="headerlink" title="常用坐标系"></a>常用坐标系</h2><ul>
+<li><h3 id="地理坐标系"><a href="#地理坐标系" class="headerlink" title="地理坐标系"></a><strong>地理坐标系</strong></h3></li>
+</ul>
+<blockquote>
+<p>经纬度和高度组成的球面坐标系，一般顺序为经度( λ )(单位rad)，纬度(L)(rad)，高度(h)(m) 组成。也叫LLA.</p>
+<p>是使用三维球面来定义地球表面位置，以实现通过 经纬度 对地球表面点位引用的坐标系。</p>
+<p>一个地理坐标系包括  角度测量单位、本初子午线和参考椭球体三部分。在球面系统中，水平线是等纬度线或纬线。垂直线是等经度线或经线。地理坐标系依据其所选用的本初子午线、参考椭球的不同而略有区别。地理坐标系可以确定地球上任何一点的位置。首先将地球抽象成一个规则的逼近原始自然地球表面的椭球体，称为参考椭球体，然后在参考椭球体上定义一系列的经线和纬线构成经纬网，从而达到通过经纬度来描述地表点位的目的。需要说明的是经纬地理坐标系不是平面坐标系，因为度不是标准的长度单位，不可用其直接量测面积长度</p>
+</blockquote>
+<ul>
+<li><h3 id="局部导航坐标系"><a href="#局部导航坐标系" class="headerlink" title="局部导航坐标系"></a><strong>局部导航坐标系</strong></h3></li>
+</ul>
+<blockquote>
+<p>也叫当地导航坐标系(local navigation frame) ，当地水平导航坐标、测地坐标系、地理坐标系或地面点坐标系。</p>
+<p>从定义来分类，局部切线平面可分为基于垂直和水平尺寸定义的平面，其表现在纵坐标为上还是下。纵坐标为上时，称为<strong>ENU</strong>（东、北、天）坐标系，主要用于地理方面；纵坐标为下时，称为<strong>NED</strong>（北、东、地）坐标系，特别用于航空航天。</p>
+</blockquote>
+<ul>
+<li><h3 id="地心惯性坐标系-ECI-I系"><a href="#地心惯性坐标系-ECI-I系" class="headerlink" title="地心惯性坐标系(ECI, I系)"></a>地心惯性坐标系(ECI, I系)</h3></li>
+</ul>
+<blockquote>
+<p>地心惯性坐标系用XYZ表示，原点为地球中心，X轴指向春分点，既黄道平面(地球绕太阳公转的平面)与赤道的交点。</p>
+</blockquote>
+<ul>
+<li><h3 id="地心地固坐标系-ECEF-或者叫地球坐标系，-E系"><a href="#地心地固坐标系-ECEF-或者叫地球坐标系，-E系" class="headerlink" title="地心地固坐标系(ECEF, 或者叫地球坐标系， E系)"></a>地心地固坐标系(ECEF, 或者叫地球坐标系， E系)</h3></li>
+</ul>
+<blockquote>
+<p>原点在地心，X指向0经度0纬度点(本初子午线与赤道交点)。</p>
+<p>总结：ECI坐标系为绝对惯性系，静止不动，ECEF随着地球一起转动。</p>
+</blockquote>
+<h2 id="方程解算"><a href="#方程解算" class="headerlink" title="方程解算"></a>方程解算</h2><p>![image-20231101102957508](.&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;images&#x2F;项目合集&#x2F;空战仿真&#x2F;C++ in Aerospace simulations&#x2F;image-20231101102957508.png)</p>
 
       
     </div>
