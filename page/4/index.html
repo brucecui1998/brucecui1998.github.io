@@ -73,6 +73,141 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-杂项汇总/wsl2大全" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/15/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl2%E5%A4%A7%E5%85%A8/" class="article-date">
+  <time class="dt-published" datetime="2023-08-15T06:48:38.237Z" itemprop="datePublished">2023-08-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/15/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl2%E5%A4%A7%E5%85%A8/">wsl2大全</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="wsl2大全"><a href="#wsl2大全" class="headerlink" title="wsl2大全"></a>wsl2大全</h1><h2 id="安装wsl2和Windows-Terminal"><a href="#安装wsl2和Windows-Terminal" class="headerlink" title="安装wsl2和Windows Terminal"></a>安装wsl2和Windows Terminal</h2><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/wsl/install-manual">https://learn.microsoft.com/zh-cn/windows/wsl/install-manual</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/531799719">https://zhuanlan.zhihu.com/p/531799719</a></p>
+<p>安装Windows Terminal，更炫酷</p>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/terminal/install">https://learn.microsoft.com/zh-cn/windows/terminal/install</a></p>
+<p>Windows Terminal能帮助我们管理命令行工具、PowerShell和WSL等Shell用户的工具，能为我们提供最佳的 WSL 体验。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl -l -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl.png"></p>
+<p>设置默认wsl环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl -s Ubuntu-18.04</span><br></pre></td></tr></table></figure>
+
+<p>以后只需要输入wsl即可进入wsl的ubuntu环境</p>
+<h2 id="将wsl安装的linux系统从C盘迁移到D盘"><a href="#将wsl安装的linux系统从C盘迁移到D盘" class="headerlink" title="将wsl安装的linux系统从C盘迁移到D盘"></a>将wsl安装的linux系统从C盘迁移到D盘</h2><p>默认位置在C:\Users\Administrator\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc</p>
+<p>我在 PowerShell 中执行了这些命令，以将我的 Ubuntu 发行版从 C: 移动到驱动器 D:\wsl-ubuntu ：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; mkdir D:\wsl<span class="literal">-ubuntu</span>  (create new location)</span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">-l</span> <span class="literal">-v</span>            (list wsl distros)</span><br><span class="line">NAME                   STATE           VERSION</span><br><span class="line">Ubuntu                 Running         <span class="number">2</span></span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">--shutdown</span></span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">-l</span> <span class="literal">-v</span>            (verify <span class="keyword">if</span> is stopped)</span><br><span class="line">NAME                   STATE           VERSION</span><br><span class="line">Ubuntu                 Stopped         <span class="number">2</span></span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">--export</span> Ubuntu ubuntu.tar  </span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">--unregister</span> Ubuntu</span><br><span class="line"><span class="built_in">PS</span> C:\Users\Administrator&gt; wsl <span class="literal">--import</span> Ubuntu D:\wsl<span class="literal">-ubuntu</span>\ .\ubuntu.tar <span class="literal">--version</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>最后重新启动计算机。</p>
+<h2 id="用户问题"><a href="#用户问题" class="headerlink" title="用户问题"></a>用户问题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo adduser cuirongpei  创建用户</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su cuirongpei 切换到cuirongpei用户</span><br></pre></td></tr></table></figure>
+
+<p>win+ r输入wt打开命令行后输入debian进入Linux终端</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su cuirongpei</span><br></pre></td></tr></table></figure>
+
+<p>切换用户以避免使用root不小心做一些不可避免的事情</p>
+<p>给用户添加sudo 权限，使用root用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +w /etc/sudoers　　　　// 给/etc/sudoers添加写权限</span><br><span class="line">vim /etc/sudoers　　　　　　 //　修改sudoers文件</span><br></pre></td></tr></table></figure>
+
+<p>在最下面添加，为cuirongpei用户设置权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cuirongpei ALL=(ALL) ALL</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置wsl的基本环境（ubuntu）"><a href="#配置wsl的基本环境（ubuntu）" class="headerlink" title="配置wsl的基本环境（ubuntu）"></a>配置wsl的基本环境（ubuntu）</h2><p>换源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/apt/sources.list /etc/apt/sources.list_bak</span><br><span class="line">sudo sed -i &#x27;s/archive.ubuntu.com/mirrors.aliyun.com/g&#x27; /etc/apt/sources.list</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install gcc g++ cmake vim openssh-server git net-tools ufw</span><br></pre></td></tr></table></figure>
+
+<p>anaconda</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -P /tmp https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh</span><br><span class="line">bash Anaconda3-2022.05-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="在wsl2中使用CUDA"><a href="#在wsl2中使用CUDA" class="headerlink" title="在wsl2中使用CUDA"></a>在wsl2中使用CUDA</h2><p><a target="_blank" rel="noopener" href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html</a></p>
+<p>Windows10&#x2F;11 WSL2 安装nvidia-cuda驱动 <a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv14608547/">https://www.bilibili.com/read/cv14608547/</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.nvidia.cn/cuda/wsl-user-guide/index.html#step-3-set-up-a-linux-development-environment">CUDA on WSL User Guide</a> 英伟达官方文档，<strong>参考这个安装即可</strong></p>
+<p>切记 <strong>用户不得在 WSL 2 中安装任何 NVIDIA GPU Linux 驱动程序</strong></p>
+<p>在wsl2中使用CUDA的局限有很多，例如</p>
+<h3 id="Linux-CUDA-应用程序的已知限制-"><a href="#Linux-CUDA-应用程序的已知限制-" class="headerlink" title="Linux CUDA 应用程序的已知限制  "></a>Linux CUDA 应用程序的已知限制 <a target="_blank" rel="noopener" href="https://docs.nvidia.cn/cuda/wsl-user-guide/index.html#known-limitations-for-linux-cuda-applications"> </a></h3><p>下表列出了 WSL 2 上的已知限制，这些限制可能会影响使用 Linux 上完全支持的某些功能的 CUDA 应用程序。 </p>
+<table>
+<thead>
+<tr>
+<th>局限性</th>
+<th>冲击</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>不支持麦克斯韦 GPU。</td>
+<td>Maxwell GPU 在 WSL 2 中不受官方支持，但它可能仍然可以工作。建议使用 Pascal 和更高版本的 GPU。</td>
+</tr>
+<tr>
+<td>统一内存 - 完全托管内存支持在 Windows 本机上不可用，因此 WSL 2 在可预见的未来将不支持它。</td>
+<td>UVM 完整功能将不可用，因此依赖 UVM 完整功能的应用程序可能无法工作。  如果应用程序使用的是托管内存，则应用程序可能会看到性能降低和系统内存使用率较高。  不支持并发 CPU&#x2F;GPU 访问。CUDA 查询将说明它是否受支持，应用程序应检查这一点。</td>
+</tr>
+<tr>
+<td>固定系统内存（例如：应用程序驻留用于 GPU 访问的系统内存）应用程序的可用性有限。</td>
+<td>例如，某些深度学习训练工作负载（取决于所使用的框架、模型和数据集大小）可能会超过此限制，并且可能无法工作。</td>
+</tr>
+<tr>
+<td>裸机（不是容器）上的根用户不会在预期位置找到 nvidia-smi。</td>
+<td>用  <code>/usr/lib/wsl/lib/nvidia-smi</code> 或手动添加  <code>/usr/lib/wsl/lib/</code> 到路径）。</td>
+</tr>
+<tr>
+<td>使用 NVIDIA Container Toolkit for Docker 19.03，仅  <code>--gpus all</code> 受支持。</td>
+<td>在多 GPU 系统上，无法使用特定索引号枚举 GPU 来筛选特定 GPU 设备。</td>
+</tr>
+</tbody></table>
+<h3 id="尚不支持的功能-"><a href="#尚不支持的功能-" class="headerlink" title="尚不支持的功能  "></a>尚不支持的功能 <a target="_blank" rel="noopener" href="https://docs.nvidia.cn/cuda/wsl-user-guide/index.html#features-not-yet-supported"> </a></h3><p>下表列出了当前不支持的功能集。 </p>
+<table>
+<thead>
+<tr>
+<th>局限性</th>
+<th>冲击</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NVML（nvidia-smi）尚不支持所有查询。</td>
+<td>GPU 利用率、活动计算进程是一些尚不支持的查询。不支持可修改的状态功能（ECC、计算模式、持久性模式）。</td>
+</tr>
+<tr>
+<td>OpenGL-CUDA Interop 尚不受支持。</td>
+<td>依赖OpenGL的应用程序将无法工作。</td>
+</tr>
+</tbody></table>
+<h2 id="wsl2与虚拟机冲突"><a href="#wsl2与虚拟机冲突" class="headerlink" title="wsl2与虚拟机冲突"></a>wsl2与虚拟机冲突</h2><p><img src="/../../images/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl2_VM.png" alt="image-20230827140838412"></p>
+<p>参考<a target="_blank" rel="noopener" href="https://kb.vmware.com/s/article/2146361">解决</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/15/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/wsl2%E5%A4%A7%E5%85%A8/" data-id="clldejn0g000230v2fjqdges4" data-title="wsl2大全" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-项目合集/U-Net3D网络优化/03.了解MLPerf基准测试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/15/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/03.%E4%BA%86%E8%A7%A3MLPerf%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95/" class="article-date">
@@ -639,80 +774,6 @@
 
 
   
-    <article id="post-leetcode/2089找出数组排序后的目标下标" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/13/leetcode/2089%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8B%E6%A0%87/" class="article-date">
-  <time class="dt-published" datetime="2023-08-13T01:15:06.266Z" itemprop="datePublished">2023-08-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/13/leetcode/2089%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8B%E6%A0%87/">找出数组排序后的目标下标</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<h1 id="找出数组排序后的目标下标"><a href="#找出数组排序后的目标下标" class="headerlink" title="找出数组排序后的目标下标"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-target-indices-after-sorting-array/">找出数组排序后的目标下标</a></h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个下标从 <strong>0</strong> 开始的整数数组 <code>nums</code> 以及一个目标元素 <code>target</code> 。</p>
-<p><strong>目标下标</strong> 是一个满足 <code>nums[i] == target</code> 的下标 <code>i</code> 。</p>
-<p>将 <code>nums</code> 按 <strong>非递减</strong> 顺序排序后，返回由 <code>nums</code> 中目标下标组成的列表。如果不存在目标下标，返回一个 <strong>空</strong> 列表。返回的列表必须按 <strong>递增</strong> 顺序排列。</p>
-<p><strong>示例 1：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,5,2,3], target = 2</span><br><span class="line">输出：[1,2]</span><br><span class="line">解释：排序后，nums 变为 [1,2,2,3,5] 。</span><br><span class="line">满足 nums[i] == 2 的下标是 1 和 2 。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,5,2,3], target = 3</span><br><span class="line">输出：[3]</span><br><span class="line">解释：排序后，nums 变为 [1,2,2,3,5] 。</span><br><span class="line">满足 nums[i] == 3 的下标是 3 。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 3：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,5,2,3], target = 5</span><br><span class="line">输出：[4]</span><br><span class="line">解释：排序后，nums 变为 [1,2,2,3,5] 。</span><br><span class="line">满足 nums[i] == 5 的下标是 4 。</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 4：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [1,2,5,2,3], target = 4</span><br><span class="line">输出：[]</span><br><span class="line">解释：nums 中不含值为 4 的元素。</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>1 &lt;= nums.length &lt;= 100</code></li>
-<li><code>1 &lt;= nums[i], target &lt;= 100</code></li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>一开始想用34题的思路去寻找左右边界，后来发现该题不是要求返回左右边界的。</p>
-<p>思路参考：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-target-indices-after-sorting-array/solutions/1127136/zhao-chu-shu-zu-pai-xu-hou-de-mu-biao-xi-2o22/">https://leetcode.cn/problems/find-target-indices-after-sorting-array/solutions/1127136/zhao-chu-shu-zu-pai-xu-hou-de-mu-biao-xi-2o22/</a></p>
-<p>问题：这题为什么会出现在二分查找里？既然给的是无序数组，如果要使用二分查找的话，必须要先排序才行，排序的时间复杂度是nlogn，还有使用二分查找的必要吗</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>方法一：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment">//方法一：排序后遍历 </span></span><br><span class="line">    <span class="comment">//时间复杂度：O(nlog⁡n) </span></span><br><span class="line">    <span class="comment">//空间复杂度：O(log⁡n)</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">targetIndices</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n ;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]==target)</span><br><span class="line">                res.<span class="built_in">push_back</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>方法二：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//方法二：直接统计数量</span></span><br><span class="line">    <span class="comment">//时间复杂度：O(n)，其中 n 为 nums的长度。遍历统计元素数量和构造数组时间复杂度为 O(n)</span></span><br><span class="line">    <span class="comment">//空间复杂度：O(1)，输出数组不计入空间复杂度</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">targetIndices</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> cnt1 = <span class="number">0</span>; <span class="comment">// 小于 target 的元素数量</span></span><br><span class="line">        <span class="type">int</span> cnt2 = <span class="number">0</span>; <span class="comment">// 等于 target 的元素数量</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &lt; target)&#123;</span><br><span class="line">                cnt1++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] == target)&#123;</span><br><span class="line">                cnt2++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res; <span class="comment">// 下标数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = cnt1; i &lt; cnt1 + cnt2; i++)&#123;</span><br><span class="line">            res.<span class="built_in">push_back</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/08/13/leetcode/2089%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E6%8E%92%E5%BA%8F%E5%90%8E%E7%9A%84%E7%9B%AE%E6%A0%87%E4%B8%8B%E6%A0%87/" data-id="cll91xixj0000a4v2eorzf753" data-title="找出数组排序后的目标下标" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -743,7 +804,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
     </div>
   </div>
 
@@ -754,6 +815,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2023/12/06/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Docker%E4%BE%BF%E6%8D%B7%E6%90%AD%E5%BB%BA%E7%BA%AF%E5%87%80%E7%9A%84Linux%E7%8E%AF%E5%A2%83/">Docker便捷搭建纯净的Linux环境</a>
+          </li>
         
           <li>
             <a href="/2023/11/01/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/C++%20in%20Aerospace%20simulations/03.%E5%8D%AB%E6%98%9F%E6%A8%A1%E6%8B%9F/">03.卫星模拟</a>
@@ -769,10 +834,6 @@
         
           <li>
             <a href="/2023/10/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/01%E9%A3%9E%E8%A1%8C%E4%BB%BF%E7%9C%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">01.飞行仿真基础知识</a>
-          </li>
-        
-          <li>
-            <a href="/2023/10/08/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/11%E6%A0%88/">11.栈</a>
           </li>
         
       </ul>

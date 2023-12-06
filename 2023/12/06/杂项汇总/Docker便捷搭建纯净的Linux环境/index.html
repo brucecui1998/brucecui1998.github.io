@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Docker便捷搭建纯净的Linux环境 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="[toc] Docker便捷搭建纯净的Linux环境突然发现在docker下面可以很便捷的搭建纯净的Linux环境，删除的话也非常方便，干净，docker比虚拟机还是有不少好处的 Docker 和虚拟机（Virtual Machines，VMs）是两种不同的虚拟化技术，它们在多个方面有着重要的区别：  资源利用效率： Docker：Docker 使用容器技术，容器共享宿主操作系统的内核，因此启动和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker便捷搭建纯净的Linux环境">
+<meta property="og:url" content="http://example.com/2023/12/06/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Docker%E4%BE%BF%E6%8D%B7%E6%90%AD%E5%BB%BA%E7%BA%AF%E5%87%80%E7%9A%84Linux%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[toc] Docker便捷搭建纯净的Linux环境突然发现在docker下面可以很便捷的搭建纯净的Linux环境，删除的话也非常方便，干净，docker比虚拟机还是有不少好处的 Docker 和虚拟机（Virtual Machines，VMs）是两种不同的虚拟化技术，它们在多个方面有着重要的区别：  资源利用效率： Docker：Docker 使用容器技术，容器共享宿主操作系统的内核，因此启动和">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-12-06T08:44:49.947Z">
+<meta property="article:modified_time" content="2023-12-06T09:17:39.692Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-杂项汇总/Docker便捷搭建纯净的Linux环境" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/12/06/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Docker%E4%BE%BF%E6%8D%B7%E6%90%AD%E5%BB%BA%E7%BA%AF%E5%87%80%E7%9A%84Linux%E7%8E%AF%E5%A2%83/" class="article-date">
+  <time class="dt-published" datetime="2023-12-06T08:44:49.947Z" itemprop="datePublished">2023-12-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Docker便捷搭建纯净的Linux环境
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="Docker便捷搭建纯净的Linux环境"><a href="#Docker便捷搭建纯净的Linux环境" class="headerlink" title="Docker便捷搭建纯净的Linux环境"></a>Docker便捷搭建纯净的Linux环境</h1><p>突然发现在docker下面可以很便捷的搭建纯净的Linux环境，删除的话也非常方便，干净，docker比虚拟机还是有不少好处的</p>
+<p>Docker 和虚拟机（Virtual Machines，VMs）是两种不同的虚拟化技术，它们在多个方面有着重要的区别：</p>
+<ol>
+<li>资源利用效率：<ul>
+<li>Docker：Docker 使用容器技术，容器共享宿主操作系统的内核，因此启动和运行的容器更加轻量级。容器之间共享操作系统内核，这使得容器更加节省资源，启动更快，占用的内存和磁盘空间较少。</li>
+<li>虚拟机：虚拟机是完整的虚拟操作系统，包括独立的内核。每个虚拟机需要分配一定数量的计算资源，包括内存和处理器，这使得虚拟机通常比较重量级，资源占用较高。</li>
+</ul>
+</li>
+<li>启动时间：<ul>
+<li>Docker：Docker 容器的启动时间通常在秒级别，非常快速。这使得容器适用于快速部署和伸缩。</li>
+<li>虚拟机：虚拟机的启动时间通常在分钟级别，相对较慢。虚拟机需要启动整个操作系统，因此启动时间较长。</li>
+</ul>
+</li>
+<li>部署一致性：<ul>
+<li>Docker：Docker 容器可以使用Docker镜像，其中包含了应用程序及其依赖项的快照，确保了应用程序的一致性和可移植性。</li>
+<li>虚拟机：虚拟机可以使用虚拟机镜像，但它们通常较大，不如Docker镜像轻便，因此在部署一致性方面可能不如Docker容器。</li>
+</ul>
+</li>
+<li>资源隔离：<ul>
+<li>Docker：Docker 使用 Linux 内核的命名空间和控制组来提供资源隔离。尽管容器之间共享操作系统内核，但它们仍然具有一定程度的资源隔离。</li>
+<li>虚拟机：虚拟机通过虚拟化层实现较高级别的资源隔离，每个虚拟机都有自己的独立内核和资源分配。</li>
+</ul>
+</li>
+<li>管理和维护：<ul>
+<li>Docker：Docker 容器的管理相对简单，因为容器可以轻松创建、删除和更新，而且可以使用 Docker Compose 或 Kubernetes 等工具进行集群管理。</li>
+<li>虚拟机：虚拟机的管理较复杂，因为它们需要管理操作系统的完整副本，包括升级、维护和备份。</li>
+</ul>
+</li>
+</ol>
+<p>总的来说，Docker 更适合容器化应用程序的部署和管理，特别是在需要快速部署和资源利用效率方面。虚拟机更适合运行不同操作系统的工作负载以及需要更严格的资源隔离的场景。选择使用哪种技术取决于你的具体需求和应用场景。在某些情况下，Docker 和虚拟机也可以结合使用，以充分利用它们各自的优势。</p>
+<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/JayL-zxl/p/14286789.html">参考博客</a>安装docker并换ustc的docker镜像源</p>
+<blockquote>
+<p> 拉取docker images镜像</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>创建容器，建立目录挂载实现文件同步</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container run -it -v D:\cuirongpei\docker_env\ubuntu:/home --name=cat_env ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+
+<pre><code>/Users/xxxx/yourFilePath 请替换成你自己想要进行同步的目录
+:/home 也请替换成你自己想要命名的目录
+</code></pre>
+<blockquote>
+<p>进入docker容器（每次进入都需要运行下面的命令）</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker start cat_env</span><br><span class="line">docker container exec -it cat_env /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>以后不想用了使用下面的命令删除容器，删除不干净时参考<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/33907835/docker-error-cannot-delete-docker-container-conflict-unable-to-remove-reposito/40283776#40283776">this</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br><span class="line">docker rm -f 对应容器id</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置ubuntu"><a href="#配置ubuntu" class="headerlink" title="配置ubuntu"></a>配置ubuntu</h2><h3 id="换apt源"><a href="#换apt源" class="headerlink" title="换apt源"></a>换apt源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;s|//.*archive.ubuntu.com|//mirrors.ustc.edu.cn|g&#x27; /etc/apt/sources.list</span><br><span class="line">apt update</span><br><span class="line">apt install build-essential vim gcc-multilib gdb cmake sudo git net-tools openssh-server -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置vim"><a href="#配置vim" class="headerlink" title="配置vim"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/Artisan_w/article/details/132300118">配置vim</a></h3><h3 id="配置用户"><a href="#配置用户" class="headerlink" title="配置用户"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013541325/article/details/128521356">配置用户</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install -y xfce4 xfce4-goodies xorg dbus-x11 x11-xserver-utils</span><br><span class="line">sudo apt install -y tigervnc-standalone-server</span><br><span class="line"></span><br><span class="line"># 启动 VNC 服务器，设置密码</span><br><span class="line">vncpasswd</span><br><span class="line"></span><br><span class="line"># 启动 VNC 服务器，指定显示端口（通常为 :1）</span><br><span class="line">vncserver :1</span><br><span class="line"></span><br><span class="line"># 查看启动的Server</span><br><span class="line">vncserver -list</span><br><span class="line"></span><br><span class="line"># 结束vncserver服务进程</span><br><span class="line">vncserver -kill :1</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/12/06/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Docker%E4%BE%BF%E6%8D%B7%E6%90%AD%E5%BB%BA%E7%BA%AF%E5%87%80%E7%9A%84Linux%E7%8E%AF%E5%A2%83/" data-id="clptk3fuc0000sgv2a0lr6m2x" data-title="Docker便捷搭建纯净的Linux环境" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/11/01/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/C++%20in%20Aerospace%20simulations/03.%E5%8D%AB%E6%98%9F%E6%A8%A1%E6%8B%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">03.卫星模拟</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/30%E5%A4%A9Pandas%E6%8C%91%E6%88%98/">30天Pandas挑战</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92/">个人规划</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/">安全</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8/OverTheWire/">OverTheWire</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/">杂项汇总</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/">项目合集</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/KuiperInfer/">KuiperInfer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/U-Net3D%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96/">U-Net3D网络优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/learn-data-structure/">learn-data-structure</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E8%87%AA%E5%AA%92%E4%BD%93%E8%87%AA%E5%8A%A8%E8%BF%90%E8%90%A5%E9%A1%B9%E7%9B%AE/">基于本地知识库与大模型技术的自媒体自动运营项目</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/">空战仿真</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/C-in-Aerospace-simulations/">C++ in Aerospace simulations</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/12/06/%E6%9D%82%E9%A1%B9%E6%B1%87%E6%80%BB/Docker%E4%BE%BF%E6%8D%B7%E6%90%AD%E5%BB%BA%E7%BA%AF%E5%87%80%E7%9A%84Linux%E7%8E%AF%E5%A2%83/">Docker便捷搭建纯净的Linux环境</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/01/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/C++%20in%20Aerospace%20simulations/03.%E5%8D%AB%E6%98%9F%E6%A8%A1%E6%8B%9F/">03.卫星模拟</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/30/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/C++%20in%20Aerospace%20simulations/02.QuickStart/">02.QuickStart</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/30/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/C++%20in%20Aerospace%20simulations/01.%E4%BB%8B%E7%BB%8D/">01.介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/12/%E9%A1%B9%E7%9B%AE%E5%90%88%E9%9B%86/%E7%A9%BA%E6%88%98%E4%BB%BF%E7%9C%9F/01%E9%A3%9E%E8%A1%8C%E4%BB%BF%E7%9C%9F%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">01.飞行仿真基础知识</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
