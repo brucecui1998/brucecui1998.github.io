@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>BruceCui | BruceCui</title><meta name="author" content="BruceCui"><meta name="copyright" content="BruceCui"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="ubuntu界面登录黑屏及卡顿问题背景 在 Ubuntu 24.04 上使用 NVIDIA 驱动 时，遇到了图形卡顿和偶尔登录黑屏的问题。默认情况下，Ubuntu 使用 Wayland，且桌面管理器为 GDM。问题分析 DRM 模式设置缺失：      初步分析发现，问题并非由 Wayland 与 NVIDIA 驱动的兼容性差 引起。通过撤销禁用 Wayland 的设置后，依然能够正常登录桌面，且">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BruceCui">
+<meta property="og:url" content="https://brucecui1998.github.io/2025/05/12/ubuntu24.04%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="BruceCui">
+<meta property="og:description" content="ubuntu界面登录黑屏及卡顿问题背景 在 Ubuntu 24.04 上使用 NVIDIA 驱动 时，遇到了图形卡顿和偶尔登录黑屏的问题。默认情况下，Ubuntu 使用 Wayland，且桌面管理器为 GDM。问题分析 DRM 模式设置缺失：      初步分析发现，问题并非由 Wayland 与 NVIDIA 驱动的兼容性差 引起。通过撤销禁用 Wayland 的设置后，依然能够正常登录桌面，且">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2025-05-12T04:23:32.352Z">
+<meta property="article:modified_time" content="2025-05-12T04:26:26.374Z">
+<meta property="article:author" content="BruceCui">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="../../../../img/favicon.png"><link rel="canonical" href="https://brucecui1998.github.io/2025/05/12/ubuntu24.04%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="../../../../css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'BruceCui',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-05-12 12:26:26'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="../../../../archives/"><div class="headline">Articles</div><div class="length-num">8</div></a><a href="../../../../tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="../../../../categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="../../../../index.html" title="BruceCui"><span class="site-name">BruceCui</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Untitled</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-05-12T04:23:32.352Z" title="Created 2025-05-12 12:23:32">2025-05-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-05-12T04:26:26.374Z" title="Updated 2025-05-12 12:26:26">2025-05-12</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="ubuntu界面登录黑屏及卡顿"><a href="#ubuntu界面登录黑屏及卡顿" class="headerlink" title="ubuntu界面登录黑屏及卡顿"></a>ubuntu界面登录黑屏及卡顿</h2><p>问题背景</p>
+<p>在 Ubuntu 24.04 上使用 NVIDIA 驱动 时，遇到了图形卡顿和偶尔登录黑屏的问题。默认情况下，Ubuntu 使用 Wayland，且桌面管理器为 GDM。<br>问题分析</p>
+<pre><code>DRM 模式设置缺失：
+
+    初步分析发现，问题并非由 Wayland 与 NVIDIA 驱动的兼容性差 引起。通过撤销禁用 Wayland 的设置后，依然能够正常登录桌面，且没有出现黑屏问题。
+
+启用 nvidia-drm.modeset=1：
+
+    问题的核心原因在于 NVIDIA 驱动 与 DRM 模式设置 的配合。启用 nvidia-drm.modeset=1 内核参数后，问题明显得到解决。登录成功且性能不再卡顿。
+</code></pre>
+<p>解决步骤</p>
+<pre><code>启用 nvidia-drm.modeset=1：
+
+    编辑文件 /etc/default/grub，在 GRUB_CMDLINE_LINUX_DEFAULT 中添加 nvidia-drm.modeset=1：
+</code></pre>
+<p>GRUB_CMDLINE_LINUX_DEFAULT&#x3D;”quiet splash nvidia-drm.modeset&#x3D;1”</p>
+<p>更新 grub 配置并重启：</p>
+<pre><code>    sudo update-grub
+    sudo reboot
+
+不需要禁用 Wayland：
+
+    经过测试，问题并非由于 Wayland 与 NVIDIA 驱动的兼容性差。即使在 Wayland 下，启用 nvidia-drm.modeset=1 也能解决卡顿和图形问题。
+</code></pre>
+<p>结果</p>
+<pre><code>启用 DRM 模式设置 (nvidia-drm.modeset=1) 后，登录成功且系统性能稳定，问题得以解决。
+
+在禁用 Wayland 的情况下，问题依然可以解决，但实际上 Wayland 并非问题根源。
+</code></pre>
+<p>总结</p>
+<pre><code>DRM 模式设置 是解决 NVIDIA 驱动 在 Ubuntu 24.04 中图形卡顿和登录问题的关键。通过启用 nvidia-drm.modeset=1 参数，成功解决了图形问题。
+
+禁用 Wayland 并非必须，但对于一些系统配置，禁用 Wayland 可能是一个可选的解决方案。
+</code></pre>
+<h3 id="Note-Ubuntu-24-04-SSH-修改端口不生效的问题记录"><a href="#Note-Ubuntu-24-04-SSH-修改端口不生效的问题记录" class="headerlink" title="Note Ubuntu 24.04 SSH 修改端口不生效的问题记录"></a>Note Ubuntu 24.04 SSH 修改端口不生效的问题记录</h3><p>在 Ubuntu 24.04 中，当修改 &#x2F;etc&#x2F;ssh&#x2F;sshd_config 中的 Port 配置并执行：</p>
+<p>sudo systemctl restart ssh</p>
+<p>后，发现 SSH 仍监听在旧端口（如 22），而非修改后的新端口。这是因为从 Ubuntu 22.10 开始，Ubuntu 引入了 OpenSSH 的 systemd socket 激活机制（ssh.socket），此机制会让 systemd 预先监听端口，然后按需激活 sshd 服务。</p>
+<p>因此，sshd_config 中的 Port 设置将被忽略，因为监听行为由 systemd 控制。</p>
+<p>官方说明链接：<br>🔗 <a target="_blank" rel="noopener" href="https://discourse.ubuntu.com/t/sshd-now-uses-socket-based-activation-ubuntu-22-10-and-later/30189/13">https://discourse.ubuntu.com/t/sshd-now-uses-socket-based-activation-ubuntu-22-10-and-later/30189/13</a></p>
+<p>该机制的引入主要是为了节省系统资源（如内存），但在实际运维过程中可能会导致行为与预期不符。<br>✅ 最简单的解决办法：禁用 socket 激活，恢复传统行为</p>
+<ol>
+<li><p>停用并禁用 socket 激活机制<br>sudo systemctl stop ssh.socket<br>sudo systemctl disable ssh.socket</p>
+</li>
+<li><p>启用并重启传统的 sshd 服务<br>sudo systemctl enable ssh.service<br>sudo systemctl restart ssh.service</p>
+</li>
+</ol>
+<p>这样就可以重新让 sshd_config 中的 Port 配置生效，使用 sudo systemctl restart ssh 即可切换端口。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://brucecui1998.github.io">BruceCui</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://brucecui1998.github.io/2025/05/12/ubuntu24.04%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">https://brucecui1998.github.io/2025/05/12/ubuntu24.04%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="../../../04/02/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='../../../../img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">BruceCui</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="../../../../archives/"><div class="headline">Articles</div><div class="length-num">8</div></a><a href="../../../../tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="../../../../categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu%E7%95%8C%E9%9D%A2%E7%99%BB%E5%BD%95%E9%BB%91%E5%B1%8F%E5%8F%8A%E5%8D%A1%E9%A1%BF"><span class="toc-number">1.</span> <span class="toc-text">ubuntu界面登录黑屏及卡顿</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Note-Ubuntu-24-04-SSH-%E4%BF%AE%E6%94%B9%E7%AB%AF%E5%8F%A3%E4%B8%8D%E7%94%9F%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95"><span class="toc-number">1.1.</span> <span class="toc-text">Note Ubuntu 24.04 SSH 修改端口不生效的问题记录</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="" title="Untitled">Untitled</a><time datetime="2025-05-12T04:23:32.352Z" title="Created 2025-05-12 12:23:32">2025-05-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../04/02/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" title="Untitled">Untitled</a><time datetime="2025-04-02T03:58:48.843Z" title="Created 2025-04-02 11:58:48">2025-04-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../03/27/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" title="Untitled">Untitled</a><time datetime="2025-03-27T07:13:07.342Z" title="Created 2025-03-27 15:13:07">2025-03-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../03/27/ubuntu16.04%E5%AE%89%E8%A3%85caffe/" title="Untitled">Untitled</a><time datetime="2025-03-27T07:13:07.338Z" title="Created 2025-03-27 15:13:07">2025-03-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="../../../03/27/%E6%8F%90%E9%AB%98ssh%E5%AE%89%E5%85%A8/" title="Untitled">Untitled</a><time datetime="2025-03-27T07:13:07.334Z" title="Created 2025-03-27 15:13:07">2025-03-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By BruceCui</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="../../../../js/utils.js?v=4.13.0"></script><script src="../../../../js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
